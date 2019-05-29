@@ -1,15 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.goobi.viewer</groupId>
 	<artifactId>viewer-core-config</artifactId>
 	<version>3.4</version>
 	<packaging>jar</packaging>
-	<name>goobi-viewer-core-config</name>
+
+
+	<name>Goobi viewer - Core configuration files</name>
+	<url>https://gitea.intranda.com/goobi-viewer/goobi-viewer-core-config</url>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 
 	<repositories>
 		<repository>
@@ -17,6 +25,8 @@
 			<url>https://nexus.intranda.com/repository/maven-intranda</url>
 		</repository>
 	</repositories>
+
+
 	<distributionManagement>
 		<repository>
 			<id>intranda</id>
@@ -28,9 +38,9 @@
 		</snapshotRepository>
 	</distributionManagement>
 
+
 	<build>
 		<plugins>
-			<!-- Maven JAR Plugin -->
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.1.1</version>
@@ -42,5 +52,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
