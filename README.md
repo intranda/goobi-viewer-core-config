@@ -1,3 +1,3 @@
-# goobi-viewer-core-config
+# Goobi viewer - Core configuration files
 
 Config files for WAR
