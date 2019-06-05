@@ -227,6 +227,12 @@
 			</tileSize>
 		</zoomImageView>
 
+		 <!-- limitImageHeight: If true, the image width is divided by the
+         image hight and if the result is below the configured ratio the
+         default image view will limit the OpenSeadragon canvas to a
+         hight of 1200px. Default is true and ratio of 0,3 -->
+    	<limitImageHeight ratio="0.3">true</limitImageHeight> 
+    	
 		<!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
 		<rememberImageZoom>false</rememberImageZoom>
 
