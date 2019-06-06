@@ -227,11 +227,11 @@
 			</tileSize>
 		</zoomImageView>
 
-		 <!-- limitImageHeight: If true, the image width is divided by the
-         image hight and if the result is below the lowerRatioThreshold or above the upperRatioThreshold,
-         the default image view will set the OpenSeadragon canvas to a
-         hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
-    	<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight> 
+		<!-- limitImageHeight: If true, the image width is divided by the
+		     image hight and if the result is below the lowerRatioThreshold or above the upperRatioThreshold,
+		     the default image view will set the OpenSeadragon canvas to a
+		     hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
+		<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight> 
     	
 		<!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
 		<rememberImageZoom>false</rememberImageZoom>
@@ -328,7 +328,7 @@
 			<!-- rootPath: If the theme is localed externally, the CMS template loading
 			     mechanism needs the root path of the theme. The path must be defined down
 			     to the /themes folder, just above the folder named like the theme. -->
-			<!-- <rootPath>/opt/digiverso/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/src/META-INF/resources/resources/themes/</rootPath> -->
+			<!-- <rootPath>/opt/digiverso/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/WebContent/resources/themes/</rootPath> -->
 		</theme>
 
 		<!-- name: Name of the Goobi viewer instance. This is shown in the OpenSearch description file -->
