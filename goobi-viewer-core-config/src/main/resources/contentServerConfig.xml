@@ -2,7 +2,7 @@
 <config>
 
 	<!-- Path to local config file -->
-	<localConfigPath value="/opt/digiverso/contentServer/config/config_contentServer.xml" />
+	<localConfigPath value="/opt/digiverso/viewer/config/config_contentServer.xml" />
 
 
 	<!-- Default resolution for results of image processing, default is 600 -->
@@ -74,7 +74,7 @@
 			  alwaysCompressToJPEG="true"
 			  metsFileGroup="PRESENTATION"
 			  metsFileUrlRemove=""
-			  writeAsPdfA="true"
+			  writeAsPdfA="false"
 			  pagesize="original" />
 
 
