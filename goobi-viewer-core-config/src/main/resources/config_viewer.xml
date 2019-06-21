@@ -371,6 +371,12 @@
 			<luceneField>SORT_TITLE</luceneField>
 			<luceneField>DATECREATED</luceneField>
 			<luceneField>SORT_YEARPUBLISH</luceneField>
+			
+			<!-- static: Sorting fields defined here will always used silently prior to the visible sorting fields. These fields can be used to always place
+			     certain records on top, for example. -->
+			<static>
+			    <!-- <field></field> -->
+			</static>
 		</sorting>
 
 		<!-- drillDown: Contains a list of fields that are available for facetting in a search result list -->
@@ -1348,9 +1354,10 @@
         	<authorization>
         		<token>test</token>
         	</authorization>
-         <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
-         referencing the @CORSBinding annotation -->        
-        <cors use="true">*</cors>
+       
+	       <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
+	       	    referencing the @CORSBinding annotation -->        
+	       <cors use="true">*</cors>
 	</webapi>
 
 	<!-- When generating twitter cards the userName is added in the twitter:site tag -->
