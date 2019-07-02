@@ -1357,7 +1357,7 @@
        
 	       <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
 	       	    referencing the @CORSBinding annotation -->        
-	       <cors use="true">*</cors>
+	       <cors use="false">*</cors>
 	</webapi>
 
 	<!-- When generating twitter cards the userName is added in the twitter:site tag -->
