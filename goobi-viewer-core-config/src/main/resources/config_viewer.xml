@@ -702,7 +702,7 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="DC" value="">
-					<param type="translatedfield" key="DC" />
+					<param type="translatedfield" key="DC" topstructOnly="true" />
 				</metadata>
 				<metadata label="MD_YEARPUBLISH" value="">
 					<param type="field" key="MD_YEARPUBLISH" />
@@ -881,6 +881,9 @@
 					<param type="field" key="MD_CREATOR" />
 					<param type="wikipersonfield" key="MD_CREATOR" />
 				</metadata>
+				<metadata label="DC" value="">
+                    <param type="field" key="DC" />
+                </metadata>
 				<metadata label="MD_SHELFMARK" value="">
 					<param type="field" key="MD_SHELFMARK" />
 				</metadata>
