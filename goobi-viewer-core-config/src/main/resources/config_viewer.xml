@@ -881,11 +881,8 @@
 					<param type="field" key="MD_CREATOR" />
 					<param type="wikipersonfield" key="MD_CREATOR" />
 				</metadata>
-				<metadata label="DC" value="">
-                    <param type="field" key="DC" />
-                </metadata>
 				<metadata label="MD_SHELFMARK" value="">
-					<param type="field" key="MD_SHELFMARK" />
+					<param type="field" key="MD_SHELFMARK" topstructValueFallback="true" />
 				</metadata>
 				<metadata label="URN" value="">
 					<param type="field" key="URN" />
