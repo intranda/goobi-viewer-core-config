@@ -95,8 +95,8 @@
 	        <authenticationProviders>
 	        	<provider type="local" show="true" name="Goobi viewer"/>
 	        	<provider type="openId" show="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-			<provider type="openId" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-			<provider type="userPassword" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+			<provider type="openId" label="CHANGEME" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+			<provider type="userPassword" label="CHANGEME" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
 	        </authenticationProviders>
 
 		<!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress')
@@ -104,7 +104,7 @@
 		<smtpServer>localhost</smtpServer>
 		<smtpUser></smtpUser>
 		<smtpPassword></smtpPassword>
-		<smtpSenderAddress>do-not-reply@goobi-viewer.example.com</smtpSenderAddress>
+		<smtpSenderAddress>do-not-reply@viewer.example.org</smtpSenderAddress>
 		<smtpSenderName>Goobi viewer</smtpSenderName>
 		<smtpSecurity>NONE</smtpSecurity>
 		<feedbackEmailAddress>feedback@example.com</feedbackEmailAddress>
@@ -411,6 +411,7 @@
 				<field>MD_PLACEPUBLISH</field>
 				<field>MD_YEARPUBLISH</field>
 				<field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
+				<field>BOOKSHELF</field>
 			</searchFields>
 		</advanced>
 
@@ -1162,10 +1163,10 @@
 			</licenseText>
 			<page>
 				<!-- displayLinkToJpegImage: Enables JPEG image download links for pages. Default is false.  -->
-				<displayLinkToJpegImage>true</displayLinkToJpegImage>
+				<displayLinkToJpegImage maxSize="2000">true</displayLinkToJpegImage>
 
-				<!-- displayLinkToJpegImage: Enables TIFF image download links for pages. Default is false.  -->
-				<displayLinkToTiffImage>true</displayLinkToTiffImage>
+				<!-- displayLinkToMasterImage: Enables Master image download links for pages. Default is false.  -->
+				<displayLinkToMasterImage maxSize="max">true</displayLinkToMasterImage>
 			</page>
 		</sidebarWidgetUsage>
 
