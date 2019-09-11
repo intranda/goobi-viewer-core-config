@@ -1334,9 +1334,10 @@
 			<!-- A list of all metadata fields which should be included within
 			     the IIIF Presentation response for manifests and ranges representing structural elements -->
 			<metadataFields>
-                		<field>MD_TITLE</field>
-				<field>MD_CREATOR</field>
-				<!--field>MD_*</field-->
+                		<!--field>MD_TITLE</field>
+				<field>MD_CREATOR</field-->
+				<field>MD_*</field>
+				<field>DOCSTRCT</field>
 			</metadataFields>
 
 			<!-- A list of solr fieldnames which may serve as manifest description metadata. The first existing field is used to provide the medatada description -->
