@@ -47,6 +47,9 @@
 	<!-- cmdiFolder: contains CMDI metadata/fulltext files -->
 	<cmdiFolder>cmdi</cmdiFolder>
 
+	<!-- annotationFolder: contains JSON files of annotations for indexing -->
+	<annotationFolder>annotations</annotationFolder>
+
 	<!-- hotfolder: defines the hotfolder from the Goobi viewer Indexer for indexing uploaded born-digital-material (see <content> also) -->
 	<hotfolder>/opt/digiverso/viewer/hotfolder/</hotfolder>
 
@@ -1211,6 +1214,9 @@
 
 		<!-- displayTimeline: if false, time matrix link is hidden (default is false) -->
 		<displayTimeMatrix>false</displayTimeMatrix>
+
+		<!-- displayCrowdsourcingModuleLinks: Switch to enable crowdsourcing transcription links (default is false) -->
+		<displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 	</webGuiDisplay>
 
 
