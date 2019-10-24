@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
-	<Appenders>
-		<Console name="stdout">
-			<PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
-		</Console>
 
-		<RollingFile name="rolling" fileName="/opt/digiverso/logs/viewer.log" filePattern="/opt/digiverso/logs/viewer.log%d{yyyy-MM-dd}..gz">
-			<PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
-			<SizeBasedTriggeringPolicy size="20 MB" />
-		</RollingFile>
-	</Appenders>
+<!--
+  * Everything that is not definied explicitly is recorded as ERROR in the catalina.out (<Root .../>)
+  * The ThresholdFilter at the top of the file needs to be TRACE. The level at Logger value, too. Adjust 
+    the desired log level via the ThresholdFilter in the RollingFile appender.
+-->
 
 
 
-	<Loggers>
-		<Logger name="io.goobi" level="ERROR" additivity="true" />
-		<Logger name="org.goobi.viewer" level="ERROR" additivity="true" />
-		<Logger name="com.ocpsoft" level="ERROR" additivity="true" />
-		<Logger name="ro.isdc.wro" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.imagelib"	level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.pdflib" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.controller.ContentServer"	level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.controller.GetErrorReportAction" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.controller.GetImageAction" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.controller.GetPdfAction" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.controller.JspOnlyAction" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.model.ContentServerConfig" level="ERROR" additivity="true" />
-		<Logger name="de.unigoettingen.sub.commons.contentlib.servlet.rest" level="ERROR" additivity="true" />
-		<Logger name="httpclient" level="ERROR" additivity="true" />
-		<Logger name="java.net.SocketOutputStream" level="ERROR" additivity="true" />
-		<Logger name="net.sf.ehcache" level="ERROR" additivity="true" />
-		<Logger name="org.apache" level="ERROR" additivity="true" />
-		<Logger name="org.docx4j" level="ERROR" additivity="true" />
-		<Logger name="org.jboss.weld" level="ERROR" additivity="true" />
-		<Logger name="ugh" level="ERROR" additivity="true" />
+<Configuration name="Goobi viewer">
 
-		<Root level="info">
-			<AppenderRef ref="stdout" />
-			<AppenderRef ref="rolling" />
-		</Root>
-	</Loggers>
+  <Properties>
+    <Property name="baseDir">/opt/digiverso/logs</Property>
+  </Properties>
+
+  <ThresholdFilter level="TRACE" />
+
+  <Appenders>
+    <Console name="stdout">
+      <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
+      <ThresholdFilter level="ERROR" />
+    </Console>
+
+    <RollingFile name="viewer" fileName="${baseDir}/viewer.log" filePattern="${baseDir}/viewer.log.%d{yyyy-MM-dd}.log.gz">
+      <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
+      <ThresholdFilter level="DEBUG" />
+      <CronTriggeringPolicy schedule="0 0 0 * * ?" />
+      <DefaultRolloverStrategy>
+        <Delete basePath="${baseDir}">
+          <IfFileName glob="viewer.*.log.gz" />
+          <IfLastModified age="14d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+    <RollingFile name="oai" fileName="${baseDir}/oai.log" filePattern="${baseDir}/oai.log.%d{yyyy-MM-dd}.gz">
+      <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
+      <ThresholdFilter level="DEBUG" />
+      <CronTriggeringPolicy schedule="0 0 0 * * ?" />
+      <DefaultRolloverStrategy>
+        <Delete basePath="${baseDir}">
+          <IfFileName glob="oai.*.log.gz" />
+          <IfLastModified age="14d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+    <RollingFile name="ics" fileName="${baseDir}/ics.log" filePattern="${baseDir}/ics.log.%d{yyyy-MM-dd}.gz">
+      <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
+      <ThresholdFilter level="DEBUG" />
+      <CronTriggeringPolicy schedule="0 0 0 * * ?" />
+      <DefaultRolloverStrategy>
+        <Delete basePath="${baseDir}">
+          <IfFileName glob="ics.*.log.gz" />
+          <IfLastModified age="14d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="io.goobi.viewer" level="TRACE" additivity="true">
+      <AppenderRef ref="viewer" />
+    </Logger>
+
+    <Logger name="io.goobi.viewer.connector" level="TRACE" additivity="true">
+      <AppenderRef ref="oai" />
+    </Logger>
+
+    <Logger name="de.unigoettingen.sub.commons.contentlib" level="TRACE" additivity="true">
+      <AppenderRef ref="ics" />
+    </Logger>
+
+    <Root level="ERROR">
+      <AppenderRef ref="stdout" />
+    </Root>
+  </Loggers>
 </Configuration>
