@@ -237,10 +237,10 @@
 		<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight> 
     	
 		<!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
-		<rememberImageZoom>false</rememberImageZoom>
+		<rememberImageZoom>true</rememberImageZoom>
 
 		<!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
-		<rememberImageRotation>false</rememberImageRotation>
+		<rememberImageRotation>true</rememberImageRotation>
 
 	        <!-- URL patterns for external image urls which should be served via the contentServner
 	        All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
