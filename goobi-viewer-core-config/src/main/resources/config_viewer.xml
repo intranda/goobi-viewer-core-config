@@ -47,9 +47,6 @@
 	<!-- cmdiFolder: contains CMDI metadata/fulltext files -->
 	<cmdiFolder>cmdi</cmdiFolder>
 
-	<!-- annotationFolder: contains JSON files of annotations for indexing -->
-	<annotationFolder>annotations</annotationFolder>
-
 	<!-- hotfolder: defines the hotfolder from the Goobi viewer Indexer for indexing uploaded born-digital-material (see <content> also) -->
 	<hotfolder>/opt/digiverso/viewer/hotfolder/</hotfolder>
 
@@ -98,8 +95,8 @@
 	        <authenticationProviders>
 	        	<provider type="local" show="true" name="Goobi viewer"/>
 	        	<provider type="openId" show="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-			<provider type="openId" label="CHANGEME" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-			<provider type="userPassword" label="CHANGEME" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+			<provider type="openId" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+			<provider type="userPassword" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
 	        </authenticationProviders>
 
 		<!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress')
@@ -107,7 +104,7 @@
 		<smtpServer>localhost</smtpServer>
 		<smtpUser></smtpUser>
 		<smtpPassword></smtpPassword>
-		<smtpSenderAddress>do-not-reply@viewer.example.org</smtpSenderAddress>
+		<smtpSenderAddress>do-not-reply@goobi-viewer.example.com</smtpSenderAddress>
 		<smtpSenderName>Goobi viewer</smtpSenderName>
 		<smtpSecurity>NONE</smtpSecurity>
 		<feedbackEmailAddress>feedback@example.com</feedbackEmailAddress>
@@ -237,10 +234,10 @@
 		<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight> 
     	
 		<!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
-		<rememberImageZoom>false</rememberImageZoom>
+		<rememberImageZoom>true</rememberImageZoom>
 
 		<!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
-		<rememberImageRotation>false</rememberImageRotation>
+		<rememberImageRotation>true</rememberImageRotation>
 
 	        <!-- URL patterns for external image urls which should be served via the contentServner
 	        All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
@@ -414,7 +411,6 @@
 				<field>MD_PLACEPUBLISH</field>
 				<field>MD_YEARPUBLISH</field>
 				<field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
-				<field>BOOKSHELF</field>
 			</searchFields>
 		</advanced>
 
@@ -482,7 +478,7 @@
 		</displayAdditionalMetadata>
 
 		<!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
-		<staticQuerySuffix>-BOOL_HIDE:true</staticQuerySuffix>
+		<staticQuerySuffix>AND -BOOL_HIDE:true</staticQuerySuffix>
 
 	        <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
 	            (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
@@ -706,7 +702,7 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="DC" value="">
-					<param type="translatedfield" key="DC" topstructOnly="true" />
+					<param type="translatedfield" key="DC" />
 				</metadata>
 				<metadata label="MD_YEARPUBLISH" value="">
 					<param type="field" key="MD_YEARPUBLISH" />
@@ -886,7 +882,7 @@
 					<param type="wikipersonfield" key="MD_CREATOR" />
 				</metadata>
 				<metadata label="MD_SHELFMARK" value="">
-					<param type="field" key="MD_SHELFMARK" topstructValueFallback="true" />
+					<param type="field" key="MD_SHELFMARK" />
 				</metadata>
 				<metadata label="URN" value="">
 					<param type="field" key="URN" />
@@ -1164,13 +1160,6 @@
 					<param type="translatedfield" key="ACCESSCONDITION" />
 				</metadata>
 			</licenseText>
-			<page>
-				<!-- displayLinkToJpegImage: Enables JPEG image download links for pages. Default is false.  -->
-				<displayLinkToJpegImage maxSize="2000">true</displayLinkToJpegImage>
-
-				<!-- displayLinkToMasterImage: Enables Master image download links for pages. Default is false.  -->
-				<displayLinkToMasterImage maxSize="max">true</displayLinkToMasterImage>
-			</page>
 		</sidebarWidgetUsage>
 
 	</sidebar>
@@ -1214,9 +1203,6 @@
 
 		<!-- displayTimeline: if false, time matrix link is hidden (default is false) -->
 		<displayTimeMatrix>false</displayTimeMatrix>
-
-		<!-- displayCrowdsourcingModuleLinks: Switch to enable crowdsourcing transcription links (default is false) -->
-		<displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 	</webGuiDisplay>
 
 
@@ -1340,10 +1326,9 @@
 			<!-- A list of all metadata fields which should be included within
 			     the IIIF Presentation response for manifests and ranges representing structural elements -->
 			<metadataFields>
-                		<!--field>MD_TITLE</field>
-				<field>MD_CREATOR</field-->
-				<field>MD_*</field>
-				<field>DOCSTRCT</field>
+                		<field>MD_TITLE</field>
+				<field>MD_CREATOR</field>
+				<!--field>MD_*</field-->
 			</metadataFields>
 
 			<!-- A list of solr fieldnames which may serve as manifest description metadata. The first existing field is used to provide the medatada description -->
