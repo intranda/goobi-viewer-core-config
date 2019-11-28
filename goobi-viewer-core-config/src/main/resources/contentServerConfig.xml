@@ -73,7 +73,7 @@
 	<defaultPdfConfig alwaysUseRenderedImage="true"
 			  alwaysCompressToJPEG="true"
 			  metsFileGroup="PRESENTATION"
-			  metsFileUrlRemove=""
+			  metsFileUrlRemove="file:\/\/\/opt\/digiverso\/viewer\/media\/"
 			  writeAsPdfA="false"
 			  pagesize="original" />
 
