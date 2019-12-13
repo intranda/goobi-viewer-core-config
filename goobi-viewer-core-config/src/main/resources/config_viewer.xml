@@ -25,6 +25,9 @@
 
 	<!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <content> also) -->
 	<origContentFolder>source</origContentFolder>
+	
+	<!-- pdfFolder: contains pre-generated PDFs -->
+	<pdfFolder>pdf</pdfFolder>
 
 	<!-- cmsTextFolder: contains extracted CMS page texts for indexing -->
 	<cmsTextFolder>cms</cmsTextFolder>
@@ -79,7 +82,7 @@
 		<contentServerWrapper>http://localhost:8080/viewer/content/</contentServerWrapper>
 
 		<!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
-		<dfg-viewer>http://dfg-viewer.de/show?set[mets]=</dfg-viewer>
+		<dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
 		<!-- The iiif service url from which images are requested via iiif -->
 		<rest>http://localhost:8080/viewer/rest/</rest>
@@ -127,7 +130,7 @@
 		<!-- unconditionalImageAccesMaxWidth: Access conditions are not applied to images below this width - Thumbnails -->
 		<unconditionalImageAccessMaxWidth>400</unconditionalImageAccessMaxWidth>
 		<!-- fullAccessForLocalhost: If true, users on localhost will be granted superuser access. Default is false. -->
-		<fullAccessForLocalhost>true</fullAccessForLocalhost>
+		<fullAccessForLocalhost>false</fullAccessForLocalhost>
 	</accessConditions>
 
 
@@ -138,7 +141,7 @@
 
 
 	<pdf>
-		<!-- externalPdfGeneration: create pdfs in an external intranda TaskManager. -->
+		<!-- externalPdfGeneration: Create pdfs in an external intranda TaskManager. Default is false. -->
 		<externalPdfGeneration>false</externalPdfGeneration>
 
 		<!-- pdfApiDisabled: if true, the content servlet will reject PDF queries -->
@@ -1056,6 +1059,9 @@
 
 		<!-- display as interactive tree view -->
 		<useTreeView showDocStructs="_ALL">false</useTreeView>
+		
+		<!-- tocIndentation: Number of pixels used as padding for child element indentation in the tree view. Default is 20. -->
+		<tocIndentation>20</tocIndentation>
 	</toc>
 
 
@@ -1110,6 +1116,7 @@
 			<visible>true</visible>
 		</thumbs>
 
+        <!-- searchInItem: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
 		<searchInItem>
 			<visible>true</visible>
 		</searchInItem>
