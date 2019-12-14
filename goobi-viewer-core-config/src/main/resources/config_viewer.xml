@@ -25,7 +25,7 @@
 
 	<!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <content> also) -->
 	<origContentFolder>source</origContentFolder>
-	
+
 	<!-- pdfFolder: contains pre-generated PDFs -->
 	<pdfFolder>pdf</pdfFolder>
 
@@ -199,7 +199,7 @@
 		<!--zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
 		    the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
 		    to true to use tiled images if possible (only possible when type=openlayers) -->
-		 
+
 		<!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
 		<zoomImageView tileImage="false" footerHeight="50">
 			<useFor>
@@ -221,7 +221,7 @@
 				<size>1024</size>
 			</tileSize>
 		</zoomImageView>
-       
+
 		<!-- Default settings for image view -->
 		<zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
 			<scale>600</scale>
@@ -237,8 +237,8 @@
 		     image hight and if the result is below the lowerRatioThreshold or above the upperRatioThreshold,
 		     the default image view will set the OpenSeadragon canvas to a
 		     hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
-		<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight> 
-    	
+		<limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight>
+
 		<!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
 		<rememberImageZoom>true</rememberImageZoom>
 
@@ -377,7 +377,7 @@
 			<luceneField>SORT_TITLE</luceneField>
 			<luceneField>DATECREATED</luceneField>
 			<luceneField>SORT_YEARPUBLISH</luceneField>
-			
+
 			<!-- static: Sorting fields defined here will always used silently prior to the visible sorting fields. These fields can be used to always place
 			     certain records on top, for example. -->
 			<static>
@@ -554,7 +554,7 @@
 			<!-- Default-Image for tiled collection in CMS, relative to the image folder within the theme path.
 			     No text means that no image is rendered for the collection -->
 			<defaultBrowseIcon></defaultBrowseIcon>
-			    
+
 			<!-- addHierarchyToBreadcrumbs: If true, the value hierarchy of this field will be added to
 			     breadcrumbs (if not multivalued). Default is false. -->
 			<addHierarchyToBreadcrumbs>true</addHierarchyToBreadcrumbs>
@@ -1059,7 +1059,7 @@
 
 		<!-- display as interactive tree view -->
 		<useTreeView showDocStructs="_ALL">false</useTreeView>
-		
+
 		<!-- tocIndentation: Number of pixels used as padding for child element indentation in the tree view. Default is 20. -->
 		<tocIndentation>20</tocIndentation>
 	</toc>
@@ -1116,7 +1116,7 @@
 			<visible>true</visible>
 		</thumbs>
 
-        <!-- searchInItem: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
+		<!-- searchInItem: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
 		<searchInItem>
 			<visible>true</visible>
 		</searchInItem>
@@ -1132,7 +1132,7 @@
 		<fulltext>
 			<visible>true</visible>
 		</fulltext>
-		
+
 		<!-- if visible is true, a link to a miradorviewer with the current work opened will be listed in the sidebar -->
     	<mirador>
     		<visible>false</visible>
@@ -1376,9 +1376,9 @@
         	<authorization>
         		<token>test</token>
         	</authorization>
-       
+
 	       <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
-	       	    referencing the @CORSBinding annotation -->        
+	       	    referencing the @CORSBinding annotation -->
 	       <cors use="false">*</cors>
 	</webapi>
 
