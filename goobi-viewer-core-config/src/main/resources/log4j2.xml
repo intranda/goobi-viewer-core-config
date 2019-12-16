@@ -56,6 +56,8 @@
       <AppenderRef ref="ics" />
     </Logger>
 
+    <Logger name="org.apache.catalina.connector.ClientAbortException" level="ERROR" additivity="true"/>
+
     <Root level="ERROR">
       <AppenderRef ref="stdout" />
     </Root>
