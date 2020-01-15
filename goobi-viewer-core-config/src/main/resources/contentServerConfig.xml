@@ -167,7 +167,9 @@
 
 
 	<!-- TODO Documentation-->
-	<restapi use="true"></restapi>
+	<restapi use="true">
+		<discloseContentLocation>true</discloseContentLocation>
+	</restapi>
 
 
 	<!--
