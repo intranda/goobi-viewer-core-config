@@ -297,7 +297,13 @@
 		<pageSelectionFormat>{order}:{orderlabel}</pageSelectionFormat>
 
 		<!-- pageTypes: Sub-elements of this element can override the URL names in the PageType enum. Sub-elements must have the same names as the enum values.
-		     Custom URL names must be mapped in the faces config, too. -->
+		     Custom URL names must be mapped in the faces config, too. 
+		     
+		     The @exit attribute defines a view to which #{navigationHelper.exitUrl} redirects for the view.
+		     The value can either be 
+		     * "pretty:<pretty-mapping-id>" to navigate to that pretty mapping
+		     * "previousView" to navigate to the previous view
+		     * Any viewer url without the context path (e.g. "/" or "/index/" for the start page) -->
 		<pageTypes>
 			<viewObject>image</viewObject>
 			<!-- <search>suche</search> -->
@@ -307,7 +313,7 @@
 			<!-- <viewFulltext></viewFulltext> -->
 			<!-- <term></term> -->
 			<!-- <browse></browse> -->
-			<!-- <viewFullscreen></viewFullscreen> -->
+			<viewFullscreen exit="previousView">fullscreen</viewFullscreen>
 			<!-- <sites></sites> -->
 		</pageTypes>
 
@@ -1371,6 +1377,8 @@
 			     resources/themes/<theme>/images/ folder and linked appropriately
 			     If no logo is configured, the image footer will be used-->
 			<logo>dfgviewer_intranda.jpg</logo>
+			<!-- Show source file location of image requests in Conntent-Location header -->
+			<discloseContentLocation>true</discloseContentLocation>
 		</iiif>
 
         	<authorization>
