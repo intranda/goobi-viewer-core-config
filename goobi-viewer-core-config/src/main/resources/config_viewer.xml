@@ -1140,9 +1140,9 @@
 		</fulltext>
 
 		<!-- if visible is true, a link to a miradorviewer with the current work opened will be listed in the sidebar -->
-    	<mirador>
-    		<visible>false</visible>
-    	</mirador>
+		<mirador>
+			<visible>false</visible>
+		</mirador>
 
 		<!-- sidebarToc: configuration of the sidebar TOC component -->
 		<sidebarToc>
@@ -1377,8 +1377,9 @@
 			     resources/themes/<theme>/images/ folder and linked appropriately
 			     If no logo is configured, the image footer will be used-->
 			<logo>dfgviewer_intranda.jpg</logo>
-			<!-- Show source file location of image requests in Conntent-Location header -->
-			<discloseContentLocation>true</discloseContentLocation>
+
+			<!-- Show source file location of image requests in Content-Location HTTP header -->
+			<discloseContentLocation>false</discloseContentLocation>
 		</iiif>
 
         	<authorization>
