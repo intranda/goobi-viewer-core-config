@@ -1225,6 +1225,17 @@
 
 		<!-- displayCrowdsourcingModuleLinks: Switch to enable crowdsourcing transcription links (default is false) -->
 		<displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
+		
+		<!-- Display "traffic lights" for access condition and copyright icon in fullscreen view -->
+		<displayCopyrightInfo>
+			<visible>false</visible>
+			<accessConditionField>MD_ACCESSCONDITION</accessConditionField>
+			<copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
+		</displayCopyrightInfo>
+		
+		<!-- Display links in fullscreen view to share current page in facebook or twitter-->
+		<displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
+		
 	</webGuiDisplay>
 
 
