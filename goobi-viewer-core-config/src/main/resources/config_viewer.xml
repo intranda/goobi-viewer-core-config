@@ -423,7 +423,7 @@
 				<field>MD_PLACEPUBLISH</field>
 				<field>MD_YEARPUBLISH</field>
 				<field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
-				<field>BOOKSHELF</field>
+				<field>BOOKMARKS</field>
 			</searchFields>
 		</advanced>
 
@@ -1139,11 +1139,6 @@
 			<visible>true</visible>
 		</fulltext>
 
-		<!-- if visible is true, a link to a miradorviewer with the current work opened will be listed in the sidebar -->
-		<mirador>
-			<visible>false</visible>
-		</mirador>
-
 		<!-- sidebarToc: configuration of the sidebar TOC component -->
 		<sidebarToc>
 			<!-- visible: if false, the sidebar toc is hidden -->
@@ -1248,10 +1243,10 @@
 	</rss>
 
 
-	<bookshelves>
-		<!-- bookshelvesEnabled: if false, no links to bookshelf administration are displayed (default is true) -->
-		<bookshelvesEnabled>true</bookshelvesEnabled>
-	</bookshelves>
+	<booksmarks>
+		<!-- bookmarksEnabled: if false, no links to bookmarks are displayed (default is true) -->
+		<bookmarksEnabled>true</bookmarksEnabled>
+	</bookmarks>
 
 
 	<userComments>
