@@ -1071,6 +1071,20 @@
 
 		<!-- tocIndentation: Number of pixels used as padding for child element indentation in the tree view. Default is 20. -->
 		<tocIndentation>20</tocIndentation>
+		
+		<!-- Config for the Main object title derived from the toc labels -->
+		<!-- template is resolved like metadata templates by DocStructType -->
+		<!-- if displayAnchorTitle is true and the current object has an anchor; the label of the anchor toc element will pre 
+		displayed before the actual document label -->
+		<!-- prefix and suffix are strings brefore and after the anchor label in the title. Both strings are translated and _SPACE_ is converted to a simple whitespace -->
+	   <titleBarLabel>
+	   		<template name="PeriodicalVolume">
+	   			<displayAnchorTitle prefix="" suffix="_SPACE_">false</displayAnchorTitle>
+	   		</template>
+	   		<template name="_DEFAULT">
+	   			<displayAnchorTitle>false</displayAnchorTitle>
+	   		</template>
+	   </titleBarLabel>
 	</toc>
 
 
