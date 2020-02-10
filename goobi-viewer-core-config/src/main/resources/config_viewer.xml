@@ -87,8 +87,10 @@
 		<!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
 		<dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
-		<!-- The iiif service url from which images are requested via iiif -->
+		<!-- The rest service url from which internal viewer resources are requested via iiif -->
 		<rest>http://localhost:8080/viewer/rest/</rest>
+		<!-- Rest endpoint for content data, mostly images which are delivered via iiif image api -->
+		<iiif>https://viewer.goobi.io/rest/</iiif>
 
 		<!-- The base urls to access download pages for pdf and epub downloads -->
 		<download>http://localhost:8080/viewer/download/</download>
