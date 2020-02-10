@@ -79,7 +79,16 @@ the location of this file.
         -->
 
         <!-- auto-detect fonts -->
-        <auto-detect/>
+	<!--
+	     <auto-detect/>
+	-->
+
+	<font kerning="yes" embed-url="opensans-regular-webfont.ttf" embedding-mode="full">
+		<font-triplet name="unicode-font" style="normal" weight="normal"/>
+	</font>
+	<font kerning="yes" embed-url="unifont-12.1.04.ttf" embedding-mode="full">
+		<font-triplet name="Goobi2-opensans" style="normal" weight="normal"/>
+	</font>
 
       </fonts>
 
