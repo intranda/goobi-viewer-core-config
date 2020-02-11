@@ -47,7 +47,7 @@
 			src="/opt/digiverso/git/intrandaContentServer/intrandaContentServer/WebContent/images/watermark/book.png" 
 			/> </fo:block> </fo:table-cell> </fo:table-row> </fo:table-body> </fo:table> 
 			</fo:block> </fo:static-content> -->
-		<fo:flow flow-name="xsl-region-body" font-family="unicode-font, Goobi2-opensans">
+		<fo:flow flow-name="xsl-region-body" font-family="opensans, unicode">
 
 			<fo:table font-size="12pt" margin-top="3cm" line-height="14pt" border-collapse="separate" border-separation="0.5em">
 				<fo:table-column column-width="30%" font-weight="bold"/>

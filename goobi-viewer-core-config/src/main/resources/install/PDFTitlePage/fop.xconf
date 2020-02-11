@@ -83,12 +83,18 @@ the location of this file.
 	     <auto-detect/>
 	-->
 
-	<font kerning="yes" embed-url="opensans-regular-webfont.ttf" embedding-mode="full">
-		<font-triplet name="unicode-font" style="normal" weight="normal"/>
-	</font>
-	<font kerning="yes" embed-url="unifont-12.1.04.ttf" embedding-mode="full">
-		<font-triplet name="Goobi2-opensans" style="normal" weight="normal"/>
-	</font>
+                <font kerning="yes" embed-url="font_OpenSans-Regular.ttf" embedding-mode="full">
+                        <font-triplet name="opensans" style="normal" weight="normal" />
+                </font>
+                <font kerning="yes" embed-url="font_OpenSans-Semibold.ttf" embedding-mode="full">
+                        <font-triplet name="opensans" style="normal" weight="bold" />
+                </font>
+                <font kerning="yes" embed-url="font_OpenSansHebrew-Regular.ttf" embedding-mode="full">
+                        <font-triplet name="unicode" style="normal" weight="normal" />
+                </font>
+                <font kerning="yes" embed-url="font_OpenSansHebrew-Bold.ttf" embedding-mode="full">
+                        <font-triplet name="unicode" style="normal" weight="bold" />
+                </font>
 
       </fonts>
 

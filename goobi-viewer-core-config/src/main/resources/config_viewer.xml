@@ -87,10 +87,16 @@
 		<!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
 		<dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
-		<!-- The rest service url from which internal viewer resources are requested via iiif -->
+		<!-- Rest service url from which internal viewer resources are requested -->
 		<rest>http://localhost:8080/viewer/rest/</rest>
-		<!-- Rest endpoint for content data, mostly images which are delivered via iiif image api -->
-		<iiif>https://viewer.goobi.io/rest/</iiif>
+
+		<!-- DEVELOPERS ONLY.
+		     SHOULD BE COMMENTED OUT ON CUSTOMER SYSTEMS.
+
+		     Rest endpoint for content data. Requests images from records via iiif image api.
+		     This is needed if developers use remote images in their local running Goobi viewer development environment
+		<iiif>http://localhost:8080/viewer/rest/</iiif>
+		-->
 
 		<!-- The base urls to access download pages for pdf and epub downloads -->
 		<download>http://localhost:8080/viewer/download/</download>
