@@ -1121,13 +1121,6 @@
 
 	<!-- Show or hide sections in the sidebar globally -->
 	<sidebar>
-		<!-- overview: if false, the image view is hidden -->
-		<overview>
-			<visible>true</visible>
-			<!-- condition: Optional Solr subquery. Only records that match the given query will have the overview page displayed. -->
-			<condition></condition>
-		</overview>
-
 		<!-- page: if false, the image view is hidden -->
 		<page>
 			<visible>true</visible>
