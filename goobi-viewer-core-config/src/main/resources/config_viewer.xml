@@ -1412,5 +1412,13 @@
 			<userName>@goobi</userName>
 		</twitter>
 	</embedding>
+	
+	<!-- Configuration for geo maps -->
+	<maps>
+    	<mapbox>
+    		<!-- The mapbox token to use -->
+    		<token></token>
+    	</mapbox>
+    </maps>
 
 </config>
