@@ -324,7 +324,7 @@
 			<!-- <viewFulltext></viewFulltext> -->
 			<!-- <term></term> -->
 			<!-- <browse></browse> -->
-			<viewFullscreen exit="previousView">fullscreen</viewFullscreen>
+			<viewFullscreen exit="pretty:image3">fullscreen</viewFullscreen>
 			<!-- <sites></sites> -->
 		</pageTypes>
 
