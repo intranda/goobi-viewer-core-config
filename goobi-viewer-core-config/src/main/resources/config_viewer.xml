@@ -841,6 +841,36 @@
 					<param type="field" key="MD_RISMSEAL" />
 				</metadata>
 			</template>
+			<template name="record">
+				<metadata label="PI" value="">
+					<param type="field" key="PI"/>
+				</metadata>
+				<metadata label="MD_TITLE" value="">
+					<param type="field" key="MD_TITLE"/>
+				</metadata>
+				<metadata label="MD_RECORDDESCRIPTION" value="">
+					<param type="field" key="MD_RECORDDESCRIPTION"/>
+				</metadata>
+				<metadata label="MD_LANGUAGE" value="">
+					<param type="translatedfield" key="MD_LANGUAGE"/>
+				</metadata>
+				<metadata label="MD_CREATOR" value="MASTERVALUE_SIMPLE_GROUP" group="true">
+					<param type="field" key="MD_VALUE"/>
+					<param type="field" key="NORM_WIKIPEDIAURL" value="LINK_WIKIPEDIA_FULL"/>
+					<param type="normdatauri" key="NORM_URI"/>
+					<param type="normdatasearch" key="NORM_IDENTIFIER"/>
+				</metadata>
+				<metadata label="DC" value="">
+					<param type="translatedfield" key="DC"/>
+				</metadata>
+				<metadata label="MD_DATEOTHER" value="">
+					<param type="field" key="MD_DATECREATED"/>
+				</metadata>
+				<metadata label="MD_LICENSE" value="MASTERVALUE_ACCESSLICENSE">
+					<param type="field" key="MD_ACCESSLICENSE"/>
+					<param type="translatedfield" key="MD_ACCESSLICENSE"/>
+				</metadata>
+			</template>
 		</mainMetadataList>
 
 		<!-- titleBarMetadataList: defines metadata that is displayed above an image. The syntax is the same as in mainMetadataList -->
