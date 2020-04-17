@@ -61,6 +61,10 @@
 	  - metsFileUrlRemove: All strings matching this regex are removed from the URLs in the configured metsFileGroup. Needed together with data repositories because the links from the metsFileGroup are not valid anymore.
 	  - writeAsPdfA: write PDF file as Pdf/A
 	  - pagesize: default page size for pdf generation; possible values are 'A4', 'original' and 'A4Box'
+	  - imageDpi: Scale the image resolution to this value, while leaving the size intact. Effectively creates a blurring effect if set to lower than image DPI. Default is '0' which means no DPI change
+	  - convertToGrayscale: convert the PDF image to grayscale if set to true
+	  - imageScale: Scale the total image by this factor, creating a smaller 1.0
+	  - imageCompression: JPEG compression quality for the pdf image. Default is '0' which means default JPEG compression
 
 	Example:
 	  <defaultPdfConfig alwaysUseRenderedImage="true"
@@ -68,14 +72,23 @@
 			    metsFileGroup="DEFAULT"
 			    metsFileUrlRemove="file:\/\/\/opt\/digiverso\/viewer\/media\/"
 			    writeAsPdfA="true"
-			    pagesize="A4"/>
+			    pagesize="A4"
+			    imageDpi="0"
+			    convertToGrayscale="false"
+			    imageScale="0.5"
+			    imageCompression="50" />
 	-->
 	<defaultPdfConfig alwaysUseRenderedImage="true"
 			  alwaysCompressToJPEG="true"
 			  metsFileGroup="PRESENTATION"
 			  metsFileUrlRemove="file:\/\/\/opt\/digiverso\/viewer\/media\/"
 			  writeAsPdfA="false"
-			  pagesize="original" />
+			  pagesize="original" 
+			  imageDpi="0"
+			  convertToGrayscale="false"
+			  imageScale="0.5"
+			  imageCompression="50"			  
+			  />
 
 
 	<!-- Factors to scale the estimated pdf size which is calculated by the size of all required image files -->
@@ -187,5 +200,40 @@
 	<thumbnailCache useCache="true" useShortFileNames="false"/>
 	<pdfCache useCache="true" useShortFileNames="false" path="/opt/digiverso/viewer/cache_pdf/" size="30000"/>
 
+
+
+	<!-- TODO Documentation-->
 	<memoryUsage maximalParallelRequests="0" lowMemoryThreshold="1000000000"></memoryUsage>
+
+	<!--
+        <memoryUsage memoryUnit="MB" timeoutUnit="s">
+                <image>
+                        <maxParallelRequests>60</maxParallelRequests>
+                        <lowMemoryThreshold>200</lowMemoryThreshold>
+                        <lowMemoryTimeout>8</lowMemoryTimeout>
+                </image>
+                <pdf>
+                        <maxParallelRequests>8</maxParallelRequests>
+                        <lowMemoryThreshold>500</lowMemoryThreshold>
+                        <lowMemoryTimeout>10</lowMemoryTimeout>
+                </pdf>
+                <metsPdf>
+                        <maxParallelRequests>4</maxParallelRequests>
+                        <lowMemoryThreshold>1000</lowMemoryThreshold>
+                        <lowMemoryTimeout>20</lowMemoryTimeout>
+                </metsPdf>
+        </memoryUsage>
+	-->
+
+
+
+	<!-- TODO Documentation-->
+	<!--
+	<S3>
+		<useCustom>true</useCustom>
+		<AccessKeyID>CHANGEME</AccessKeyID>
+		<SecretAccessKey>CHANGEME</SecretAccessKey>
+		<Endpoint>http://192.168.178.124:9000</Endpoint>
+	</S3>
+	-->
 </config>
