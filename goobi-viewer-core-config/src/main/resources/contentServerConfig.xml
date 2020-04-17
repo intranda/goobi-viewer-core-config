@@ -225,4 +225,15 @@
         </memoryUsage>
 	-->
 
+
+
+	<!-- TODO Documentation-->
+	<!--
+	<S3>
+		<useCustom>true</useCustom>
+		<AccessKeyID>CHANGEME</AccessKeyID>
+		<SecretAccessKey>CHANGEME</SecretAccessKey>
+		<Endpoint>http://192.168.178.124:9000</Endpoint>
+	</S3>
+	-->
 </config>
