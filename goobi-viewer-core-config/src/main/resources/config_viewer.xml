@@ -107,6 +107,23 @@
 		<!-- userRegistrationEnabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
 		<userRegistrationEnabled>true</userRegistrationEnabled>
 
+		<!-- TODO documentation -->
+		<securityQuestions>
+			<question key="user__security_question__1">
+				<allowedAnswer>blau</allowedAnswer>
+				<allowedAnswer>blue</allowedAnswer>
+			</question>
+			<question key="user__security_question__2">
+				<allowedAnswer>6</allowedAnswer>
+				<allowedAnswer>sechs</allowedAnswer>
+				<allowedAnswer>six</allowedAnswer>
+			</question>
+			<question key="user__security_question__3">
+				<allowedAnswer>b</allowedAnswer>
+				<allowedAnswer>t</allowedAnswer>
+			</question>
+		</securityQuestions>
+
 		<!-- List of authentication providers. Each <provider> element defines an authentication provider.
 		     Possible attributes for providers are: type, show, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
 	        <authenticationProviders>
