@@ -1119,8 +1119,8 @@
 		<!-- labelConfig: Layout configuration for the label of TOC elements. The configuration is analogous to a metadata template. -->
 		<labelConfig>
 			<template name="_DEFAULT">
-				<metadata label="" value="{MD_TITLE}{CURRENTNO}">
-					<param type="field" key="MD_TITLE" />
+				<metadata label="" value="{LABEL}{CURRENTNO}">
+					<param type="field" key="LABEL" />
 					<param type="field" key="CURRENTNO" prefix="_SPACE_(" suffix=")" />
 				</metadata>
 			</template>
