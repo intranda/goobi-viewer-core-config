@@ -468,7 +468,7 @@
 
 			<!-- hits: Hits to fetch for the time matrix. The value 'MAX' will be the
 			     maximum number defined in SolrSearchIndex.MAX_HITS. Default is 108. -->
-			<hits>108</hits>
+			<hits>36</hits>
 		</timeline>
 
 		<calendar>
@@ -935,7 +935,7 @@
 			<valueNumber>3</valueNumber>
 
 			<!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
-			<valueLength>40</valueLength>
+			<valueLength>4000</valueLength>
 		</searchHitMetadataList>
 
 
