@@ -1067,7 +1067,7 @@
 
 	        <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
 	        <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
-	        
+
 		<!-- Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to selec a license -->
 		<licenses>
 			<!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/-->
@@ -1498,7 +1498,7 @@
 		</twitter>
 	</embedding>
 
-	
+
 	<!-- Configuration for geo maps -->
 	<maps>
 		<markers>
