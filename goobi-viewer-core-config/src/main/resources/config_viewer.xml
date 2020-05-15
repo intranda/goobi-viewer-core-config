@@ -380,13 +380,13 @@
 
 
 	<search>
-        <!-- hitsPerPage: defines selectabled numbers of hits that are shown in a search hit list or when opening a collection -->
-        <hitsPerPage>
-            <value default="true">10</value>
-            <value>25</value>
-            <value>50</value>
-            <value>100</value>
-        </hitsPerPage>
+		<!-- hitsPerPage: defines selectabled numbers of hits that are shown in a search hit list or when opening a collection -->
+		<hitsPerPage>
+			<value default="true">10</value>
+			<value>25</value>
+			<value>50</value>
+			<value>100</value>
+		</hitsPerPage>
 
 		<!-- fulltextFragmentLength: Approximate length of the full-text fragment displayed in search hits. Default is 200. -->
 		<fulltextFragmentLength>120</fulltextFragmentLength>
@@ -1501,6 +1501,16 @@
 	
 	<!-- Configuration for geo maps -->
 	<maps>
+		<markers>
+			<marker icon="fa-info" markerColor="green" shape="circle" extraClasses="fa-2x">maps__marker_1</marker>
+			<marker icon="fa-building" markerColor="orange-dark" shape="square">maps__marker_2</marker>
+			<marker icon="fa-user" markerColor="cyan"  shape="penta">maps__marker_3</marker>
+			<marker icon="fa-rocket" markerColor="pink"  shape="star">maps__marker_4</marker>
+			<marker icon="fa-spinner" markerColor="yellow" extraClasses="fa-2x fa-spin">maps__marker_5</marker>
+			<marker icon="fa-coffee" markerColor="white" prefix="fa" iconColor="black" iconRotate="270">maps__marker_6</marker>
+			<marker icon="fa-number" markerColor="black" number="42" svg="true">maps__marker_7</marker>
+		</markers>
+
 		<mapbox>
 			<token></token>
 		</mapbox>
