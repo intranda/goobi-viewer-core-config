@@ -550,7 +550,8 @@
 				<!-- field: Solr fields to put into the export sheet. One element per field. -->
 				<field>PI_TOPSTRUCT</field>
 				<field>LABEL</field>
-				<field>DOCSTRCT</field>
+				<field>DOCSTRCT_TOP</field>
+				<field>DOCSTRCT_SUB</field>
 				<field>DOCTYPE</field>
 				<field>ORDER</field>
 			</excel>
@@ -742,8 +743,11 @@
 				<metadata label="MD_PUBLISHER" value="">
 					<param type="field" key="MD_PUBLISHER" />
 				</metadata>
-				<metadata label="DOCSTRCT" value="">
-					<param type="translatedfield" key="DOCSTRCT" />
+				<metadata label="DOCSTRCT_TOP" value="">
+					<param type="translatedfield" key="DOCSTRCT_TOP" />
+				</metadata>
+				<metadata label="DOCSTRCT_SUB" value="">
+					<param type="translatedfield" key="DOCSTRCT_SUB" />
 				</metadata>
 				<metadata label="DC" value="">
 					<param type="translatedfield" key="DC" topstructOnly="true" />
@@ -1455,7 +1459,7 @@
                 		<!--field>MD_TITLE</field>
 				<field>MD_CREATOR</field-->
 				<field>MD_*</field>
-				<field>DOCSTRCT</field>
+				<field>DOCSTRCT_TOP</field>
 			</metadataFields>
 
 			<!-- A list of solr fieldnames which may serve as manifest description metadata. The first existing field is used to provide the medatada description -->
