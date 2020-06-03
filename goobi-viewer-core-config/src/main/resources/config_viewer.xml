@@ -296,11 +296,10 @@
         <!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
         <rememberImageRotation>true</rememberImageRotation>
 
-            <!-- URL patterns for external image urls which should be served via the contentServner
-            All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
-            Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
-            is requested by the viewer/contentServer and not the client
-             -->
+        <!-- URL patterns for external image urls which should be served via the contentServner
+        All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
+        Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
+        is requested by the viewer/contentServer and not the client -->
         <externalContent>
             <restrictedUrls>
                 <url>https?://external/restricted/.*</url>
@@ -550,9 +549,9 @@
         <staticQuerySuffix>-BOOL_HIDE:true</staticQuerySuffix>
 
             <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
-                (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
+                 (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
             <!-- Example query for also including periodical volumes:
-                ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
+                 ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
             <docstrctWhitelistFilterQuery>(ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*</docstrctWhitelistFilterQuery>
 
             <!-- versioning -->
@@ -1199,17 +1198,17 @@
 
     <urnresolver>
         <!-- doRedirectInsteadOfForward: defines whether an identifier request
-            or URN request gets redirected or forwarded. Allowed values are true (Redirect)
-            and false (Forward). -->
+             or URN request gets redirected or forwarded. Allowed values are true (Redirect)
+             and false (Forward). -->
         <!-- Forward: a forward is performed internally by the servlet the browser
-            is completely unaware that it has taken place, so its original URL remains
-            intact any browser reload of the resulting page will simple repeat the original
-            request, with the original URL Redirect: a redirect is a two step process,
-            where the web application instructs the browser to fetch a second URL, which
-            differs from the original a browser reload of the second URL will not repeat
-            the original request, but will rather fetch the second URL redirect is marginally
-            slower than a forward, since it requires two browser requests, not one objects
-            placed in the original request scope are not available to the second request -->
+             is completely unaware that it has taken place, so its original URL remains
+             intact any browser reload of the resulting page will simple repeat the original
+             request, with the original URL Redirect: a redirect is a two step process,
+             where the web application instructs the browser to fetch a second URL, which
+             differs from the original a browser reload of the second URL will not repeat
+             the original request, but will rather fetch the second URL redirect is marginally
+             slower than a forward, since it requires two browser requests, not one objects
+             placed in the original request scope are not available to the second request -->
         <doRedirectInsteadofForward>false</doRedirectInsteadofForward>
     </urnresolver>
 
@@ -1517,6 +1516,13 @@
 
     <!-- Configuration for geo maps -->
     <maps>
+        <!-- Add a mapbox token here to use their maps -->
+        <mapbox>
+            <token></token>
+        </mapbox>
+
+        <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
+             Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
         <markers>
             <marker icon="fa-info" markerColor="green" shape="circle" extraClasses="fa-2x">maps__marker_1</marker>
             <marker icon="fa-building" markerColor="orange-dark" shape="square">maps__marker_2</marker>
@@ -1526,9 +1532,5 @@
             <marker icon="fa-coffee" markerColor="white" prefix="fa" iconColor="black" iconRotate="270">maps__marker_6</marker>
             <marker icon="fa-number" markerColor="black" number="42" svg="true">maps__marker_7</marker>
         </markers>
-
-        <mapbox>
-            <token></token>
-        </mapbox>
     </maps>
 </config>
