@@ -107,6 +107,10 @@
         <!-- userRegistrationEnabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
         <userRegistrationEnabled>true</userRegistrationEnabled>
 
+        <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
+             It will as an anonymous owner of user-created date in case the original user is deleted and their public data is kept. -->
+        <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
+
         <!-- securityQuestions: Configure the is-it-human questions and possible answers. Used when registering new user accounts and within the feedback form -->
         <securityQuestions>
             <question key="user__security_question__1">
