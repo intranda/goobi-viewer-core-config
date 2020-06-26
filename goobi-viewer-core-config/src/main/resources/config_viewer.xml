@@ -176,8 +176,11 @@
         <!-- pageLoaderThreshold: number of pages a record has to have to switch to a lean page loading strategy that limit memory usage (default is 1000) -->
         <pageLoaderThreshold>1000</pageLoaderThreshold>
 
-        <!-- If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
+        <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
         <preventProxyCaching>false</preventProxyCaching>
+
+        <!-- solrCompressionEnabled: Enables compression for the Solr HTTP client. Default is true. -->
+        <solrCompressionEnabled>true</solrCompressionEnabled>
     </performance>
 
 
@@ -1074,6 +1077,12 @@
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page -->
             <hitsPerPage>70</hitsPerPage>
 
+            <sorting>
+                <!-- ignoreLeadingChars: All leading characters to be ignored when comparing browsing terms.
+                     If empty, only the first non-alphanumeric char will be removed. -->
+                <ignoreLeadingChars>.[]</ignoreLeadingChars>
+            </sorting>
+
             <!-- luceneField: defines index fields that are available for browsing. Only untokenized fields should be used. -->
             <luceneField recordsAndAnchorsOnly="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
             <luceneField recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</luceneField>
@@ -1081,11 +1090,11 @@
             <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
         </browsingMenu>
 
-            <!-- addDublinCoreMetaTags: render dc metadata to html head -->
-            <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
+        <!-- addDublinCoreMetaTags: render dc metadata to html head -->
+        <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
 
-            <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
-            <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
+        <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
+        <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
 
         <!-- Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to selec a license -->
         <licenses>
