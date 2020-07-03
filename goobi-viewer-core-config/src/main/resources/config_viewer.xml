@@ -100,12 +100,19 @@
 
         <!-- The base urls to access download pages for pdf and epub downloads -->
         <download>http://localhost:8080/viewer/download/</download>
+        
+        <!-- connectorVersion: URL to the version query on the Goobi viewer Connector -->
+        <connectorVersion>http://localhost:8080/M2M/oai/tools?action=getVersion</connectorVersion>
     </urls>
 
 
     <user>
         <!-- userRegistrationEnabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
         <userRegistrationEnabled>true</userRegistrationEnabled>
+
+        <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
+             It will as an anonymous owner of user-created date in case the original user is deleted and their public data is kept. -->
+        <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
 
         <!-- securityQuestions: Configure the is-it-human questions and possible answers. Used when registering new user accounts and within the feedback form -->
         <securityQuestions>
@@ -172,8 +179,16 @@
         <!-- pageLoaderThreshold: number of pages a record has to have to switch to a lean page loading strategy that limit memory usage (default is 1000) -->
         <pageLoaderThreshold>1000</pageLoaderThreshold>
 
-        <!-- If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
+        <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
         <preventProxyCaching>false</preventProxyCaching>
+        
+        <solr>
+            <!-- compressionEnabled: Enables compression for the Solr HTTP client. Default is true. -->
+            <compressionEnabled>true</compressionEnabled>
+            <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used
+                to enabled Solr 4 compatibility. Default is false. -->
+            <backwardsCompatible>false</backwardsCompatible>
+        </solr>
     </performance>
 
 
@@ -1070,6 +1085,12 @@
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page -->
             <hitsPerPage>70</hitsPerPage>
 
+            <sorting>
+                <!-- ignoreLeadingChars: All leading characters to be ignored when comparing browsing terms.
+                     If empty, only the first non-alphanumeric char will be removed. -->
+                <ignoreLeadingChars>.[]</ignoreLeadingChars>
+            </sorting>
+
             <!-- luceneField: defines index fields that are available for browsing. Only untokenized fields should be used. -->
             <luceneField recordsAndAnchorsOnly="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
             <luceneField recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</luceneField>
@@ -1077,11 +1098,11 @@
             <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
         </browsingMenu>
 
-            <!-- addDublinCoreMetaTags: render dc metadata to html head -->
-            <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
+        <!-- addDublinCoreMetaTags: render dc metadata to html head -->
+        <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
 
-            <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
-            <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
+        <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
+        <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
 
         <!-- Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to selec a license -->
         <licenses>
