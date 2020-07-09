@@ -1274,6 +1274,9 @@
         <sidebarToc>
             <!-- visible: if false, the sidebar toc is hidden -->
             <visible>true</visible>
+            
+            <!-- visibleInFullscreen: If false, the sidebar TOC element won't be visible in the full-screen sidebar accordion -->
+            <visibleInFullscreen>true</visibleInFullscreen>
 
             <!-- pageNumbersVisible: if false, page numbers in the sidebar toc are hidden (default is false) -->
             <pageNumbersVisible>false</pageNumbersVisible>
