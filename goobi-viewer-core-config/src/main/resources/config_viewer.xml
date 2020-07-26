@@ -1448,11 +1448,13 @@
     </transkribus>
 
 
-    <!-- Content upload settings (currently not in use) -->
+    <!-- Content upload settings (partly not in use) -->
     <content>
         <ruleset>/opt/digiverso/viewer/config/gdz.xml</ruleset>
         <defaultCollection>Varia</defaultCollection>
         <defaultDocstrct>OtherDocStrct</defaultDocstrct>
+
+        <!-- enables or disables the download widget within a records view for additional files from the source directory -->
         <originalContentDownload>true</originalContentDownload>
     </content>
 
