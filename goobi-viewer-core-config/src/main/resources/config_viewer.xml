@@ -75,7 +75,7 @@
         </metadata>
 
         <!-- solr: URL to the Solr index core -->
-        <solr>http://localhost:8080/solr/collection1</solr>
+        <solr>http://localhost:8983/solr/collection1</solr>
 
         <!-- contentServer: relative path to contentServer from the Goobi viewer context -->
         <contentServer external="false">/</contentServer>
@@ -400,8 +400,8 @@
              also change the preferred language for record metadata. Default is false. -->
         <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
 
-        <!-- theme: defines the theme that shall be used -->
-        <theme subTheme="false" mainTheme="reference" discriminatorField="" autoSwitch="true" addFilterQuery="false" filterQueryVisible="false">
+        <!-- theme: defines main theme name and if subthemes are used the solr index field that contains the subtheme names -->
+        <theme mainTheme="reference" discriminatorField="">
             <!-- rootPath: If the theme is localed externally, the CMS template loading
                  mechanism needs the root path of the theme. The path must be defined down
                  to the /themes folder, just above the folder named like the theme. -->
@@ -469,6 +469,7 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <field initialElementNumber="3" sortOrder="numerical_desc">YEAR</field>
+            <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
         </drillDown>
 
         <advanced>
@@ -1092,7 +1093,7 @@
             </sorting>
 
             <!-- luceneField: defines index fields that are available for browsing. Only untokenized fields should be used. -->
-            <luceneField recordsAndAnchorsOnly="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
+            <luceneField recordsAndAnchorsOnly="true" alwaysApplyFilter="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
             <luceneField recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</luceneField>
             <!-- <luceneField sortField="SORT_TITLE" recordsAndAnchorsOnly="true" docstructFilters="Monograph;Volume;PeriodicalVolume">MD_TITLE_UNTOKENIZED</luceneField> -->
             <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
@@ -1274,6 +1275,9 @@
         <sidebarToc>
             <!-- visible: if false, the sidebar toc is hidden -->
             <visible>true</visible>
+            
+            <!-- visibleInFullscreen: If false, the sidebar TOC element won't be visible in the full-screen sidebar accordion -->
+            <visibleInFullscreen>true</visibleInFullscreen>
 
             <!-- pageNumbersVisible: if false, page numbers in the sidebar toc are hidden (default is false) -->
             <pageNumbersVisible>false</pageNumbersVisible>
@@ -1444,11 +1448,13 @@
     </transkribus>
 
 
-    <!-- Content upload settings (currently not in use) -->
+    <!-- Content upload settings (partly not in use) -->
     <content>
         <ruleset>/opt/digiverso/viewer/config/gdz.xml</ruleset>
         <defaultCollection>Varia</defaultCollection>
         <defaultDocstrct>OtherDocStrct</defaultDocstrct>
+
+        <!-- enables or disables the download widget within a records view for additional files from the source directory -->
         <originalContentDownload>true</originalContentDownload>
     </content>
 
