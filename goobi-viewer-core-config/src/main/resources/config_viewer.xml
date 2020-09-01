@@ -1297,6 +1297,12 @@
             <!-- max length of level before it gets collapsed -->
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
+        
+        <!-- sidebarBrowsingTerms: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <sidebarBrowsingTerms display="true" />
+        
+        <!-- sidebarBrowsingTerms: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <sidebarRssFeed display="true" />
 
         <!-- Show or hide the widget including download links for record and page while viewing the object-->
         <sidebarWidgetUsage display="true">
