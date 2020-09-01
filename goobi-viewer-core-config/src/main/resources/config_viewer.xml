@@ -1271,6 +1271,11 @@
             <visible>true</visible>
         </fulltext>
 
+        <!-- opac: if true, an additional link to the catalogue is displayed in the views section -->
+        <opac>
+            <visible>false</visible>
+        </opac>
+
         <!-- sidebarToc: configuration of the sidebar TOC component -->
         <sidebarToc>
             <!-- visible: if false, the sidebar toc is hidden -->
