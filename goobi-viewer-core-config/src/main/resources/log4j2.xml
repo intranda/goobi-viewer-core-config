@@ -30,7 +30,7 @@
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
           <IfFileName glob="viewer.*.log.gz" />
-          <IfLastModified age="14d" />
+          <IfLastModified age="7d" />
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
@@ -42,7 +42,7 @@
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
           <IfFileName glob="ics.*.log.gz" />
-          <IfLastModified age="14d" />
+          <IfLastModified age="7d" />
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
