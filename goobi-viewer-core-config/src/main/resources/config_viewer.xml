@@ -1271,6 +1271,11 @@
             <visible>true</visible>
         </fulltext>
 
+        <!-- opac: if true, an additional link to the catalogue is displayed in the views section -->
+        <opac>
+            <visible>false</visible>
+        </opac>
+
         <!-- sidebarToc: configuration of the sidebar TOC component -->
         <sidebarToc>
             <!-- visible: if false, the sidebar toc is hidden -->
@@ -1297,6 +1302,12 @@
             <!-- max length of level before it gets collapsed -->
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
+        
+        <!-- sidebarBrowsingTerms: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <sidebarBrowsingTerms display="true" />
+        
+        <!-- sidebarBrowsingTerms: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <sidebarRssFeed display="true" />
 
         <!-- Show or hide the widget including download links for record and page while viewing the object-->
         <sidebarWidgetUsage display="true">
@@ -1304,7 +1315,7 @@
             <licenseText>
                 <metadata label="MD_LICENSETEXT" value="MASTERVALUE_LICENSETEXT">
                     <param type="field" key="LABEL" />
-                    <param type="translatedfield" key="ACCESSCONDITION" />
+                    <!-- <param type="translatedfield" key="ACCESSCONDITION" /> -->
                 </metadata>
             </licenseText>
             <page>
