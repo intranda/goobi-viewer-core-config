@@ -492,7 +492,7 @@
                 <field>MD_CREATOR</field>
                 <field>MD_PUBLISHER</field>
                 <field>MD_PLACEPUBLISH</field>
-                <field>MD_YEARPUBLISH</field>
+                <field range="true">YEAR</field>
                 <field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
                 <field>BOOKMARKS</field>
             </searchFields>
