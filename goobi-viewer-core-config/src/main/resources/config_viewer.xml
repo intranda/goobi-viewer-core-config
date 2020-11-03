@@ -663,31 +663,31 @@
                     the string as an aggregated list of the following values: Surename;Firstname;Lifedata;Wikilink
                     (static) key="" defines the index field All parameters can be used in the
                     messages_XYZ.properties file using {0}, {1}, etc. This are a few exampled: -->
-                <metadata label="PI" value="">
+                <metadata label="PI">
                     <param type="field" key="PI" />
                 </metadata>
-                <metadata label="URN" value="">
+                <metadata label="URN">
                     <param type="field" key="URN" />
                 </metadata>
-                <metadata label="MD_TITLE" value="">
+                <metadata label="MD_TITLE">
                     <param type="field" key="MD_TITLE" />
                 </metadata>
-                <metadata label="MD_NEWLOCATION" value="">
+                <metadata label="MD_NEWLOCATION">
                     <param type="field" key="MD_NEWLOCATION" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" value="">
+                <metadata label="MD_SHELFMARK">
                     <param type="field" key="MD_SHELFMARK" />
                 </metadata>
-                <metadata label="MD_OLDSHELFMARK" value="">
+                <metadata label="MD_OLDSHELFMARK">
                     <param type="field" key="MD_OLDSHELFMARK" />
                 </metadata>
-                <metadata label="MD_INVENTORY_NUMBER" value="">
+                <metadata label="MD_INVENTORY_NUMBER">
                     <param type="field" key="MD_INVENTORY_NUMBER" />
                 </metadata>
-                <metadata label="MD_OWNERINSTITUTION" value="">
+                <metadata label="MD_OWNERINSTITUTION">
                     <param type="field" key="MD_OWNERINSTITUTION" />
                 </metadata>
-                <metadata label="MD_OTHEROWNERINSTITUTION" value="">
+                <metadata label="MD_OTHEROWNERINSTITUTION">
                     <param type="field" key="MD_OTHEROWNERINSTITUTION" />
                 </metadata>
                 <metadata label="MD_SENDER" value="MASTERVALUE_WIKINORM" group="true">
@@ -735,7 +735,7 @@
                     <param type="wikipersonfield" key="MD_DISPLAYFORM" />
                     <param type="normdatauri" key="NORM_URI" />
                 </metadata>
-                <metadata label="MD_EDITORCORPORATION" value="">
+                <metadata label="MD_EDITORCORPORATION">
                     <param type="field" key="MD_EDITORCORPORATION" />
                 </metadata>
                 <metadata label="MD_PRINTER" value="MASTERVALUE_WIKINORM" group="true">
@@ -748,16 +748,16 @@
                     <param type="wikipersonfield" key="MD_DISPLAYFORM" />
                     <param type="normdatauri" key="NORM_URI" />
                 </metadata>
-                <metadata label="CURRENTNO" value="">
+                <metadata label="CURRENTNO">
                     <param type="field" key="CURRENTNO" />
                 </metadata>
-                <metadata label="MD_PLACEOFORIGIN" value="">
+                <metadata label="MD_PLACEOFORIGIN">
                     <param type="field" key="MD_PLACEOFORIGIN" />
                 </metadata>
-                <metadata label="MD_DATEOTHER" value="">
+                <metadata label="MD_DATEOTHER">
                     <param type="field" key="MD_DATEOTHER" />
                 </metadata>
-                <metadata label="MD_DESTINATION" value="">
+                <metadata label="MD_DESTINATION">
                     <param type="field" key="MD_DESTINATION" />
                 </metadata>
                 <metadata label="MD_LOCATION" value="LINK_WIKIPEDIA">
@@ -767,144 +767,149 @@
                 <metadata label="MD_PLACEPUBLISH" value="LINK_MAPS">
                     <param type="field" key="MD_PLACEPUBLISH" />
                 </metadata>
-                <metadata label="MD_PUBLISHER" value="">
+                <metadata label="MD_PUBLISHER">
                     <param type="field" key="MD_PUBLISHER" />
                 </metadata>
-                <metadata label="DOCSTRCT_TOP" value="">
+                <metadata label="DOCSTRCT_TOP">
                     <param type="translatedfield" key="DOCSTRCT_TOP" />
                 </metadata>
-                <metadata label="DOCSTRCT_SUB" value="">
+                <metadata label="DOCSTRCT_SUB">
                     <param type="translatedfield" key="DOCSTRCT_SUB" />
                 </metadata>
-                <metadata label="DC" value="">
+                <metadata label="DC">
                     <param type="translatedfield" key="DC" topstructOnly="true" />
                 </metadata>
-                <metadata label="MD_YEARPUBLISH" value="">
+                <metadata label="MD_YEARPUBLISH">
                     <param type="field" key="MD_YEARPUBLISH" />
                 </metadata>
-                <metadata label="MD_EDITION" value="">
+                <metadata label="MD_EDITION">
                     <param type="field" key="MD_EDITION" />
                 </metadata>
-                <metadata label="MD_DATERECORDED" value="">
+                <metadata label="MD_DATERECORDED">
                     <param type="field" key="MD_DATERECORDED" />
                 </metadata>
-                <metadata label="MD_FORMATDDC" value="">
+                <metadata label="MD_FORMATDDC">
                     <param type="field" key="MD_FORMATDDC" />
                 </metadata>
-                <metadata label="MD_SIZESOURCEPRINT" value="">
+                <metadata label="MD_SIZESOURCEPRINT">
                     <param type="field" key="MD_SIZESOURCEPRINT" />
                 </metadata>
-                <metadata label="MD_FORMATSOURCEPRINT" value="">
+                <metadata label="MD_FORMATSOURCEPRINT">
                     <param type="field" key="MD_FORMATSOURCEPRINT" />
                 </metadata>
-                <metadata label="MD_SCALE" value="">
+                <metadata label="MD_SCALE">
                     <param type="field" key="MD_SCALE" />
                 </metadata>
-                <metadata label="MD_TECHNIQUE" value="">
+                <metadata label="MD_TECHNIQUE">
                     <param type="field" key="MD_TECHNIQUE" />
                 </metadata>
-                <metadata label="MD_FORMTECHNIQUE" value="">
+                <metadata label="MD_FORMTECHNIQUE">
                     <param type="field" key="MD_FORMTECHNIQUE" />
                 </metadata>
-                <metadata label="MD_DESCRIPTION" value="">
+                <metadata label="MD_DESCRIPTION">
                     <param type="field" key="MD_DESCRIPTION" />
                 </metadata>
-                <metadata label="MD_DRAWINGDESCRIPTION" value="">
+                <metadata label="MD_DRAWINGDESCRIPTION">
                     <param type="field" key="MD_DRAWINGDESCRIPTION" />
                 </metadata>
-                <metadata label="MD_MATERIAL_DESCRIPTION" value="">
+                <metadata label="MD_MATERIAL_DESCRIPTION">
                     <param type="field" key="MD_MATERIAL_DESCRIPTION" />
                 </metadata>
-                <metadata label="MD_MOTIF_DESCRIPTION" value="">
+                <metadata label="MD_MOTIF_DESCRIPTION">
                     <param type="field" key="MD_MOTIF_DESCRIPTION" />
                 </metadata>
-                <metadata label="MD_CONDITION" value="">
+                <metadata label="MD_CONDITION">
                     <param type="field" key="MD_CONDITION" />
                 </metadata>
-                <metadata label="MD_DRAWINGINFORMATION" value="">
+                <metadata label="MD_DRAWINGINFORMATION">
                     <param type="field" key="MD_DRAWINGINFORMATION" />
                 </metadata>
-                <metadata label="MD_OWNERSHIP" value="">
+                <metadata label="MD_OWNERSHIP">
                     <param type="field" key="MD_OWNERSHIP" />
                 </metadata>
-                <metadata label="MD_DDC" value="">
+                <metadata label="MD_DDC">
                     <param type="field" key="MD_DDC" />
                 </metadata>
-                <metadata label="MD_TAXONOMY" value="">
+                <metadata label="MD_TAXONOMY">
                     <param type="field" key="MD_TAXONOMY" />
                 </metadata>
-                <metadata label="MD_REFERENCE" value="">
+                <metadata label="MD_REFERENCE">
                     <param type="field" key="MD_REFERENCE" />
                 </metadata>
-                <metadata label="MD_WATERMARK" value="">
+                <metadata label="MD_WATERMARK">
                     <param type="field" key="MD_WATERMARK" />
                 </metadata>
-                <metadata label="MD_TOCPARTIALCONTENTS" value="">
+                <metadata label="MD_TOCPARTIALCONTENTS">
                     <param type="field" key="MD_TOCPARTIALCONTENTS" />
                 </metadata>
-                <metadata label="MD_CATEGORY" value="">
+                <metadata label="MD_CATEGORY">
                     <param type="field" key="MD_CATEGORY" />
                 </metadata>
-                <metadata label="MD_PURPOSE" value="">
+                <metadata label="MD_PURPOSE">
                     <param type="field" key="MD_PURPOSE" />
                 </metadata>
-                <metadata label="MD_ILLUSTRATIONTYPE" value="">
+                <metadata label="MD_ILLUSTRATIONTYPE">
                     <param type="field" key="MD_ILLUSTRATIONTYPE" />
                 </metadata>
-                <metadata label="MD_ACCESSCONDITIONCOPYRIGHT" value="">
+                <metadata label="MD_ACCESSCONDITIONCOPYRIGHT">
                     <param type="field" key="MD_ACCESSCONDITIONCOPYRIGHT" />
                 </metadata>
-                <metadata label="MD_METAREMARK" value="">
+                <metadata label="MD_METAREMARK">
                     <param type="field" key="MD_METAREMARK" />
                 </metadata>
-                <metadata label="MD_INFORMATION" value="">
+                <metadata label="MD_INFORMATION">
                     <param type="field" key="MD_INFORMATION" />
                 </metadata>
-                <metadata label="MD_LANGUAGE" value="">
+                <metadata label="MD_LANGUAGE">
                     <param type="translatedfield" key="MD_LANGUAGE" />
                 </metadata>
-                <metadata label="MD_ALTERNATETITLE" value="">
+                <metadata label="MD_ALTERNATETITLE">
                     <param type="field" key="MD_ALTERNATETITLE" />
                 </metadata>
-                <metadata label="MD_SUBTITLE" value="">
+                <metadata label="MD_SUBTITLE">
                     <param type="field" key="MD_SUBTITLE" />
                 </metadata>
-                <metadata label="MD_SHELFMARKSOURCE" value="">
+                <metadata label="MD_SHELFMARKSOURCE">
                     <param type="field" key="MD_SHELFMARKSOURCE" />
                 </metadata>
-                <metadata label="MD_ISSN" value="">
+                <metadata label="MD_ISSN">
                     <param type="field" key="MD_ISSN" />
                 </metadata>
-                <metadata label="MD_ISBN" value="">
+                <metadata label="MD_ISBN">
                     <param type="field" key="MD_ISBN" />
                 </metadata>
-                <metadata label="MD_DOCLANGUAGE" value="">
+                <metadata label="MD_DOCLANGUAGE">
                     <param type="field" key="MD_DOCLANGUAGE" />
                 </metadata>
-                <metadata label="MD_PERSONKEYWORD" value="">
+                <metadata label="MD_PERSONKEYWORD">
                     <param type="field" key="MD_PERSONKEYWORD" />
                 </metadata>
-                <metadata label="MD_RELATEDSERIES" value="">
+                <metadata label="MD_RELATEDSERIES">
                     <param type="field" key="MD_RELATEDSERIES" />
                 </metadata>
-                <metadata label="MD_WORKKEYWORD" value="">
+                <metadata label="MD_WORKKEYWORD">
                     <param type="field" key="MD_WORKKEYWORD" />
                 </metadata>
-                <metadata label="MD_RISMSEAL" value="">
+                <metadata label="MD_RISMSEAL">
                     <param type="field" key="MD_RISMSEAL" />
                 </metadata>
+                <!--
+                <metadata label="DATECREATED">
+                    <param type="millisfield" key="DATECREATED" />
+                </metadata>
+                -->
             </template>
             <template name="record">
-                <metadata label="PI" value="">
+                <metadata label="PI">
                     <param type="field" key="PI"/>
                 </metadata>
-                <metadata label="MD_TITLE" value="">
+                <metadata label="MD_TITLE">
                     <param type="field" key="MD_TITLE"/>
                 </metadata>
-                <metadata label="MD_RECORDDESCRIPTION" value="">
+                <metadata label="MD_RECORDDESCRIPTION">
                     <param type="field" key="MD_RECORDDESCRIPTION"/>
                 </metadata>
-                <metadata label="MD_LANGUAGE" value="">
+                <metadata label="MD_LANGUAGE">
                     <param type="translatedfield" key="MD_LANGUAGE"/>
                 </metadata>
                 <metadata label="MD_CREATOR" value="MASTERVALUE_SIMPLE_GROUP" group="true">
@@ -913,10 +918,10 @@
                     <param type="normdatauri" key="NORM_URI"/>
                     <param type="normdatasearch" key="NORM_IDENTIFIER"/>
                 </metadata>
-                <metadata label="DC" value="">
+                <metadata label="DC">
                     <param type="translatedfield" key="DC"/>
                 </metadata>
-                <metadata label="MD_DATEOTHER" value="">
+                <metadata label="MD_DATEOTHER">
                     <param type="field" key="MD_DATECREATED"/>
                 </metadata>
                 <metadata label="MD_LICENSE" value="MASTERVALUE_ACCESSLICENSE">
@@ -937,29 +942,29 @@
         <!-- searchHitMetadataList: defines metadata that is displayed in the search hitlist. The syntax is the same as in mainMetadataList -->
         <searchHitMetadataList>
             <template name="_DEFAULT">
-                <metadata label="MD_CREATOR" value="">
+                <metadata label="MD_CREATOR">
                     <param type="field" key="MD_CREATOR" />
                 </metadata>
-                <metadata label="MD_YEARPUBLISH" value="">
+                <metadata label="MD_YEARPUBLISH">
                     <param type="field" key="MD_YEARPUBLISH" />
                 </metadata>
-                <metadata label="MD_PLACEPUBLISH" value="">
+                <metadata label="MD_PLACEPUBLISH">
                     <param type="field" key="MD_PLACEPUBLISH" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" value="">
+                <metadata label="MD_SHELFMARK">
                     <param type="field" key="MD_SHELFMARK" />
                 </metadata>
 
                 <!-- show LIDO fields in LIDO hits -->
-                <metadata label="EVENTTYPE" value="">
+                <metadata label="EVENTTYPE">
                     <param type="translatedfield" key="EVENTTYPE" />
                 </metadata>
-                <metadata label="EVENTDATE" value="">
+                <metadata label="EVENTDATE">
                     <param type="field" key="EVENTDATE" />
                  </metadata>
 
                 <!-- if you get a hit because of content in UGCTERMS display it-->
-                <metadata label="UGCTERMS" value="">
+                <metadata label="UGCTERMS">
                     <param type="field" key="UGCTERMS" />
                 </metadata>
             </template>
@@ -979,48 +984,48 @@
         <sideBarMetadataList>
             <!-- _DEFAULT: metadata defined in the _DEFAULT template is displayed on all struct elements that have no explicit definition -->
             <template name="_DEFAULT">
-                <metadata label="MD_TITLE" value="">
+                <metadata label="MD_TITLE">
                     <param type="field" key="MD_TITLE" />
                 </metadata>
                 <metadata label="MD_CREATOR" value="LINK_WIKIPEDIA">
                     <param type="field" key="MD_CREATOR" />
                     <param type="wikipersonfield" key="MD_CREATOR" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" value="">
+                <metadata label="MD_SHELFMARK">
                     <param type="field" key="MD_SHELFMARK" topstructValueFallback="true" />
                 </metadata>
-                <metadata label="URN" value="">
+                <metadata label="URN">
                     <param type="field" key="URN" />
                 </metadata>
             </template>
             <!-- _GROUPS: Group documents -->
             <template name="_GROUPS">
-                <metadata label="MD_TITLE" value="">
+                <metadata label="MD_TITLE">
                     <param type="field" key="MD_TITLE" />
                 </metadata>
-                <metadata label="MD_PUBLISHER" value="">
+                <metadata label="MD_PUBLISHER">
                     <param type="field" key="MD_PUBLISHER" />
                 </metadata>
-                <metadata label="MD_PLACEPUBLISH" value="">
+                <metadata label="MD_PLACEPUBLISH">
                     <param type="field" key="MD_PLACEPUBLISH" />
                 </metadata>
             </template>
             <!-- Map: sample definition of metadata for a special struct element -->
             <template name="Map">
-                <metadata label="MD_TITLE" value="">
+                <metadata label="MD_TITLE">
                     <param type="field" key="MD_TITLE" />
                 </metadata>
                 <metadata label="MD_CREATOR" value="LINK_WIKIPEDIA">
                     <param type="field" key="MD_CREATOR" />
                     <param type="wikipersonfield" key="MD_CREATOR" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" value="">
+                <metadata label="MD_SHELFMARK">
                     <param type="field" key="MD_SHELFMARK" />
                 </metadata>
-                <metadata label="MD_COORDINATES" value="">
+                <metadata label="MD_COORDINATES">
                     <param type="field" key="MD_COORDINATES" />
                 </metadata>
-                <metadata label="URN" value="">
+                <metadata label="URN">
                     <param type="field" key="URN" />
                 </metadata>
             </template>
@@ -1029,6 +1034,34 @@
 
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
         <normdataList>
+            <!-- This template is used when displaying authority information in the annotations overview -->
+            <template name="ANNOTATION">
+                <field>NORM_NAME</field>
+                <field>NORM_ALTNAME</field>
+                <field>NORM_LIFEPERIOD</field>
+                <field>NORM_LIFEPERIODEXACT</field>
+                <field>NORM_PROFESSION</field>
+                <field>NORM_EDUCATION</field>
+                <field>NORM_FUNCTION</field>
+                <field>NORM_PLACEOFBIRTH</field>
+                <field>NORM_PLACEOFDEATH</field>
+                <field>NORM_SEX</field>
+                <field>NORM_LOCATION</field>
+                <field>NORM_FATHER</field>
+                <field>NORM_MOTHER</field>
+                <field>NORM_SON</field>
+                <field>NORM_SOURCE</field>
+                <field>NORM_IDENTIFIER</field>
+            </template>
+            <template name="CORPORATION">
+                <field>NORM_IDENTIFIER</field>
+                <field>NORM_ORGANIZATION</field>
+                <field>NORM_ALTNAME</field>
+                <field>NORM_EXPLANATORYTEXT</field>
+                <field>NORM_PERIOD</field>
+                <field>NORM_PARENTINSTITUTION</field>
+                <field>URI</field>
+            </template>
             <template name="PERSON">
                 <field>NORM_IDENTIFIER</field>
                 <field>NORM_NAME</field>
@@ -1046,15 +1079,6 @@
                 <field>NORM_SON</field>
                 <field>NORM_ALTNAME</field>
                 <field>NORM_SOURCE</field>
-                <field>URI</field>
-            </template>
-            <template name="CORPORATION">
-                <field>NORM_IDENTIFIER</field>
-                <field>NORM_ORGANIZATION</field>
-                <field>NORM_ALTNAME</field>
-                <field>NORM_EXPLANATORYTEXT</field>
-                <field>NORM_PERIOD</field>
-                <field>NORM_PARENTINSTITUTION</field>
                 <field>URI</field>
             </template>
             <template name="RECORD">
