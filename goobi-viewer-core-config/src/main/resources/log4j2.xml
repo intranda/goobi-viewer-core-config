@@ -53,7 +53,7 @@
       <AppenderRef ref="viewer" />
     </Logger>
 
-    <Logger name="de.unigoettingen.sub.commons.contentlib" level="TRACE" additivity="true">
+    <Logger name="de.unigoettingen.sub.commons.contentlib" level="INFO" additivity="true">
       <AppenderRef ref="ics" />
     </Logger>
 

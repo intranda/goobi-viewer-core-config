@@ -171,6 +171,7 @@
         <smtpSenderAddress>do-not-reply@viewer.example.org</smtpSenderAddress>
         <smtpSenderName>Goobi viewer</smtpSenderName>
         <smtpSecurity>NONE</smtpSecurity>
+        <smtpPort>25</smtpPort>
         <feedbackEmailAddress>feedback@example.com</feedbackEmailAddress>
     </user>
 
