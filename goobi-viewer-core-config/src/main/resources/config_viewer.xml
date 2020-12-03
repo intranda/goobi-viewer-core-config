@@ -1071,7 +1071,7 @@
                 <value>item</value>
                 <value>otherlevel</value>
             </metadata>
-       <    metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" name="physdesc" level="1" repeatable="false" rulesetName="SizeSourcePrint" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" name="physdesc" level="1" repeatable="false" rulesetName="SizeSourcePrint" />
             <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" name="physdescstructured" level="1" repeatable="false" rulesetName="physicalDescriptionExtent" />
 
             <!-- Context Area -->
