@@ -26,7 +26,7 @@
     <!-- mediaFolder: contains media files that are displayed in the Goobi viewer (images, audio, video) -->
     <mediaFolder>media</mediaFolder>
 
-    <!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <content> also) -->
+    <!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <sidebar/sidebarWidgetDownloads> also) -->
     <origContentFolder>source</origContentFolder>
 
     <!-- pdfFolder: contains pre-generated PDFs -->
@@ -56,7 +56,7 @@
     <!-- annotationFolder: contains JSON files of annotations for indexing -->
     <annotationFolder>annotations</annotationFolder>
 
-    <!-- hotfolder: defines the hotfolder from the Goobi viewer Indexer for indexing uploaded born-digital-material (see <content> also) -->
+    <!-- hotfolder: defines the hotfolder from the Goobi viewer Indexer -->
     <hotfolder>/opt/digiverso/viewer/hotfolder/</hotfolder>
 
     <!-- stopwordsFile: location of the stopword.txt file used in Solr -->
@@ -1413,7 +1413,7 @@
 	
 			<!-- hideFileRegex: If a regular expression is defined, files matching 
 				it are hidden from the widget display. The download is still possible. -->
-			<hideFileRegex>(wug_.*|AK_.*)</hideFileRegex>
+			<hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
 		</sidebarWidgetDownloads>
     </sidebar>
 
