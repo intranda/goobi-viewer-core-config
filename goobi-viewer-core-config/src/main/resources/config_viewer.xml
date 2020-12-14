@@ -170,8 +170,10 @@
                 <provider type="userPassword" label="CHANGEME" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
             </authenticationProviders>
 
-        <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'), smtpPort
-             and 'smtpSecurity' (defaults to NONE) are optional, all others are mandatory and have no default value. -->
+        <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
+			 'smtpPort' (defaults to 25 for NONE and STARTTLS and 465 for SSL) as well as
+             'smtpSecurity' (defaults to NONE, possible other values are SSL and STARTTLS) are optional,
+		     all others are mandatory and have no default value. -->
         <smtpServer>localhost</smtpServer>
         <!-- <smtpPort>25</smtpPort> -->
         <smtpUser></smtpUser>
