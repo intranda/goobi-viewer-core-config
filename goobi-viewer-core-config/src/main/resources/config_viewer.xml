@@ -1639,8 +1639,10 @@
     <maps>
         <!-- Add a mapbox token here to use their maps -->
         <mapbox>
-            <token></token>
-        </mapbox>
+	   		<token></token>
+	   		<user></user>
+	   		<styleId></styleId>
+    	</mapbox>
 
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
              Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
