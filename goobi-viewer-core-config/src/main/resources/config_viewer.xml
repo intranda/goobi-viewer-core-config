@@ -60,7 +60,7 @@
     <hotfolder>/opt/digiverso/viewer/hotfolder/</hotfolder>
 
     <!-- stopwordsFile: location of the stopword.txt file used in Solr -->
-    <stopwordsFile>/opt/digiverso/viewer/apache-solr/collection1/conf/lang/stopwords.txt</stopwordsFile>
+    <stopwordsFile>/opt/digiverso/solr/solr/server/solr/configsets/goobiviewer/conf/lang/stopwords.txt</stopwordsFile>
 
     <urls>
         <metadata>
