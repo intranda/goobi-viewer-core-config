@@ -49,10 +49,7 @@
     
     <!-- fulltextCrowdsourcingFolder: contains plain full-text files from crowdsourcing -->
     <fulltextCrowdsourcingFolder>fulltext_crowd</fulltextCrowdsourcingFolder>
-    
-    <!-- wcFolder: contains TEI word coordinate files -->
-    <wcFolder>wc</wcFolder>
-
+  
     <!-- teiFolder: contains TEI metadata/fulltext files -->
     <teiFolder>tei</teiFolder>
 
