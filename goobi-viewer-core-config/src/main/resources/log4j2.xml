@@ -23,13 +23,13 @@
       <ThresholdFilter level="${logLevel}" />
     </Console>
 
-    <RollingFile name="viewer" fileName="${baseDir}/viewer.log" filePattern="${baseDir}/viewer.log.%d{yyyy-MM-dd}.log.gz">
+    <RollingFile name="viewer" fileName="${baseDir}/viewer.log" filePattern="${baseDir}/viewer.log.%d{yyyy-MM-dd}.gz">
       <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
       <ThresholdFilter level="DEBUG" />
       <CronTriggeringPolicy schedule="0 0 0 * * ?" />
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
-          <IfFileName glob="viewer.*.log.gz" />
+          <IfFileName glob="viewer.log.*.gz" />
           <IfLastModified age="7d" />
         </Delete>
       </DefaultRolloverStrategy>
@@ -41,7 +41,7 @@
       <CronTriggeringPolicy schedule="0 0 0 * * ?" />
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
-          <IfFileName glob="ics.*.log.gz" />
+          <IfFileName glob="ics.log.*.gz" />
           <IfLastModified age="7d" />
         </Delete>
       </DefaultRolloverStrategy>

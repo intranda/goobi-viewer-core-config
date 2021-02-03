@@ -37,16 +37,19 @@
 
     <!-- altoFolder: contains ALTO files -->
     <altoFolder>alto</altoFolder>
+    
+    <!-- altoCrowdsourcingFolder: contains ALTO files from crowdsourcing -->
+    <altoCrowdsourcingFolder>alto_crowd</altoCrowdsourcingFolder>
 
     <!-- abbyyFolder: contains ABBYY XML files -->
     <abbyyFolder>abbyy</abbyyFolder>
 
     <!-- fulltextFolder: contains plain full-text files -->
     <fulltextFolder>fulltext</fulltextFolder>
-
-    <!-- wcFolder: contains TEI word coordinate files -->
-    <wcFolder>wc</wcFolder>
-
+    
+    <!-- fulltextCrowdsourcingFolder: contains plain full-text files from crowdsourcing -->
+    <fulltextCrowdsourcingFolder>fulltext_crowd</fulltextCrowdsourcingFolder>
+  
     <!-- teiFolder: contains TEI metadata/fulltext files -->
     <teiFolder>tei</teiFolder>
 
@@ -60,7 +63,7 @@
     <hotfolder>/opt/digiverso/viewer/hotfolder/</hotfolder>
 
     <!-- stopwordsFile: location of the stopword.txt file used in Solr -->
-    <stopwordsFile>/opt/digiverso/viewer/apache-solr/collection1/conf/lang/stopwords.txt</stopwordsFile>
+    <stopwordsFile>/opt/digiverso/solr/solr/server/solr/configsets/goobiviewer/conf/lang/stopwords.txt</stopwordsFile>
 
     <urls>
         <metadata>
@@ -88,14 +91,14 @@
         <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
         <!-- Rest service url from which internal viewer resources are requested -->
-        <rest>http://localhost:8080/viewer/rest/</rest>
+        <rest>http://localhost:8080/viewer/api/v1/</rest>
 
         <!-- DEVELOPERS ONLY.
              SHOULD BE COMMENTED OUT ON CUSTOMER SYSTEMS.
 
              Rest endpoint for content data. Requests images from records via iiif image api.
              This is needed if developers use remote images in their local running Goobi viewer development environment
-        <iiif useForCmsMedia="true">http://localhost:8080/viewer/rest/</iiif>
+        <iiif useForCmsMedia="true">http://localhost:8080/viewer/api/v1/</iiif>
         -->
 
         <!-- The base urls to access download pages for pdf and epub downloads -->
@@ -1053,7 +1056,7 @@
 	        <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="unitid" type="1" />
 	        <metadata xpath="./ead:did/ead:unitid[@type='Vorl. Nr.']" xpathType="element" label="Number" type="1"  />
-	        <metadata xpath="./ead:did/ead:unitid[@type='Signatur']" xpathType="element" label="Shelfmark" type="1" />
+	        <metadata xpath="./ead:did/ead:unitid[@type='Altsignatur']" xpathType="element" label="Shelfmark" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
@@ -1614,6 +1617,36 @@
 
             <!-- Show source file location of image requests in Content-Location HTTP header -->
             <discloseContentLocation>false</discloseContentLocation>
+
+			<!-- Configure 'rendering' links für IIIF Presentation resources. These 
+				are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents. 
+				For each link the visibiliy attribute determines if the link is rendered 
+				at all and the label subnode can be used to configure an individual label 
+				for the link. These labels are translated if translations exist. -->
+			<rendering>
+				<viewer visible="true">
+					<label>Goobi viewer</label>
+				</viewer>
+				<pdf visible="true">
+					<label>PDF</label>
+				</pdf>
+				<plaintext visible="true">
+					<label>Fulltext</label>
+				</plaintext>
+				<alto visible="true">
+					<label>ALTO</label>
+				</alto>
+			</rendering>
+			
+			<!-- A list of locale of language codes for which translations of labels 
+				and metadata fields should be provided. If no locales are configured, all 
+				available locales are used. If only one locale is used, the labels will always 
+				be rendered as a single string -->
+			<translations>
+				<locale>de</locale>
+				<locale>en</locale>
+			</translations>
+			
         </iiif>
 
         <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints  -->
@@ -1639,8 +1672,10 @@
     <maps>
         <!-- Add a mapbox token here to use their maps -->
         <mapbox>
-            <token></token>
-        </mapbox>
+	   		<token></token>
+	   		<user></user>
+	   		<styleId></styleId>
+    	</mapbox>
 
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
              Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
