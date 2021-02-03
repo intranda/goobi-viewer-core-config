@@ -1625,7 +1625,7 @@
 				for the link. These labels are translated if translations exist. -->
 			<rendering>
 				<viewer visible="true">
-					<label>Goobi Viewer</label>
+					<label>Goobi viewer</label>
 				</viewer>
 				<pdf visible="true">
 					<label>PDF</label>
