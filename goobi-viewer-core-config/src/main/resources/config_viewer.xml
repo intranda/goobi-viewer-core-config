@@ -1411,6 +1411,24 @@
                 <!-- displayLinkToMasterImage: Enables Master image download links for pages. Default is false.  -->
                 <displayLinkToMasterImage maxSize="max">true</displayLinkToMasterImage>
             </page>
+            <citation>
+                <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
+                    Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
+                <styles>
+                    <style>apa</style>
+                    <style>ieee</style>
+                    <style>modern-language-association</style>
+                </styles>
+                <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
+                <source>
+                    <metadata label="MD_CITATION" value="MASTERVALUE_CITATION" group="true" type="0">
+                        <param type="citeproc" dest="title" key="MD_TITLE" />
+                        <param type="citeproc" dest="author" key="MD_CREATOR" />
+                        <param type="citeproc" dest="publisher" key="MD_CITATION_PUBLISHER" />
+                        <param type="citeproc" dest="issued" key="MD_YEARPUBLISH" />
+                    </metadata>
+                </source>
+            </citation>
         </sidebarWidgetUsage>
         
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records 
