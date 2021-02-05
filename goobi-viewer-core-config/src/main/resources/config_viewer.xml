@@ -1421,7 +1421,7 @@
                 </styles>
                 <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
                 <source>
-                    <metadata label="MD_CITATION" value="MASTERVALUE_CITATION" group="true" type="0">
+                    <metadata label="MD_CITATION" value="MASTERVALUE_CITATION">
                         <param type="citeproc" dest="title" key="MD_TITLE" />
                         <param type="citeproc" dest="author" key="MD_CREATOR" />
                         <param type="citeproc" dest="publisher" key="MD_CITATION_PUBLISHER" />
