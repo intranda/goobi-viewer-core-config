@@ -1179,6 +1179,10 @@
 
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page -->
             <hitsPerPage>70</hitsPerPage>
+            
+            <!-- If the number of relevant Solr docs exceeds the configured number, faceting will be used for term browsing
+                (which may break correct sorting but improve performance). Default is 100k. -->
+            <indexSizeThreshold>100000</indexSizeThreshold>
 
             <sorting>
                 <!-- ignoreLeadingChars: All leading characters to be ignored when comparing browsing terms.
