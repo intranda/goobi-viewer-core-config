@@ -37,7 +37,7 @@
 
     <!-- altoFolder: contains ALTO files -->
     <altoFolder>alto</altoFolder>
-    
+
     <!-- altoCrowdsourcingFolder: contains ALTO files from crowdsourcing -->
     <altoCrowdsourcingFolder>alto_crowd</altoCrowdsourcingFolder>
 
@@ -46,10 +46,10 @@
 
     <!-- fulltextFolder: contains plain full-text files -->
     <fulltextFolder>fulltext</fulltextFolder>
-    
+
     <!-- fulltextCrowdsourcingFolder: contains plain full-text files from crowdsourcing -->
     <fulltextCrowdsourcingFolder>fulltext_crowd</fulltextCrowdsourcingFolder>
-  
+
     <!-- teiFolder: contains TEI metadata/fulltext files -->
     <teiFolder>tei</teiFolder>
 
@@ -1179,7 +1179,7 @@
 
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page -->
             <hitsPerPage>70</hitsPerPage>
-            
+
             <!-- If the number of relevant Solr docs exceeds the configured number, faceting will be used for term browsing
                 (which may break correct sorting but improve performance). Default is 100k. -->
             <indexSizeThreshold>100000</indexSizeThreshold>
@@ -1427,9 +1427,12 @@
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                     Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
-                    <style>apa</style>
+                    <style>modern-language-association-7th-edition</style>
+                    <style>apa-6th-edition</style>
+                    <style>chicago-author-date-16th-edition</style>
+                    <style>turabian-author-date</style>
+                    <style>harvard-cite-them-right-no-et-al</style>
                     <style>ieee</style>
-                    <style>modern-language-association</style>
                 </styles>
                 <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
                 <source>
@@ -1444,13 +1447,13 @@
                 </source>
             </citation>
         </sidebarWidgetUsage>
-        
-		<!-- sidebarWidgetDownloads: If true, the download widget within a records 
-			view for additional files from the source directory is displayed. Default 
+
+		<!-- sidebarWidgetDownloads: If true, the download widget within a records
+			view for additional files from the source directory is displayed. Default
 			is true. -->
 		<sidebarWidgetDownloads visible="true">
-	
-			<!-- hideFileRegex: If a regular expression is defined, files matching 
+
+			<!-- hideFileRegex: If a regular expression is defined, files matching
 				it are hidden from the widget display. The download is still possible. -->
 			<hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
 		</sidebarWidgetDownloads>
@@ -1650,10 +1653,10 @@
             <!-- Show source file location of image requests in Content-Location HTTP header -->
             <discloseContentLocation>false</discloseContentLocation>
 
-			<!-- Configure 'rendering' links für IIIF Presentation resources. These 
-				are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents. 
-				For each link the visibiliy attribute determines if the link is rendered 
-				at all and the label subnode can be used to configure an individual label 
+			<!-- Configure 'rendering' links für IIIF Presentation resources. These
+				are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
+				For each link the visibiliy attribute determines if the link is rendered
+				at all and the label subnode can be used to configure an individual label
 				for the link. These labels are translated if translations exist. -->
 			<rendering>
 				<viewer visible="true">
@@ -1669,16 +1672,15 @@
 					<label>ALTO</label>
 				</alto>
 			</rendering>
-			
-			<!-- A list of locale of language codes for which translations of labels 
-				and metadata fields should be provided. If no locales are configured, all 
-				available locales are used. If only one locale is used, the labels will always 
+
+			<!-- A list of locale of language codes for which translations of labels
+				and metadata fields should be provided. If no locales are configured, all
+				available locales are used. If only one locale is used, the labels will always
 				be rendered as a single string -->
 			<translations>
 				<locale>de</locale>
 				<locale>en</locale>
 			</translations>
-			
         </iiif>
 
         <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints  -->
