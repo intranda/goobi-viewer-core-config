@@ -1431,6 +1431,7 @@
                     <style>apa-6th-edition</style>
                     <style>chicago-author-date-16th-edition</style>
                     <style>harvard-cite-them-right-no-et-al</style>
+                    <style>oscola</style>
                     <style>ieee</style>
                 </styles>
                 <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
