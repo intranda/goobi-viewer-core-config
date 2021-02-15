@@ -1408,14 +1408,7 @@
         <sidebarRssFeed display="true" />
 
         <!-- Show or hide the widget including download links for record and page while viewing the object-->
-        <sidebarWidgetUsage display="true">
-            <!-- You can specify any text at the top of the record links using the same mechanism as for metadata display-->
-            <licenseText>
-                <metadata label="MD_LICENSETEXT" value="MASTERVALUE_LICENSETEXT">
-                    <param type="field" key="LABEL" />
-                    <!-- <param type="translatedfield" key="ACCESSCONDITION" /> -->
-                </metadata>
-            </licenseText>
+        <sidebarWidgetUsage display="true" introductionText="">
             <page>
                 <!-- displayLinkToJpegImage: Enables JPEG image download links for pages. Default is false.  -->
                 <displayLinkToJpegImage maxSize="2000">true</displayLinkToJpegImage>
@@ -1450,7 +1443,7 @@
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
 			view for additional files from the source directory is displayed. Default
 			is true. -->
-		<sidebarWidgetDownloads visible="true">
+		<sidebarWidgetDownloads visible="true" introductionText="">
 
 			<!-- hideFileRegex: If a regular expression is defined, files matching
 				it are hidden from the widget display. The download is still possible. -->
