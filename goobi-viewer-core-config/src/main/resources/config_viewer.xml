@@ -269,6 +269,9 @@
             <pageBrowseStep>5</pageBrowseStep>
             <pageBrowseStep>10</pageBrowseStep>
         </pageBrowse>
+        
+        <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
+        <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
         <!-- doublePageMode: if enabled, offers an option to switch to a double page view -->
         <doublePageMode>
