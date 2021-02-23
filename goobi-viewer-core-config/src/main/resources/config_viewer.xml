@@ -1416,11 +1416,11 @@
                     "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to 
                     the format of the master image. The attribute boxSizeInPixel specifies the size of a box 
                     in pixels into which the image is scaled while maintaining the aspect ratio. -->
-                    <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                     <option label="label__download_option_preview_150" format="jpg" boxSizeInPixel="150" />
                     <option label="label__download_option_small_1024" format="jpg" boxSizeInPixel="1024" />
                     <option label="label__download_option_medium_2048" format="jpg" boxSizeInPixel="2048" />
                     <option label="label__download_option_large_4096" format="jpg" boxSizeInPixel="4096" />
+                    <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
             <citation>
