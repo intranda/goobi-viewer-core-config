@@ -909,7 +909,7 @@
                 <metadata label="MD_RISMSEAL">
                     <param type="field" key="MD_RISMSEAL" />
                 </metadata>
-                <metadata label="label__citation_style_apa" value="" citationTemplate="apa">
+                <metadata label="label__citation_style_apa-6th-edition" value="" citationTemplate="apa-6th-edition">
                     <param type="citeproc" dest="title" key="MD_TITLE"/>
                     <param type="citeproc" dest="author" key="MD_AUTHOR"/>
                     <param type="citeproc" dest="publisher" key="MD_PUBLISHER"/>
