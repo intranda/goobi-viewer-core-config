@@ -658,10 +658,11 @@
 
 
     <metadata>
-        <!-- mainMetadataList: whitelist with metadata fields, that are displayed
+        <!-- metadataView: Each metadata view creates a metadata view for a record.
+             Each view contains a whitelist with metadata fields, that are displayed
              in the Goobi viewer. The order of this files defines the order of the
              fields in the bibliographic data as well. -->
-        <mainMetadataList>
+        <metadataView index="0">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
                     defines a label-key that needs to be translated in the messages_XYZ.properties
@@ -953,7 +954,7 @@
                     <param type="translatedfield" key="MD_ACCESSLICENSE"/>
                 </metadata>
             </template>
-        </mainMetadataList>
+        </metadataView>
 
         <!-- titleBarMetadataList: defines metadata that is displayed above an image. The syntax is the same as in mainMetadataList -->
         <titleBarMetadataList>
