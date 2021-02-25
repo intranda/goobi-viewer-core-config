@@ -661,7 +661,9 @@
         <!-- metadataView: Each metadata view creates a metadata view for a record.
              Each view contains a whitelist with metadata fields, that are displayed
              in the Goobi viewer. The order of this files defines the order of the
-             fields in the bibliographic data as well. -->
+             fields in the bibliographic data as well.
+             The first metadataView element will have an implicit index of 0, all subsequent
+             elements must defined an index attribute. Optional label and url attributes are allowed -->
         <metadataView index="0">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
