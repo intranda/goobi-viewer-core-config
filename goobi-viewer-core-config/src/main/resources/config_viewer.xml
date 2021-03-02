@@ -269,7 +269,7 @@
             <pageBrowseStep>5</pageBrowseStep>
             <pageBrowseStep>10</pageBrowseStep>
         </pageBrowse>
-        
+
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
@@ -658,10 +658,22 @@
 
 
     <metadata>
-        <!-- mainMetadataList: whitelist with metadata fields, that are displayed
+        <!-- metadataView: Each metadata view creates a metadata view for a record.
+             Each view contains a whitelist with metadata fields, that are displayed
              in the Goobi viewer. The order of this files defines the order of the
-             fields in the bibliographic data as well. -->
-        <mainMetadataList>
+             fields in the bibliographic data as well.
+             The first metadataView element will have an implicit index of 0, all subsequent
+             elements must defined an index attribute (the value 0 must be assigned, though).
+             An optional label attribute is allowed and will be used for the link and page title.
+             The "url" attibute adds a suffix for the url pattern of the given view (after
+             "metadata"). If more than one view is configured, each entry must have a unique
+             url value.
+
+             Examples are:
+             <metadataView index="1" label="label_metadata_codicological" url="_codicological" condition="MD_CODICOLOGICAL_UNIQUEIDENTIFIER">
+             <metadataView index="2" label="label_metadata_special" url="_special" condition="MD_SPECIAL_FIELD:value">
+        -->
+        <metadataView index="0">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
                     defines a label-key that needs to be translated in the messages_XYZ.properties
@@ -909,7 +921,7 @@
                 <metadata label="MD_RISMSEAL">
                     <param type="field" key="MD_RISMSEAL" />
                 </metadata>
-                <metadata label="label__citation_style_apa" value="" citationTemplate="apa">
+                <metadata label="label__citation_style_apa-6th-edition" value="" citationTemplate="apa-6th-edition">
                     <param type="citeproc" dest="title" key="MD_TITLE"/>
                     <param type="citeproc" dest="author" key="MD_AUTHOR"/>
                     <param type="citeproc" dest="publisher" key="MD_PUBLISHER"/>
@@ -953,7 +965,7 @@
                     <param type="translatedfield" key="MD_ACCESSLICENSE"/>
                 </metadata>
             </template>
-        </mainMetadataList>
+        </metadataView>
 
         <!-- titleBarMetadataList: defines metadata that is displayed above an image. The syntax is the same as in mainMetadataList -->
         <titleBarMetadataList>
@@ -1413,15 +1425,22 @@
         <!-- Show or hide the widget including download links for record and page while viewing the object-->
         <sidebarWidgetUsage display="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
-                <!-- displayLinkToJpegImage: Enables JPEG image download links for pages. Default is false.  -->
-                <displayLinkToJpegImage maxSize="2000">true</displayLinkToJpegImage>
-
-                <!-- displayLinkToMasterImage: Enables Master image download links for pages. Default is false.  -->
-                <displayLinkToMasterImage maxSize="max">true</displayLinkToMasterImage>
+                <downloadOptions>
+                <!-- Each option contains a label and a format. The label is translated via the messages.
+                     The format can take the values supported by the ContentServer, for example "pdf", "tif",
+                     "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
+                     the format of the master image. The attribute boxSizeInPixel specifies the size of a box
+                     in pixels into which the image is scaled while maintaining the aspect ratio. -->
+                    <option label="label__download_option_preview_150" format="jpg" boxSizeInPixel="150" />
+                    <option label="label__download_option_small_1024" format="jpg" boxSizeInPixel="1024" />
+                    <option label="label__download_option_medium_2048" format="jpg" boxSizeInPixel="2048" />
+                    <option label="label__download_option_large_4096" format="jpg" boxSizeInPixel="4096" />
+                    <option label="Master" format="MASTER" boxSizeInPixel="max"/>
+                </downloadOptions>
             </page>
             <citation>
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
-                    Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
+                     Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
                     <style>modern-language-association-7th-edition</style>
                     <style>apa-6th-edition</style>
@@ -1444,12 +1463,12 @@
         </sidebarWidgetUsage>
 
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
-			view for additional files from the source directory is displayed. Default
-			is true. -->
+			 view for additional files from the source directory is displayed. Default
+			 is true. -->
 		<sidebarWidgetDownloads visible="true" introductionText="">
 
 			<!-- hideFileRegex: If a regular expression is defined, files matching
-				it are hidden from the widget display. The download is still possible. -->
+				 it are hidden from the widget display. The download is still possible. -->
 			<hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
 		</sidebarWidgetDownloads>
     </sidebar>
