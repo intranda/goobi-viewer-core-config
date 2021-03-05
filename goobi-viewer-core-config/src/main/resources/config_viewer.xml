@@ -1525,6 +1525,9 @@
 
         <!-- Display links in fullscreen view to share current page in facebook or twitter-->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
+        
+        <!-- Set to true to show user generated content/annotations for the current page underneath the image -->
+		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
     </webGuiDisplay>
 
 
