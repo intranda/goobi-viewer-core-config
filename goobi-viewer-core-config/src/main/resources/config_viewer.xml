@@ -90,7 +90,7 @@
         <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
         <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
-        <!-- Rest service url from which internal viewer resources are requested -->
+        <!-- rest: REST service URL from which internal Goobi viewer resources are requested -->
         <rest>http://localhost:8080/viewer/api/v1/</rest>
 
         <!-- DEVELOPERS ONLY.
@@ -101,7 +101,7 @@
         <iiif useForCmsMedia="true">http://localhost:8080/viewer/api/v1/</iiif>
         -->
 
-        <!-- The base urls to access download pages for pdf and epub downloads -->
+        <!-- download: Base URLss to access download pages for PDF and ePub downloads -->
         <download>http://localhost:8080/viewer/download/</download>
 
         <!-- connectorVersion: URL to the version query on the Goobi viewer Connector -->
@@ -117,11 +117,11 @@
 
 
     <user>
-        <!-- userRegistrationEnabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
+        <!-- userRegistrationEnabled: If true, the links for user registration / password retrieval are shown. Default is true. -->
         <userRegistrationEnabled>true</userRegistrationEnabled>
 
         <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
-             It will as an anonymous owner of user-created date in case the original user is deleted and their public data is kept. -->
+             It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
         <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
 
         <!-- securityQuestions: Configure the is-it-human questions and possible answers. Used when registering new user accounts and within the feedback form -->
@@ -196,34 +196,34 @@
         <preventProxyCaching>false</preventProxyCaching>
 
         <solr>
-            <!-- compressionEnabled: Enables compression for the Solr HTTP client. Default is true. -->
+            <!-- compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
             <compressionEnabled>true</compressionEnabled>
             <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used
-                to enabled Solr 4 compatibility. Default is false. -->
+                to enable Solr 4 compatibility. Default is false. -->
             <backwardsCompatible>false</backwardsCompatible>
         </solr>
     </performance>
 
 
     <accessConditions>
-        <!-- unconditionalImageAccesMaxWidth: Access conditions are not applied to images below this width - Thumbnails -->
+        <!-- unconditionalImageAccesMaxWidth: Access conditions are not applied to images below this width (thumbnails) -->
         <unconditionalImageAccessMaxWidth>400</unconditionalImageAccessMaxWidth>
         <!-- fullAccessForLocalhost: If true, users on localhost will be granted superuser access. Default is false. -->
         <fullAccessForLocalhost>false</fullAccessForLocalhost>
     </accessConditions>
 
 
-    <!-- enables reCaptcha integration for the feedback formular -->
+    <!-- if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation -->
     <reCaptcha show="false">
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
 
     <pdf>
-        <!-- externalPdfGeneration: Create pdfs in an external intranda TaskManager. Default is false. -->
+        <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
         <externalPdfGeneration>false</externalPdfGeneration>
 
-        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries -->
+        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false -->
         <pdfApiDisabled>false</pdfApiDisabled>
 
         <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML) (default is true) -->
@@ -1497,36 +1497,37 @@
         <!-- number of letters befor cutting breadcrumb items -->
         <breadcrumbsClipping>50</breadcrumbsClipping>
 
-        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form -->
+        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
         <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
 
-        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true. -->
+        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
         <displayTitlePURL>true</displayTitlePURL>
 
         <!-- TODO DOCUMENTATION IN THE MANUAL-->
         <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
         <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
 
-        <!-- displayStatistics: if false, statistics link is hidden (default is true) -->
+        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
         <displayStatistics>true</displayStatistics>
 
-        <!-- displayTimeline: if false, time matrix link is hidden (default is false) -->
+        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
         <displayTimeMatrix>false</displayTimeMatrix>
 
-        <!-- displayCrowdsourcingModuleLinks: Switch to enable crowdsourcing transcription links (default is false) -->
+        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
         <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 
-        <!-- Display "traffic lights" for access condition and copyright icon in fullscreen view -->
+        <!-- displayCopyrightInfo: if true, "traffic lights" for access condition and a copyright icon is shown in the fullscreen view. Default is false -->
         <displayCopyrightInfo>
             <visible>false</visible>
             <accessConditionField>MD_ACCESSCONDITION</accessConditionField>
             <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
         </displayCopyrightInfo>
 
-        <!-- Display links in fullscreen view to share current page in facebook or twitter-->
+        <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
-        
-        <!-- Set to true to show user generated content/annotations for the current page underneath the image -->
+
+        <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
+             and the sidebar widget for annotations is hidden. Default is false -->
 		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
     </webGuiDisplay>
 
