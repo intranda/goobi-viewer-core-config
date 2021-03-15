@@ -9,24 +9,29 @@ const XML = require('pixl-xml');
 const process = require('process');
 
 //not used because messages are written to config dir
-function getTomcatDir() {
-	let homedir = require("os").homedir();
-	let rawdata = fs.readFileSync(homedir + '/.config/grunt_userconfig.json');
-	let config = JSON.parse(rawdata);
-	let os = process.platform
-	let xml_string = undefined;
-	if(os.toLowerCase().startsWith("win")) {	    
-	    xml_string = fs.readFileSync("c:/opt/digiverso/viewer/config/config_viewer.xml", "utf-8");
-	} else {
-	    xml_string = fs.readFileSync("/opt/digiverso/viewer/config/config_viewer.xml", "utf-8");
-	}
-	let viewer_config = XML.parse(xml_string);
-
-	return config.tomcat_dir + "/goobi-viewer-theme-" + viewer_config.viewer.theme.mainTheme + "/WEB-INF/classes";
-}
+//function getTomcatDir() {
+//	let homedir = require("os").homedir();
+//	let rawdata = fs.readFileSync(homedir + '/.config/grunt_userconfig.json');
+//	let config = JSON.parse(rawdata);
+//	let os = process.platform
+//	let xml_string = undefined;
+//	if(os.toLowerCase().startsWith("win")) {	    
+//	    xml_string = fs.readFileSync("c:/opt/digiverso/viewer/config/config_viewer.xml", "utf-8");
+//	} else {
+//	    xml_string = fs.readFileSync("/opt/digiverso/viewer/config/config_viewer.xml", "utf-8");
+//	}
+//	let viewer_config = XML.parse(xml_string);
+//
+//	return config.tomcat_dir + "/goobi-viewer-theme-" + viewer_config.viewer.theme.mainTheme + "/WEB-INF/classes";
+//}
 
 function getConfigDir() {
-	return "/opt/digiverso/viewer/config";
+	let oSystem = process.platform;
+	if(oSystem.toLowerCase().startsWith("win")) {	
+		return "c:/opt/digiverso/viewer/config";
+	} else {
+		return "/opt/digiverso/viewer/config";
+	}
 }
 
 module.exports = function (grunt) {
@@ -86,6 +91,6 @@ module.exports = function (grunt) {
     // default task.
     // Default which runs the build task.
 	// $ grunt
-	grunt.registerTask('default', ['watch']);
+	grunt.registerTask( 'default', [ 'watch', 'sync' ] );
 	
 };
