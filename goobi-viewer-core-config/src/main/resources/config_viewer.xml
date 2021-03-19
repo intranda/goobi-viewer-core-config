@@ -262,7 +262,7 @@
 
 
     <viewer>
-        <!-- pageBrowse: if true, page browsing in work is enabled. It allows to browse through the work in different steps (default is false). -->
+        <!-- pageBrowse: if true, page browsing through the record in different steps is allowed. Default is false. -->
         <pageBrowse>
             <enabled>false</enabled>
             <pageBrowseStep>0</pageBrowseStep>
@@ -273,7 +273,7 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageMode: if enabled, offers an option to switch to a double page view -->
+        <!-- doublePageMode: if true, an option to switch to a double page view is shown. Default is true. -->
         <doublePageMode>
             <enabled>true</enabled>
         </doublePageMode>
