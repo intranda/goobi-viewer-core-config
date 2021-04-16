@@ -1639,7 +1639,7 @@
             <field jsonField="persons" luceneField="MD_CREATOR" multivalue="true" />
         </fields>
 
-        <iiif>
+        <iiif use-version="2.1.1">
             <!-- A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
@@ -1678,16 +1678,12 @@
 				for the link. These labels are translated if translations exist. -->
 			<rendering>
 				<viewer visible="true">
-					<label>Goobi viewer</label>
 				</viewer>
 				<pdf visible="true">
-					<label>PDF</label>
 				</pdf>
 				<plaintext visible="true">
-					<label>Fulltext</label>
 				</plaintext>
 				<alto visible="true">
-					<label>ALTO</label>
 				</alto>
 			</rendering>
 
