@@ -1639,8 +1639,10 @@
             <field jsonField="persons" luceneField="MD_CREATOR" multivalue="true" />
         </fields>
 
+        <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
+             The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
         <iiif use-version="2.1.1">
-            <!-- A list of all metadata fields which should be included within
+            <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
                 <!--field>MD_TITLE</field>
@@ -1649,52 +1651,105 @@
                 <field>DOCSTRCT_TOP</field>
             </metadataFields>
 
-            <!-- A list of solr fieldnames which may serve as manifest description metadata. The first existing field is used to provide the medatada description -->
+            <!-- descriptionFields: A list of solr fieldnames which may serve as manifest description metadata.
+                 The first existing field is used to provide the medatada description -->
             <descriptionFields>
                 <field>MD_CONTENTDESCRIPTION</field>
             </descriptionFields>
 
-            <!-- Solr field to use for IIIF Presentation navDate property, if any -->
+            <!-- navDateField: Solr field to use for IIIF Presentation navDate property, if any -->
             <navDateField>YEAR</navDateField>
 
-            <!-- The String to provide as attribution in IIIF manifests. If it is a message key, all translations are
-                 provided as attribution values -->
-            <attribution>iiif_attribution</attribution>
-
-            <!-- URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
-                 the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
-                 that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
-                 resources/themes/<theme>/images/ folder and linked appropriately
-                 If no logo is configured, the image footer will be used-->
-            <logo>dfgviewer_intranda.jpg</logo>
-
-            <!-- Show source file location of image requests in Content-Location HTTP header -->
-            <discloseContentLocation>false</discloseContentLocation>
-
-			<!-- Configure 'rendering' links für IIIF Presentation resources. These
-				are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
-				For each link the visibiliy attribute determines if the link is rendered
-				at all and the label subnode can be used to configure an individual label
-				for the link. These labels are translated if translations exist. -->
+			<!-- rendering: Configure 'rendering' links für IIIF Presentation resources. These
+                 are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
+                 For each link the visibiliy attribute determines if the link is rendered
+                 at all and the label subnode can be used to configure an individual label
+                 for the link. These labels are translated if translations exist. -->
 			<rendering>
 				<viewer visible="true">
+                    <label>Goobi viewer</label>
 				</viewer>
 				<pdf visible="true">
+                    <label>PDF</label>
 				</pdf>
 				<plaintext visible="true">
+                    <label>Fulltext</label>
 				</plaintext>
 				<alto visible="true">
+                    <label>ALTO</label>
 				</alto>
 			</rendering>
 
-			<!-- A list of locale of language codes for which translations of labels
-				and metadata fields should be provided. If no locales are configured, all
-				available locales are used. If only one locale is used, the labels will always
-				be rendered as a single string -->
+			<!-- translations: A list of locale of language codes for which translations of labels
+				 and metadata fields should be provided. If no locales are configured, all
+				 available locales are used. If only one locale is used, the labels will always
+				 be rendered as a single string -->
 			<translations>
 				<locale>de</locale>
 				<locale>en</locale>
 			</translations>
+
+            <!-- attribution: IIIF 2
+                 Contains a string to provide as attribution in IIIF manifests. If it is a message key,
+                 all translations are provided as attribution values.
+                 The <attribution /> setting is repeatable. The first instance also acts as fallback for <requiredStatement> (IIIF 3 only) -->
+            <attribution>iiif_requiredstatement_value</attribution>
+
+            <!-- license: IIIF 2
+                 Contains a string to provide as license in IIIF manifests. If it is a message key,
+                 all translations are provided as license values.
+                 The <license /> setting is repeatable. The first instance also acts as fallback for <rights>  (IIIF 3 only)-->
+            <license>iiif_license</license>
+
+            <!-- logo: IIIF 2
+                 URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
+                 the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
+                 that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
+                 resources/themes/<theme>/images/ folder and linked appropriately
+                 If no logo is configured, the image footer will be used
+                 The <logo /> setting is repeatable. -->
+            <logo>dfgviewer_intranda.jpg</logo>
+
+            <!-- requiredStatement: IIIF 3
+                 Replacement for <attribution />. Default-label is "attribution". This field is not repeatable.
+                 ref https://iiif.io/api/presentation/3.0/#requiredstatement -->
+            <requiredStatement>
+                <!-- label+value: both contain message keys and are repeatable -->
+                <label>iiif_requiredstatement</label>
+                <value>iiif_requiredstatement_value</value>
+            </requiredStatement>
+            <!-- rights: IIIF 3
+                 Replacement for <license />. This setting is optional and not repeatable. It must contain a URI
+                 representing the license of the record. As this is typically stored within the metadata you can
+                 configure a Solr field here.
+                 ref https://iiif.io/api/presentation/3.0/#rights -->
+            <rights>MD_SOLR-FIELD-WITH-RECORD-LICENSE</rights>
+
+            <!-- provider: IIIF 3
+                 Encapsulates data provider and rights holder information. This section is optional and repeatable.
+                 ref https://iiif.io/api/presentation/3.0/#provider -->
+            <provider>
+                <!-- url: required, non repeatable -->
+                <url>https://www.intranda.com</url>
+                <!-- label: required, if it is a message key, all translations are used.-->
+                <label>iiif_provider_label</label>
+                <!-- homepage: optional, repeatable -->
+                <homepage>
+                    <!-- url: required, non-repeatable -->
+                    <url>https://goobi.io/viewer/</url>
+                    <!-- label: required, if it is a message key, all translations are used.-->
+                    <label>Goobi iiif_provider_homepage_label</label>
+                </homepage>
+                <!-- logo: optional, non-repeatable.
+                     URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
+                     the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
+                     that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
+                     resources/themes/<theme>/images/ folder and linked appropriately -->
+                <logo>dfgviewer_intranda.jpg</logo>
+            </provider>
+
+            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false.  -->
+            <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
         <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints  -->
