@@ -209,7 +209,7 @@
         <!-- thumbnailImageAccessMaxWidth: Images up to this size are regarded as 'thumbnails'. Access conditions for viewing images are not applied -->
         <thumbnailImageAccessMaxWidth>400</thumbnailImageAccessMaxWidth>
         <!-- unzoomedImageAccessMaxWidth: Images up to this size are regarded as 'unzoomed'. Access conditions for zooming images are not applied -->
-        <unzoomedImageAccessMaxWidth>600</unzoomedImageAccessMaxWidth>
+        <unzoomedImageAccessMaxWidth>0</unzoomedImageAccessMaxWidth>
         <!-- fullAccessForLocalhost: If true, users on localhost will be granted superuser access. Default is false. -->
         <fullAccessForLocalhost>false</fullAccessForLocalhost>
     </accessConditions>
