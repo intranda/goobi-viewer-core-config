@@ -1757,7 +1757,7 @@
                                    CORE_STRINGS (lists the keys and their translations that match the given configuration)
          name: key for the name of the group
          introductionText: key for the description of the group -->
-        <group type="SOLR_FIELD_NAMES" name="translation__group_name_solr-fields"  description="translation__group_description_solr-fields">
+        <group type="SOLR_FIELD_NAMES" name="label__translation_group_solr-fields"  description="desc__translation_group_solr-fields">
 
             <!-- Each group of SOLR_FIELD_NAMES and SOLR_FIELD_VALUES can contain a list of <key /> entries that match the field name, or
                 if it is regex="true", it matches all field names based on the given regular expression -->
@@ -1767,16 +1767,16 @@
             <key>FULLTEXTAVAILABLE</key>
             <key regex="true">MD_.*</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
+        <group type="SOLR_FIELD_VALUES" name="label__translation_group_collections"  description="desc__translation_group_collections">
             <key>DC</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-top"  description="translation__group_description_docstruct-top">
+        <group type="SOLR_FIELD_VALUES" name="label__translation_group_docstruct-top"  description="desc__translation__group_docstruct-top">
             <key>DOCSTRCT_TOP</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub"  description="translation__group_description_docstruct-sub">
+        <group type="SOLR_FIELD_VALUES" name="label__translation_group_docstruct-sub"  description="desc__translation__group_docstruct-sub">
             <key>DOCSTRCT_SUB</key>
         </group>
-        <group type="CORE_STRINGS" name="translation__group_name_email" description="translation__group_description_email">
+        <group type="CORE_STRINGS" name="label__translation_group_email" description="desc__translation__group_email">
 
             <!-- A group of the type CORE_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
                 it matches all message keys based in the given regular expression -->
