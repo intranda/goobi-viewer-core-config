@@ -431,6 +431,13 @@
 
         <!-- description: Goobi viewer instance description. This is shown in the OpenSearch description file -->
         <description>Open source software for presenting your digital library or digital heritage online</description>
+        
+        <!-- docstructNavigation: If enabled=true, browsing to the next and previous docstruct is visible for the configured docstruct types. Default is false. -->
+        <docstructNavigation enabled="false">
+            <template name="_DEFAULT">
+                <docstruct>folder</docstruct>
+            </template>
+        </docstructNavigation>
     </viewer>
 
 
