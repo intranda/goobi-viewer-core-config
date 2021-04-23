@@ -275,8 +275,8 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageMode: if true, an option to switch to a double page view is shown. Default is true. -->
-        <doublePageMode enabled="true" />
+        <!-- doublePageNavigation: if true, an option to switch to a double page view is shown. Default is true. -->
+        <doublePageNavigation enabled="true" />
 
         <!--zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
