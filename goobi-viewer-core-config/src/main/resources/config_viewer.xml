@@ -1825,7 +1825,7 @@
             <key>ACCESSCONDITION</key>
             <key>BOOL_IMAGEAVAILABLE</key>
             <key>FULLTEXTAVAILABLE</key>
-            <key regex="true">MD_.*</key>
+            <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
         </group>
         <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
             <key>DC</key>
