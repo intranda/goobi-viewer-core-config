@@ -278,6 +278,14 @@
         <!-- doublePageNavigation: if true, an option to switch to a double page view is shown. Default is true. -->
         <doublePageNavigation enabled="true" />
 
+        <!-- docstructNavigation: If enabled=true, browsing to the next and previous docstruct is visible for the configured docstruct types
+             in fullscreen view. Default is false. -->
+        <docstructNavigation enabled="false">
+            <template name="_DEFAULT">
+                <docstruct>folder</docstruct>
+            </template>
+        </docstructNavigation>
+
         <!--zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
             to true to use tiled images if possible (only possible when type=openlayers) -->
@@ -429,14 +437,6 @@
 
         <!-- description: Goobi viewer instance description. This is shown in the OpenSearch description file -->
         <description>Open source software for presenting your digital library or digital heritage online</description>
-
-        <!-- docstructNavigation: If enabled=true, browsing to the next and previous docstruct is visible for the configured docstruct types
-             in fullscreen view. Default is false. -->
-        <docstructNavigation enabled="false">
-            <template name="_DEFAULT">
-                <docstruct>folder</docstruct>
-            </template>
-        </docstructNavigation>
     </viewer>
 
 
