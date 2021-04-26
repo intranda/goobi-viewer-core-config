@@ -1806,4 +1806,47 @@
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
     </maps>
+
+
+    <!-- Configuration for the translation section in the backend -->
+    <translations>
+    <!-- There can be any number of translation groups with the following attributes
+         type: Possible values are SOLR_FIELD_NAMES (lists a list of field names that match the given configuration)
+                                   SOLR_FIELD_VALUES (lists the values of the given solr field names)
+                                   CORE_STRINGS (lists the keys and their translations that match the given configuration)
+         name: key for the name of the group
+         introductionText: key for the description of the group -->
+        <group type="SOLR_FIELD_NAMES" name="translation__group_name_solr-fields"  description="translation__group_description_solr-fields">
+
+            <!-- Each group of SOLR_FIELD_NAMES and SOLR_FIELD_VALUES can contain a list of <key /> entries that match the field name, or
+                if it is regex="true", it matches all field names based on the given regular expression -->
+            <key>DC</key>
+            <key>ACCESSCONDITION</key>
+            <key>BOOL_IMAGEAVAILABLE</key>
+            <key>FULLTEXTAVAILABLE</key>
+            <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
+            <key>DC</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-top"  description="translation__group_description_docstruct-top">
+            <key>DOCSTRCT_TOP</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub"  description="translation__group_description_docstruct-sub">
+            <key>DOCSTRCT_SUB</key>
+        </group>
+        <group type="CORE_STRINGS" name="translation__group_name_email" description="translation__group_description_email">
+
+            <!-- A group of the type CORE_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
+                it matches all message keys based in the given regular expression -->
+            <key>commentChangedNotificationEmailBody</key>
+            <key>commentChangedNotificationEmailSubject</key>
+            <key regex="true">commentNewNotificationEmail.*</key>
+            <key regex="true">feedbackEmail.*</key>
+            <key regex="true">user_activationEmail.*</key>
+            <key regex="true">user_retrieveAccountConfirmationEmail.*</key>
+            <key regex="true">user_retrieveAccountNewPasswordEmail.*</key>
+        </group>
+    </translations>
+
 </config>
