@@ -90,7 +90,7 @@
         <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
         <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
-        <!-- Rest service url from which internal viewer resources are requested -->
+        <!-- rest: REST service URL from which internal Goobi viewer resources are requested -->
         <rest>http://localhost:8080/viewer/api/v1/</rest>
 
         <!-- DEVELOPERS ONLY.
@@ -101,7 +101,7 @@
         <iiif useForCmsMedia="true">http://localhost:8080/viewer/api/v1/</iiif>
         -->
 
-        <!-- The base urls to access download pages for pdf and epub downloads -->
+        <!-- download: Base URLss to access download pages for PDF and ePub downloads -->
         <download>http://localhost:8080/viewer/download/</download>
 
         <!-- connectorVersion: URL to the version query on the Goobi viewer Connector -->
@@ -117,11 +117,11 @@
 
 
     <user>
-        <!-- userRegistrationEnabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
+        <!-- userRegistrationEnabled: If true, the links for user registration / password retrieval are shown. Default is true. -->
         <userRegistrationEnabled>true</userRegistrationEnabled>
 
         <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
-             It will as an anonymous owner of user-created date in case the original user is deleted and their public data is kept. -->
+             It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
         <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
 
         <!-- securityQuestions: Configure the is-it-human questions and possible answers. Used when registering new user accounts and within the feedback form -->
@@ -196,34 +196,36 @@
         <preventProxyCaching>false</preventProxyCaching>
 
         <solr>
-            <!-- compressionEnabled: Enables compression for the Solr HTTP client. Default is true. -->
+            <!-- compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
             <compressionEnabled>true</compressionEnabled>
             <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used
-                to enabled Solr 4 compatibility. Default is false. -->
+                to enable Solr 4 compatibility. Default is false. -->
             <backwardsCompatible>false</backwardsCompatible>
         </solr>
     </performance>
 
 
     <accessConditions>
-        <!-- unconditionalImageAccesMaxWidth: Access conditions are not applied to images below this width - Thumbnails -->
-        <unconditionalImageAccessMaxWidth>400</unconditionalImageAccessMaxWidth>
+        <!-- thumbnailImageAccessMaxWidth: Images up to this size are regarded as 'thumbnails'. Access conditions for viewing images are not applied -->
+        <thumbnailImageAccessMaxWidth>400</thumbnailImageAccessMaxWidth>
+        <!-- unzoomedImageAccessMaxWidth: Images up to this size are regarded as 'unzoomed'. Access conditions for zooming images are not applied -->
+        <unzoomedImageAccessMaxWidth>0</unzoomedImageAccessMaxWidth>
         <!-- fullAccessForLocalhost: If true, users on localhost will be granted superuser access. Default is false. -->
         <fullAccessForLocalhost>false</fullAccessForLocalhost>
     </accessConditions>
 
 
-    <!-- enables reCaptcha integration for the feedback formular -->
+    <!-- if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation -->
     <reCaptcha show="false">
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
 
     <pdf>
-        <!-- externalPdfGeneration: Create pdfs in an external intranda TaskManager. Default is false. -->
+        <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
         <externalPdfGeneration>false</externalPdfGeneration>
 
-        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries -->
+        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false -->
         <pdfApiDisabled>false</pdfApiDisabled>
 
         <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML) (default is true) -->
@@ -262,7 +264,7 @@
 
 
     <viewer>
-        <!-- pageBrowse: if true, page browsing in work is enabled. It allows to browse through the work in different steps (default is false). -->
+        <!-- pageBrowse: if true, page browsing through the record in different steps is allowed. Default is false. -->
         <pageBrowse>
             <enabled>false</enabled>
             <pageBrowseStep>0</pageBrowseStep>
@@ -273,10 +275,16 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageMode: if enabled, offers an option to switch to a double page view -->
-        <doublePageMode>
-            <enabled>true</enabled>
-        </doublePageMode>
+        <!-- doublePageNavigation: if true, an option to switch to a double page view is shown. Default is true. -->
+        <doublePageNavigation enabled="true" />
+
+        <!-- docstructNavigation: If enabled=true, browsing to the next and previous docstruct is visible for the configured docstruct types
+             in fullscreen view. Default is false. -->
+        <docstructNavigation enabled="false">
+            <template name="_DEFAULT">
+                <docstruct>folder</docstruct>
+            </template>
+        </docstructNavigation>
 
         <!--zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
@@ -697,7 +705,7 @@
                 <metadata label="URN">
                     <param type="field" key="URN" />
                 </metadata>
-                <metadata label="MD_TITLE">
+                <metadata label="MD_TITLE" hideIfOnlyMetadataField="true">
                     <param type="field" key="MD_TITLE" />
                 </metadata>
                 <metadata label="MD_NEWLOCATION">
@@ -801,7 +809,7 @@
                 <metadata label="DOCSTRCT_TOP">
                     <param type="translatedfield" key="DOCSTRCT_TOP" />
                 </metadata>
-                <metadata label="DOCSTRCT_SUB">
+                <metadata label="DOCSTRCT_SUB" hideIfOnlyMetadataField="true">
                     <param type="translatedfield" key="DOCSTRCT_SUB" />
                 </metadata>
                 <metadata label="DC">
@@ -1497,34 +1505,38 @@
         <!-- number of letters befor cutting breadcrumb items -->
         <breadcrumbsClipping>50</breadcrumbsClipping>
 
-        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form -->
+        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
         <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
 
-        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true. -->
+        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
         <displayTitlePURL>true</displayTitlePURL>
 
         <!-- TODO DOCUMENTATION IN THE MANUAL-->
         <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
         <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
 
-        <!-- displayStatistics: if false, statistics link is hidden (default is true) -->
+        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
         <displayStatistics>true</displayStatistics>
 
-        <!-- displayTimeline: if false, time matrix link is hidden (default is false) -->
+        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
         <displayTimeMatrix>false</displayTimeMatrix>
 
-        <!-- displayCrowdsourcingModuleLinks: Switch to enable crowdsourcing transcription links (default is false) -->
+        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
         <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 
-        <!-- Display "traffic lights" for access condition and copyright icon in fullscreen view -->
+        <!-- displayCopyrightInfo: if true, "traffic lights" for access condition and a copyright icon is shown in the fullscreen view. Default is false -->
         <displayCopyrightInfo>
             <visible>false</visible>
             <accessConditionField>MD_ACCESSCONDITION</accessConditionField>
             <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
         </displayCopyrightInfo>
 
-        <!-- Display links in fullscreen view to share current page in facebook or twitter-->
+        <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
+
+        <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
+             and the sidebar widget for annotations is hidden. Default is false -->
+		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
     </webGuiDisplay>
 
 
@@ -1635,8 +1647,10 @@
             <field jsonField="persons" luceneField="MD_CREATOR" multivalue="true" />
         </fields>
 
-        <iiif>
-            <!-- A list of all metadata fields which should be included within
+        <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
+             The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
+        <iiif use-version="2.1.1">
+            <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
                 <!--field>MD_TITLE</field>
@@ -1645,56 +1659,105 @@
                 <field>DOCSTRCT_TOP</field>
             </metadataFields>
 
-            <!-- A list of solr fieldnames which may serve as manifest description metadata. The first existing field is used to provide the medatada description -->
+            <!-- descriptionFields: A list of solr fieldnames which may serve as manifest description metadata.
+                 The first existing field is used to provide the medatada description -->
             <descriptionFields>
                 <field>MD_CONTENTDESCRIPTION</field>
             </descriptionFields>
 
-            <!-- Solr field to use for IIIF Presentation navDate property, if any -->
+            <!-- navDateField: Solr field to use for IIIF Presentation navDate property, if any -->
             <navDateField>YEAR</navDateField>
 
-            <!-- The String to provide as attribution in IIIF manifests. If it is a message key, all translations are
-                 provided as attribution values -->
-            <attribution>iiif_attribution</attribution>
-
-            <!-- URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
-                 the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
-                 that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
-                 resources/themes/<theme>/images/ folder and linked appropriately
-                 If no logo is configured, the image footer will be used-->
-            <logo>dfgviewer_intranda.jpg</logo>
-
-            <!-- Show source file location of image requests in Content-Location HTTP header -->
-            <discloseContentLocation>false</discloseContentLocation>
-
-			<!-- Configure 'rendering' links für IIIF Presentation resources. These
-				are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
-				For each link the visibiliy attribute determines if the link is rendered
-				at all and the label subnode can be used to configure an individual label
-				for the link. These labels are translated if translations exist. -->
+			<!-- rendering: Configure 'rendering' links für IIIF Presentation resources. These
+                 are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
+                 For each link the visibiliy attribute determines if the link is rendered
+                 at all and the label subnode can be used to configure an individual label
+                 for the link. These labels are translated if translations exist. -->
 			<rendering>
 				<viewer visible="true">
-					<label>Goobi viewer</label>
+                    <label>Goobi viewer</label>
 				</viewer>
 				<pdf visible="true">
-					<label>PDF</label>
+                    <label>PDF</label>
 				</pdf>
 				<plaintext visible="true">
-					<label>Fulltext</label>
+                    <label>Fulltext</label>
 				</plaintext>
 				<alto visible="true">
-					<label>ALTO</label>
+                    <label>ALTO</label>
 				</alto>
 			</rendering>
 
-			<!-- A list of locale of language codes for which translations of labels
-				and metadata fields should be provided. If no locales are configured, all
-				available locales are used. If only one locale is used, the labels will always
-				be rendered as a single string -->
+			<!-- translations: A list of locale of language codes for which translations of labels
+				 and metadata fields should be provided. If no locales are configured, all
+				 available locales are used. If only one locale is used, the labels will always
+				 be rendered as a single string -->
 			<translations>
 				<locale>de</locale>
 				<locale>en</locale>
 			</translations>
+
+            <!-- attribution: IIIF 2
+                 Contains a string to provide as attribution in IIIF manifests. If it is a message key,
+                 all translations are provided as attribution values.
+                 The <attribution /> setting is repeatable. The first instance also acts as fallback for <requiredStatement> (IIIF 3 only) -->
+            <attribution>iiif_requiredstatement_value</attribution>
+
+            <!-- license: IIIF 2
+                 Contains a string to provide as license in IIIF manifests. If it is a message key,
+                 all translations are provided as license values.
+                 The <license /> setting is repeatable. The first instance also acts as fallback for <rights>  (IIIF 3 only)-->
+            <license>iiif_license</license>
+
+            <!-- logo: IIIF 2
+                 URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
+                 the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
+                 that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
+                 resources/themes/<theme>/images/ folder and linked appropriately
+                 If no logo is configured, the image footer will be used
+                 The <logo /> setting is repeatable. -->
+            <logo>dfgviewer_intranda.jpg</logo>
+
+            <!-- requiredStatement: IIIF 3
+                 Replacement for <attribution />. Default-label is "attribution". This field is not repeatable.
+                 ref https://iiif.io/api/presentation/3.0/#requiredstatement -->
+            <requiredStatement>
+                <!-- label+value: both contain message keys and are repeatable -->
+                <label>iiif_requiredstatement</label>
+                <value>iiif_requiredstatement_value</value>
+            </requiredStatement>
+            <!-- rights: IIIF 3
+                 Replacement for <license />. This setting is optional and not repeatable. It must contain a URI
+                 representing the license of the record. As this is typically stored within the metadata you can
+                 configure a Solr field here.
+                 ref https://iiif.io/api/presentation/3.0/#rights -->
+            <rights>MD_SOLR-FIELD-WITH-RECORD-LICENSE</rights>
+
+            <!-- provider: IIIF 3
+                 Encapsulates data provider and rights holder information. This section is optional and repeatable.
+                 ref https://iiif.io/api/presentation/3.0/#provider -->
+            <provider>
+                <!-- url: required, non repeatable -->
+                <url>https://www.intranda.com</url>
+                <!-- label: required, if it is a message key, all translations are used.-->
+                <label>iiif_provider_label</label>
+                <!-- homepage: optional, repeatable -->
+                <homepage>
+                    <!-- url: required, non-repeatable -->
+                    <url>https://goobi.io/viewer/</url>
+                    <!-- label: required, if it is a message key, all translations are used.-->
+                    <label>Goobi iiif_provider_homepage_label</label>
+                </homepage>
+                <!-- logo: optional, non-repeatable.
+                     URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
+                     the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
+                     that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
+                     resources/themes/<theme>/images/ folder and linked appropriately -->
+                <logo>dfgviewer_intranda.jpg</logo>
+            </provider>
+
+            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false.  -->
+            <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
         <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints  -->
@@ -1743,4 +1806,47 @@
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
     </maps>
+
+
+    <!-- Configuration for the translation section in the backend -->
+    <translations>
+    <!-- There can be any number of translation groups with the following attributes
+         type: Possible values are SOLR_FIELD_NAMES (lists a list of field names that match the given configuration)
+                                   SOLR_FIELD_VALUES (lists the values of the given solr field names)
+                                   CORE_STRINGS (lists the keys and their translations that match the given configuration)
+         name: key for the name of the group
+         introductionText: key for the description of the group -->
+        <group type="SOLR_FIELD_NAMES" name="translation__group_name_solr-fields"  description="translation__group_description_solr-fields">
+
+            <!-- Each group of SOLR_FIELD_NAMES and SOLR_FIELD_VALUES can contain a list of <key /> entries that match the field name, or
+                if it is regex="true", it matches all field names based on the given regular expression -->
+            <key>DC</key>
+            <key>ACCESSCONDITION</key>
+            <key>BOOL_IMAGEAVAILABLE</key>
+            <key>FULLTEXTAVAILABLE</key>
+            <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
+            <key>DC</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-top"  description="translation__group_description_docstruct-top">
+            <key>DOCSTRCT_TOP</key>
+        </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub"  description="translation__group_description_docstruct-sub">
+            <key>DOCSTRCT_SUB</key>
+        </group>
+        <group type="CORE_STRINGS" name="translation__group_name_email" description="translation__group_description_email">
+
+            <!-- A group of the type CORE_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
+                it matches all message keys based in the given regular expression -->
+            <key>commentChangedNotificationEmailBody</key>
+            <key>commentChangedNotificationEmailSubject</key>
+            <key regex="true">commentNewNotificationEmail.*</key>
+            <key regex="true">feedbackEmail.*</key>
+            <key regex="true">user_activationEmail.*</key>
+            <key regex="true">user_retrieveAccountConfirmationEmail.*</key>
+            <key regex="true">user_retrieveAccountNewPasswordEmail.*</key>
+        </group>
+    </translations>
+
 </config>

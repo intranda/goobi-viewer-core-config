@@ -1,0 +1,17 @@
+{
+  "name": "goobi-viewer-core-config",
+  "version": "21.2.0",
+  "description": "This is a configuration repository for the Goobi viewer.",
+  "author": "intranda GmbH",
+  "repository": {
+    "type": "git",
+    "url": "https://gitea.intranda.com/goobi-viewer/goobi-viewer-core-config.git"
+  },
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sync": "^0.8.2",
+    "pixl-xml": "^1.0.13"
+  }
+}
