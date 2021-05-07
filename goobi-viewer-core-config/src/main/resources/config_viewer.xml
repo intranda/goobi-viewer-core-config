@@ -1446,7 +1446,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citation>
+            <citation display="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
