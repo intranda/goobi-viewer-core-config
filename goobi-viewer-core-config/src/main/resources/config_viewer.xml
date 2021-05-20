@@ -336,9 +336,9 @@
         <rememberImageRotation>true</rememberImageRotation>
 
         <!-- URL patterns for external image urls which should be served via the contentServner
-        All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
-        Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
-        is requested by the viewer/contentServer and not the client -->
+             All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
+             Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
+            is requested by the viewer/contentServer and not the client -->
         <externalContent>
             <restrictedUrls>
                 <url>https?://external/restricted/.*</url>
@@ -588,21 +588,21 @@
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
         <staticQuerySuffix>-BOOL_HIDE:true</staticQuerySuffix>
 
-            <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
-                 (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
-            <!-- Example query for also including periodical volumes:
-                 ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
-            <docstrctWhitelistFilterQuery>(ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*</docstrctWhitelistFilterQuery>
+        <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
+             (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
+        <!-- Example query for also including periodical volumes:
+             ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
+        <docstrctWhitelistFilterQuery>(ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*</docstrctWhitelistFilterQuery>
 
-            <!-- versioning -->
-            <versioning>
-                <!-- previousVersionIdentifierField' defines the Solr field that contains the identifier for the preceding version -->
-                <previousVersionIdentifierField>MD_PREVIOUS_VERSION</previousVersionIdentifierField>
-                <!-- nextVersionIdentifierField: defines the Solr field that contains the identifier for the succeeding version -->
-                <nextVersionIdentifierField>MD_NEXT_VERSION</nextVersionIdentifierField>
-                <!-- versionLabelField: Optional field containing the pre-definied version label; if no value found "PI (MD_YEARPUBLISH)" will be used -->
-                <versionLabelField>MD_VERSIONLABEL</versionLabelField>
-            </versioning>
+        <!-- versioning -->
+        <versioning>
+            <!-- previousVersionIdentifierField' defines the Solr field that contains the identifier for the preceding version -->
+            <previousVersionIdentifierField>MD_PREVIOUS_VERSION</previousVersionIdentifierField>
+            <!-- nextVersionIdentifierField: defines the Solr field that contains the identifier for the succeeding version -->
+            <nextVersionIdentifierField>MD_NEXT_VERSION</nextVersionIdentifierField>
+            <!-- versionLabelField: Optional field containing the pre-definied version label; if no value found "PI (MD_YEARPUBLISH)" will be used -->
+            <versionLabelField>MD_VERSIONLABEL</versionLabelField>
+        </versioning>
 
         <!-- Search export settings -->
         <export>
@@ -1077,10 +1077,10 @@
 
 		  <basexMetadataList>
             <!-- internal fields, not visible on the UI -->
-<!-- 	        <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false"/> -->
 	        <!--  Identity Statement Area -->
 	        <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
 	        <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
@@ -1091,7 +1091,7 @@
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
-<!-- 	        <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" label="physdesc" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" label="physdescstructured" type="1" />
 	        <!-- Context Area -->
