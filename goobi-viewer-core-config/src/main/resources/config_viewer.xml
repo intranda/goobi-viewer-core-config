@@ -981,6 +981,11 @@
                 <param type="field" key="MD_CREATOR" />
                 <param type="wikipersonfield" key="MD_CREATOR" />
             </metadata-->
+            
+            <!-- Number of volumes for anchors -->
+            <metadata label="numVolumes">
+                <param type="field" key="NUMVOLUMES" />
+            </metadata>
         </titleBarMetadataList>
 
         <!-- searchHitMetadataList: defines metadata that is displayed in the search hitlist. The syntax is the same as in mainMetadataList -->
@@ -1010,6 +1015,11 @@
                 <!-- if you get a hit because of content in UGCTERMS display it-->
                 <metadata label="UGCTERMS">
                     <param type="field" key="UGCTERMS" />
+                </metadata>
+                
+                <!-- Number of volumes for anchors -->
+                <metadata label="numVolumes">
+                    <param type="field" key="NUMVOLUMES" />
                 </metadata>
             </template>
 
