@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- Goobi viewer configuration file -->
 <!-- It is important that the encoding of the file is UTF-8, otherwise there
-    might be problems with german umlauts in the rss feed section -->
+     might be problems with german umlauts in the rss feed section -->
 
 
 <config>
@@ -286,9 +286,9 @@
             </template>
         </docstructNavigation>
 
-        <!--zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
-            the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
-            to true to use tiled images if possible (only possible when type=openlayers) -->
+        <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
+             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
+             to true to use tiled images if possible (only possible when type=openlayers) -->
 
         <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
         <zoomImageView tileImage="false" footerHeight="50">
@@ -329,16 +329,16 @@
              hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
         <limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight>
 
-        <!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing-->
+        <!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing -->
         <rememberImageZoom>true</rememberImageZoom>
 
         <!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
         <rememberImageRotation>true</rememberImageRotation>
 
         <!-- URL patterns for external image urls which should be served via the contentServner
-        All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
-        Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
-        is requested by the viewer/contentServer and not the client -->
+             All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
+             Will not be delivered to the client directly, but rather embedded within a contentServer IIIF url, so the actual image
+             is requested by the viewer/contentServer and not the client -->
         <externalContent>
             <restrictedUrls>
                 <url>https?://external/restricted/.*</url>
@@ -468,7 +468,7 @@
 
             <!-- defaultSortField: Field used for initial sorting. Multiple semicolon-separated fields can be used for hierarchical sorting (e.g.
                  <defaultSortField>SORT_FIELD1;SORT_FIELD2;SORT_FIELD3</defaultSortField>).
-                 Default is empty.-->
+                 Default is empty. -->
             <defaultSortField></defaultSortField>
 
             <!-- Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema.  Multiple semicolon-separated fields can be used for
@@ -487,12 +487,13 @@
 
         <!-- drillDown: Contains a list of fields that are available for facetting in a search result list -->
         <drillDown>
+            <field>YEAR</field>
+            <geoField>WKT_COORDS</geoField>
             <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
-            <field initialElementNumber="3" sortOrder="numerical_desc">YEAR</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
         </drillDown>
 
@@ -526,10 +527,10 @@
             <!-- Enables the timeline search (default is true) -->
             <enabled>true</enabled>
 
-            <!-- TODO DOCUMENTATION-->
-            <!-- Moegliche Werte fuer Startjahr und Endjahr sind ganze Jahre (auch Minus) sowie fuer Startjahr weiter der Wert MIN
-                 und fuer Endjahr der Wert MAX. Bei MIN wird das kleinste verfuegbare Jahr aus dem solrIndex als Startwert genommen,
-                 bei MAX das groesste verfuegbare als Endjahr -->
+            <!-- Possible values for startyear and endyear are whole years (also minus)
+                 as well as the value MIN for startyear and the value MAX for endyear.
+                 For MIN, the smallest available year from the index is taken as the
+                 start value; for MAX, the largest available year is taken as the end year. -->
             <startyear>MIN</startyear>
             <endyear>MAX</endyear>
 
@@ -588,21 +589,21 @@
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
         <staticQuerySuffix>-BOOL_HIDE:true</staticQuerySuffix>
 
-            <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
-                 (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
-            <!-- Example query for also including periodical volumes:
-                 ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
-            <docstrctWhitelistFilterQuery>(ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*</docstrctWhitelistFilterQuery>
+        <!-- docstrctWhitelistFilterQuery: Filter query for including or excluding document types
+             (for collection listings, etc.). Default is "all records and anchors but no volumes". -->
+        <!-- Example query for also including periodical volumes:
+             ((ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*) (+DOCTYPE:DOCSTRCT +DOCSTRCT:PeriodicalVolume) -->
+        <docstrctWhitelistFilterQuery>(ISWORK:true ISANCHOR:true) -IDDOC_PARENT:*</docstrctWhitelistFilterQuery>
 
-            <!-- versioning -->
-            <versioning>
-                <!-- previousVersionIdentifierField' defines the Solr field that contains the identifier for the preceding version -->
-                <previousVersionIdentifierField>MD_PREVIOUS_VERSION</previousVersionIdentifierField>
-                <!-- nextVersionIdentifierField: defines the Solr field that contains the identifier for the succeeding version -->
-                <nextVersionIdentifierField>MD_NEXT_VERSION</nextVersionIdentifierField>
-                <!-- versionLabelField: Optional field containing the pre-definied version label; if no value found "PI (MD_YEARPUBLISH)" will be used -->
-                <versionLabelField>MD_VERSIONLABEL</versionLabelField>
-            </versioning>
+        <!-- versioning -->
+        <versioning>
+            <!-- previousVersionIdentifierField' defines the Solr field that contains the identifier for the preceding version -->
+            <previousVersionIdentifierField>MD_PREVIOUS_VERSION</previousVersionIdentifierField>
+            <!-- nextVersionIdentifierField: defines the Solr field that contains the identifier for the succeeding version -->
+            <nextVersionIdentifierField>MD_NEXT_VERSION</nextVersionIdentifierField>
+            <!-- versionLabelField: Optional field containing the pre-definied version label; if no value found "PI (MD_YEARPUBLISH)" will be used -->
+            <versionLabelField>MD_VERSIONLABEL</versionLabelField>
+        </versioning>
 
         <!-- Search export settings -->
         <export>
@@ -977,13 +978,20 @@
 
         <!-- titleBarMetadataList: defines metadata that is displayed above an image. The syntax is the same as in mainMetadataList -->
         <titleBarMetadataList>
-            <!--metadata label="MD_CREATOR" value="LINK_WIKIPEDIA">
+            <!--
+            <metadata label="MD_CREATOR" value="LINK_WIKIPEDIA">
                 <param type="field" key="MD_CREATOR" />
                 <param type="wikipersonfield" key="MD_CREATOR" />
-            </metadata-->
+            </metadata>
+            -->
+
+            <!-- Number of volumes for anchors -->
+            <metadata label="numVolumes">
+                <param type="field" key="NUMVOLUMES" />
+            </metadata>
         </titleBarMetadataList>
 
-        <!-- searchHitMetadataList: defines metadata that is displayed in the search hitlist. The syntax is the same as in mainMetadataList -->
+        <!-- searchHitMetadataList: defines metadata that is displayed in the search results. The syntax is the same as in mainMetadataList -->
         <searchHitMetadataList>
             <template name="_DEFAULT">
                 <metadata label="MD_CREATOR">
@@ -999,7 +1007,7 @@
                     <param type="field" key="MD_SHELFMARK" />
                 </metadata>
 
-                <!-- show LIDO fields in LIDO hits -->
+                <!-- LIDO events -->
                 <metadata label="EVENTTYPE">
                     <param type="translatedfield" key="EVENTTYPE" />
                 </metadata>
@@ -1007,9 +1015,14 @@
                     <param type="field" key="EVENTDATE" />
                  </metadata>
 
-                <!-- if you get a hit because of content in UGCTERMS display it-->
+                <!-- User generated content -->
                 <metadata label="UGCTERMS">
                     <param type="field" key="UGCTERMS" />
+                </metadata>
+
+                <!-- Number of volumes for anchors -->
+                <metadata label="numVolumes">
+                    <param type="field" key="NUMVOLUMES" />
                 </metadata>
             </template>
 
@@ -1077,11 +1090,11 @@
 
 		  <basexMetadataList>
             <!-- internal fields, not visible on the UI -->
-<!-- 	        <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false"/> -->
-<!-- 	        <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false"/> -->
-	        <!--  Identity Statement Area -->
+            <!-- <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false"/> -->
+	        <!-- Identity Statement Area -->
 	        <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
 	        <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
 	        <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
@@ -1091,7 +1104,7 @@
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
-<!-- 	        <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
+            <!-- <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" label="physdesc" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" label="physdescstructured" type="1" />
 	        <!-- Context Area -->
@@ -1228,7 +1241,7 @@
 
         <!-- Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to selec a license -->
         <licenses>
-            <!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/-->
+            <!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/ -->
             <license label="Creative Commons: CC0 1.0" icon="" url="https://creativecommons.org/publicdomain/zero/1.0/" />
             <license label="Creative Commons: Public Domain Mark" icon="" url="http://creativecommons.org/publicdomain/mark/1.0/" />
 
@@ -1430,7 +1443,7 @@
         <!-- sidebarBrowsingTerms: If true, the sidebar RSS widget it displayed. Default is true. -->
         <sidebarRssFeed display="true" />
 
-        <!-- Show or hide the widget including download links for record and page while viewing the object-->
+        <!-- Show or hide the widget including download links for record and page while viewing the object -->
         <sidebarWidgetUsage display="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
                 <downloadOptions>
@@ -1511,7 +1524,6 @@
         <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
         <displayTitlePURL>true</displayTitlePURL>
 
-        <!-- TODO DOCUMENTATION IN THE MANUAL-->
         <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
         <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
 
@@ -1620,10 +1632,8 @@
     <piwik>
         <!-- If true, piwik code will be insert into page. Default is false. -->
         <enabled>false</enabled>
-
         <!-- BaseURL of the piwik script without "http://"! -->
         <baseURL>example.com/</baseURL>
-
         <!-- Piwik site ID -->
         <siteID>1</siteID>
     </piwik>
@@ -1632,7 +1642,7 @@
     <sitemap>
         <!-- sitelinksField: Field for which the sitelinks page will list all available values (similar to term browsing) -->
         <sitelinksField>YEAR</sitelinksField>
-        <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs)-->
+        <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs) -->
         <sitelinksFilterQuery>ISWORK:true</sitelinksFilterQuery>
     </sitemap>
 
@@ -1653,8 +1663,8 @@
             <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
-                <!--field>MD_TITLE</field>
-                <field>MD_CREATOR</field-->
+                <!-- <field>MD_TITLE</field> -->
+                <!-- <field>MD_CREATOR</field> -->
                 <field>MD_*</field>
                 <field>DOCSTRCT_TOP</field>
             </metadataFields>
@@ -1756,7 +1766,7 @@
                 <logo>dfgviewer_intranda.jpg</logo>
             </provider>
 
-            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false.  -->
+            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false. -->
             <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
@@ -1781,7 +1791,7 @@
 
     <!-- Configuration for geo maps -->
     <maps>
-        <!-- Add a mapbox token here to use their maps -->
+        <!-- Add a mapbox token here to use their maps. User and styleID are optional for using individual styles -->
         <mapbox>
 	   		<token></token>
 	   		<user></user>
