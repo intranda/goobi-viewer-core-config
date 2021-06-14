@@ -1835,6 +1835,10 @@
             <key>BOOL_IMAGEAVAILABLE</key>
             <key>FULLTEXTAVAILABLE</key>
             <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
+            <!-- List all MD_ fields except the ones that contain CODICOLOGICAL,
+                 DATE_SEARCH, NAME_SEARCH, PLACE_SEARCH and ent with _UNTOKENIZED
+            <key regex="true">MD_(?!.*CODICOLOGICAL)(?!.*DATE_SEARCH)(?!.*NAME_SEARCH)(?!.*PLACE_SEARCH).*(?&lt;!_UNTOKENIZED)$</key>
+            -->
         </group>
         <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
             <key>DC</key>
