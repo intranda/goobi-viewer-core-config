@@ -1455,7 +1455,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citation display="true">
+            <citation display="true" recordDescText="" docstructDescText="" imageDescText="">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1476,6 +1476,8 @@
                         <param type="citeproc" dest="isbn" key="MD_ISBN"/>
                     </metadata>
                 </source>
+                <links>
+                </links>
             </citation>
         </sidebarWidgetUsage>
 
@@ -1570,16 +1572,16 @@
 
 
     <!-- If enabled="true", the user comments functionality is enabled. Default is false. -->
-    <userComments enabled="false">
-        <!-- conditionalQuery: optional restriction of the user comments function
+    <comments enabled="false">
+        <!-- condition: optional restriction of the user comments function
              (expressed as a Solr query) to records that match certain criteria. The criteria
              must apply to the root structure element of the record. -->
-        <conditionalQuery></conditionalQuery>
+        <condition></condition>
 
         <!-- notifationEmailAddress: E-mail addresses to which notifications for
              new comments will be sent. Can be added multiple times for multiple recipients. -->
         <!-- <notificationEmailAddress>recipient@example.com</notificationEmailAddress> -->
-    </userComments>
+    </comments>
 
 
     <cms>
