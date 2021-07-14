@@ -54,4 +54,4 @@ case $CONFIGSOURCE in
 esac
 
 echo "Starting application server..."
-catalina.sh run
+exec catalina.sh run
