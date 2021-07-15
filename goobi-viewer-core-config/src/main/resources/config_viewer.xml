@@ -1455,7 +1455,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citation display="true" recordIntroText="" docstructIntroText="" imageIntroText="">
+            <citationRecommendation display="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1476,6 +1476,9 @@
                         <param type="citeproc" dest="isbn" key="MD_ISBN"/>
                     </metadata>
                 </source>
+            </citationRecommendation>
+            <citationLinks display="true" recordIntroText="" docstructIntroText="" imageIntroText="">
+                <!-- links: Citation link configurations. -->
                 <links>
                     <link type="URL" for="record" label="LABEL_URN" field="URN" prefix="https://nbn-resolving.org/" />
                     <link type="URL" for="record" label="LABEL_HANDLE" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
@@ -1487,7 +1490,7 @@
                     <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
                     <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
                 </links>
-            </citation>
+            </citationLinks>
         </sidebarWidgetUsage>
 
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
