@@ -485,8 +485,8 @@
             </static>
         </sorting>
 
-        <!-- drillDown: Contains a list of fields that are available for facetting in a search result list -->
-        <drillDown>
+        <!-- facets: Contains a list of fields that are available for faceting in a search result list -->
+        <facets>
             <field>YEAR</field>
             <geoField>WKT_COORDS</geoField>
             <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
@@ -495,7 +495,7 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
-        </drillDown>
+        </facets>
 
         <advanced>
             <!-- Enables the advanced search (default is true) -->
