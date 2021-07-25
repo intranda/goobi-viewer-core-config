@@ -1455,6 +1455,20 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
+            <citationLinks display="true" recordIntroText="" docstructIntroText="" imageIntroText="">
+                <!-- links: Citation link configurations. -->
+                <links>
+                    <link type="URL" for="record" label="LABEL_URN" field="URN" prefix="https://nbn-resolving.org/" />
+                    <link type="URL" for="record" label="LABEL_HANDLE" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
+                    <link type="URL" for="record" label="LABEL_DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
+                    <link type="URL" for="record" label="LABEL_IAI-PURL" field="MD_PURL_IAI" />
+                    <link type="URL" for="image"  label="LABEL_DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="?page=" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="LABEL_URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page=" appendImageNumberToSuffix="true" />
+                    <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
+                </links>
+            </citationLinks>
             <citationRecommendation display="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
@@ -1477,20 +1491,6 @@
                     </metadata>
                 </source>
             </citationRecommendation>
-            <citationLinks display="true" recordIntroText="" docstructIntroText="" imageIntroText="">
-                <!-- links: Citation link configurations. -->
-                <links>
-                    <link type="URL" for="record" label="LABEL_URN" field="URN" prefix="https://nbn-resolving.org/" />
-                    <link type="URL" for="record" label="LABEL_HANDLE" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
-                    <link type="URL" for="record" label="LABEL_DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
-                    <link type="URL" for="record" label="LABEL_IAI-PURL" field="MD_PURL_IAI" />
-                    <link type="URL" for="image"  label="LABEL_DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="?page=" appendImageNumberToSuffix="true" />
-                    <link type="URL" for="image"  label="LABEL_URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page=" appendImageNumberToSuffix="true" />
-                    <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
-                    <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
-                    <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
-                </links>
-            </citationLinks>
         </sidebarWidgetUsage>
 
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
