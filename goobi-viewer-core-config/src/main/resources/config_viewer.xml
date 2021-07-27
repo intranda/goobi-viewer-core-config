@@ -80,10 +80,6 @@
         <!-- solr: URL to the Solr index core -->
         <solr>http://localhost:8983/solr/collection1</solr>
 
-        <!-- contentServer: relative path to contentServer from the Goobi viewer context -->
-        <contentServer external="false">/</contentServer>
-        <!-- <contentServer external="true">http://localhost:8081/ics/</contentServer> -->
-
         <!-- contentServerWrapper: absolute path to the content servlet -->
         <contentServerWrapper>http://localhost:8080/viewer/content/</contentServerWrapper>
 
