@@ -1452,7 +1452,21 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citation display="true" recordDescText="" docstructDescText="" imageDescText="">
+            <citationLinks display="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
+                <!-- links: Citation link configurations. -->
+                <links>
+                    <link type="URL" for="record" label="URN" field="URN" prefix="https://nbn-resolving.org/" />
+                    <link type="URL" for="record" label="Handle" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
+                    <link type="URL" for="record" label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
+                    <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
+                    <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="?page=" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page=" appendImageNumberToSuffix="true" />
+                    <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
+                </links>
+            </citationLinks>
+            <citationRecommendation display="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1473,9 +1487,7 @@
                         <param type="citeproc" dest="isbn" key="MD_ISBN"/>
                     </metadata>
                 </source>
-                <links>
-                </links>
-            </citation>
+            </citationRecommendation>
         </sidebarWidgetUsage>
 
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
