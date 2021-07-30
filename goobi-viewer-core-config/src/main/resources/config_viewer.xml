@@ -1439,7 +1439,7 @@
         <!-- Show or hide the widget including download links for record and page while viewing the object -->
         <sidebarWidgetUsage display="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
-                <downloadOptions>
+                <downloadOptions display="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
                      The format can take the values supported by the ContentServer, for example "pdf", "tif",
                      "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
