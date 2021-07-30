@@ -180,7 +180,9 @@
         <smtpSenderAddress>do-not-reply@viewer.example.org</smtpSenderAddress>
         <smtpSenderName>Goobi viewer</smtpSenderName>
         <smtpSecurity>NONE</smtpSecurity>
-        <feedbackEmailAddress>feedback@example.com</feedbackEmailAddress>
+        <feedbackEmailAddressList>
+            <address label="Contact" default="true"feedback@example.org</address>
+        </feedbackEmailAddress>
     </user>
 
 
