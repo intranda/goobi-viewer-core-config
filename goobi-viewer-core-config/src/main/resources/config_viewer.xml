@@ -181,8 +181,8 @@
         <smtpSenderName>Goobi viewer</smtpSenderName>
         <smtpSecurity>NONE</smtpSecurity>
         <feedbackEmailAddressList>
-            <address label="Contact" default="true"feedback@example.org</address>
-        </feedbackEmailAddress>
+            <address label="Contact" default="true">feedback@example.org</address>
+        </feedbackEmailAddressList>
     </user>
 
 
