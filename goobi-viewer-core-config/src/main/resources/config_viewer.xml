@@ -1460,6 +1460,7 @@
                     <link type="URL" for="record" label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
                     <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="?page=" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="URN" field="IMAGEURN" prefix="https://nbn-resolving.org/" />
                     <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page="
                         topstructValueFallback="true" appendImageNumberToSuffix="true" />
                     <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
