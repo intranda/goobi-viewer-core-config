@@ -45,7 +45,7 @@ case $CONFIGSOURCE in
     fi
     
     echo "Copying configuration from local folder"
-    [ -d "$CONFIG_FOLDER"/config ] && cp -v "$CONFIG_FOLDER"/config/* /opt/digiverso/viewer/config/ 
+    [ -d "$CONFIG_FOLDER" ] && cp -av "$CONFIG_FOLDER"/* /opt/digiverso/viewer/config/ 
     ;;
 
   *)
@@ -54,4 +54,4 @@ case $CONFIGSOURCE in
 esac
 
 echo "Starting application server..."
-catalina.sh run
+exec catalina.sh run
