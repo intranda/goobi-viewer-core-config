@@ -1870,6 +1870,12 @@
             <key regex="true">user_retrieveAccountConfirmationEmail.*</key>
             <key regex="true">user_retrieveAccountNewPasswordEmail.*</key>
         </group>
+        <group type="LOCAL_STRINGS" name="translation__group_name_customer" description="translation__group_description_customer">
+        
+            <!-- A group of the type LOCAL_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
+                it matches all message keys based in the given regular expression -->
+            <key regex="true">customer__.*</key>
+        </group>
     </translations>
 
 </config>
