@@ -80,10 +80,6 @@
         <!-- solr: URL to the Solr index core -->
         <solr>http://localhost:8983/solr/collection1</solr>
 
-        <!-- contentServer: relative path to contentServer from the Goobi viewer context -->
-        <contentServer external="false">/</contentServer>
-        <!-- <contentServer external="true">http://localhost:8081/ics/</contentServer> -->
-
         <!-- contentServerWrapper: absolute path to the content servlet -->
         <contentServerWrapper>http://localhost:8080/viewer/content/</contentServerWrapper>
 
@@ -108,9 +104,9 @@
         <connectorVersion>http://localhost:8080/M2M/oai/tools?action=getVersion</connectorVersion>
 
         <!--
-		<basex>
-	        <url>https://basex.example.org/basex/</url>
-	        <defaultDatabase>Example - EAD_FILENAME.XML</defaultDatabase>
+        <basex>
+            <url>https://basex.example.org/basex/</url>
+            <defaultDatabase>Example - EAD_FILENAME.XML</defaultDatabase>
         </basex>
         -->
     </urls>
@@ -184,7 +180,9 @@
         <smtpSenderAddress>do-not-reply@viewer.example.org</smtpSenderAddress>
         <smtpSenderName>Goobi viewer</smtpSenderName>
         <smtpSecurity>NONE</smtpSecurity>
-        <feedbackEmailAddress>feedback@example.com</feedbackEmailAddress>
+        <feedbackEmailAddressList>
+            <address label="Contact" default="true">feedback@example.org</address>
+        </feedbackEmailAddressList>
     </user>
 
 
@@ -199,7 +197,7 @@
             <!-- compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
             <compressionEnabled>true</compressionEnabled>
             <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used
-                to enable Solr 4 compatibility. Default is false. -->
+                 to enable Solr 4 compatibility. Default is false. -->
             <backwardsCompatible>false</backwardsCompatible>
         </solr>
     </performance>
@@ -370,8 +368,9 @@
         <forceJpegConversion>false</forceJpegConversion>
 
         <!-- watermarkTextConfiguration: Watermark text source. The order of <text> elements is the order in which each source will be checked. "URN" and "PURL"
-             are reserved keywords for URN and PURL, items starting with "SOLR:" must be followed by an existing Solr field name, all other text will be written as is. -->
-        <watermarkTextConfiguration>
+             are reserved keywords for URN and PURL, items starting with "SOLR:" must be followed by an existing Solr field name, all other text will be written
+             as is. Only used when enabled="true" (default is true). -->
+        <watermarkTextConfiguration enabled="true">
             <text>solr:MD_ACCESSCONDITIONCOPYRIGHT</text>
             <text>urn</text>
             <text>purl</text>
@@ -485,8 +484,8 @@
             </static>
         </sorting>
 
-        <!-- drillDown: Contains a list of fields that are available for facetting in a search result list -->
-        <drillDown>
+        <!-- facets: Contains a list of fields that are available for faceting in a search result list -->
+        <facets>
             <field>YEAR</field>
             <geoField>WKT_COORDS</geoField>
             <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
@@ -495,7 +494,7 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
-        </drillDown>
+        </facets>
 
         <advanced>
             <!-- Enables the advanced search (default is true) -->
@@ -926,6 +925,7 @@
                 <metadata label="MD_RISMSEAL">
                     <param type="field" key="MD_RISMSEAL" />
                 </metadata>
+                <!--
                 <metadata label="label__citation_style_apa-6th-edition" value="" citationTemplate="apa-6th-edition">
                     <param type="citeproc" dest="title" key="MD_TITLE"/>
                     <param type="citeproc" dest="author" key="MD_AUTHOR"/>
@@ -934,6 +934,7 @@
                     <param type="citeproc" dest="issued" key="MD_YEARPUBLISH"/>
                     <param type="citeproc" dest="isbn" key="MD_ISBN"/>
                 </metadata>
+                -->
                 <!--
                 <metadata label="DATECREATED">
                     <param type="millisfield" key="DATECREATED" />
@@ -1094,7 +1095,7 @@
 	        <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
 	        <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
 	        <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="unitid" type="1" />
+	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="MD_SHELFMARK" type="1" />
 	        <metadata xpath="./ead:did/ead:unitid[@type='Vorl. Nr.']" xpathType="element" label="Number" type="1"  />
 	        <metadata xpath="./ead:did/ead:unitid[@type='Altsignatur']" xpathType="element" label="Shelfmark" type="1" />
 	        <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
@@ -1442,7 +1443,7 @@
         <!-- Show or hide the widget including download links for record and page while viewing the object -->
         <sidebarWidgetUsage display="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
-                <downloadOptions>
+                <downloadOptions display="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
                      The format can take the values supported by the ContentServer, for example "pdf", "tif",
                      "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
@@ -1455,7 +1456,23 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citation display="true">
+            <citationLinks display="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
+                <!-- links: Citation link configurations. -->
+                <links>
+                    <link type="URL" for="record" label="URN" field="URN" prefix="https://nbn-resolving.org/" />
+                    <link type="URL" for="record" label="Handle" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
+                    <link type="URL" for="record" label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
+                    <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
+                    <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="#?page=" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="URN" field="IMAGEURN" prefix="https://nbn-resolving.org/" />
+                    <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page="
+                        topstructValueFallback="true" appendImageNumberToSuffix="true" />
+                    <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
+                    <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
+                </links>
+            </citationLinks>
+            <citationRecommendation display="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1476,7 +1493,7 @@
                         <param type="citeproc" dest="isbn" key="MD_ISBN"/>
                     </metadata>
                 </source>
-            </citation>
+            </citationRecommendation>
         </sidebarWidgetUsage>
 
 		<!-- sidebarWidgetDownloads: If true, the download widget within a records
@@ -1569,19 +1586,17 @@
     </bookmarks>
 
 
-    <userComments>
-        <!-- If true, the user comments functionality is enabled. Default ist true. -->
-        <enabled>false</enabled>
-
-        <!-- conditionalQuery: optional restriction of the user comments function
+    <!-- If enabled="true", the user comments functionality is enabled. Default is false. -->
+    <comments enabled="false">
+        <!-- condition: optional restriction of the user comments function
              (expressed as a Solr query) to records that match certain criteria. The criteria
              must apply to the root structure element of the record. -->
-        <conditionalQuery></conditionalQuery>
+        <condition></condition>
 
         <!-- notifationEmailAddress: E-mail addresses to which notifications for
              new comments will be sent. Can be added multiple times for multiple recipients. -->
         <!-- <notificationEmailAddress>recipient@example.com</notificationEmailAddress> -->
-    </userComments>
+    </comments>
 
 
     <cms>
@@ -1856,6 +1871,12 @@
             <key regex="true">user_activationEmail.*</key>
             <key regex="true">user_retrieveAccountConfirmationEmail.*</key>
             <key regex="true">user_retrieveAccountNewPasswordEmail.*</key>
+        </group>
+        <group type="LOCAL_STRINGS" name="translation__group_name_customer" description="translation__group_description_customer">
+        
+            <!-- A group of the type LOCAL_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
+                it matches all message keys based in the given regular expression -->
+            <key regex="true">customer__.*</key>
         </group>
     </translations>
 
