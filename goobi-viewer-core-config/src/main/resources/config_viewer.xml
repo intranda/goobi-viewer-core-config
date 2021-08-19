@@ -1362,7 +1362,7 @@
              the original request, but will rather fetch the second URL redirect is marginally
              slower than a forward, since it requires two browser requests, not one objects
              placed in the original request scope are not available to the second request -->
-        <doRedirectInsteadofForward>false</doRedirectInsteadofForward>
+        <doRedirectInsteadofForward>true</doRedirectInsteadofForward>
     </urnresolver>
 
 
