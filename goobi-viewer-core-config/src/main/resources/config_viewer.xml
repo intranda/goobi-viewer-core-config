@@ -518,10 +518,8 @@
             </searchFields>
         </advanced>
 
-        <timeline>
-            <!-- Enables the timeline search (default is true) -->
-            <enabled>true</enabled>
-
+        <!-- @enabled: Enables the timeline search (default is true) -->
+        <timeline enabled="true">
             <!-- Possible values for startyear and endyear are whole years (also minus)
                  as well as the value MIN for startyear and the value MAX for endyear.
                  For MIN, the smallest available year from the index is taken as the
