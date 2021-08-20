@@ -264,7 +264,6 @@
     <viewer>
         <!-- pageBrowse/@enabled: if true, page browsing through the record in different steps is allowed. Default is false. -->
         <pageBrowse enabled="false">
-            <enabled>false</enabled>
             <pageBrowseStep>0</pageBrowseStep>
             <pageBrowseStep>5</pageBrowseStep>
             <pageBrowseStep>10</pageBrowseStep>
@@ -532,7 +531,7 @@
             <hits>36</hits>
         </timeline>
 
-        <!-- Enables the calendar search (default is true) -->
+        <!-- @enabled: Enables the calendar search (default is true) -->
         <calendar enabled="true" />
 
         <!-- searchSavingEnabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
@@ -1356,50 +1355,35 @@
 
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
-        <!-- page: if false, the image view is hidden -->
-        <page>
-            <visible>true</visible>
-        </page>
+        <!-- @enabled: if false, the image view is hidden -->
+        <page enabled="true" />
 
-        <!-- toc: if false, the TOC link is hidden (This is the link to the TOC page in the work menu, not the sidebar TOC component!) -->
-        <toc>
-            <visible>true</visible>
-        </toc>
+        <!-- @enabled: if false, the TOC link is hidden (This is the link to the TOC page in the work menu, not the sidebar TOC component!) -->
+        <toc enabled="true" />
 
-        <!-- thumbs: if false, the thumbnail view is hidden -->
-        <thumbs>
-            <visible>true</visible>
-        </thumbs>
+        <!-- @enabled: if false, the thumbnail view is hidden -->
+        <thumbs enabled="true" />
 
-        <!-- searchInItem: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
-        <searchInItem>
-            <visible>true</visible>
-        </searchInItem>
+        <!-- @enabled: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
+        <searchInItem enabled="true" />
 
-        <metadata>
-            <!-- metadata: if false, the bibliographic data view is hidden -->
-            <visible>true</visible>
+        <!-- @enabled: if false, the bibliographic data view is hidden -->
+        <metadata enabled="true">
             <!-- showEventMetadata: if false, the event metadata of LIDO records is hidden (default is true) -->
             <showEventMetadata>true</showEventMetadata>
             <!-- showRecordLabelIfNoOtherViews: If enabled and metadata is the only view available, display the record label instead. Default is false. -->
             <showRecordLabelIfNoOtherViews>true</showRecordLabelIfNoOtherViews>
         </metadata>
 
-        <!-- fulltext: if false, the fulltext view is hidden -->
-        <fulltext>
-            <visible>true</visible>
-        </fulltext>
+        <!-- @enabled: if false, the fulltext view is hidden -->
+        <fulltext enabled="true" />
 
-        <!-- opac: if true, an additional link to the catalogue is displayed in the views section -->
-        <opac>
-            <visible>false</visible>
-        </opac>
+        <!-- @enabled: if true, an additional link to the catalogue is displayed in the views section -->
+        <opac enabled="true" />
 
         <!-- sidebarToc: configuration of the sidebar TOC component -->
-        <sidebarToc>
-            <!-- visible: if false, the sidebar toc is hidden -->
-            <visible>true</visible>
-
+        <!-- @enabled: if false, the sidebar toc is hidden -->
+        <sidebarToc enabled="true">
             <!-- visibleInFullscreen: If false, the sidebar TOC element won't be visible in the full-screen sidebar accordion -->
             <visibleInFullscreen>true</visibleInFullscreen>
 
@@ -1422,14 +1406,14 @@
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
 
-        <!-- sidebarBrowsingTerms: If true, the sidebar term browsing widget it displayed. Default is true. -->
-        <sidebarBrowsingTerms display="true" />
+        <!-- @enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <sidebarBrowsingTerms enabled="true" />
 
-        <!-- sidebarBrowsingTerms: If true, the sidebar RSS widget it displayed. Default is true. -->
-        <sidebarRssFeed display="true" />
+        <!-- @enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <sidebarRssFeed enabled="true" />
 
-        <!-- Show or hide the widget including download links for record and page while viewing the object -->
-        <sidebarWidgetUsage display="true" introductionText="MASTERVALUE_LICENSETEXT">
+        <!-- @enabled: Show or hide the widget including download links for record and page while viewing the object -->
+        <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
                 <downloadOptions display="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
@@ -1484,11 +1468,8 @@
             </citationRecommendation>
         </sidebarWidgetUsage>
 
-		<!-- sidebarWidgetDownloads: If true, the download widget within a records
-			 view for additional files from the source directory is displayed. Default
-			 is true. -->
-		<sidebarWidgetDownloads visible="true" introductionText="">
-
+		<!-- @enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
+		<sidebarWidgetDownloads enabled="true" introductionText="">
 			<!-- hideFileRegex: If a regular expression is defined, files matching
 				 it are hidden from the widget display. The download is still possible. -->
 			<hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
