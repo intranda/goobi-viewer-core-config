@@ -1594,10 +1594,7 @@
 
 
     <cms>
-        <!-- enabled: enables cms functionality globally (default is false) -->
-        <enabled>true</enabled>
-
-         <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
+        <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
         <useCustomNavBar>true</useCustomNavBar>
 
         <!-- mediaFolder: contains media files uploaded for CMS -->
