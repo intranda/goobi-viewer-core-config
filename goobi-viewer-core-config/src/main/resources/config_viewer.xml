@@ -493,11 +493,9 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
         </facets>
-
-        <advanced>
-            <!-- Enables the advanced search (default is true) -->
-            <enabled>true</enabled>
-
+        
+        <!-- @enabled: Enables the advanced search (default is true) -->
+        <advanced enabled="true">
             <!-- advancedSearchDefaultItemNumber: number of advanced search items to be rendered by default. Default is 2. -->
             <defaultItemNumber>2</defaultItemNumber>
 
