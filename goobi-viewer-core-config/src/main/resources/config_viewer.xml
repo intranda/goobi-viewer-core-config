@@ -1360,7 +1360,7 @@
              the original request, but will rather fetch the second URL redirect is marginally
              slower than a forward, since it requires two browser requests, not one objects
              placed in the original request scope are not available to the second request -->
-        <doRedirectInsteadofForward>false</doRedirectInsteadofForward>
+        <doRedirectInsteadofForward>true</doRedirectInsteadofForward>
     </urnresolver>
 
 
@@ -1843,6 +1843,7 @@
             <key>ACCESSCONDITION</key>
             <key>BOOL_IMAGEAVAILABLE</key>
             <key>FULLTEXTAVAILABLE</key>
+            <key regex="true">SORT.*</key>
             <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
             <!-- List all MD_ fields except the ones that contain CODICOLOGICAL,
                  DATE_SEARCH, NAME_SEARCH, PLACE_SEARCH and ent with _UNTOKENIZED
