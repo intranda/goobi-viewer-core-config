@@ -603,9 +603,8 @@
 
         <!-- Search export settings -->
         <export>
-            <excel>
-                <!-- enabled: If true, Excel (.xlsx) export is enabled (default is false). -->
-                <enabled>false</enabled>
+            <!-- @enabled: If true, Excel (.xlsx) export is enabled (default is false). -->
+            <excel enabled="false">
                 <!-- field: Solr fields to put into the export sheet. One element per field. -->
                 <field>PI_TOPSTRUCT</field>
                 <field>LABEL</field>
