@@ -538,10 +538,8 @@
             <hits>36</hits>
         </timeline>
 
-        <calendar>
-            <!-- Enables the calendar search (default is true) -->
-            <enabled>true</enabled>
-        </calendar>
+        <!-- Enables the calendar search (default is true) -->
+        <calendar enabled="true" />
 
         <!-- searchSavingEnabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
         <searchSavingEnabled>true</searchSavingEnabled>
