@@ -1382,7 +1382,7 @@
         <fulltext enabled="true" />
 
         <!-- @enabled: if true, an additional link to the catalogue is displayed in the views section -->
-        <opac enabled="true" />
+        <opac enabled="false" />
 
         <!-- sidebarToc: configuration of the sidebar TOC component -->
         <!-- @enabled: if false, the sidebar toc is hidden -->
