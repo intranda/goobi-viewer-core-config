@@ -23,6 +23,9 @@
     <!-- indexedDenkxwebFolder: contains indexed DenkXweb files (used by the DenkXweb resolver) -->
     <indexedDenkxwebFolder>indexed_denkxweb</indexedDenkxwebFolder>
 
+    <!--indexedDublinCore: contains indexed dublin core files -->
+    <indexedDublinCore>indexed_dublincore</indexedDublinCore>
+
     <!-- mediaFolder: contains media files that are displayed in the Goobi viewer (images, audio, video) -->
     <mediaFolder>media</mediaFolder>
 
