@@ -1534,6 +1534,10 @@
         <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
              and the sidebar widget for annotations is hidden. Default is false -->
 		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
+		
+		<!-- displayAnnotationTextInImage: if true, the annotation text is displayed in a box in the image next to the border that marks the annotation. If false the text box is hidden. Default is true -->
+        <displayAnnotationTextInImage>true</displayAnnotationTextInImage>
+        
     </webGuiDisplay>
 
 
