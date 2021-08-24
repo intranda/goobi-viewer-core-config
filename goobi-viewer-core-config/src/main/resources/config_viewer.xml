@@ -23,6 +23,9 @@
     <!-- indexedDenkxwebFolder: contains indexed DenkXweb files (used by the DenkXweb resolver) -->
     <indexedDenkxwebFolder>indexed_denkxweb</indexedDenkxwebFolder>
 
+    <!--indexedDublinCore: contains indexed dublin core files -->
+    <indexedDublinCore>indexed_dublincore</indexedDublinCore>
+
     <!-- mediaFolder: contains media files that are displayed in the Goobi viewer (images, audio, video) -->
     <mediaFolder>media</mediaFolder>
 
@@ -1379,7 +1382,7 @@
         <fulltext enabled="true" />
 
         <!-- @enabled: if true, an additional link to the catalogue is displayed in the views section -->
-        <opac enabled="true" />
+        <opac enabled="false" />
 
         <!-- sidebarToc: configuration of the sidebar TOC component -->
         <!-- @enabled: if false, the sidebar toc is hidden -->
@@ -1531,6 +1534,10 @@
         <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
              and the sidebar widget for annotations is hidden. Default is false -->
 		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
+		
+		<!-- displayAnnotationTextInImage: if true, the annotation text is displayed in a box in the image next to the border that marks the annotation. If false the text box is hidden. Default is true -->
+        <displayAnnotationTextInImage>true</displayAnnotationTextInImage>
+        
     </webGuiDisplay>
 
 
