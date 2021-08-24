@@ -214,7 +214,7 @@
 
 
     <!-- if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation -->
-    <reCaptcha show="false">
+    <reCaptcha enabled="false">
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
@@ -1415,7 +1415,7 @@
         <!-- @enabled: Show or hide the widget including download links for record and page while viewing the object -->
         <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
-                <downloadOptions display="true">
+                <downloadOptions enabled="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
                      The format can take the values supported by the ContentServer, for example "pdf", "tif",
                      "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
@@ -1428,7 +1428,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citationLinks display="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
+            <citationLinks enabled="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
                 <!-- links: Citation link configurations. -->
                 <links>
                     <link type="URL" for="record" label="URN" field="URN" prefix="https://nbn-resolving.org/" />
@@ -1444,7 +1444,7 @@
                     <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
                 </links>
             </citationLinks>
-            <citationRecommendation display="true">
+            <citationRecommendation enabled="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1549,10 +1549,8 @@
     </rss>
 
 
-    <bookmarks>
-        <!-- bookmarksEnabled: if false, no links to bookmarks are displayed (default is true) -->
-        <bookmarksEnabled>true</bookmarksEnabled>
-    </bookmarks>
+    <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed (default is true) -->
+    <bookmarks enabled="true" />
 
 
     <!-- If enabled="true", the user comments functionality is enabled. Default is false. -->
@@ -1660,16 +1658,16 @@
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
 			<rendering>
-				<viewer visible="true">
+				<viewer enabled="true">
                     <label>Goobi viewer</label>
 				</viewer>
-				<pdf visible="true">
+				<pdf enabled="true">
                     <label>PDF</label>
 				</pdf>
-				<plaintext visible="true">
+				<plaintext enabled="true">
                     <label>Fulltext</label>
 				</plaintext>
-				<alto visible="true">
+				<alto enabled="true">
                     <label>ALTO</label>
 				</alto>
 			</rendering>
