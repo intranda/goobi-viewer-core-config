@@ -166,10 +166,10 @@
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
              Possible attributes for providers are: type, show, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
             <authenticationProviders>
-                <provider type="local" show="true" name="Goobi viewer"/>
-                <provider type="openId" show="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-                <provider type="openId" label="CHANGEME" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-                <provider type="userPassword" label="CHANGEME" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+                <provider type="local" enabled="true" name="Goobi viewer"/>
+                <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
+                <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+                <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
             </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
@@ -1758,7 +1758,7 @@
 
         <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
              referencing the @CORSBinding annotation -->
-        <cors use="false">*</cors>
+        <cors enabled="false">*</cors>
     </webapi>
 
 
