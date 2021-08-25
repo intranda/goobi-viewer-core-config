@@ -116,9 +116,9 @@
 
 
     <user>
-        <!-- userRegistrationEnabled: If true, the links for user registration / password retrieval are shown. Default is true. -->
-        <userRegistrationEnabled>true</userRegistrationEnabled>
-
+        <!-- registration/@enabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
+        <registration enabled="true" />
+        
         <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
              It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
         <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
@@ -329,11 +329,11 @@
              hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
         <limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight>
 
-        <!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing -->
-        <rememberImageZoom>true</rememberImageZoom>
+        <!-- rememberImageZoom/@enabled: if true, the image zoom is saved in the user session and persistent during browsing -->
+        <rememberImageZoom enabled="false" />
 
-        <!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
-        <rememberImageRotation>true</rememberImageRotation>
+        <!-- rememberImageRotation/@enabled: if true, the image rotation is saved in the user session and persistent during browsing -->
+        <rememberImageRotation enabled="false" />
 
         <!-- URL patterns for external image urls which should be served via the contentServner
              All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
@@ -537,8 +537,8 @@
         <!-- @enabled: Enables the calendar search (default is true) -->
         <calendar enabled="true" />
 
-        <!-- searchSavingEnabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
-        <searchSavingEnabled>true</searchSavingEnabled>
+        <!-- searchSaving/@enabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
+        <searchSaving enabled="true" />
 
         <!-- boostTopLevelDocstructs: If true, anchors receive a factor 10 boost,
              volumes and standalone records a factor 5 boost. This results in anchors
@@ -1260,12 +1260,12 @@
 
 
     <toc>
-        <!-- multiVolumeThumbnailsWidth|Height: size settings for multivolume TOC thumbnails -->
-        <multiVolumeThumbnailsWidth>50</multiVolumeThumbnailsWidth>
-        <multiVolumeThumbnailsHeight>60</multiVolumeThumbnailsHeight>
-
-        <!-- Whether to display thumbnails of contained works in anchor toc. Default is "true" -->
-        <multiVolumeThumbnailsEnabled>true</multiVolumeThumbnailsEnabled>
+        <!-- multiVolumeThumbnails/@enabled: Whether to display thumbnails of contained works in anchor toc. Default is "true" -->
+        <multiVolumeThumbnails enabled="true">
+            <!-- width|height: size settings for multivolume TOC  thumbnails -->
+            <width>50</width>
+            <height>60</height>
+        </multiVolumeThumbnails>
 
         <!-- volumeSortFields: Solr fields by which the volumes in an anchor TOC
              shall be sorted. Custom templates can be defined for anchor docstruc types,
