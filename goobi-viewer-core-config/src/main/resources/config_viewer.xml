@@ -24,7 +24,7 @@
     <indexedDenkxwebFolder>indexed_denkxweb</indexedDenkxwebFolder>
 
     <!--indexedDublinCore: contains indexed dublin core files -->
-    <indexedDublinCore>indexed_dublincore</indexedDublinCore>
+    <indexedDublinCoreFolder>indexed_dublincore</indexedDublinCoreFolder>
 
     <!-- mediaFolder: contains media files that are displayed in the Goobi viewer (images, audio, video) -->
     <mediaFolder>media</mediaFolder>
@@ -116,9 +116,9 @@
 
 
     <user>
-        <!-- userRegistrationEnabled: If true, the links for user registration / password retrieval are shown. Default is true. -->
-        <userRegistrationEnabled>true</userRegistrationEnabled>
-
+        <!-- registration/@enabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
+        <registration enabled="true" />
+        
         <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
              It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
         <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
@@ -166,10 +166,10 @@
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
              Possible attributes for providers are: type, show, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
             <authenticationProviders>
-                <provider type="local" show="true" name="Goobi viewer"/>
-                <provider type="openId" show="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-                <provider type="openId" label="CHANGEME" show="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-                <provider type="userPassword" label="CHANGEME" show="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+                <provider type="local" enabled="true" name="Goobi viewer"/>
+                <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
+                <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+                <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
             </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
@@ -217,7 +217,7 @@
 
 
     <!-- if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation -->
-    <reCaptcha show="false">
+    <reCaptcha enabled="false">
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
@@ -329,11 +329,11 @@
              hight of 1200px. Default is true with a lowerRatioThreshold of 0,3 and an upperRatioThreshold of 3.0 -->
         <limitImageHeight lowerRatioThreshold="0.3" upperRatioThreshold="3.0">true</limitImageHeight>
 
-        <!-- rememberImageZoom: if true, the image zoom is saved in the user session and persistent during browsing -->
-        <rememberImageZoom>true</rememberImageZoom>
+        <!-- rememberImageZoom/@enabled: if true, the image zoom is saved in the user session and persistent during browsing -->
+        <rememberImageZoom enabled="false" />
 
-        <!-- rememberImageRotation: if true, the image rotation is saved in the user session and persistent during browsing -->
-        <rememberImageRotation>true</rememberImageRotation>
+        <!-- rememberImageRotation/@enabled: if true, the image rotation is saved in the user session and persistent during browsing -->
+        <rememberImageRotation enabled="false" />
 
         <!-- URL patterns for external image urls which should be served via the contentServner
              All image urls (= page filenames in SOLR) which match one of the externalContent.restrictedUrls.urls
@@ -537,8 +537,8 @@
         <!-- @enabled: Enables the calendar search (default is true) -->
         <calendar enabled="true" />
 
-        <!-- searchSavingEnabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
-        <searchSavingEnabled>true</searchSavingEnabled>
+        <!-- searchSaving/@enabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
+        <searchSaving enabled="true" />
 
         <!-- boostTopLevelDocstructs: If true, anchors receive a factor 10 boost,
              volumes and standalone records a factor 5 boost. This results in anchors
@@ -1260,12 +1260,12 @@
 
 
     <toc>
-        <!-- multiVolumeThumbnailsWidth|Height: size settings for multivolume TOC thumbnails -->
-        <multiVolumeThumbnailsWidth>50</multiVolumeThumbnailsWidth>
-        <multiVolumeThumbnailsHeight>60</multiVolumeThumbnailsHeight>
-
-        <!-- Whether to display thumbnails of contained works in anchor toc. Default is "true" -->
-        <multiVolumeThumbnailsEnabled>true</multiVolumeThumbnailsEnabled>
+        <!-- multiVolumeThumbnails/@enabled: Whether to display thumbnails of contained works in anchor toc. Default is "true" -->
+        <multiVolumeThumbnails enabled="true">
+            <!-- width|height: size settings for multivolume TOC  thumbnails -->
+            <width>50</width>
+            <height>60</height>
+        </multiVolumeThumbnails>
 
         <!-- volumeSortFields: Solr fields by which the volumes in an anchor TOC
              shall be sorted. Custom templates can be defined for anchor docstruc types,
@@ -1418,7 +1418,7 @@
         <!-- @enabled: Show or hide the widget including download links for record and page while viewing the object -->
         <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
-                <downloadOptions display="true">
+                <downloadOptions enabled="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
                      The format can take the values supported by the ContentServer, for example "pdf", "tif",
                      "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
@@ -1431,7 +1431,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citationLinks display="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
+            <citationLinks enabled="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
                 <!-- links: Citation link configurations. -->
                 <links>
                     <link type="URL" for="record" label="URN" field="URN" prefix="https://nbn-resolving.org/" />
@@ -1447,7 +1447,7 @@
                     <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
                 </links>
             </citationLinks>
-            <citationRecommendation display="true">
+            <citationRecommendation enabled="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
                      Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
                 <styles>
@@ -1556,10 +1556,8 @@
     </rss>
 
 
-    <bookmarks>
-        <!-- bookmarksEnabled: if false, no links to bookmarks are displayed (default is true) -->
-        <bookmarksEnabled>true</bookmarksEnabled>
-    </bookmarks>
+    <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed (default is true) -->
+    <bookmarks enabled="true" />
 
 
     <!-- If enabled="true", the user comments functionality is enabled. Default is false. -->
@@ -1667,16 +1665,16 @@
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
 			<rendering>
-				<viewer visible="true">
+				<viewer enabled="true">
                     <label>Goobi viewer</label>
 				</viewer>
-				<pdf visible="true">
+				<pdf enabled="true">
                     <label>PDF</label>
 				</pdf>
-				<plaintext visible="true">
+				<plaintext enabled="true">
                     <label>Fulltext</label>
 				</plaintext>
-				<alto visible="true">
+				<alto enabled="true">
                     <label>ALTO</label>
 				</alto>
 			</rendering>
@@ -1760,7 +1758,7 @@
 
         <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
              referencing the @CORSBinding annotation -->
-        <cors use="false">*</cors>
+        <cors enabled="false">*</cors>
     </webapi>
 
 
