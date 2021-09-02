@@ -487,7 +487,7 @@
         <!-- facets: Contains a list of fields that are available for faceting in a search result list -->
         <facets>
             <field>YEAR</field>
-            <geoField>WKT_COORDS</geoField>
+            <geoField displayResultsOnMap="true">WKT_COORDS</geoField>
             <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
@@ -1777,6 +1777,8 @@
 	   		<token></token>
 	   		<user></user>
 	   		<styleId></styleId>
+	   		<!-- Display an input field to search for places within a map -->
+	   		<addressSearch enabled="false"></addressSearch>
     	</mapbox>
 
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
