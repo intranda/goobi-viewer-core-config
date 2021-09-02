@@ -70,13 +70,13 @@
 
     <urls>
         <metadata>
-            <!-- Path to METS-file via OAI for linking in bibliographic data -->
+            <!-- mets: Path to METS-file via OAI for linking in bibliographic data -->
             <mets>http://localhost:8080/viewer/oai?verb=GetRecord&amp;metadataPrefix=mets&amp;identifier=</mets>
-            <!-- Path to MarcXML-record via OAI for linking in bibliographic data -->
+            <!-- marc: Path to MarcXML-record via OAI for linking in bibliographic data -->
             <marc>http://localhost:8080/viewer/oai?verb=GetRecord&amp;metadataPrefix=marcxml&amp;identifier=</marc>
-            <!-- Path to DublinCore record via OAI for linking in bibliographic data -->
+            <!-- dc: Path to DublinCore record via OAI for linking in bibliographic data -->
             <dc>http://localhost:8080/viewer/oai?verb=GetRecord&amp;metadataPrefix=oai_dc&amp;identifier=</dc>
-            <!-- Path to ESE record via OAI for linking in bibliographic data -->
+            <!-- ese: Path to ESE record via OAI for linking in bibliographic data -->
             <ese>http://localhost:8080/viewer/oai?verb=GetRecord&amp;metadataPrefix=europeana&amp;identifier=</ese>
         </metadata>
 
@@ -116,9 +116,9 @@
 
 
     <user>
-        <!-- registration/@enabled: If false, widgets for user registration / password retrieval are hidden. Default is true. -->
+        <!-- registration/@enabled: If true, widgets for user registration / password retrieval are displayed. Default is true. -->
         <registration enabled="true" />
-        
+
         <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
              It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
         <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
@@ -164,7 +164,7 @@
         </securityQuestions>
 
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
-             Possible attributes for providers are: type, show, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
+             Possible attributes for providers are: type, enabled, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
             <authenticationProviders>
                 <provider type="local" enabled="true" name="Goobi viewer"/>
                 <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
@@ -190,7 +190,7 @@
 
 
     <performance>
-        <!-- pageLoaderThreshold: number of pages a record has to have to switch to a lean page loading strategy that limit memory usage (default is 1000) -->
+        <!-- pageLoaderThreshold: number of pages a record has to have to switch to a lean page loading strategy that limit memory usage. Default is 1000. -->
         <pageLoaderThreshold>1000</pageLoaderThreshold>
 
         <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
@@ -199,8 +199,7 @@
         <solr>
             <!-- compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
             <compressionEnabled>true</compressionEnabled>
-            <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used
-                 to enable Solr 4 compatibility. Default is false. -->
+            <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used to enable Solr 4 compatibility. Default is false. -->
             <backwardsCompatible>false</backwardsCompatible>
         </solr>
     </performance>
@@ -216,7 +215,7 @@
     </accessConditions>
 
 
-    <!-- if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation -->
+    <!-- reCaptcha/@enabled: if true, reCaptcha integration is enabled. This is only used in the download modal when using the intranda Taskmanager for PDF creation. Default is false. -->
     <reCaptcha enabled="false">
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
@@ -226,37 +225,37 @@
         <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
         <externalPdfGeneration>false</externalPdfGeneration>
 
-        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false -->
+        <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false. -->
         <pdfApiDisabled>false</pdfApiDisabled>
 
-        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML) (default is true) -->
+        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML). Ddefault is true. -->
         <titlePdfEnabled>true</titlePdfEnabled>
 
-        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC (default is true) -->
+        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC. Ddefault is true. -->
         <tocPdfEnabled>true</tocPdfEnabled>
 
-        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page (default is true) -->
+        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page. Ddefault is true. -->
         <metadataPdfEnabled>true</metadataPdfEnabled>
 
-        <!-- pagePdfEnabled: if true, a special icon allows PDF download of single pages in the image view (default is false) -->
+        <!-- pagePdfEnabled: if true, a special icon allows PDF download of single pages in the image view. Default is false. -->
         <pagePdfEnabled>true</pagePdfEnabled>
 
         <!-- downloadFolder: Folder for generated download files -->
         <downloadFolder>/opt/digiverso/viewer/download_pdf</downloadFolder>
 
-        <!-- docHierarchyPdfEnabled: shows an icon to generate a PDF out of the Table of Contents -->
+        <!-- docHierarchyPdfEnabled: if true, an icon to generate a PDF out of the Table of Contents is displayed. Default is false. -->
         <docHierarchyPdfEnabled>false</docHierarchyPdfEnabled>
     </pdf>
 
 
     <epub>
-        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML) (default is true) -->
+        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML). Default is true. -->
         <titleEpubEnabled>true</titleEpubEnabled>
 
-        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC (default is true) -->
+        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC. Default is true. -->
         <tocEpubEnabled>true</tocEpubEnabled>
 
-        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page (default is true) -->
+        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page. Default is true -->
         <metadataEpubEnabled>true</metadataEpubEnabled>
 
          <!-- Folder for generated download files -->
@@ -275,11 +274,10 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageNavigation: if true, an option to switch to a double page view is shown. Default is true. -->
+        <!-- doublePageNavigation/@enabled: if true, an option to switch to a double page view is shown. Default is true. -->
         <doublePageNavigation enabled="true" />
 
-        <!-- docstructNavigation: If enabled=true, browsing to the next and previous docstruct is visible for the configured docstruct types
-             in fullscreen view. Default is false. -->
+        <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
             <template name="_DEFAULT">
                 <docstruct>folder</docstruct>
@@ -351,17 +349,17 @@
         <maxImageHeight>10000</maxImageHeight>
         <maxImageScale>500</maxImageScale>
 
-        <!-- thumbnailsPerPage: number of thumbnails to show on one page -->
+        <!-- thumbnailsPerPage: number of thumbnails to show on one page. Default is 30. -->
         <thumbnailsPerPage>30</thumbnailsPerPage>
 
-        <!-- Optional: ThumbnailWidth und ThumbnailHeight, Default ist 100x120  -->
+        <!-- Optional: ThumbnailWidth und ThumbnailHeight. Default ist 100x120. -->
         <thumbnailsWidth>400</thumbnailsWidth>
         <thumbnailsHeight>400</thumbnailsHeight>
 
         <!-- thumbnailsCompression: JPEG thumbnail compression in percent. Default is 85 -->
         <thumbnailsCompression>85</thumbnailsCompression>
 
-        <!-- anchorThumbnailMode: Determines what kind of thumbnail to use foranchors.
+        <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
         <anchorThumbnailMode>GENERIC</anchorThumbnailMode>
 
@@ -378,7 +376,7 @@
             <text>purl</text>
         </watermarkTextConfiguration>
 
-        <!-- set solr field that is used to define different watermark configuration ids -->
+        <!-- watermarkIdField: Defines solr field that is used to define different watermark configuration ids -->
         <watermarkIdField>MD_GEIFOOTERID</watermarkIdField>
 
         <!-- pageSelectionFormat: Format for the page selection drop-down menu items.
@@ -417,15 +415,15 @@
             <newspaper>calendar</newspaper>
         </docstructTargetPageTypes>
 
-        <!-- If a record's percentage of pages having full-Text/ALTO documents
-             falls below the configured value, a warning will be displayed for that record. -->
+        <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
+             falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
         <fulltextPercentageWarningThreshold>30</fulltextPercentageWarningThreshold>
 
         <!-- useViewerLocaleAsRecordLanguage: If true, changing the locale will
              also change the preferred language for record metadata. Default is false. -->
         <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
 
-        <!-- theme: defines main theme name and if subthemes are used the solr index field that contains the subtheme names -->
+        <!-- theme: The attribute @mainTheme defines the theme name and @discriminatorField defines the field in the solr index that contain the subtheme names if the functionallity is used  -->
         <theme mainTheme="reference" discriminatorField="">
             <!-- rootPath: If the theme is localed externally, the CMS template loading
                  mechanism needs the root path of the theme. The path must be defined down
@@ -433,7 +431,7 @@
             <!-- <rootPath>/opt/digiverso/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/WebContent/resources/themes/</rootPath> -->
         </theme>
 
-        <!-- name: Name of the Goobi viewer instance. This is shown in the OpenSearch description file -->
+        <!-- name: Name of the Goobi viewer instance. This is shown in the OpenSearch description file and in the title of the web pages -->
         <name>Goobi viewer</name>
 
         <!-- description: Goobi viewer instance description. This is shown in the OpenSearch description file -->
@@ -463,14 +461,14 @@
             <!-- <filter>filter_CMS_TEXT_ALL</filter> -->
         </filters>
 
-        <!-- @enabled: if false, the option to sort search hits is hidden (since 2.0) -->
+        <!-- sorting/@enabled: if true, the option to sort search results is shown. Default is true. -->
         <sorting enabled="true">
             <!-- defaultSortField: Field used for initial sorting. Multiple semicolon-separated fields can be used for hierarchical sorting (e.g.
                  <defaultSortField>SORT_FIELD1;SORT_FIELD2;SORT_FIELD3</defaultSortField>).
                  Default is empty. -->
             <defaultSortField></defaultSortField>
 
-            <!-- Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema.  Multiple semicolon-separated fields can be used for
+            <!-- luceneField: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema.  Multiple semicolon-separated fields can be used for
                  hierarchical sorting (e.g. <luceneField>SORT_FIELD1;SORT_FIELD2;SORT_FIELD3</luceneField>). -->
             <luceneField>SORT_CREATOR</luceneField>
             <luceneField>SORT_TITLE</luceneField>
@@ -495,8 +493,8 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
         </facets>
-        
-        <!-- @enabled: Enables the advanced search (default is true) -->
+
+        <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
         <advanced enabled="true">
             <!-- advancedSearchDefaultItemNumber: number of advanced search items to be rendered by default. Default is 2. -->
             <defaultItemNumber>2</defaultItemNumber>
@@ -520,7 +518,7 @@
             </searchFields>
         </advanced>
 
-        <!-- @enabled: Enables the timeline search (default is true) -->
+        <!-- timeline/@enabled: If true, the time meatrix is displayed. Default is true. -->
         <timeline enabled="true">
             <!-- Possible values for startyear and endyear are whole years (also minus)
                  as well as the value MIN for startyear and the value MAX for endyear.
@@ -534,10 +532,10 @@
             <hits>36</hits>
         </timeline>
 
-        <!-- @enabled: Enables the calendar search (default is true) -->
+        <!-- calendar/@enabled: if true, the calendar search is displaed. Default is true. -->
         <calendar enabled="true" />
 
-        <!-- searchSaving/@enabled: Allow users to save executed searches to a list for later re-use. Default is true. -->
+        <!-- searchSaving/@enabled: if true, users are allowed to save searches to a list for later re-use. Default is true. -->
         <searchSaving enabled="true" />
 
         <!-- boostTopLevelDocstructs: If true, anchors receive a factor 10 boost,
@@ -554,7 +552,7 @@
         <!-- aggregateHits: If true, only topstructs will be returned as hits, with child docstructs and pages being retrieved in an extra search. Default is true. -->
         <aggregateHits>true</aggregateHits>
 
-        <!-- displayAdditionalMetadata: Add relevant metadata fields and values to the search hits if they contain requested search terms. Default is enabled=true. -->
+        <!-- displayAdditionalMetadata/@enabled: if true, relevant metadata fields and values are added to the search results if they contain requested search terms. Default is true. -->
         <displayAdditionalMetadata enabled="true">
             <!-- ignoreField: Fields that add no value to the search hits but take up space (e.g. PI_TOPSTRUCT, DOCSTRCT)
                  can be configured to not be added as additional metadata. This element can be repeated. -->
@@ -599,7 +597,7 @@
 
         <!-- Search export settings -->
         <export>
-            <!-- @enabled: If true, Excel (.xlsx) export is enabled (default is false). -->
+            <!-- excel/@enabled: if true, an Excel export is enabled. XSLX files are generated. Default is false. -->
             <excel enabled="false">
                 <!-- field: Solr fields to put into the export sheet. One element per field. -->
                 <field>PI_TOPSTRUCT</field>
@@ -618,37 +616,36 @@
             <!-- splitingCharacter: defines symbol that splits collections into subcollections -->
             <splittingCharacter>.</splittingCharacter>
 
-            <!-- In the following section you can define an index field that is used for default sorting when opening. Only non-multivalued fields may be used! -->
+            <!-- defaultSortields: Define solr fields that are used for default sorting when opening a collection. Only non-multivalued fields may be used! -->
             <defaultSortFields>
                 <field collection="varia">SORT_TITLE</field>
             </defaultSortFields>
 
-            <!-- Collection names listed here will be listed first and in the given order; unlisted collections will be listed afterwards -->
+            <!-- sorting: Collection names listed here will be listed first and in the given order; unlisted collections will be listed afterwards -->
             <sorting>
                 <!-- <sortingList sortAfter="bibliotheken.100universitaetsbibliothek.200realkatalog"> -->
                     <!-- <collection>zeitschriften</collection> -->
                 <!-- </sortingList-->
             </sorting>
 
-            <!-- Collection names listed here are hidden in the collection view. It is not consistent used in RSS feed, search, tag clouds etc. and hits from
+            <!-- blacklist: Collection names listed here are hidden in the collection view. It is not consistent used in RSS feed, search, tag clouds etc. and results from
                  this collection may appear there as well. -->
             <blacklist>
                 <!-- <collection>varia</collection> -->
             </blacklist>
 
-            <!-- The highest level of the collection tree at which the number of items for that (sub-)collection shall be displayed (default is 0). -->
+            <!-- displayNumberOfVolumesLevel: The highest level of the collection tree at which the number of items for that (sub-)collection shall be displayed. Default is 0. -->
             <displayNumberOfVolumesLevel>0</displayNumberOfVolumesLevel>
 
-            <!-- The highest level of the collection hierarchy which will be displayed in the displayed in advanced search
-                 0 is the first (lowest) level; a value of -1 means all levels are being displayed, this is also the default -->
+            <!-- displayDepthForSearch: The highest level of the collection hierarchy which will be displayed in the displayed in advanced search
+                 0 is the first (lowest) level; a value of -1 means all levels are being displayed. Default is -1. -->
             <displayDepthForSearch>-1</displayDepthForSearch>
 
-            <!-- addHierarchyToBreadcrumbs: If true, the value hierarchy of this field will be added to
-                 breadcrumbs (if not multivalued). Default is false. -->
+            <!-- addHierarchyToBreadcrumbs: If true, the value hierarchy of this field will be added to breadcrumbs (if not multivalued). Default is false. -->
             <addHierarchyToBreadcrumbs>true</addHierarchyToBreadcrumbs>
         </collection>
 
-        <!-- true if opening a collection containing only a single work should redirect to that work -->
+        <!-- redirectToWork: if true, opening a collection containing only a single work should redirects directly to that record. Default is true. -->
         <redirectToWork>true</redirectToWork>
     </collections>
 
@@ -1077,54 +1074,54 @@
             </template>
         </sideBarMetadataList>
 
-		  <basexMetadataList>
+        <basexMetadataList>
             <!-- internal fields, not visible on the UI -->
             <!-- <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
             <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false"/> -->
             <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false"/> -->
             <!-- <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false"/> -->
-	        <!-- Identity Statement Area -->
-	        <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
-	        <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
-	        <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="MD_SHELFMARK" type="1" />
-	        <metadata xpath="./ead:did/ead:unitid[@type='Vorl. Nr.']" xpathType="element" label="Number" type="1"  />
-	        <metadata xpath="./ead:did/ead:unitid[@type='Altsignatur']" xpathType="element" label="Shelfmark" type="1" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
+            <!-- Identity Statement Area -->
+            <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
+            <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
+            <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="MD_SHELFMARK" type="1" />
+            <metadata xpath="./ead:did/ead:unitid[@type='Vorl. Nr.']" xpathType="element" label="Number" type="1"  />
+            <metadata xpath="./ead:did/ead:unitid[@type='Altsignatur']" xpathType="element" label="Shelfmark" type="1" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
             <!-- <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" label="physdesc" type="1" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" label="physdescstructured" type="1" />
-	        <!-- Context Area -->
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:origination | ./ead:did/ead:origination)[1]" xpathType="element" label="origination" type="2" />
-	        <metadata xpath="(./ead:archdesc/ead:odd/ead:head | ./ead:odd/ead:head)[1]" xpathType="element" label="role" type="2" />
-	        <metadata xpath="(./ead:archdesc/ead:odd/ead:p | ./ead:odd/ead:p)[1]" xpathType="element" label="person" type="2" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:bioghist | ./ead:dsc/ead:bioghist)[1]" xpathType="element" label="bioghist" type="2"  />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:custodhist | ./ead:dsc/ead:custodhist)[1]" xpathType="element" label="custodhist" type="2" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:acqinfo | ./ead:dsc/ead:acqinfo)[1]" xpathType="element" label="acqinfo" type="2" />
-	        <!-- Content and Structure Area -->
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:scopecontent | ./ead:dsc/ead:scopecontent)[1]" xpathType="element" label="scopecontent" type="3" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:appraisal | ./ead:dsc/ead:appraisal)[1]" xpathType="element" label="appraisal" type="3" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:accruals | ./ead:dsc/ead:accruals)[1]" xpathType="element" label="accruals" type="3" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:arrangement | ./ead:dsc/ead:arrangement)[1]" xpathType="element" label="arrangement" type="3" />
-	        <!-- Condition of Access and Use Area -->
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:accessrestrict | ./ead:dsc/ead:accessrestrict)[1]" xpathType="element" label="accessrestrict" type="4" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:userestrict | ./ead:dsc/ead:userestrict)[1]" xpathType="element" label="userestrict" type="4" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='Language']/ead:language | ./ead:did/ead:langmaterial[@label='Language']/ead:language)[1]" xpathType="element" label="langmaterial" type="4" />
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='font'] | ./ead:did/ead:langmaterial[@label='font'])[1]" xpathType="element" label="font" type="4" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:phystech | ./ead:dsc/ead:phystech)[1]" xpathType="element" label="phystech" type="4" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:otherfindaid | ./ead:dsc/ead:otherfindaid)[1]" xpathType="element" label="otherfindaid" type="4" />
-	        <!-- Allied Materials Area -->
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:originalsloc | ./ead:dsc/ead:originalsloc)[1]" xpathType="element" label="originalsloc" type="5" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:altformavail | ./ead:dsc/ead:altformavail)[1]" xpathType="element" label="altformavail" type="5" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:relatedmaterial/ead:separatedmaterial | ./ead:dsc/ead:relatedmaterial/ead:separatedmaterial)[1]" xpathType="element" label="separatedmaterial" type="5" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:bibliography | ./ead:dsc/ead:bibliography)[1]" xpathType="element" label="bibliography" type="5" />
-	        <!-- Note Area -->
-	        <metadata xpath="(./ead:archdesc/ead:did/ead:didnote | ./ead:did/ead:didnote)[1]" xpathType="element" label="didnote" type="6" />
-	        <metadata xpath="(./ead:archdesc/ead:dsc/ead:odd | ./ead:dsc/ead:odd)[1]" xpathType="element" label="oddnote" type="6"  />
-	        <!-- Description Control Area -->
-	        <metadata xpath="./ead:control/ead:conventiondeclaration" xpathType="element" label="conventiondeclaration" type="7" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" label="physdesc" type="1" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" label="physdescstructured" type="1" />
+            <!-- Context Area -->
+            <metadata xpath="(./ead:archdesc/ead:did/ead:origination | ./ead:did/ead:origination)[1]" xpathType="element" label="origination" type="2" />
+            <metadata xpath="(./ead:archdesc/ead:odd/ead:head | ./ead:odd/ead:head)[1]" xpathType="element" label="role" type="2" />
+            <metadata xpath="(./ead:archdesc/ead:odd/ead:p | ./ead:odd/ead:p)[1]" xpathType="element" label="person" type="2" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:bioghist | ./ead:dsc/ead:bioghist)[1]" xpathType="element" label="bioghist" type="2"  />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:custodhist | ./ead:dsc/ead:custodhist)[1]" xpathType="element" label="custodhist" type="2" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:acqinfo | ./ead:dsc/ead:acqinfo)[1]" xpathType="element" label="acqinfo" type="2" />
+            <!-- Content and Structure Area -->
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:scopecontent | ./ead:dsc/ead:scopecontent)[1]" xpathType="element" label="scopecontent" type="3" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:appraisal | ./ead:dsc/ead:appraisal)[1]" xpathType="element" label="appraisal" type="3" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:accruals | ./ead:dsc/ead:accruals)[1]" xpathType="element" label="accruals" type="3" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:arrangement | ./ead:dsc/ead:arrangement)[1]" xpathType="element" label="arrangement" type="3" />
+            <!-- Condition of Access and Use Area -->
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:accessrestrict | ./ead:dsc/ead:accessrestrict)[1]" xpathType="element" label="accessrestrict" type="4" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:userestrict | ./ead:dsc/ead:userestrict)[1]" xpathType="element" label="userestrict" type="4" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='Language']/ead:language | ./ead:did/ead:langmaterial[@label='Language']/ead:language)[1]" xpathType="element" label="langmaterial" type="4" />
+            <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='font'] | ./ead:did/ead:langmaterial[@label='font'])[1]" xpathType="element" label="font" type="4" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:phystech | ./ead:dsc/ead:phystech)[1]" xpathType="element" label="phystech" type="4" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:otherfindaid | ./ead:dsc/ead:otherfindaid)[1]" xpathType="element" label="otherfindaid" type="4" />
+            <!-- Allied Materials Area -->
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:originalsloc | ./ead:dsc/ead:originalsloc)[1]" xpathType="element" label="originalsloc" type="5" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:altformavail | ./ead:dsc/ead:altformavail)[1]" xpathType="element" label="altformavail" type="5" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:relatedmaterial/ead:separatedmaterial | ./ead:dsc/ead:relatedmaterial/ead:separatedmaterial)[1]" xpathType="element" label="separatedmaterial" type="5" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:bibliography | ./ead:dsc/ead:bibliography)[1]" xpathType="element" label="bibliography" type="5" />
+            <!-- Note Area -->
+            <metadata xpath="(./ead:archdesc/ead:did/ead:didnote | ./ead:did/ead:didnote)[1]" xpathType="element" label="didnote" type="6" />
+            <metadata xpath="(./ead:archdesc/ead:dsc/ead:odd | ./ead:dsc/ead:odd)[1]" xpathType="element" label="oddnote" type="6"  />
+            <!-- Description Control Area -->
+            <metadata xpath="./ead:control/ead:conventiondeclaration" xpathType="element" label="conventiondeclaration" type="7" />
         </basexMetadataList>
 
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
@@ -1197,13 +1194,12 @@
             <docStruct>newspaper</docStruct>
         </calendarDocstructTypes>
 
-        <!-- browsingMenu: configuration of the browsing section (Stoebern) -->
-        <!-- @enabled: if false, the browsing section is hidden -->
+        <!-- browsingMenu/@enabled: if true, the browsing section is displayed. Default is true. -->
         <browsingMenu enabled="true">
-            <!-- hitsPerPage: defines the maximum number of hits that are displayed per page -->
+            <!-- hitsPerPage: defines the maximum number of hits that are displayed per page. Default is 70 -->
             <hitsPerPage>70</hitsPerPage>
 
-            <!-- If the number of relevant Solr docs exceeds the configured number, faceting will be used for term browsing
+            <!-- indexSizeThreshold: If the number of relevant Solr docs exceeds the configured number, faceting will be used for term browsing
                 (which may break correct sorting but improve performance). Default is 100k. -->
             <indexSizeThreshold>100000</indexSizeThreshold>
 
@@ -1220,13 +1216,13 @@
             <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
         </browsingMenu>
 
-        <!-- addDublinCoreMetaTags: render dc metadata to html head -->
+        <!-- addDublinCoreMetaTags: if true, Dublin Core metadata is added to the HTML head section. Default us true. -->
         <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
 
-        <!-- addHighwirePressMetaTags: add Highwire Press tags to html head -->
+        <!-- addHighwirePressMetaTags: if true, Highwire Press tags are added to the HTML head section. Default is true. -->
         <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
 
-        <!-- Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to selec a license -->
+        <!-- licenses: Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to select a license -->
         <licenses>
             <!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/ -->
             <license label="Creative Commons: CC0 1.0" icon="" url="https://creativecommons.org/publicdomain/zero/1.0/" />
@@ -1260,7 +1256,7 @@
 
 
     <toc>
-        <!-- multiVolumeThumbnails/@enabled: Whether to display thumbnails of contained works in anchor toc. Default is "true" -->
+        <!-- multiVolumeThumbnails/@enabled: Whether to display thumbnails of contained works in anchor toc. Default is true. -->
         <multiVolumeThumbnails enabled="true">
             <!-- width|height: size settings for multivolume TOC  thumbnails -->
             <width>50</width>
@@ -1295,7 +1291,7 @@
             </template>
         </labelConfig>
 
-        <!-- tocAnchorGroupElementsPerPage: Number of elements displayed per page in anchor/group TOCs. Values below 1 disable pagination. Default is 0. -->
+        <!-- tocAnchorGroupElementsPerPage: Number of elements displayed per page in anchor/group TOCs. Values below 1 disable pagination. Default is 50. -->
         <tocAnchorGroupElementsPerPage>50</tocAnchorGroupElementsPerPage>
 
         <!-- recordGroupIdentifierFields: Contains definitions of GROUPID_ fields used in the index.
@@ -1309,7 +1305,7 @@
             <field>PI_PARENT</field>
         </ancestorIdentifierFields>
 
-        <!-- display as interactive tree view -->
+        <!-- useTreeView: if true, the toc is displayed as an interactive tree view. Default is false. -->
         <useTreeView showDocStructs="_ALL">false</useTreeView>
 
         <!-- tocIndentation: Number of pixels used as padding for child element indentation in the tree view. Default is 20. -->
@@ -1331,7 +1327,7 @@
 
 
     <tagclouds>
-        <!-- Large numbers of records can significantly reduce the performance of tag cloud generations. The sample size for individual fields can be reduced
+        <!-- sampleSizes: Large numbers of records can significantly reduce the performance of tag cloud generations. The sample size for individual fields can be reduced
              here. Default value is INT_MAX. -->
         <sampleSizes>
             <MD_TITLE>5000</MD_TITLE>
@@ -1358,64 +1354,63 @@
 
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
-        <!-- @enabled: if false, the image view is hidden -->
+        <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
         <page enabled="true" />
 
-        <!-- @enabled: if false, the TOC link is hidden (This is the link to the TOC page in the work menu, not the sidebar TOC component!) -->
+        <!-- toc/@enabled: if true, the link to the TOC page is displayed. Please note, that this is not the sidebar toc component. Default is true. -->
         <toc enabled="true" />
 
-        <!-- @enabled: if false, the thumbnail view is hidden -->
+        <!-- thumbs/@enabled: if true, the link to the thumbnail page is displayed. Default is true. -->
         <thumbs enabled="true" />
 
-        <!-- @enabled: if false, no widget for searching in the currently show record will be displayed. Default is true. -->
+        <!-- searchInItem/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
         <searchInItem enabled="true" />
 
-        <!-- @enabled: if false, the bibliographic data view is hidden -->
+        <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
         <metadata enabled="true">
-            <!-- showEventMetadata: if false, the event metadata of LIDO records is hidden (default is true) -->
+            <!-- showEventMetadata: if true, event metadata of LIDO records are displayed. Default is true. -->
             <showEventMetadata>true</showEventMetadata>
-            <!-- showRecordLabelIfNoOtherViews: If enabled and metadata is the only view available, display the record label instead. Default is false. -->
+            <!-- showRecordLabelIfNoOtherViews: if true, and metadata is the only view available, display the record label instead of the generic title. Default is true. -->
             <showRecordLabelIfNoOtherViews>true</showRecordLabelIfNoOtherViews>
         </metadata>
 
-        <!-- @enabled: if false, the fulltext view is hidden -->
+        <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
         <fulltext enabled="true" />
 
-        <!-- @enabled: if true, an additional link to the catalogue is displayed in the views section -->
+        <!-- opac/@enabled: if true, an additional link to the catalogue is displayed in the views section. Default is false. -->
         <opac enabled="false" />
 
-        <!-- sidebarToc: configuration of the sidebar TOC component -->
-        <!-- @enabled: if false, the sidebar toc is hidden -->
+        <!-- sidebarToc/@enabled: if true, the sidebar toc is displayed. Default is true. -->
         <sidebarToc enabled="true">
-            <!-- visibleInFullscreen: If false, the sidebar TOC element won't be visible in the full-screen sidebar accordion -->
+            <!-- visibleInFullscreen: If true, the the sidebar TOC element is displayed in the full-screen sidebar accordion. Default is true. -->
             <visibleInFullscreen>true</visibleInFullscreen>
 
-            <!-- pageNumbersVisible: if false, page numbers in the sidebar toc are hidden (default is false) -->
+            <!-- pageNumbersVisible: if true, page numbers in the sidebar toc are displayed. Default is false. -->
             <pageNumbersVisible>false</pageNumbersVisible>
 
-            <!-- display sidebarToc if it only contains the root element -->
+            <!-- visibleIfEmpty: if true, the sidebarToc is displayed even if it contains only the root element. Default is false. -->
             <visibleIfEmpty>false</visibleIfEmpty>
 
-            <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown -->
+            <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown. Default is 60. -->
             <lengthBeforeCut>60</lengthBeforeCut>
 
-            <!-- display as interactive tree view -->
+            <!-- useTreeView: if true, the sidebarToc is displayed as an interactive tree view. Default is true. -->
             <useTreeView>true</useTreeView>
 
-            <!-- level for initial collapse -->
+            <!-- initialCollapseLevel: level for initial collapse. Default is 2.  -->
             <initialCollapseLevel>2</initialCollapseLevel>
 
-            <!-- max length of level before it gets collapsed -->
+            <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
 
-        <!-- @enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
         <sidebarBrowsingTerms enabled="true" />
 
-        <!-- @enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
         <sidebarRssFeed enabled="true" />
 
-        <!-- @enabled: Show or hide the widget including download links for record and page while viewing the object -->
+        <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
         <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
             <page>
                 <downloadOptions enabled="true">
@@ -1440,8 +1435,7 @@
                     <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="#?page=" appendImageNumberToSuffix="true" />
                     <link type="URL" for="image"  label="URN" field="IMAGEURN" prefix="https://nbn-resolving.org/" />
-                    <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page="
-                        topstructValueFallback="true" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page=" topstructValueFallback="true" appendImageNumberToSuffix="true" />
                     <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
                     <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
                     <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
@@ -1471,7 +1465,7 @@
             </citationRecommendation>
         </sidebarWidgetUsage>
 
-		<!-- @enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
+        <!-- sidebarWidgetDownloads/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
 		<sidebarWidgetDownloads enabled="true" introductionText="">
 			<!-- hideFileRegex: If a regular expression is defined, files matching
 				 it are hidden from the widget display. The download is still possible. -->
@@ -1534,10 +1528,9 @@
         <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
              and the sidebar widget for annotations is hidden. Default is false -->
 		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
-		
+
 		<!-- displayAnnotationTextInImage: if true, the annotation text is displayed in a box in the image next to the border that marks the annotation. If false the text box is hidden. Default is true -->
         <displayAnnotationTextInImage>true</displayAnnotationTextInImage>
-        
     </webGuiDisplay>
 
 
@@ -1556,11 +1549,11 @@
     </rss>
 
 
-    <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed (default is true) -->
+    <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed. Default is true. -->
     <bookmarks enabled="true" />
 
 
-    <!-- If enabled="true", the user comments functionality is enabled. Default is false. -->
+    <!-- comments/@enabled: if true, the user comments functionality is enabled. Default is false. -->
     <comments enabled="false">
         <!-- condition: optional restriction of the user comments function
              (expressed as a Solr query) to records that match certain criteria. The criteria
@@ -1588,7 +1581,7 @@
     </cms>
 
 
-    <!-- Transkribus settings (enabled: default false) -->
+    <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
     <transkribus enabled="false">
         <!-- Transkribus user name for this viewer instance -->
         <userName></userName>
@@ -1610,8 +1603,7 @@
     </transkribus>
 
 
-    <!-- PIWIK-CONFIGURATION -->
-    <!-- @enabled: If true, piwik code will be insert into page. Default is false. -->
+    <!-- piwik/@enabled: If true, a Piwik/Matomo tracking code is insert into the pages. Default is false. -->
     <piwik enabled="false">
         <!-- BaseURL of the piwik script without "http://"! -->
         <baseURL>example.com/</baseURL>
@@ -1756,8 +1748,7 @@
             <token>test</token>
         </authorization>
 
-        <!-- If @use is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls
-             referencing the @CORSBinding annotation -->
+        <!-- If @enabled is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls referencing the @CORSBinding annotation -->
         <cors enabled="false">*</cors>
     </webapi>
 
@@ -1846,11 +1837,10 @@
             <key regex="true">user_retrieveAccountNewPasswordEmail.*</key>
         </group>
         <group type="LOCAL_STRINGS" name="translation__group_name_customer" description="translation__group_description_customer">
-        
+
             <!-- A group of the type LOCAL_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
                 it matches all message keys based in the given regular expression -->
             <key regex="true">customer__.*</key>
         </group>
     </translations>
-
 </config>
