@@ -165,12 +165,12 @@
 
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
              Possible attributes for providers are: type, enabled, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
-            <authenticationProviders>
-                <provider type="local" enabled="true" name="Goobi viewer"/>
-                <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-                <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-                <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
-            </authenticationProviders>
+        <authenticationProviders>
+            <provider type="local" enabled="true" name="Goobi viewer"/>
+            <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
+            <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+            <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+        </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
 			 'smtpPort' (defaults to 25 for NONE and STARTTLS and 465 for SSL) as well as
@@ -1466,11 +1466,11 @@
         </sidebarWidgetUsage>
 
         <!-- sidebarWidgetDownloads/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
-		<sidebarWidgetDownloads enabled="true" introductionText="">
-			<!-- hideFileRegex: If a regular expression is defined, files matching
-				 it are hidden from the widget display. The download is still possible. -->
-			<hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
-		</sidebarWidgetDownloads>
+        <sidebarWidgetDownloads enabled="true" introductionText="">
+            <!-- hideFileRegex: If a regular expression is defined, files matching
+                 it are hidden from the widget display. The download is still possible. -->
+            <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
+        </sidebarWidgetDownloads>
     </sidebar>
 
 
@@ -1527,9 +1527,9 @@
 
         <!-- displayUserGeneratedContentBelowImage: if true, the user generated content/annotations for the current page are shown underneath the image
              and the sidebar widget for annotations is hidden. Default is false -->
-		<displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
+        <displayUserGeneratedContentBelowImage>false</displayUserGeneratedContentBelowImage>
 
-		<!-- displayAnnotationTextInImage: if true, the annotation text is displayed in a box in the image next to the border that marks the annotation. If false the text box is hidden. Default is true -->
+        <!-- displayAnnotationTextInImage: if true, the annotation text is displayed in a box in the image next to the border that marks the annotation. If false the text box is hidden. Default is true -->
         <displayAnnotationTextInImage>true</displayAnnotationTextInImage>
     </webGuiDisplay>
 
@@ -1651,34 +1651,34 @@
             <!-- navDateField: Solr field to use for IIIF Presentation navDate property, if any -->
             <navDateField>YEAR</navDateField>
 
-			<!-- rendering: Configure 'rendering' links für IIIF Presentation resources. These
+            <!-- rendering: Configure 'rendering' links für IIIF Presentation resources. These
                  are links to the Goobi Viewer page, the PDF, plaintext and ALTO documents.
                  For each link the visibiliy attribute determines if the link is rendered
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
-			<rendering>
-				<viewer enabled="true">
+            <rendering>
+                <viewer enabled="true">
                     <label>Goobi viewer</label>
-				</viewer>
-				<pdf enabled="true">
+                </viewer>
+                <pdf enabled="true">
                     <label>PDF</label>
-				</pdf>
-				<plaintext enabled="true">
+                </pdf>
+                <plaintext enabled="true">
                     <label>Fulltext</label>
-				</plaintext>
-				<alto enabled="true">
+                </plaintext>
+                <alto enabled="true">
                     <label>ALTO</label>
-				</alto>
-			</rendering>
+                </alto>
+            </rendering>
 
-			<!-- translations: A list of locale of language codes for which translations of labels
-				 and metadata fields should be provided. If no locales are configured, all
-				 available locales are used. If only one locale is used, the labels will always
-				 be rendered as a single string -->
-			<translations>
-				<locale>de</locale>
-				<locale>en</locale>
-			</translations>
+            <!-- translations: A list of locale of language codes for which translations of labels
+                 and metadata fields should be provided. If no locales are configured, all
+                 available locales are used. If only one locale is used, the labels will always
+                 be rendered as a single string -->
+            <translations>
+                <locale>de</locale>
+                <locale>en</locale>
+            </translations>
 
             <!-- attribution: IIIF 2
                  Contains a string to provide as attribution in IIIF manifests. If it is a message key,
@@ -1765,11 +1765,11 @@
     <maps>
         <!-- Add a mapbox token here to use their maps. User and styleID are optional for using individual styles -->
         <mapbox>
-	   		<token></token>
-	   		<user></user>
-	   		<styleId></styleId>
-	   		<!-- Display an input field to search for places within a map -->
-	   		<addressSearch enabled="false"></addressSearch>
+            <token></token>
+            <user></user>
+            <styleId></styleId>
+            <!-- Display an input field to search for places within a map -->
+            <addressSearch enabled="false" />
     	</mapbox>
 
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
