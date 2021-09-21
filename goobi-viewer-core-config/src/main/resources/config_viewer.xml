@@ -1778,7 +1778,7 @@
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
              Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
         <markers>
-        	<marker icon="fa-circle" markerColor="blue" highlightColor="#d9534f" shape="circle">default</marker>
+        	<marker useDefaultIcon="true" highlightIcon="marker-icon_red.png">default</marker>
             <marker icon="fa-info" markerColor="green" shape="circle" extraClasses="fa-2x">maps__marker_1</marker>
             <marker icon="fa-building" markerColor="orange-dark" shape="square">maps__marker_2</marker>
             <marker icon="fa-user" markerColor="cyan"  shape="penta">maps__marker_3</marker>
