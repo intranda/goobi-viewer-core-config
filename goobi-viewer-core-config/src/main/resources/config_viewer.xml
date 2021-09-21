@@ -422,10 +422,13 @@
         <!-- useViewerLocaleAsRecordLanguage: If true, changing the locale will
              also change the preferred language for record metadata. Default is false. -->
         <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
+        
+        <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
+        <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
         <!-- theme: The attribute @mainTheme defines the theme name and @discriminatorField defines the field in the solr index that contain the subtheme names if the functionallity is used  -->
         <theme mainTheme="reference" discriminatorField="">
-            <!-- rootPath: If the theme is localed externally, the CMS template loading
+            <!-- rootPath: If the theme is located externally, the CMS template loading
                  mechanism needs the root path of the theme. The path must be defined down
                  to the /themes folder, just above the folder named like the theme. -->
             <!-- <rootPath>/opt/digiverso/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/WebContent/resources/themes/</rootPath> -->
