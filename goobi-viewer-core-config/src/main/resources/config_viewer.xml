@@ -316,7 +316,7 @@
             <scale>900</scale>
             <scale>1800</scale>
             <tileSize>
-                <scaleFactors>1,32</scaleFactors>
+                <scaleFactors>1;32</scaleFactors>
                 <size>512</size>
             </tileSize>
         </zoomImageView>
