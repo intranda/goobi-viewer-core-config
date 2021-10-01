@@ -185,7 +185,7 @@
         <smtpSecurity>NONE</smtpSecurity>
         <feedbackEmailAddressList>
             <address id="default" label="Contact" default="true">feedback@example.org</address>
-            <!--address id="second" label="Unicorn">unicorn@example.org</address-->
+            <!--address id="unicorn" label="Rainbow Unicorn">unicorn@example.org</address-->
         </feedbackEmailAddressList>
     </user>
 
