@@ -1829,6 +1829,9 @@
         <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub"  description="translation__group_description_docstruct-sub">
             <key>DOCSTRCT_SUB</key>
         </group>
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_eventtype"  description="translation__group_description_eventtype">
+            <key>EVENTTYPE</key>
+        </group>
         <group type="CORE_STRINGS" name="translation__group_name_email" description="translation__group_description_email">
 
             <!-- A group of the type CORE_STRINGS can contain a list of <key /> entries that match either the exact key name or, if it is type="regex"
