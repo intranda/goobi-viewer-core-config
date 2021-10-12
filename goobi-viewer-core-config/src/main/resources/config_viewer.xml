@@ -1856,7 +1856,7 @@
         <nodeTypes>
 			<node name="collection" icon="fa fa-folder-open-o" />
             <node name="folder" icon="fa fa-folder-open-o" />
-            <node name="class"  icon="fa fa-files-o" />
+            <node name="class"  icon="fa fa-folder-open-o" />
             <node name="file"   icon="fa fa-file-text-o" />
             <node name="image"  icon="fa fa-file-image-o" />
             <node name="audio"  icon="fa fa-file-audio-o" />
