@@ -70,8 +70,8 @@
 
     <urls>
         <metadata>
-            <!-- mets: Path to METS-file via OAI for linking in bibliographic data -->
-            <mets>http://localhost:8080/viewer/metsresolver?id=</mets>
+            <!-- sourcefile: Path to source file via the internal resolver  -->
+            <sourcefile>http://localhost:8080/viewer/sourcefile?id=</sourcefile>
             <!-- marc: Path to MarcXML-record via OAI for linking in bibliographic data -->
             <marc>http://localhost:8080/viewer/oai?verb=GetRecord&amp;metadataPrefix=marcxml&amp;identifier=</marc>
             <!-- dc: Path to DublinCore record via OAI for linking in bibliographic data -->
