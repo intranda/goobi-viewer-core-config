@@ -1759,6 +1759,7 @@
             <key>ACCESSCONDITION</key>
             <key>BOOL_IMAGEAVAILABLE</key>
             <key>FULLTEXTAVAILABLE</key>
+            <key>SOURCEDOCFORMAT</key>
             <key regex="true">SORT.*</key>
             <key regex="true">NORM_.*(?&lt;!_UNTOKENIZED)$</key>
             <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
