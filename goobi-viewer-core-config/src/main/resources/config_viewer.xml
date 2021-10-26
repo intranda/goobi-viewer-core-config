@@ -108,7 +108,6 @@
 
         <!-- basex: URL to the baseX database that stores archival content -->
         <basex>https://basex.example.org/basex/</basex>
-
     </urls>
 
 
@@ -1725,7 +1724,7 @@
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
              Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
         <markers>
-        	<marker useDefaultIcon="true" highlightIcon="marker-icon_red.png">default</marker>
+            <marker useDefaultIcon="true" highlightIcon="marker-icon_red.png">default</marker>
             <marker icon="fa-info" markerColor="green" shape="circle" extraClasses="fa-2x">maps__marker_1</marker>
             <marker icon="fa-building" markerColor="orange-dark" shape="square">maps__marker_2</marker>
             <marker icon="fa-user" markerColor="cyan"  shape="penta">maps__marker_3</marker>
@@ -1759,6 +1758,7 @@
             <key>ACCESSCONDITION</key>
             <key>BOOL_IMAGEAVAILABLE</key>
             <key>FULLTEXTAVAILABLE</key>
+            <key>SOURCEDOCFORMAT</key>
             <key regex="true">SORT.*</key>
             <key regex="true">NORM_.*(?&lt;!_UNTOKENIZED)$</key>
             <key regex="true">MD_.*(?&lt;!_UNTOKENIZED)$</key>
@@ -1800,9 +1800,7 @@
     </translations>
 
 
-
-    <archives enabled="true">
-
+    <archives enabled="false">
         <metadataList>
             <!-- internal fields, not visible on the UI -->
             <!-- <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false"/> -->
@@ -1854,7 +1852,7 @@
         </metadataList>
 
         <nodeTypes>
-			<node name="collection" icon="fa fa-folder-open-o" />
+            <node name="collection" icon="fa fa-folder-open-o" />
             <node name="folder" icon="fa fa-folder-open-o" />
             <node name="class"  icon="fa fa-folder-open-o" />
             <node name="file"   icon="fa fa-file-text-o" />
