@@ -53,13 +53,6 @@
 
 		<!-- URL to Solr index -->
 		<solrUrl>http://localhost:8983/solr/collection1</solrUrl>
-
-		<restrictions>
-			<!-- <restriction field="ACCESSCONDITION">restricted1</restriction> -->
-			<!-- <restriction field="ACCESSCONDITION" conditions="-MDNUM_PUBLICRELEASEYEAR:[* TO NOW/YEAR]">restricted2</restriction> -->
-		</restrictions>
-
-		<querySuffix></querySuffix>
 	</solr>
 
 
@@ -301,11 +294,6 @@
             <!-- The following example lists only one record with a given persistent identifier -->
             <!-- <set setName="Single identifier" setSpec="id" setQuery="PI:AC1234567" /> -->
 	</sets>
-
-
-	<!-- useCollectionBlacklist: If true, records from collections blacklisted
-		in config_viewer.xml will be filtered out. Default is true. -->
-	<useCollectionBlacklist>true</useCollectionBlacklist>
 
 
 	<!-- defaultLocale: Locale to be used for value translations. Default is 'en'. -->
