@@ -104,7 +104,7 @@
         <download>http://localhost:8080/viewer/download/</download>
 
         <!-- connectorVersion: URL to the version query on the Goobi viewer Connector -->
-        <connectorVersion>http://localhost:8080/M2M/oai/tools?action=getVersion</connectorVersion>
+        <connectorVersion>http://localhost:8080/viewer/oai/tools?action=getVersion</connectorVersion>
 
         <!-- basex: URL to the baseX database that stores archival content -->
         <basex>https://basex.example.org/basex/</basex>
