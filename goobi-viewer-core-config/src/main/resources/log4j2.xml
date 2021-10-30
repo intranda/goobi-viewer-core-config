@@ -65,7 +65,7 @@
       <AppenderRef ref="viewer" />
     </Logger>
 
-    <Logger name="io.goobi.viewer.connector" level="TRACE" additivity="false" >
+    <Logger name="io.goobi.viewer.connector" level="TRACE" additivity="true" >
       <AppenderRef ref="oai" />
     </Logger>
 
