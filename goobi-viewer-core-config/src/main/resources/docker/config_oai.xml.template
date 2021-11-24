@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <identifyTags>
+        <baseURL useInRequestElement="false">${VIEWER_URL}/oai</baseURL>
+        <adminEmail>support@intranda.com</adminEmail>
+    </identifyTags>
+    <solr>
+        <solrUrl>${SOLR_URL}</solrUrl>
+    </solr>
+    <urnResolverUrl>${VIEWER_URL}/resolver?urn=</urnResolverUrl>
+    <piResolverUrl>${VIEWER_URL}/viewer/piresolver?id=</piResolverUrl>
+</config>
