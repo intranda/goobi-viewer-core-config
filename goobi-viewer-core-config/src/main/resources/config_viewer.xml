@@ -463,17 +463,14 @@
 
         <!-- sorting/@enabled: if true, the option to sort search results is shown. Default is true. -->
         <sorting enabled="true">
-            <!-- defaultSortField: Field used for initial sorting. Multiple semicolon-separated fields can be used for hierarchical sorting (e.g.
-                 <defaultSortField>SORT_FIELD1;SORT_FIELD2;SORT_FIELD3</defaultSortField>).
-                 Default is empty. -->
-            <defaultSortField></defaultSortField>
-
-            <!-- luceneField: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema.  Multiple semicolon-separated fields can be used for
-                 hierarchical sorting (e.g. <luceneField>SORT_FIELD1;SORT_FIELD2;SORT_FIELD3</luceneField>). -->
-            <luceneField>SORT_CREATOR</luceneField>
-            <luceneField>SORT_TITLE</luceneField>
-            <luceneField>DATECREATED</luceneField>
-            <luceneField>SORT_YEARPUBLISH</luceneField>
+            <!-- field: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema. Multiple (escaped) semicolon-separated
+                fields can be used for  hierarchical sorting (e.g. <luceneField>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</luceneField>). -->
+            <field>RANDOM</field> 
+            <field default="true">RELEVANCE</field>
+            <field>SORT_CREATOR</field>
+            <field>SORT_TITLE</field>
+            <field>DATECREATED</field>
+            <field>SORT_YEARPUBLISH</field>
 
             <!-- static: Sorting fields defined here will always used silently prior to the visible sorting fields. These fields can be used to always place
                  certain records on top, for example. -->
