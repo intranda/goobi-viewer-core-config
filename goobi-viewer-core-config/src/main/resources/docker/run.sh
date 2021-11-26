@@ -11,9 +11,7 @@ envsubst '\$VIEWER_DOMAIN' </usr/local/tomcat/conf/server.xml.template >/usr/loc
 
 echo "Setting SOLR URL from environment..."
 sed -i "s|http://localhost:8983/solr/collection1|${SOLR_URL}|" /usr/local/tomcat/webapps/viewer/WEB-INF/classes/config_viewer.xml
-
-echo "Modifying config_oai.xml with environment settings..."
-envsubst '\$VIEWER_URL \$SOLR_URL' </config_oai.xml.template >/opt/digiverso/viewer/config/config_oai.xml
+sed -i "s|http://localhost:8983/solr/collection1|${SOLR_URL}|" /usr/local/tomcat/webapps/viewer/WEB-INF/classes/config_oai.xml
 
 case $CONFIGSOURCE in
   folder)
