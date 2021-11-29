@@ -464,7 +464,7 @@
         <!-- sorting/@enabled: if true, the option to sort search results is shown. Default is true. -->
         <sorting enabled="true">
             <!-- field: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema. Multiple (escaped) semicolon-separated
-                fields can be used for  hierarchical sorting (e.g. <luceneField>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</luceneField>). -->
+                fields can be used for  hierarchical sorting (e.g. <field>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</field>). -->
             <field>RANDOM</field> 
             <field default="true">RELEVANCE</field>
             <field>SORT_CREATOR</field>
