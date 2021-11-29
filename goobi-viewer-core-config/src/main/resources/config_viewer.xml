@@ -468,7 +468,7 @@
             <field>RANDOM</field> 
             <field default="true">RELEVANCE</field>
             <field>SORT_CREATOR</field>
-            <field>SORT_TITLE</field>
+            <field dropDownAscMessageKey="searchSortingDropdown_az" dropDownDescMessageKey="searchSortingDropdown_za">SORT_TITLE</field>
             <field>DATECREATED</field>
             <field>SORT_YEARPUBLISH</field>
 
