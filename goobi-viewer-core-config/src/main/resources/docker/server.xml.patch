@@ -70,7 +70,7 @@
  
      <!-- An Engine represents the entry point (within Catalina) that processes
           every request.  The Engine implementation for Tomcat stand alone
-@@ -160,10 +123,14 @@
+@@ -160,10 +123,18 @@
          <!-- Access log processes all example.
               Documentation at: /docs/config/valve.html
               Note: The pattern used is equivalent to using pattern="common" -->
@@ -83,6 +83,10 @@
 +        <Valve className="org.apache.catalina.valves.CrawlerSessionManagerValve"
 +               crawlerUserAgents=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*"
 +               sessionInactiveInterval="60"/>
++        <Valve className="org.apache.catalina.valves.RemoteIpValve"
++               hostHeader="X-Forwarded-Host"
++               protocolHeader="X-Forwarded-Proto"
++               requestAttributesEnabled="true" />
        </Host>
      </Engine>
    </Service>
