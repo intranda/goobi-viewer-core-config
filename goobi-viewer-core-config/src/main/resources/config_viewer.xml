@@ -595,6 +595,9 @@
                 <field>ORDER</field>
             </excel>
         </export>
+        
+        <!-- fuzzy/@enabled: If true, fuzzy search will be applied. Default is false. -->
+        <fuzzy enabled="false" />
     </search>
 
 
