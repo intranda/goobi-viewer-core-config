@@ -489,6 +489,7 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
+            <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
         </facets>
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
