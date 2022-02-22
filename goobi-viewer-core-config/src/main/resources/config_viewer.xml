@@ -504,8 +504,8 @@
                 <field>CMS_TEXT_ALL</field>
                 <field>PI_TOPSTRUCT</field>
                 <field hierarchical="true">DC</field>
-                <field hierarchical="true">DOCSTRCT_TOP</field>
-                <field hierarchical="true">DOCSTRCT_SUB</field>
+                <field>DOCSTRCT_TOP</field>
+                <field>DOCSTRCT_SUB</field>
                 <field>MD_TITLE</field>
                 <field>MD_CREATOR</field>
                 <field>MD_PUBLISHER</field>
