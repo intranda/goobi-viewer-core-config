@@ -1494,20 +1494,6 @@
     <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed. Default is true. -->
     <bookmarks enabled="true" />
 
-
-    <!-- comments/@enabled: if true, the user comments functionality is enabled. Default is false. -->
-    <comments enabled="false">
-        <!-- condition: optional restriction of the user comments function
-             (expressed as a Solr query) to records that match certain criteria. The criteria
-             must apply to the root structure element of the record. -->
-        <condition></condition>
-
-        <!-- notifationEmailAddress: E-mail addresses to which notifications for
-             new comments will be sent. Can be added multiple times for multiple recipients. -->
-        <!-- <notificationEmailAddress>recipient@example.com</notificationEmailAddress> -->
-    </comments>
-
-
     <cms>
         <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
         <useCustomNavBar>true</useCustomNavBar>
