@@ -509,7 +509,7 @@
                 <field>MD_TITLE</field>
                 <field>MD_CREATOR</field>
                 <field>MD_PUBLISHER</field>
-                <field>MD_PLACEPUBLISH</field>
+                <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
                 <field range="true">YEAR</field>
                 <field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
                 <field>BOOKMARKS</field>
@@ -542,26 +542,28 @@
 
         <!-- displayAdditionalMetadata/@enabled: if true, relevant metadata fields and values are added to the search results if they contain requested search terms. Default is true. -->
         <displayAdditionalMetadata enabled="true">
-            <!-- ignoreField: Fields that add no value to the search hits but take up space (e.g. PI_TOPSTRUCT, DOCSTRCT)
+            <!-- field type="ignore": Fields that add no value to the search hits but take up space (e.g. PI_TOPSTRUCT, DOCSTRCT)
                  can be configured to not be added as additional metadata. This element can be repeated. -->
-            <ignoreField>DC</ignoreField>
-            <ignoreField>DOCTYPE</ignoreField>
-            <ignoreField>ISANCHOR</ignoreField>
-            <ignoreField>ISWORK</ignoreField>
-            <ignoreField>MD_FIRSTNAME</ignoreField>
-            <ignoreField>MD_LASTNAME</ignoreField>
-            <ignoreField>MD_VALUE</ignoreField>
-            <ignoreField>NORMDATATERMS</ignoreField>
-            <ignoreField>PI_ANCHOR</ignoreField>
-            <ignoreField>PI_TOPSTRUCT</ignoreField>
-            <ignoreField>UGCTERMS</ignoreField>
-            <ignoreField>YEARMONTH</ignoreField>
-            <ignoreField>YEARMONTHDAY</ignoreField>
-            <!-- translateField: Fields in this list will be highlighted with their translated value rather than raw. -->
-            <translateField>DC</translateField>
-            <translateField>DOCSTRCT</translateField>
-            <translateField>DOCSTRCT_TOP</translateField>
-            <translateField>DOCSTRCT_SUB</translateField>
+            <field type="ignore">DC</field>
+            <field type="ignore">DOCTYPE</field>
+            <field type="ignore">ISANCHOR</field>
+            <field type="ignore">ISWORK</field>
+            <field type="ignore">MD_FIRSTNAME</field>
+            <field type="ignore">MD_LASTNAME</field>
+            <field type="ignore">MD_VALUE</field>
+            <field type="ignore">NORMDATATERMS</field>
+            <field type="ignore">PI_ANCHOR</field>
+            <field type="ignore">PI_TOPSTRUCT</field>
+            <field type="ignore">UGCTERMS</field>
+            <field type="ignore">YEARMONTH</field>
+            <field type="ignore">YEARMONTHDAY</field>
+            <!-- field type="translate": Fields in this list will be highlighted with their translated value rather than raw. -->
+            <field type="translate">DC</field>
+            <field type="translate">DOCSTRCT</field>
+            <field type="translate">DOCSTRCT_TOP</field>
+            <field type="translate">DOCSTRCT_SUB</field>
+            <!-- field type="oneline": Fields in this list will have multiple values written into a single string, without line breaks. -->
+            <field type="oneline">MD_ACCESSLOCATIONS</field>
         </displayAdditionalMetadata>
 
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
@@ -1372,8 +1374,10 @@
                     <link type="URL" for="record" label="URN" field="URN" prefix="https://nbn-resolving.org/" />
                     <link type="URL" for="record" label="Handle" field="MD_PI_HANDLE" prefix="https://hdl.handle.net/" />
                     <link type="URL" for="record" label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" />
+                    <link type="URL" for="record" label="ARK" field="MD_PI_ARK" prefix="https://n2t.net/" />
                     <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" prefix="https://doi.org/" suffix="#?page=" appendImageNumberToSuffix="true" />
+                    <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" prefix="https://n2t.net/" suffix="/" topstructValueFallback="true" appendImageNumberToSuffix="true" />
                     <link type="URL" for="image"  label="URN" field="IMAGEURN" prefix="https://nbn-resolving.org/" />
                     <link type="URL" for="image"  label="URN" field="URN" prefix="https://nbn-resolving.org/" suffix="/fragment/page=" topstructValueFallback="true" appendImageNumberToSuffix="true" />
                     <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
@@ -1491,20 +1495,6 @@
 
     <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed. Default is true. -->
     <bookmarks enabled="true" />
-
-
-    <!-- comments/@enabled: if true, the user comments functionality is enabled. Default is false. -->
-    <comments enabled="false">
-        <!-- condition: optional restriction of the user comments function
-             (expressed as a Solr query) to records that match certain criteria. The criteria
-             must apply to the root structure element of the record. -->
-        <condition></condition>
-
-        <!-- notifationEmailAddress: E-mail addresses to which notifications for
-             new comments will be sent. Can be added multiple times for multiple recipients. -->
-        <!-- <notificationEmailAddress>recipient@example.com</notificationEmailAddress> -->
-    </comments>
-
 
     <cms>
         <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
