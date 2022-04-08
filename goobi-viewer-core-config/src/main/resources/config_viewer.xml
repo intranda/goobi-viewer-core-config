@@ -1377,7 +1377,7 @@
                     <link type="URL" for="record" label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}" />
                     <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}#?page={page}" />
-                    <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}" topstructValueFallback="true" />
+                    <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}/" topstructValueFallback="true" />
                     <link type="URL" for="image"  label="URN" field="IMAGEURN" pattern="https://nbn-resolving.org/{value}" />
                     <link type="URL" for="image"  label="URN" field="URN" pattern="https://nbn-resolving.org/{value}/fragment/page={page}"
                         topstructValueFallback="true" />
