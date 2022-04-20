@@ -91,6 +91,9 @@
 
         <!-- rest: REST service URL from which internal Goobi viewer resources are requested -->
         <rest>http://localhost:8080/viewer/api/v1/</rest>
+        
+        <!-- workflow: REST service URL of Goobi workflow -->
+        <workflow>https://localhost:8080/goobi/rest/</workflow>
 
         <!-- DEVELOPERS ONLY.
              SHOULD BE COMMENTED OUT ON CUSTOMER SYSTEMS.
@@ -1510,6 +1513,12 @@
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
     </cms>
+   
+   
+    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
+    <upload enabled="false">
+        <token></token>
+    </upload>
 
 
     <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
