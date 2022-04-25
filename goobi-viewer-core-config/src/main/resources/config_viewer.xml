@@ -67,6 +67,9 @@
 
     <!-- stopwordsFile: location of the stopword.txt file used in Solr -->
     <stopwordsFile>/opt/digiverso/viewer/config/stopwords.txt</stopwordsFile>
+    
+    <!-- umlautsFile: location of the goobi_opacUmlaut.txt file for process title creation -->
+    <umlautsFile>/opt/digiverso/viewer/config/goobi_opacUmlaut.txt</umlautsFile>
 
     <urls>
         <metadata>
@@ -1517,7 +1520,10 @@
    
     <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
     <upload enabled="false">
+        <!-- token: Goobi workflow API authorization token. -->
         <token></token>
+        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
+        <docstruct>monograph</docstruct>
     </upload>
 
 
