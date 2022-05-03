@@ -96,7 +96,7 @@
         <rest>http://localhost:8080/viewer/api/v1/</rest>
         
         <!-- workflow: REST service URL of Goobi workflow -->
-        <workflow>https://localhost:8080/goobi/rest/</workflow>
+        <workflow>https://localhost:8080/goobi/api/</workflow>
 
         <!-- DEVELOPERS ONLY.
              SHOULD BE COMMENTED OUT ON CUSTOMER SYSTEMS.
@@ -1524,6 +1524,8 @@
         <token></token>
         <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
         <docstruct>monograph</docstruct>
+        <!-- templateName: Goobi workflow template name for process creation (required). -->
+        <templateName>Sample_workflow</templateName>
     </upload>
 
 
