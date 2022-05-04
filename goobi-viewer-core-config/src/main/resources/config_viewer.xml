@@ -1724,15 +1724,15 @@
         
         <!-- Individual settings for map types -->
         <cms>
-            <heatmap enabled="false"></heatmap>
+            <heatmap enabled="false" />
         </cms>
         <facet>
-            <heatmap enabled="false"></heatmap>
-            <marker icon="fa-circle" markerColor="red" svg="true"></marker>
+            <heatmap enabled="false" />
+            <marker icon="fa-circle" markerColor="red" svg="true" />
         </facet>
         <search>
-            <heatmap enabled="false"></heatmap>
-            <marker icon="fa-circle" markerColor="red"  svg="true"></marker>
+            <heatmap enabled="false" />
+            <marker icon="fa-circle" markerColor="red" svg="true" />
         </search>
     </maps>
 
