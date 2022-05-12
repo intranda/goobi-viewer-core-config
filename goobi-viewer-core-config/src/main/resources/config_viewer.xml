@@ -1742,6 +1742,19 @@
             <field>MD_GEOJSON_POINT</field>
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
+        
+        <!-- Individual settings for map types -->
+        <cms>
+            <heatmap enabled="false" />
+        </cms>
+        <facet>
+            <heatmap enabled="false" />
+            <marker icon="fa-circle" markerColor="red" svg="true" />
+        </facet>
+        <search>
+            <heatmap enabled="false" />
+            <marker icon="fa-circle" markerColor="red" svg="true" />
+        </search>
     </maps>
 
 
