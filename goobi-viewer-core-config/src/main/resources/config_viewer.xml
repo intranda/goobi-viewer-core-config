@@ -1571,6 +1571,13 @@
         <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs) -->
         <sitelinksFilterQuery>ISWORK:true</sitelinksFilterQuery>
     </sitemap>
+    
+    <!-- Configuration for crowdsourcing campaigns -->
+    <campaigns>
+	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
+	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
+    	<itemOrder>fixed</itemOrder>
+    </campaigns>
 
 
     <!-- Web API configuration -->
