@@ -1515,24 +1515,6 @@
     </cms>
 
 
-    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
-    <upload enabled="false">
-        <!-- token: Goobi workflow API authorization token. -->
-        <token></token>
-
-        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
-        <docstruct>monograph</docstruct>
-
-        <!-- templateName: Goobi workflow template name for process creation (required). -->
-        <templateName>Sample_workflow</templateName>
-
-        <!-- rejectionPropertyName: Goobi worklow process property name indicating whether the uploaded process was rejected. -->
-        <rejectionPropertyName>uploadRejected</rejectionPropertyName>
-
-        <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
-        <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
-    </upload>
-
 
     <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
     <transkribus enabled="false">
@@ -1571,14 +1553,6 @@
         <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs) -->
         <sitelinksFilterQuery>ISWORK:true</sitelinksFilterQuery>
     </sitemap>
-    
-    <!-- Configuration for crowdsourcing campaigns -->
-    <campaigns>
-	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
-	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
-    	<itemOrder>fixed</itemOrder>
-    </campaigns>
-
 
     <!-- Web API configuration -->
     <webapi>
@@ -1887,4 +1861,30 @@
         </nodeTypes>
     </archives>
 
+
+    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
+    <upload enabled="false">
+        <!-- token: Goobi workflow API authorization token. -->
+        <token></token>
+
+        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
+        <docstruct>monograph</docstruct>
+
+        <!-- templateName: Goobi workflow template name for process creation (required). -->
+        <templateName>Sample_workflow</templateName>
+
+        <!-- rejectionPropertyName: Goobi worklow process property name indicating whether the uploaded process was rejected. -->
+        <rejectionPropertyName>uploadRejected</rejectionPropertyName>
+
+        <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
+        <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
+    </upload>
+
+
+    <!-- Configuration for crowdsourcing campaigns -->
+    <campaigns>
+	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
+	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
+        <itemOrder>fixed</itemOrder>
+    </campaigns>
 </config>
