@@ -9,7 +9,7 @@
   },
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.3",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sync": "^0.8.2",
     "pixl-xml": "^1.0.13"
