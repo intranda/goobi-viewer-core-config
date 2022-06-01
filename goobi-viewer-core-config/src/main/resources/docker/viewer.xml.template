@@ -17,5 +17,9 @@
         validationQuery="SELECT SQL_NO_CACHE 1" 
         removeAbandoned="true" 
         removeAbandonedTimeout="600" 
-      url="jdbc:mysql://${DB_SERVER}:${DB_PORT}/${DB_NAME}?characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true" />
+        url="jdbc:mysql://${DB_SERVER}:${DB_PORT}/${DB_NAME}?characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true" />
+    <Valve 
+        className="org.apache.catalina.valves.ErrorReportValve" 
+        showReport="false" 
+        showServerInfo="false" />
 </Context>
