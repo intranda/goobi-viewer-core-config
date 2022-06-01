@@ -1886,5 +1886,19 @@
 	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
 	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
         <itemOrder>fixed</itemOrder>
+        <annotations>
+        	<geoCoordinates>
+        		<!-- Zoom level of maps depicting the geographical location of an annotation -->
+        		<zoom>7</zoom>
+        	</geoCoordinates>
+        </annotations>
+        <geoMap>
+        	<!-- initial zoom level of maps within crowdsourcing campaigns -->
+        	<zoom>5</zoom>
+        	<!-- initial center location of maps within crowdsourcing campaigns -->
+        	<lngLat>11.073397, 49.451993</lngLat>
+        	<!-- The preferred source for map tiles for maps within crowdsourcing campaigns -->
+        	<tilesource>mapbox</tilesource>
+        </geoMap>
     </campaigns>
 </config>
