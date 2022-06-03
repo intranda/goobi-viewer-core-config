@@ -92,6 +92,9 @@
         <!-- rest: REST service URL from which internal Goobi viewer resources are requested -->
         <rest>http://localhost:8080/viewer/api/v1/</rest>
 
+        <!-- workflow: REST service URL of Goobi workflow -->
+        <workflow>https://workflow.example.org/goobi/api/</workflow>
+
         <!-- DEVELOPERS ONLY.
              SHOULD BE COMMENTED OUT ON CUSTOMER SYSTEMS.
 
@@ -419,7 +422,7 @@
         <!-- useViewerLocaleAsRecordLanguage: If true, changing the locale will
              also change the preferred language for record metadata. Default is false. -->
         <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
-        
+
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
@@ -465,7 +468,7 @@
         <sorting enabled="true">
             <!-- field: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema. Multiple (escaped) semicolon-separated
                 fields can be used for  hierarchical sorting (e.g. <field>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</field>). -->
-            <field>RANDOM</field> 
+            <field>RANDOM</field>
             <field default="true">RELEVANCE</field>
             <field>SORT_CREATOR</field>
             <field dropDownAscMessageKey="searchSortingDropdown_az" dropDownDescMessageKey="searchSortingDropdown_za">SORT_TITLE</field>
@@ -598,7 +601,7 @@
                 <field>ORDER</field>
             </excel>
         </export>
-        
+
         <!-- fuzzy/@enabled: If true, fuzzy search will be applied. Default is false. -->
         <fuzzy enabled="false" />
     </search>
@@ -1512,6 +1515,7 @@
     </cms>
 
 
+
     <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
     <transkribus enabled="false">
         <!-- Transkribus user name for this viewer instance -->
@@ -1549,7 +1553,6 @@
         <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs) -->
         <sitelinksFilterQuery>ISWORK:true</sitelinksFilterQuery>
     </sitemap>
-
 
     <!-- Web API configuration -->
     <webapi>
@@ -1721,7 +1724,7 @@
             <field>MD_GEOJSON_POINT</field>
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
-        
+
         <!-- Individual settings for map types -->
         <cms>
             <heatmap enabled="false" />
@@ -1858,4 +1861,44 @@
         </nodeTypes>
     </archives>
 
+
+    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
+    <upload enabled="false">
+        <!-- token: Goobi workflow API authorization token. -->
+        <token></token>
+
+        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
+        <docstruct>monograph</docstruct>
+
+        <!-- templateName: Goobi workflow template name for process creation (required). -->
+        <templateName>Sample_workflow</templateName>
+
+        <!-- rejectionPropertyName: Goobi worklow process property name indicating whether the uploaded process was rejected. -->
+        <rejectionPropertyName>uploadRejected</rejectionPropertyName>
+
+        <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
+        <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
+    </upload>
+
+
+    <!-- Configuration for crowdsourcing campaigns -->
+    <campaigns>
+	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
+	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
+        <itemOrder>fixed</itemOrder>
+        <annotations>
+        	<geoCoordinates>
+        		<!-- Zoom level of maps depicting the geographical location of an annotation -->
+        		<zoom>7</zoom>
+        	</geoCoordinates>
+        </annotations>
+        <geoMap>
+        	<!-- initial zoom level of maps within crowdsourcing campaigns -->
+        	<zoom>5</zoom>
+        	<!-- initial center location of maps within crowdsourcing campaigns -->
+        	<lngLat>11.073397, 49.451993</lngLat>
+        	<!-- The preferred source for map tiles for maps within crowdsourcing campaigns -->
+        	<tilesource>mapbox</tilesource>
+        </geoMap>
+    </campaigns>
 </config>
