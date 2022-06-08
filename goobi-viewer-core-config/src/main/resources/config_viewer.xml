@@ -604,6 +604,10 @@
 
         <!-- fuzzy/@enabled: If true, fuzzy search will be applied. Default is false. -->
         <fuzzy enabled="false" />
+        
+        <!-- useFacetsAsExpandQuery: If true, currently selected facets will be used to build the expand query to produce child hits,
+            even if no search terms were given. Default is false. -->
+        <useFacetsAsExpandQuery>false</useFacetsAsExpandQuery>
     </search>
 
 
