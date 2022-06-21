@@ -554,6 +554,7 @@
             <field type="ignore">MD_FIRSTNAME</field>
             <field type="ignore">MD_LASTNAME</field>
             <field type="ignore">MD_VALUE</field>
+            <field type="ignore">MONTHDAY</field>
             <field type="ignore">NORMDATATERMS</field>
             <field type="ignore">PI_ANCHOR</field>
             <field type="ignore">PI_TOPSTRUCT</field>
