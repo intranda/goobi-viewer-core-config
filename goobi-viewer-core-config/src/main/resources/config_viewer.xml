@@ -554,6 +554,7 @@
             <field type="ignore">MD_FIRSTNAME</field>
             <field type="ignore">MD_LASTNAME</field>
             <field type="ignore">MD_VALUE</field>
+            <field type="ignore">MONTHDAY</field>
             <field type="ignore">NORMDATATERMS</field>
             <field type="ignore">PI_ANCHOR</field>
             <field type="ignore">PI_TOPSTRUCT</field>
@@ -1581,6 +1582,13 @@
             <descriptionFields>
                 <field>MD_CONTENTDESCRIPTION</field>
             </descriptionFields>
+            
+            <!-- labelFields: A list of solr fieldnames which may serve as manifest label metadata.
+                 The first existing field is used to provide the manifest label. If no matching fields are found,
+                 the default label of the main struct element is used -->
+            <labelFields>
+		      	<field>LABEL</field>
+		    </labelFields>
 
             <!-- navDateField: Solr field to use for IIIF Presentation navDate property, if any -->
             <navDateField>YEAR</navDateField>
@@ -1604,6 +1612,20 @@
                     <label>ALTO</label>
                 </alto>
             </rendering>
+            
+            <!-- seeAlso: Configure 'seeAlso' links für IIIF Presentation resources. These
+                 are links to the backing metadata files of a record, either in METS/MODS or LIDO format.
+                 For each link the visibiliy attribute determines if the link is rendered
+                 at all and the label subnode can be used to configure an individual label
+                 for the link. These labels are translated if translations exist. -->
+            <seeAlso>
+		      	<mets enabled="true">
+		      		<label>METS/MODS</label>
+		      	</mets>
+		      	<lido enabled="true">
+		      		<label>LIDO</label>
+		      	</lido>
+		      </seeAlso>
 
             <!-- translations: A list of locale of language codes for which translations of labels
                  and metadata fields should be provided. If no locales are configured, all
