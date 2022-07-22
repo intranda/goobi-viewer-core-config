@@ -1931,7 +1931,8 @@
         	<tilesource>mapbox</tilesource>
         </geoMap>
     </campaigns>
-    
+
+
     <!-- Configuration for collecting usage statistics -->
-    <statistics enabled="true"></statistics>
+    <statistics enabled="false" />
 </config>
