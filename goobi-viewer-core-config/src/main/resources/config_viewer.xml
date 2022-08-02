@@ -1478,6 +1478,24 @@
             <accessConditionField>MD_ACCESSCONDITION</accessConditionField>
             <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
         </displayCopyrightInfo>
+        
+        <!-- copyrightIndicator: if true, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
+        	 two possible styles: trafficlight or badge. Only different in looks, offering same functionality -->
+        <copyrightIndicator enabled="false" style="trafficlight">
+	        <status field="MD_ACCESSCONDITION">
+	            <value content="Free copyright" status="OPEN" />
+	            <value content="Limited copyright" status="PARTIAL" />
+	            <value content="Blocked copyright" status="LOCKED" />
+	        </status>
+	        <!-- determine all available licences with information and icons here -->
+	        <license field="MD_ACCESSCONDITIONCOPYRIGHT">
+	        	<!-- description is a message key. Icons (best working: svg format) are loaded from theme path themeName/images/licence, alternatively from the core path resources/images/licence -->
+	            <value content="CC0 Public Domain Dedication 1.0" description="COPYRIGHT_DESCRIPTION_CC0">
+	                <icon>cc.svg</icon>
+	                <icon>zero.svg</icon>
+	            </value>
+	        </license>
+    	</copyrightIndicator>
 
         <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
