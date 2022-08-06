@@ -172,9 +172,9 @@
         </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
-			 'smtpPort' (defaults to 25 for NONE and STARTTLS and 465 for SSL) as well as
+             'smtpPort' (defaults to 25 for NONE and STARTTLS and 465 for SSL) as well as
              'smtpSecurity' (defaults to NONE, possible other values are SSL and STARTTLS) are optional,
-		     all others are mandatory and have no default value. -->
+             all others are mandatory and have no default value. -->
         <smtpServer>localhost</smtpServer>
         <!-- <smtpPort>25</smtpPort> -->
         <smtpUser></smtpUser>
@@ -605,6 +605,14 @@
 
         <!-- fuzzy/@enabled: If true, fuzzy search will be applied. Default is false. -->
         <fuzzy enabled="false" />
+
+        <!-- useFacetsAsExpandQuery/@enabled: If true, currently active facets will be used to build the expand query to produce child hits,
+            even if no search terms were given. Default is false. -->
+        <useFacetsAsExpandQuery enabled="false">
+            <!-- facetQuery: (0-n); If at least one facet query is configured here, only active queries that match those listed here
+                will be used for constructing the expand query. -->
+            <!-- <facetQuery>(FACET_DC:"varia" OR FACET_DC:varia.*)</facetQuery> -->
+        </useFacetsAsExpandQuery>
     </search>
 
 
@@ -958,21 +966,6 @@
                 </metadata>
             </template>
         </metadataView>
-
-        <!-- titleBarMetadataList: defines metadata that is displayed above an image. The syntax is the same as in mainMetadataList -->
-        <titleBarMetadataList>
-            <!--
-            <metadata label="MD_CREATOR" value="LINK_WIKIPEDIA">
-                <param type="field" key="MD_CREATOR" />
-                <param type="wikipersonfield" key="MD_CREATOR" />
-            </metadata>
-            -->
-
-            <!-- Number of volumes for anchors -->
-            <metadata label="numVolumes">
-                <param type="field" key="NUMVOLUMES" />
-            </metadata>
-        </titleBarMetadataList>
 
         <!-- searchHitMetadataList: defines metadata that is displayed in the search results. The syntax is the same as in mainMetadataList -->
         <searchHitMetadataList>
@@ -1471,6 +1464,24 @@
             <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
         </displayCopyrightInfo>
 
+        <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
+             two possible styles: trafficlight or badge. Only different in looks, offering same functionality -->
+        <copyrightIndicator enabled="false" style="badge">
+            <status field="ACCESSCONDITION">
+                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_OPEN" />
+                <value content="Limited copyright" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_PARTIAL" />
+                <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_LOCKED" />
+            </status>
+            <!-- determine all available licences with information and icons here -->
+            <license field="MD_USEANDREPRODUCTIONLICENSE">
+                <!-- description is a message key. Icons (best working: svg format) are loaded from theme path themeName/images/licence, alternatively from the core path resources/images/licence -->
+                <value content="CC0 Public Domain Dedication 1.0" description="COPYRIGHT_DESCRIPTION_CC0">
+                    <icon>cc.svg</icon>
+                    <icon>zero.svg</icon>
+                </value>
+            </license>
+        </copyrightIndicator>
+
         <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
 
@@ -1548,12 +1559,13 @@
     </piwik>
 
 
-    <sitemap>
+    <!-- sitelinks/@enabled: If true, the link to the sitelinks page will be displayed. Default is true. -->
+    <sitelinks enabled="true">
         <!-- sitelinksField: Field for which the sitelinks page will list all available values (similar to term browsing) -->
         <sitelinksField>YEAR</sitelinksField>
         <!-- sitelinksFilterQuery: Solr query which will filter the results for each field value (e.g. only top-level dosctructs) -->
         <sitelinksFilterQuery>ISWORK:true</sitelinksFilterQuery>
-    </sitemap>
+    </sitelinks>
 
     <!-- Web API configuration -->
     <webapi>
@@ -1582,13 +1594,13 @@
             <descriptionFields>
                 <field>MD_CONTENTDESCRIPTION</field>
             </descriptionFields>
-            
+
             <!-- labelFields: A list of solr fieldnames which may serve as manifest label metadata.
                  The first existing field is used to provide the manifest label. If no matching fields are found,
                  the default label of the main struct element is used -->
             <labelFields>
-		      	<field>LABEL</field>
-		    </labelFields>
+                  <field>LABEL</field>
+            </labelFields>
 
             <!-- navDateField: Solr field to use for IIIF Presentation navDate property, if any -->
             <navDateField>YEAR</navDateField>
@@ -1612,20 +1624,20 @@
                     <label>ALTO</label>
                 </alto>
             </rendering>
-            
+
             <!-- seeAlso: Configure 'seeAlso' links für IIIF Presentation resources. These
                  are links to the backing metadata files of a record, either in METS/MODS or LIDO format.
                  For each link the visibiliy attribute determines if the link is rendered
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
             <seeAlso>
-		      	<mets enabled="true">
-		      		<label>METS/MODS</label>
-		      	</mets>
-		      	<lido enabled="true">
-		      		<label>LIDO</label>
-		      	</lido>
-		      </seeAlso>
+                  <mets enabled="true">
+                      <label>METS/MODS</label>
+                  </mets>
+                  <lido enabled="true">
+                      <label>LIDO</label>
+                  </lido>
+              </seeAlso>
 
             <!-- translations: A list of locale of language codes for which translations of labels
                  and metadata fields should be provided. If no locales are configured, all
@@ -1726,7 +1738,7 @@
             <styleId></styleId>
             <!-- Display an input field to search for places within a map -->
             <addressSearch enabled="false" />
-    	</mapbox>
+        </mapbox>
 
         <!-- The markers can be configured using the Leaflet.ExtraMarkers plugin
              Find more about it here: https://github.com/coryasilva/Leaflet.ExtraMarkers -->
@@ -1905,22 +1917,26 @@
 
     <!-- Configuration for crowdsourcing campaigns -->
     <campaigns>
-	    <!-- Order by which the next editable item of a campaign should be selected. May be "random"
-	    or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
+        <!-- Order by which the next editable item of a campaign should be selected. May be "random"
+        or "fixed" (ordered by default SOLR result order). Default is "fixed" -->
         <itemOrder>fixed</itemOrder>
         <annotations>
-        	<geoCoordinates>
-        		<!-- Zoom level of maps depicting the geographical location of an annotation -->
-        		<zoom>7</zoom>
-        	</geoCoordinates>
+            <geoCoordinates>
+                <!-- Zoom level of maps depicting the geographical location of an annotation -->
+                <zoom>7</zoom>
+            </geoCoordinates>
         </annotations>
         <geoMap>
-        	<!-- initial zoom level of maps within crowdsourcing campaigns -->
-        	<zoom>5</zoom>
-        	<!-- initial center location of maps within crowdsourcing campaigns -->
-        	<lngLat>11.073397, 49.451993</lngLat>
-        	<!-- The preferred source for map tiles for maps within crowdsourcing campaigns -->
-        	<tilesource>mapbox</tilesource>
+            <!-- initial zoom level of maps within crowdsourcing campaigns -->
+            <zoom>5</zoom>
+            <!-- initial center location of maps within crowdsourcing campaigns -->
+            <lngLat>11.073397, 49.451993</lngLat>
+            <!-- The preferred source for map tiles for maps within crowdsourcing campaigns -->
+            <tilesource>mapbox</tilesource>
         </geoMap>
     </campaigns>
+
+
+    <!-- Configuration for collecting usage statistics -->
+    <statistics enabled="false" />
 </config>
