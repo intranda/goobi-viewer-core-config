@@ -1465,8 +1465,8 @@
         </displayCopyrightInfo>
 
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
-             two possible styles: trafficlight or badge. Only different in looks, offering same functionality -->
-        <copyrightIndicator enabled="false" style="badge">
+             two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
+        <copyrightIndicator enabled="false" style="widget">
             <status field="ACCESSCONDITION">
                 <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_OPEN" />
                 <value content="Limited copyright" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_PARTIAL" />
