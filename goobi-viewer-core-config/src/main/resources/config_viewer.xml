@@ -1933,5 +1933,8 @@
     </campaigns>
     
     <!-- Configuration for collecting usage statistics -->
-    <statistics enabled="true"></statistics>
-</config>
+    <statistics enabled="true">
+    	<!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching their 'User-Agent' request header with the configured regex. 
+    	     The CrawlerSessionManagerValve session attribute can not be used for this purpose since it is applied to the session only after the first request -->
+    	<crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
+    </statistics></config>
