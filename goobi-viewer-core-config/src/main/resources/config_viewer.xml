@@ -1466,18 +1466,74 @@
 
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
              two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
-        <copyrightIndicator enabled="false" style="widget">
+        <copyrightIndicator enabled="true" style="widget">
             <status field="ACCESSCONDITION">
-                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_OPEN" />
-                <value content="Limited copyright" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_PARTIAL" />
-                <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_LOCKED" />
+                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
+                <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
+                <!-- <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_STATUS_LOCKED" /> -->
             </status>
-            <!-- determine all available licences with information and icons here -->
             <license field="MD_USEANDREPRODUCTIONLICENSE">
-                <!-- description is a message key. Icons (best working: svg format) are loaded from theme path themeName/images/licence, alternatively from the core path resources/images/licence -->
-                <value content="CC0 Public Domain Dedication 1.0" description="COPYRIGHT_DESCRIPTION_CC0">
+                <!-- Creative Commons: CC0 - https://creativecommons.org/publicdomain/zero/1.0/ -->
+                <value content="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" description="COPYRIGHT_DESCRIPTION_LICENSE_CC010">
                     <icon>cc.svg</icon>
                     <icon>zero.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY - https://creativecommons.org/licenses/by/4.0/ -->
+                <value content="Attribution 4.0 International (CC BY 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBY40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-SA - https://creativecommons.org/licenses/by-sa/4.0/ -->
+                <value content="Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYSA40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>sa.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-ND - https://creativecommons.org/licenses/by-nd/4.0/ -->
+                <value content="Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYND40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nd.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC - https://creativecommons.org/licenses/by-nc/4.0/ -->
+                <value content="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNC40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC-SA - https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+                <value content="Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCSA40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                    <icon>sa.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC-ND - https://creativecommons.org/licenses/by-nc-nd/4.0/ -->
+                <value content="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCND40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                    <icon>nd.svg</icon>
+                </value>
+                <!-- Creative Commons: Public Domain - https://creativecommons.org/publicdomain/mark/1.0/ -->
+                <value content="Public Domain Mark 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_PUBLICDOMAINMARK10">
+                    <icon>pd.svg</icon>
+                </value>
+                <!-- RightsStatements: InC (In Copyright 1.0) - https://rightsstatements.org/vocab/InC/1.0/ -->
+                <value content="In Copyright 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINC10">
+                    <icon>rs-inc.svg</icon>
+                </value>
+                <!-- RightsStatements: InC-OW-EU (Urheberrechtsschutz - Verwaistes Werk EU) - https://rightsstatements.org/vocab/InC-OW-EU/1.0/ -->
+                <value content="Urheberrechtsschutz - Verwaistes Werk EU" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINCOWEU10">
+                    <icon>rs-inc.svg</icon>
+                </value>
+                <!-- Rights reserved - deutsche Urheberrecht -->
+                <value content="Rights reserved" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVED">
+                    <icon>paragraphs.svg</icon>
+                </value>
+                <!-- Rights reserved - VG Wort -->
+                <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
+                    <icon>paragraphs.svg</icon>
                 </value>
             </license>
         </copyrightIndicator>
@@ -1942,7 +1998,7 @@
         <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
              their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
              attribute can not be used for this purpose since it is applied to the session only after the first request -->
-    	<crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
+        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
     </statistics>
 
 
