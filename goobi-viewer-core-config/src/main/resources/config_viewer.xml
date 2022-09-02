@@ -1163,11 +1163,11 @@
 
         <!-- licenses: Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to select a license -->
         <licenses>
-            <!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/ -->
+            <!-- Creative Commons Public Domain Tools -->
             <license label="Creative Commons: CC0 1.0" icon="" url="https://creativecommons.org/publicdomain/zero/1.0/" />
             <license label="Creative Commons: Public Domain Mark" icon="" url="http://creativecommons.org/publicdomain/mark/1.0/" />
 
-            <!-- Creative Commons Licenses; icons: https://creativecommons.org/about/downloads/ -->
+            <!-- Creative Commons Licenses -->
             <license label="Creative Commons: CC BY" icon="" url="https://creativecommons.org/licenses/by/4.0/" />
             <license label="Creative Commons: CC BY-SA" icon="" url="https://creativecommons.org/licenses/by-sa/4.0/" />
             <license label="Creative Commons: CC BY-ND" icon="" url="https://creativecommons.org/licenses/by-nd/4.0/" />
@@ -1175,7 +1175,7 @@
             <license label="Creative Commons: CC BY-NC-SA" icon="" url="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
             <license label="Creative Commons: CC BY-NC-ND" icon="" url="https://creativecommons.org/licenses/by-nc-nd/4.0/" />
 
-            <!-- Rights Statements; icons: https://rightsstatements.org/en/documentation/assets -->
+            <!-- Rights Statements -->
             <license label="Rights Statements: IN COPYRIGHT" icon="" url="http://rightsstatements.org/vocab/InC/1.0/" />
             <license label="Rights Statements: IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-NC/1.0/" />
             <license label="Rights Statements: IN COPYRIGHT - EDUCATIONAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-EDU/1.0/" />
