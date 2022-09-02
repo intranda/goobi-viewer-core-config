@@ -1512,6 +1512,7 @@
     <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed. Default is true. -->
     <bookmarks enabled="true" />
 
+
     <cms>
         <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
         <useCustomNavBar>true</useCustomNavBar>
@@ -1525,7 +1526,6 @@
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
     </cms>
-
 
 
     <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
@@ -1939,9 +1939,20 @@
 
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
-    	<!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching their 'User-Agent' request header with the configured regex. 
-    	     The CrawlerSessionManagerValve session attribute can not be used for this purpose since it is applied to the session only after the first request -->
+        <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
+             their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
+             attribute can not be used for this purpose since it is applied to the session only after the first request -->
     	<crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
     </statistics>
-    
+
+
+    <!-- condigEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
+         condigEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
+         will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
+    <configEditor enabled="true" backupFiles="100">
+        <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
+        <directory>/opt/digiverso/viewer/config/</directory>
+        <directory>/opt/digiverso/indexer/</directory>
+    </configEditor>
+
 </config>
