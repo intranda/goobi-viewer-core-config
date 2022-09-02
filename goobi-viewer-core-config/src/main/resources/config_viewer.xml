@@ -1687,13 +1687,18 @@
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
             <seeAlso>
-                  <mets enabled="true">
-                      <label>METS/MODS</label>
-                  </mets>
-                  <lido enabled="true">
-                      <label>LIDO</label>
-                  </lido>
-              </seeAlso>
+                <mets enabled="true">
+                    <label>METS/MODS</label>
+                </mets>
+                <lido enabled="true">
+                    <label>LIDO</label>
+                </lido>
+                <!--
+                <metadata label="metadata_dl_opac" format="text/html">
+                    <param type="field" key="OPACURL"/>
+                </metadata>
+                -->
+            </seeAlso>
 
             <!-- translations: A list of locale of language codes for which translations of labels
                  and metadata fields should be provided. If no locales are configured, all
