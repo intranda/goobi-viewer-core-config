@@ -1293,6 +1293,7 @@
 
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
+        <!-- ### RECORD VIEW SPECIFIC OPTIONS ### -->
         <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
         <page enabled="true" />
 
@@ -1342,12 +1343,6 @@
             <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
-
-        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
-        <sidebarBrowsingTerms enabled="true" />
-
-        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
-        <sidebarRssFeed enabled="true" />
 
         <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
         <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
@@ -1413,6 +1408,14 @@
                  it are hidden from the widget display. The download is still possible. -->
             <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
         </sidebarWidgetDownloads>
+
+
+        <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
+        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <sidebarBrowsingTerms enabled="true" />
+
+        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <sidebarRssFeed enabled="true" />
     </sidebar>
 
 
