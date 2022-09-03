@@ -244,7 +244,7 @@
         <downloadFolder>/opt/digiverso/viewer/download_pdf</downloadFolder>
 
         <!-- docHierarchyPdfEnabled: if true, an icon to generate a PDF out of the Table of Contents is displayed. Default is false. -->
-        <docHierarchyPdfEnabled>false</docHierarchyPdfEnabled>
+        <docHierarchyPdfEnabled>true</docHierarchyPdfEnabled>
     </pdf>
 
 
@@ -361,7 +361,7 @@
 
         <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
-        <anchorThumbnailMode>GENERIC</anchorThumbnailMode>
+        <anchorThumbnailMode>FIRSVOLUME</anchorThumbnailMode>
 
         <!-- forceJpegConversion: Always request JPEG images from the content server. If false, the content server will determine the most efficient delivery format
              based on image properties. Default is false. -->
