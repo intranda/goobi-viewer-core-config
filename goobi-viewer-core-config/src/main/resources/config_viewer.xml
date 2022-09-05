@@ -244,7 +244,7 @@
         <downloadFolder>/opt/digiverso/viewer/download_pdf</downloadFolder>
 
         <!-- docHierarchyPdfEnabled: if true, an icon to generate a PDF out of the Table of Contents is displayed. Default is false. -->
-        <docHierarchyPdfEnabled>false</docHierarchyPdfEnabled>
+        <docHierarchyPdfEnabled>true</docHierarchyPdfEnabled>
     </pdf>
 
 
@@ -361,7 +361,7 @@
 
         <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
-        <anchorThumbnailMode>GENERIC</anchorThumbnailMode>
+        <anchorThumbnailMode>FIRSVOLUME</anchorThumbnailMode>
 
         <!-- forceJpegConversion: Always request JPEG images from the content server. If false, the content server will determine the most efficient delivery format
              based on image properties. Default is false. -->
@@ -1163,11 +1163,11 @@
 
         <!-- licenses: Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to select a license -->
         <licenses>
-            <!-- Creative Commons Public Domain Tools; icons: https://creativecommons.org/about/downloads/ -->
+            <!-- Creative Commons Public Domain Tools -->
             <license label="Creative Commons: CC0 1.0" icon="" url="https://creativecommons.org/publicdomain/zero/1.0/" />
             <license label="Creative Commons: Public Domain Mark" icon="" url="http://creativecommons.org/publicdomain/mark/1.0/" />
 
-            <!-- Creative Commons Licenses; icons: https://creativecommons.org/about/downloads/ -->
+            <!-- Creative Commons Licenses -->
             <license label="Creative Commons: CC BY" icon="" url="https://creativecommons.org/licenses/by/4.0/" />
             <license label="Creative Commons: CC BY-SA" icon="" url="https://creativecommons.org/licenses/by-sa/4.0/" />
             <license label="Creative Commons: CC BY-ND" icon="" url="https://creativecommons.org/licenses/by-nd/4.0/" />
@@ -1175,7 +1175,7 @@
             <license label="Creative Commons: CC BY-NC-SA" icon="" url="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
             <license label="Creative Commons: CC BY-NC-ND" icon="" url="https://creativecommons.org/licenses/by-nc-nd/4.0/" />
 
-            <!-- Rights Statements; icons: https://rightsstatements.org/en/documentation/assets -->
+            <!-- Rights Statements -->
             <license label="Rights Statements: IN COPYRIGHT" icon="" url="http://rightsstatements.org/vocab/InC/1.0/" />
             <license label="Rights Statements: IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-NC/1.0/" />
             <license label="Rights Statements: IN COPYRIGHT - EDUCATIONAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-EDU/1.0/" />
@@ -1293,6 +1293,7 @@
 
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
+        <!-- ### RECORD VIEW SPECIFIC OPTIONS ### -->
         <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
         <page enabled="true" />
 
@@ -1342,12 +1343,6 @@
             <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
             <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
         </sidebarToc>
-
-        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
-        <sidebarBrowsingTerms enabled="true" />
-
-        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
-        <sidebarRssFeed enabled="true" />
 
         <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
         <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
@@ -1413,6 +1408,14 @@
                  it are hidden from the widget display. The download is still possible. -->
             <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
         </sidebarWidgetDownloads>
+
+
+        <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
+        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
+        <sidebarBrowsingTerms enabled="true" />
+
+        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+        <sidebarRssFeed enabled="true" />
     </sidebar>
 
 
@@ -1465,19 +1468,75 @@
         </displayCopyrightInfo>
 
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
-             two possible styles: trafficlight or badge. Only different in looks, offering same functionality -->
-        <copyrightIndicator enabled="false" style="badge">
+             two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
+        <copyrightIndicator enabled="true" style="widget">
             <status field="ACCESSCONDITION">
-                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_OPEN" />
-                <value content="Limited copyright" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_PARTIAL" />
-                <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_LOCKED" />
+                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
+                <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
+                <!-- <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_STATUS_LOCKED" /> -->
             </status>
-            <!-- determine all available licences with information and icons here -->
             <license field="MD_USEANDREPRODUCTIONLICENSE">
-                <!-- description is a message key. Icons (best working: svg format) are loaded from theme path themeName/images/licence, alternatively from the core path resources/images/licence -->
-                <value content="CC0 Public Domain Dedication 1.0" description="COPYRIGHT_DESCRIPTION_CC0">
+                <!-- Creative Commons: CC0 - https://creativecommons.org/publicdomain/zero/1.0/ -->
+                <value content="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" description="COPYRIGHT_DESCRIPTION_LICENSE_CC010">
                     <icon>cc.svg</icon>
                     <icon>zero.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY - https://creativecommons.org/licenses/by/4.0/ -->
+                <value content="Attribution 4.0 International (CC BY 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBY40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-SA - https://creativecommons.org/licenses/by-sa/4.0/ -->
+                <value content="Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYSA40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>sa.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-ND - https://creativecommons.org/licenses/by-nd/4.0/ -->
+                <value content="Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYND40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nd.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC - https://creativecommons.org/licenses/by-nc/4.0/ -->
+                <value content="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNC40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC-SA - https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+                <value content="Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCSA40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                    <icon>sa.svg</icon>
+                </value>
+                <!-- Creative Commons: CC BY-NC-ND - https://creativecommons.org/licenses/by-nc-nd/4.0/ -->
+                <value content="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCND40">
+                    <icon>cc.svg</icon>
+                    <icon>by.svg</icon>
+                    <icon>nc.svg</icon>
+                    <icon>nd.svg</icon>
+                </value>
+                <!-- Creative Commons: Public Domain - https://creativecommons.org/publicdomain/mark/1.0/ -->
+                <value content="Public Domain Mark 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_PUBLICDOMAINMARK10">
+                    <icon>pd.svg</icon>
+                </value>
+                <!-- RightsStatements: InC (In Copyright 1.0) - https://rightsstatements.org/vocab/InC/1.0/ -->
+                <value content="In Copyright 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINC10">
+                    <icon>rs-inc.svg</icon>
+                </value>
+                <!-- RightsStatements: InC-OW-EU (Urheberrechtsschutz - Verwaistes Werk EU) - https://rightsstatements.org/vocab/InC-OW-EU/1.0/ -->
+                <value content="Urheberrechtsschutz - Verwaistes Werk EU" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINCOWEU10">
+                    <icon>rs-inc.svg</icon>
+                </value>
+                <!-- Rights reserved - deutsche Urheberrecht -->
+                <value content="Rights reserved" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVED">
+                    <icon>paragraphs.svg</icon>
+                </value>
+                <!-- Rights reserved - VG Wort -->
+                <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
+                    <icon>paragraphs.svg</icon>
                 </value>
             </license>
         </copyrightIndicator>
@@ -1512,6 +1571,7 @@
     <!-- bookmarks/@enabled: if false, no links to bookmark administration are displayed. Default is true. -->
     <bookmarks enabled="true" />
 
+
     <cms>
         <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
         <useCustomNavBar>true</useCustomNavBar>
@@ -1525,7 +1585,6 @@
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
     </cms>
-
 
 
     <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
@@ -1631,13 +1690,18 @@
                  at all and the label subnode can be used to configure an individual label
                  for the link. These labels are translated if translations exist. -->
             <seeAlso>
-                  <mets enabled="true">
-                      <label>METS/MODS</label>
-                  </mets>
-                  <lido enabled="true">
-                      <label>LIDO</label>
-                  </lido>
-              </seeAlso>
+                <mets enabled="true">
+                    <label>METS/MODS</label>
+                </mets>
+                <lido enabled="true">
+                    <label>LIDO</label>
+                </lido>
+                <!--
+                <metadata label="metadata_dl_opac" format="text/html">
+                    <param type="field" key="OPACURL"/>
+                </metadata>
+                -->
+            </seeAlso>
 
             <!-- translations: A list of locale of language codes for which translations of labels
                  and metadata fields should be provided. If no locales are configured, all
@@ -1896,25 +1960,6 @@
     </archives>
 
 
-    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
-    <upload enabled="false">
-        <!-- token: Goobi workflow API authorization token. -->
-        <token></token>
-
-        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
-        <docstruct>monograph</docstruct>
-
-        <!-- templateName: Goobi workflow template name for process creation (required). -->
-        <templateName>Sample_workflow</templateName>
-
-        <!-- rejectionPropertyName: Goobi worklow process property name indicating whether the uploaded process was rejected. -->
-        <rejectionPropertyName>uploadRejected</rejectionPropertyName>
-
-        <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
-        <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
-    </upload>
-
-
     <!-- Configuration for crowdsourcing campaigns -->
     <campaigns>
         <!-- Order by which the next editable item of a campaign should be selected. May be "random"
@@ -1937,6 +1982,41 @@
     </campaigns>
 
 
+    <!-- upload/@enabled: If true, users are allowed to upload content for processing in Goobi workflow -->
+    <upload enabled="false">
+        <!-- token: Goobi workflow API authorization token. -->
+        <token></token>
+
+        <!-- docstruct: Document type to be used when creating a new process from uploaded data. Default is 'monograph'. -->
+        <docstruct>monograph</docstruct>
+
+        <!-- templateName: Goobi workflow template name for process creation (required). -->
+        <templateName>Sample_workflow</templateName>
+
+        <!-- rejectionPropertyName: Goobi worklow process property name indicating whether the uploaded process was rejected. -->
+        <rejectionPropertyName>uploadRejected</rejectionPropertyName>
+
+        <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
+        <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
+    </upload>
+
+
     <!-- Configuration for collecting usage statistics -->
-    <statistics enabled="false" />
+    <statistics enabled="false">
+        <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
+             their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
+             attribute can not be used for this purpose since it is applied to the session only after the first request -->
+        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
+    </statistics>
+
+
+    <!-- condigEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
+         condigEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
+         will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
+    <configEditor enabled="true" backupFiles="100">
+        <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
+        <directory>/opt/digiverso/viewer/config/</directory>
+        <directory>/opt/digiverso/indexer/</directory>
+    </configEditor>
+
 </config>
