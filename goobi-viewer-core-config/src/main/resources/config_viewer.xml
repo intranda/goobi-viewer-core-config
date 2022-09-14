@@ -361,7 +361,7 @@
 
         <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
-        <anchorThumbnailMode>FIRSVOLUME</anchorThumbnailMode>
+        <anchorThumbnailMode>FIRSTVOLUME</anchorThumbnailMode>
 
         <!-- forceJpegConversion: Always request JPEG images from the content server. If false, the content server will determine the most efficient delivery format
              based on image properties. Default is false. -->
