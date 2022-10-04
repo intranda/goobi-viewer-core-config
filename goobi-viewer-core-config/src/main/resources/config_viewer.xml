@@ -1275,6 +1275,8 @@
 
 
     <urnresolver>
+        <!-- field: Multiple URN fields can be defined here, which will be queried in that order. Default is 'URN'. -->
+        <field>URN</field>
         <!-- doRedirectInsteadOfForward: defines whether an identifier request
              or URN request gets redirected or forwarded. Allowed values are true (Redirect)
              and false (Forward). -->
