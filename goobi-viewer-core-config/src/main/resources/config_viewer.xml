@@ -83,9 +83,6 @@
         <!-- solr: URL to the Solr index core -->
         <solr>http://localhost:8983/solr/collection1</solr>
 
-        <!-- contentServerWrapper: absolute path to the content servlet -->
-        <contentServerWrapper>http://localhost:8080/viewer/content/</contentServerWrapper>
-
         <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
         <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
@@ -1299,10 +1296,6 @@
 
         <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
         <metadata enabled="true">
-            <!-- showEventMetadata: if true, event metadata of LIDO records are displayed. Default is true. -->
-            <showEventMetadata>true</showEventMetadata>
-            <!-- showRecordLabelIfNoOtherViews: if true, and metadata is the only view available, display the record label instead of the generic title. Default is true. -->
-            <showRecordLabelIfNoOtherViews>true</showRecordLabelIfNoOtherViews>
         </metadata>
 
         <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
@@ -1318,9 +1311,6 @@
 
             <!-- pageNumbersVisible: if true, page numbers in the sidebar toc are displayed. Default is false. -->
             <pageNumbersVisible>false</pageNumbersVisible>
-
-            <!-- visibleIfEmpty: if true, the sidebarToc is displayed even if it contains only the root element. Default is false. -->
-            <visibleIfEmpty>false</visibleIfEmpty>
 
             <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown. Default is 60. -->
             <lengthBeforeCut>60</lengthBeforeCut>
@@ -1563,9 +1553,6 @@
 
         <!-- mediaFolder: contains media files uploaded for CMS -->
         <mediaFolder>cms_media</mediaFolder>
-
-        <!-- templateFolder: contains template files for CMS. Only used if template views are rendered from an external folder using a base template -->
-        <templateFolder>resources/cms/templates/</templateFolder>
 
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
