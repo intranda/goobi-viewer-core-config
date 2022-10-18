@@ -111,6 +111,9 @@
 
         <!-- basex: URL to the baseX database that stores archival content -->
         <basex>https://basex.example.org/basex/</basex>
+        
+        <!-- urnResolver: The default internal URN resolver can be replaced with an external URL (to be used for canonical URLs) -->
+        <!-- <urnResolver>http://nbn-resolving.de/</urnResolver> -->
     </urls>
 
 
@@ -405,15 +408,15 @@
             <!-- <sites></sites> -->
         </pageTypes>
 
-        <!-- docstructTargetPageTypes: Overrides the default target view URL for given docstruct types.
-             An optinal _DEFAULT configuration can be used for all docstruct types without an explicit configuration.
+        <!-- recordTargetPageTypes: Overrides the default target view URL for given publication types.
+             An optional _DEFAULT configuration can be used for all publication types without an explicit configuration.
              These targets are also used for PURL generation. -->
-        <docstructTargetPageTypes>
+        <recordTargetPageTypes>
             <!-- <_DEFAULT>metadata</_DEFAULT> -->
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
             <newspaper>calendar</newspaper>
-        </docstructTargetPageTypes>
+        </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
@@ -1145,11 +1148,11 @@
                 <ignoreLeadingChars>.[]</ignoreLeadingChars>
             </sorting>
 
-            <!-- luceneField: defines index fields that are available for browsing. Only untokenized fields should be used. -->
-            <luceneField recordsAndAnchorsOnly="true" alwaysApplyFilter="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
-            <luceneField recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</luceneField>
-            <!-- <luceneField sortField="SORT_TITLE" recordsAndAnchorsOnly="true" docstructFilters="Monograph;Volume;PeriodicalVolume">MD_TITLE_UNTOKENIZED</luceneField> -->
-            <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
+            <!-- field: defines index fields that are available for browsing. Only untokenized fields should be used. -->
+            <field recordsAndAnchorsOnly="true" alwaysApplyFilter="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</field>
+            <field recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</field>
+            <!-- <field sortField="SORT_TITLE" recordsAndAnchorsOnly="true" docstructFilters="Monograph;Volume;PeriodicalVolume">MD_TITLE_UNTOKENIZED</field> -->
+            <!-- <field recordsAndAnchorsOnly="true" >MD_SHELFMARK</field> -->
         </browsingMenu>
 
         <!-- addDublinCoreMetaTags: if true, Dublin Core metadata is added to the HTML head section. Default us true. -->
@@ -1415,57 +1418,7 @@
 
         <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
         <sidebarRssFeed enabled="true" />
-    </sidebar>
-
-
-    <!-- Various options -->
-    <webGuiDisplay>
-        <!-- collectionBrowsing: if false, the collections section is hidden -->
-        <collectionBrowsing>true</collectionBrowsing>
-
-        <!-- userAccountNavigation: if false, the user section is hidden -->
-        <userAccountNavigation>true</userAccountNavigation>
-
-        <!-- displayTagCloudNavigation: if false, the tag cloud section is hidden -->
-        <displayTagCloudNavigation>true</displayTagCloudNavigation>
-
-        <!-- displayTagCloudStartpage: if false the tag cloud on the start page is hidden -->
-        <displayTagCloudStartpage>true</displayTagCloudStartpage>
-
-        <!-- displaySearchResultNavigation: if false, the box that allows browsing through search hits in the image view is hidden -->
-        <displaySearchResultNavigation>true</displaySearchResultNavigation>
-
-        <!-- displayBreadcrumbs: if false, the breadcrumb navigation is hidden -->
-        <displayBreadcrumbs>true</displayBreadcrumbs>
-
-        <!-- number of letters befor cutting breadcrumb items -->
-        <breadcrumbsClipping>50</breadcrumbsClipping>
-
-        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
-        <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
-
-        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
-        <displayTitlePURL>true</displayTitlePURL>
-
-        <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
-        <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
-
-        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
-        <displayStatistics>true</displayStatistics>
-
-        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
-        <displayTimeMatrix>false</displayTimeMatrix>
-
-        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
-        <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
-
-        <!-- displayCopyrightInfo: if true, "traffic lights" for access condition and a copyright icon is shown in the fullscreen view. Default is false -->
-        <displayCopyrightInfo>
-            <visible>false</visible>
-            <accessConditionField>MD_ACCESSCONDITION</accessConditionField>
-            <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
-        </displayCopyrightInfo>
-
+        
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
              two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
         <copyrightIndicator enabled="true" style="widget">
@@ -1539,6 +1492,50 @@
                 </value>
             </license>
         </copyrightIndicator>
+        
+    </sidebar>
+
+
+    <!-- Various options -->
+    <webGuiDisplay>
+        <!-- collectionBrowsing: if false, the collections section is hidden -->
+        <collectionBrowsing>true</collectionBrowsing>
+
+        <!-- userAccountNavigation: if false, the user section is hidden -->
+        <userAccountNavigation>true</userAccountNavigation>
+
+        <!-- displayTagCloudNavigation: if false, the tag cloud section is hidden -->
+        <displayTagCloudNavigation>true</displayTagCloudNavigation>
+
+        <!-- displayTagCloudStartpage: if false the tag cloud on the start page is hidden -->
+        <displayTagCloudStartpage>true</displayTagCloudStartpage>
+
+        <!-- displaySearchResultNavigation: if false, the box that allows browsing through search hits in the image view is hidden -->
+        <displaySearchResultNavigation>true</displaySearchResultNavigation>
+
+        <!-- displayBreadcrumbs: if false, the breadcrumb navigation is hidden -->
+        <displayBreadcrumbs>true</displayBreadcrumbs>
+
+        <!-- number of letters befor cutting breadcrumb items -->
+        <breadcrumbsClipping>50</breadcrumbsClipping>
+
+        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
+        <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
+
+        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
+        <displayTitlePURL>true</displayTitlePURL>
+
+        <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
+        <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
+
+        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
+        <displayStatistics>true</displayStatistics>
+
+        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
+        <displayTimeMatrix>false</displayTimeMatrix>
+
+        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
+        <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 
         <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
@@ -1628,11 +1625,11 @@
     <!-- Web API configuration -->
     <webapi>
         <!-- fields: Custom JSON fields. Each <field> element must contain the
-             attributes 'jsonField' (name of the field for JSON datasets) and 'luceneField'
+             attributes 'jsonField' (name of the field for JSON datasets) and 'solrField'
              (source index field name). An optional attribute 'multivalue' can be set
              to 'true' to return a list with all found values in JSON. -->
         <fields>
-            <field jsonField="persons" luceneField="MD_CREATOR" multivalue="true" />
+            <field jsonField="persons" solrField="MD_CREATOR" multivalue="true" />
         </fields>
 
         <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
