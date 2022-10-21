@@ -34,6 +34,9 @@
 
     <!-- pdfFolder: contains pre-generated PDFs -->
     <pdfFolder>pdf</pdfFolder>
+    
+    <!-- cmsMediaFolder: contains media files uploaded for CMS -->
+    <cmsMediaFolder>cms_media</cmsMediaFolder>
 
     <!-- cmsTextFolder: contains extracted CMS page texts for indexing -->
     <cmsTextFolder>cms</cmsTextFolder>
@@ -1148,12 +1151,6 @@
             <!-- <field recordsAndAnchorsOnly="true" >MD_SHELFMARK</field> -->
         </browsingMenu>
 
-        <!-- addDublinCoreMetaTags: if true, Dublin Core metadata is added to the HTML head section. Default us true. -->
-        <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
-
-        <!-- addHighwirePressMetaTags: if true, Highwire Press tags are added to the HTML head section. Default is true. -->
-        <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
-
         <!-- licenses: Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to select a license -->
         <licenses>
             <!-- Creative Commons Public Domain Tools -->
@@ -1548,12 +1545,6 @@
 
 
     <cms>
-        <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
-        <useCustomNavBar>true</useCustomNavBar>
-
-        <!-- mediaFolder: contains media files uploaded for CMS -->
-        <mediaFolder>cms_media</mediaFolder>
-
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
     </cms>
