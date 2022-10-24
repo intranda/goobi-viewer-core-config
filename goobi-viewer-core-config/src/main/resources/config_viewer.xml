@@ -798,8 +798,8 @@
                 <metadata label="DOCSTRCT_SUB" hideIfOnlyMetadataField="true">
                     <param type="translatedfield" key="DOCSTRCT_SUB" />
                 </metadata>
-                <metadata label="DC">
-                    <param type="translatedfield" key="DC" topstructOnly="true" />
+                <metadata label="DC" topstructOnly="true">
+                    <param type="translatedfield" key="DC" />
                 </metadata>
                 <metadata label="MD_YEARPUBLISH">
                     <param type="field" key="MD_YEARPUBLISH" />
