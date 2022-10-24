@@ -359,9 +359,6 @@
         <thumbnailsWidth>400</thumbnailsWidth>
         <thumbnailsHeight>400</thumbnailsHeight>
 
-        <!-- thumbnailsCompression: JPEG thumbnail compression in percent. Default is 85 -->
-        <thumbnailsCompression>85</thumbnailsCompression>
-
         <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
         <anchorThumbnailMode>FIRSTVOLUME</anchorThumbnailMode>
