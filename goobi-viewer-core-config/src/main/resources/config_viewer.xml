@@ -535,10 +535,6 @@
         <!-- searchSaving/@enabled: if true, users are allowed to save searches to a list for later re-use. Default is true. -->
         <searchSaving enabled="true" />
 
-        <!-- boostTopLevelDocstructs: If true, top level records whose main title contains the search terms will be boosted to the top of the search result list.
-            Default is true. -->
-        <boostTopLevelDocstructs>true</boostTopLevelDocstructs>
-
         <!-- displayAdditionalMetadata/@enabled: if true, relevant metadata fields and values are added to the search results if they contain requested search terms. Default is true. -->
         <displayAdditionalMetadata enabled="true">
             <!-- field type="ignore": Fields that add no value to the search hits but take up space (e.g. PI_TOPSTRUCT, DOCSTRCT)
