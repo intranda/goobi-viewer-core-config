@@ -1327,7 +1327,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citationLinks enabled="true" imageIntroText="label__citation_link_image_introduction_text">
+            <citationLinks enabled="true">
                 <!-- links: Citation link configurations. -->
                 <links>
                     <link type="URL" for="record" label="URN" field="URN" pattern="https://nbn-resolving.org/{value}" />
