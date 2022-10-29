@@ -489,24 +489,19 @@
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
         <advanced enabled="true">
-            <!-- advancedSearchDefaultItemNumber: number of advanced search items to be rendered by default. Default is 2. -->
-            <defaultItemNumber>2</defaultItemNumber>
 
             <!-- advancedSearchFields: index fields to be used in advanced search -->
             <searchFields>
-                <field>DEFAULT</field>
-                <field>FULLTEXT</field>
-                <field>CMS_TEXT_ALL</field>
+                <field visible="true">MD_TITLE</field>
+                <field visible="true">MD_AUTHOR</field>
+                <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
+                <field visible="true" hierarchical="true">DC</field>
+                <field visible="true" range="true">YEAR</field>
                 <field>PI_TOPSTRUCT</field>
-                <field hierarchical="true">DC</field>
                 <field>DOCSTRCT_TOP</field>
                 <field>DOCSTRCT_SUB</field>
-                <field>MD_TITLE</field>
-                <field>MD_CREATOR</field>
                 <field>MD_PUBLISHER</field>
                 <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
-                <field range="true">YEAR</field>
-                <field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
                 <field>BOOKMARKS</field>
             </searchFields>
         </advanced>
