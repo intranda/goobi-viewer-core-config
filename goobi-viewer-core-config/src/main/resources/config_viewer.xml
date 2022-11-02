@@ -34,6 +34,9 @@
 
     <!-- pdfFolder: contains pre-generated PDFs -->
     <pdfFolder>pdf</pdfFolder>
+    
+    <!-- cmsMediaFolder: contains media files uploaded for CMS -->
+    <cmsMediaFolder>cms_media</cmsMediaFolder>
 
     <!-- cmsTextFolder: contains extracted CMS page texts for indexing -->
     <cmsTextFolder>cms</cmsTextFolder>
@@ -83,9 +86,6 @@
         <!-- solr: URL to the Solr index core -->
         <solr>http://localhost:8983/solr/collection1</solr>
 
-        <!-- contentServerWrapper: absolute path to the content servlet -->
-        <contentServerWrapper>http://localhost:8080/viewer/content/</contentServerWrapper>
-
         <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
         <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
@@ -111,16 +111,15 @@
 
         <!-- basex: URL to the baseX database that stores archival content -->
         <basex>https://basex.example.org/basex/</basex>
+        
+        <!-- urnResolver: The default internal URN resolver can be replaced with an external URL (to be used for canonical URLs) -->
+        <!-- <urnResolver>http://nbn-resolving.de/</urnResolver> -->
     </urls>
 
 
     <user>
         <!-- registration/@enabled: If true, widgets for user registration / password retrieval are displayed. Default is true. -->
         <registration enabled="true" />
-
-        <!-- anonymousUserEmailAddress: A user with this email address will be automatically created by the application.
-             It will act as an anonymous owner of user-created content in case the original user is deleted and their public data is kept. -->
-        <anonymousUserEmailAddress>anonymous@goobi.io</anonymousUserEmailAddress>
 
         <!-- securityQuestions: Configure the is-it-human questions and possible answers. Used when registering new user accounts and within the feedback form -->
         <securityQuestions>
@@ -356,16 +355,9 @@
         <thumbnailsWidth>400</thumbnailsWidth>
         <thumbnailsHeight>400</thumbnailsHeight>
 
-        <!-- thumbnailsCompression: JPEG thumbnail compression in percent. Default is 85 -->
-        <thumbnailsCompression>85</thumbnailsCompression>
-
         <!-- anchorThumbnailMode: Determines what kind of thumbnail to use for anchors.
              Possible values are GENERIC (generic multivolume image), FIRSTVOLUME (representative thumbnail of the first attached volume). Default is GENERIC. -->
         <anchorThumbnailMode>FIRSTVOLUME</anchorThumbnailMode>
-
-        <!-- forceJpegConversion: Always request JPEG images from the content server. If false, the content server will determine the most efficient delivery format
-             based on image properties. Default is false. -->
-        <forceJpegConversion>false</forceJpegConversion>
 
         <!-- watermarkTextConfiguration: Watermark text source. The order of <text> elements is the order in which each source will be checked. "URN" and "PURL"
              are reserved keywords for URN and PURL, items starting with "SOLR:" must be followed by an existing Solr field name, all other text will be written
@@ -405,15 +397,15 @@
             <!-- <sites></sites> -->
         </pageTypes>
 
-        <!-- docstructTargetPageTypes: Overrides the default target view URL for given docstruct types.
-             An optinal _DEFAULT configuration can be used for all docstruct types without an explicit configuration.
+        <!-- recordTargetPageTypes: Overrides the default target view URL for given publication types.
+             An optional _DEFAULT configuration can be used for all publication types without an explicit configuration.
              These targets are also used for PURL generation. -->
-        <docstructTargetPageTypes>
+        <recordTargetPageTypes>
             <!-- <_DEFAULT>metadata</_DEFAULT> -->
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
             <newspaper>calendar</newspaper>
-        </docstructTargetPageTypes>
+        </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
@@ -497,24 +489,19 @@
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
         <advanced enabled="true">
-            <!-- advancedSearchDefaultItemNumber: number of advanced search items to be rendered by default. Default is 2. -->
-            <defaultItemNumber>2</defaultItemNumber>
 
             <!-- advancedSearchFields: index fields to be used in advanced search -->
             <searchFields>
-                <field>DEFAULT</field>
-                <field>FULLTEXT</field>
-                <field>CMS_TEXT_ALL</field>
+                <field visible="true">MD_TITLE</field>
+                <field visible="true">MD_AUTHOR</field>
+                <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
+                <field visible="true" hierarchical="true">DC</field>
+                <field visible="true" range="true">YEAR</field>
                 <field>PI_TOPSTRUCT</field>
-                <field hierarchical="true">DC</field>
                 <field>DOCSTRCT_TOP</field>
                 <field>DOCSTRCT_SUB</field>
-                <field>MD_TITLE</field>
-                <field>MD_CREATOR</field>
                 <field>MD_PUBLISHER</field>
                 <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
-                <field range="true">YEAR</field>
-                <field untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
                 <field>BOOKMARKS</field>
             </searchFields>
         </advanced>
@@ -538,10 +525,6 @@
 
         <!-- searchSaving/@enabled: if true, users are allowed to save searches to a list for later re-use. Default is true. -->
         <searchSaving enabled="true" />
-
-        <!-- boostTopLevelDocstructs: If true, top level records whose main title contains the search terms will be boosted to the top of the search result list.
-            Default is true. -->
-        <boostTopLevelDocstructs>true</boostTopLevelDocstructs>
 
         <!-- displayAdditionalMetadata/@enabled: if true, relevant metadata fields and values are added to the search results if they contain requested search terms. Default is true. -->
         <displayAdditionalMetadata enabled="true">
@@ -602,9 +585,6 @@
                 <field>ORDER</field>
             </excel>
         </export>
-
-        <!-- fuzzy/@enabled: If true, fuzzy search will be applied. Default is false. -->
-        <fuzzy enabled="false" />
 
         <!-- useFacetsAsExpandQuery/@enabled: If true, currently active facets will be used to build the expand query to produce child hits,
             even if no search terms were given. Default is false. -->
@@ -802,8 +782,8 @@
                 <metadata label="DOCSTRCT_SUB" hideIfOnlyMetadataField="true">
                     <param type="translatedfield" key="DOCSTRCT_SUB" />
                 </metadata>
-                <metadata label="DC">
-                    <param type="translatedfield" key="DC" topstructOnly="true" />
+                <metadata label="DC" topstructOnly="true">
+                    <param type="translatedfield" key="DC" />
                 </metadata>
                 <metadata label="MD_YEARPUBLISH">
                     <param type="field" key="MD_YEARPUBLISH" />
@@ -1148,60 +1128,47 @@
                 <ignoreLeadingChars>.[]</ignoreLeadingChars>
             </sorting>
 
-            <!-- luceneField: defines index fields that are available for browsing. Only untokenized fields should be used. -->
-            <luceneField recordsAndAnchorsOnly="true" alwaysApplyFilter="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</luceneField>
-            <luceneField recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</luceneField>
-            <!-- <luceneField sortField="SORT_TITLE" recordsAndAnchorsOnly="true" docstructFilters="Monograph;Volume;PeriodicalVolume">MD_TITLE_UNTOKENIZED</luceneField> -->
-            <!-- <luceneField recordsAndAnchorsOnly="true" >MD_SHELFMARK</luceneField> -->
+            <!-- field: defines index fields that are available for browsing. Only untokenized fields should be used. -->
+            <field recordsAndAnchorsOnly="true" alwaysApplyFilter="true" sortField="SORT_AUTHOR">MD_AUTHOR_UNTOKENIZED</field>
+            <field recordsAndAnchorsOnly="true" sortField="SORT_TITLE">MD_TITLE_UNTOKENIZED</field>
+            <!-- <field sortField="SORT_TITLE" recordsAndAnchorsOnly="true" docstructFilters="Monograph;Volume;PeriodicalVolume">MD_TITLE_UNTOKENIZED</field> -->
+            <!-- <field recordsAndAnchorsOnly="true" >MD_SHELFMARK</field> -->
         </browsingMenu>
-
-        <!-- addDublinCoreMetaTags: if true, Dublin Core metadata is added to the HTML head section. Default us true. -->
-        <addDublinCoreMetaTags>true</addDublinCoreMetaTags>
-
-        <!-- addHighwirePressMetaTags: if true, Highwire Press tags are added to the HTML head section. Default is true. -->
-        <addHighwirePressMetaTags>true</addHighwirePressMetaTags>
 
         <!-- licenses: Used to associate license urls with a label and possibly an icon. Also provides a list of available license types when a user is asked to select a license -->
         <licenses>
             <!-- Creative Commons Public Domain Tools -->
-            <license label="Creative Commons: CC0 1.0" icon="" url="https://creativecommons.org/publicdomain/zero/1.0/" />
-            <license label="Creative Commons: Public Domain Mark" icon="" url="http://creativecommons.org/publicdomain/mark/1.0/" />
+            <license label="Creative Commons: CC0 1.0" url="https://creativecommons.org/publicdomain/zero/1.0/" />
+            <license label="Creative Commons: Public Domain Mark" url="http://creativecommons.org/publicdomain/mark/1.0/" />
 
             <!-- Creative Commons Licenses -->
-            <license label="Creative Commons: CC BY" icon="" url="https://creativecommons.org/licenses/by/4.0/" />
-            <license label="Creative Commons: CC BY-SA" icon="" url="https://creativecommons.org/licenses/by-sa/4.0/" />
-            <license label="Creative Commons: CC BY-ND" icon="" url="https://creativecommons.org/licenses/by-nd/4.0/" />
-            <license label="Creative Commons: CC BY-NC" icon="" url="https://creativecommons.org/licenses/by-nc/4.0/" />
-            <license label="Creative Commons: CC BY-NC-SA" icon="" url="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
-            <license label="Creative Commons: CC BY-NC-ND" icon="" url="https://creativecommons.org/licenses/by-nc-nd/4.0/" />
+            <license label="Creative Commons: CC BY" url="https://creativecommons.org/licenses/by/4.0/" />
+            <license label="Creative Commons: CC BY-SA" url="https://creativecommons.org/licenses/by-sa/4.0/" />
+            <license label="Creative Commons: CC BY-ND" url="https://creativecommons.org/licenses/by-nd/4.0/" />
+            <license label="Creative Commons: CC BY-NC" url="https://creativecommons.org/licenses/by-nc/4.0/" />
+            <license label="Creative Commons: CC BY-NC-SA" url="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
+            <license label="Creative Commons: CC BY-NC-ND" url="https://creativecommons.org/licenses/by-nc-nd/4.0/" />
 
             <!-- Rights Statements -->
-            <license label="Rights Statements: IN COPYRIGHT" icon="" url="http://rightsstatements.org/vocab/InC/1.0/" />
-            <license label="Rights Statements: IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-NC/1.0/" />
-            <license label="Rights Statements: IN COPYRIGHT - EDUCATIONAL USE PERMITTED" icon="" url="http://rightsstatements.org/vocab/InC-EDU/1.0/" />
-            <license label="Rights Statements: IN COPYRIGHT - RIGHTS-HOLDER(S) UNLOCATABLE OR UNIDENTIFIABLE" icon="" url="http://rightsstatements.org/vocab/InC-RUU/1.0/" />
-            <license label="Rights Statements: IN COPYRIGHT - EU ORPHAN WORK" icon="" url="https://rightsstatements.org/page/InC-OW-EU/1.0/" />
+            <license label="Rights Statements: IN COPYRIGHT" url="http://rightsstatements.org/vocab/InC/1.0/" />
+            <license label="Rights Statements: IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED" url="http://rightsstatements.org/vocab/InC-NC/1.0/" />
+            <license label="Rights Statements: IN COPYRIGHT - EDUCATIONAL USE PERMITTED" url="http://rightsstatements.org/vocab/InC-EDU/1.0/" />
+            <license label="Rights Statements: IN COPYRIGHT - RIGHTS-HOLDER(S) UNLOCATABLE OR UNIDENTIFIABLE" url="http://rightsstatements.org/vocab/InC-RUU/1.0/" />
+            <license label="Rights Statements: IN COPYRIGHT - EU ORPHAN WORK" url="https://rightsstatements.org/page/InC-OW-EU/1.0/" />
 
-            <license label="Rights Statements: NO COPYRIGHT - OTHER KNOWN LEGAL RESTRICTIONS" icon="" url="https://rightsstatements.org/page/NoC-OKLR/1.0/" />
-            <license label="Rights Statements: NO COPYRIGHT - UNITED STATES" icon="" url="https://rightsstatements.org/page/NoC-US/1.0/" />
-            <license label="Rights Statements: NO COPYRIGHT - CONTRACTUAL RESTRICTIONS" icon="" url="https://rightsstatements.org/page/NoC-CR/1.0/" />
-            <license label="Rights Statements: NO COPYRIGHT - NON-COMMERCIAL USE ONLY" icon="" url="https://rightsstatements.org/page/NoC-NC/1.0/" />
+            <license label="Rights Statements: NO COPYRIGHT - OTHER KNOWN LEGAL RESTRICTIONS" url="https://rightsstatements.org/page/NoC-OKLR/1.0/" />
+            <license label="Rights Statements: NO COPYRIGHT - UNITED STATES" url="https://rightsstatements.org/page/NoC-US/1.0/" />
+            <license label="Rights Statements: NO COPYRIGHT - CONTRACTUAL RESTRICTIONS" url="https://rightsstatements.org/page/NoC-CR/1.0/" />
+            <license label="Rights Statements: NO COPYRIGHT - NON-COMMERCIAL USE ONLY" url="https://rightsstatements.org/page/NoC-NC/1.0/" />
 
-            <license label="Rights Statements: NO KNOWN COPYRIGHT" icon="" url="https://rightsstatements.org/page/NKC/1.0/" />
-            <license label="Rights Statements: COPYRIGHT NOT EVALUATED" icon="" url="https://rightsstatements.org/page/CNE/1.0/" />
-            <license label="Rights Statements: COPYRIGHT UNDETERMINED" icon="" url="https://rightsstatements.org/page/UND/1.0/" />
+            <license label="Rights Statements: NO KNOWN COPYRIGHT" url="https://rightsstatements.org/page/NKC/1.0/" />
+            <license label="Rights Statements: COPYRIGHT NOT EVALUATED" url="https://rightsstatements.org/page/CNE/1.0/" />
+            <license label="Rights Statements: COPYRIGHT UNDETERMINED" url="https://rightsstatements.org/page/UND/1.0/" />
         </licenses>
     </metadata>
 
 
     <toc>
-        <!-- multiVolumeThumbnails/@enabled: Whether to display thumbnails of contained works in anchor toc. Default is true. -->
-        <multiVolumeThumbnails enabled="true">
-            <!-- width|height: size settings for multivolume TOC  thumbnails -->
-            <width>50</width>
-            <height>60</height>
-        </multiVolumeThumbnails>
-
         <!-- volumeSortFields: Solr fields by which the volumes in an anchor TOC
              shall be sorted. Custom templates can be defined for anchor docstruc types,
              otherwise "_DEFAULT" is used. Optional "order" attribute (default is "asc").
@@ -1310,10 +1277,6 @@
 
         <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
         <metadata enabled="true">
-            <!-- showEventMetadata: if true, event metadata of LIDO records are displayed. Default is true. -->
-            <showEventMetadata>true</showEventMetadata>
-            <!-- showRecordLabelIfNoOtherViews: if true, and metadata is the only view available, display the record label instead of the generic title. Default is true. -->
-            <showRecordLabelIfNoOtherViews>true</showRecordLabelIfNoOtherViews>
         </metadata>
 
         <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
@@ -1329,9 +1292,6 @@
 
             <!-- pageNumbersVisible: if true, page numbers in the sidebar toc are displayed. Default is false. -->
             <pageNumbersVisible>false</pageNumbersVisible>
-
-            <!-- visibleIfEmpty: if true, the sidebarToc is displayed even if it contains only the root element. Default is false. -->
-            <visibleIfEmpty>false</visibleIfEmpty>
 
             <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown. Default is 60. -->
             <lengthBeforeCut>60</lengthBeforeCut>
@@ -1362,7 +1322,7 @@
                     <option label="Master" format="MASTER" boxSizeInPixel="max"/>
                 </downloadOptions>
             </page>
-            <citationLinks enabled="true" recordIntroText="label__citation_link_record_introduction_text" docstructIntroText="label__citation_link_docstruct_introduction_text" imageIntroText="label__citation_link_image_introduction_text">
+            <citationLinks enabled="true">
                 <!-- links: Citation link configurations. -->
                 <links>
                     <link type="URL" for="record" label="URN" field="URN" pattern="https://nbn-resolving.org/{value}" />
@@ -1418,57 +1378,7 @@
 
         <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
         <sidebarRssFeed enabled="true" />
-    </sidebar>
-
-
-    <!-- Various options -->
-    <webGuiDisplay>
-        <!-- collectionBrowsing: if false, the collections section is hidden -->
-        <collectionBrowsing>true</collectionBrowsing>
-
-        <!-- userAccountNavigation: if false, the user section is hidden -->
-        <userAccountNavigation>true</userAccountNavigation>
-
-        <!-- displayTagCloudNavigation: if false, the tag cloud section is hidden -->
-        <displayTagCloudNavigation>true</displayTagCloudNavigation>
-
-        <!-- displayTagCloudStartpage: if false the tag cloud on the start page is hidden -->
-        <displayTagCloudStartpage>true</displayTagCloudStartpage>
-
-        <!-- displaySearchResultNavigation: if false, the box that allows browsing through search hits in the image view is hidden -->
-        <displaySearchResultNavigation>true</displaySearchResultNavigation>
-
-        <!-- displayBreadcrumbs: if false, the breadcrumb navigation is hidden -->
-        <displayBreadcrumbs>true</displayBreadcrumbs>
-
-        <!-- number of letters befor cutting breadcrumb items -->
-        <breadcrumbsClipping>50</breadcrumbsClipping>
-
-        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
-        <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
-
-        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
-        <displayTitlePURL>true</displayTitlePURL>
-
-        <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
-        <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
-
-        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
-        <displayStatistics>true</displayStatistics>
-
-        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
-        <displayTimeMatrix>false</displayTimeMatrix>
-
-        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
-        <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
-
-        <!-- displayCopyrightInfo: if true, "traffic lights" for access condition and a copyright icon is shown in the fullscreen view. Default is false -->
-        <displayCopyrightInfo>
-            <visible>false</visible>
-            <accessConditionField>MD_ACCESSCONDITION</accessConditionField>
-            <copyrightField>MD_ACCESSCONDITIONCOPYRIGHT</copyrightField>
-        </displayCopyrightInfo>
-
+        
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
              two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
         <copyrightIndicator enabled="true" style="widget">
@@ -1542,6 +1452,50 @@
                 </value>
             </license>
         </copyrightIndicator>
+        
+    </sidebar>
+
+
+    <!-- Various options -->
+    <webGuiDisplay>
+        <!-- collectionBrowsing: if false, the collections section is hidden -->
+        <collectionBrowsing>true</collectionBrowsing>
+
+        <!-- userAccountNavigation: if false, the user section is hidden -->
+        <userAccountNavigation>true</userAccountNavigation>
+
+        <!-- displayTagCloudNavigation: if false, the tag cloud section is hidden -->
+        <displayTagCloudNavigation>true</displayTagCloudNavigation>
+
+        <!-- displayTagCloudStartpage: if false the tag cloud on the start page is hidden -->
+        <displayTagCloudStartpage>true</displayTagCloudStartpage>
+
+        <!-- displaySearchResultNavigation: if false, the box that allows browsing through search hits in the image view is hidden -->
+        <displaySearchResultNavigation>true</displaySearchResultNavigation>
+
+        <!-- displayBreadcrumbs: if false, the breadcrumb navigation is hidden -->
+        <displayBreadcrumbs>true</displayBreadcrumbs>
+
+        <!-- number of letters befor cutting breadcrumb items -->
+        <breadcrumbsClipping>50</breadcrumbsClipping>
+
+        <!-- displayTitleBreadcrumbs: if true, the document structure is displayed in the title component in breadcrumb form. Default is false -->
+        <displayTitleBreadcrumbs maxTitleLength="40" includeAnchor="false">false</displayTitleBreadcrumbs>
+
+        <!-- displayTitlePURL: if true, a PURL to the current page in the title component. Default is true -->
+        <displayTitlePURL>true</displayTitlePURL>
+
+        <!-- displayMetadataPageLinkBlock: if false, the links on the bottom of the metadata view are hidden -->
+        <displayMetadataPageLinkBlock>true</displayMetadataPageLinkBlock>
+
+        <!-- displayStatistics: if true, the statistics link is shown. Default is true -->
+        <displayStatistics>true</displayStatistics>
+
+        <!-- displayTimeline: if true, the time matrix link is shown. Default is false -->
+        <displayTimeMatrix>false</displayTimeMatrix>
+
+        <!-- displayCrowdsourcingModuleLinks: if true, crowdsourcing transcription links that link the the crowdsourcing module are shown. Default is false -->
+        <displayCrowdsourcingModuleLinks>false</displayCrowdsourcingModuleLinks>
 
         <!-- displaySocialMediaShareLinks: if true, links to share the current page in facebook or twitter are shown in the fullscreen view. Default is false -->
         <displaySocialMediaShareLinks>false</displaySocialMediaShareLinks>
@@ -1575,15 +1529,6 @@
 
 
     <cms>
-        <!-- useCustomNavBar: enables the use of a custom navigation navigation menu, configurable with cms-functionality always considered to be false if cms.enabled=false -->
-        <useCustomNavBar>true</useCustomNavBar>
-
-        <!-- mediaFolder: contains media files uploaded for CMS -->
-        <mediaFolder>cms_media</mediaFolder>
-
-        <!-- templateFolder: contains template files for CMS. Only used if template views are rendered from an external folder using a base template -->
-        <templateFolder>resources/cms/templates/</templateFolder>
-
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
     </cms>
@@ -1631,11 +1576,11 @@
     <!-- Web API configuration -->
     <webapi>
         <!-- fields: Custom JSON fields. Each <field> element must contain the
-             attributes 'jsonField' (name of the field for JSON datasets) and 'luceneField'
+             attributes 'jsonField' (name of the field for JSON datasets) and 'solrField'
              (source index field name). An optional attribute 'multivalue' can be set
              to 'true' to return a list with all found values in JSON. -->
         <fields>
-            <field jsonField="persons" luceneField="MD_CREATOR" multivalue="true" />
+            <field jsonField="persons" solrField="MD_CREATOR" multivalue="true" />
         </fields>
 
         <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
