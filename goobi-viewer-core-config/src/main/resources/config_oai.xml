@@ -71,7 +71,7 @@
 
 	<!-- documentResolverUrl: URL to the METS/LIDO resolver.
 	     This URL is called locally and can be 'localhost' as long as the viewer is on the same machine -->
-	<documentResolverUrl>http://localhost:8080/viewer/metsresolver?id=</documentResolverUrl>
+	<documentResolverUrl>http://localhost:8080/viewer/sourcefile?id=</documentResolverUrl>
 
 	<!-- harvestUrl: URL for havesting overview page and crowdsourcing updates -->
 	<harvestUrl>http://localhost:8080/viewer/harvest</harvestUrl>
