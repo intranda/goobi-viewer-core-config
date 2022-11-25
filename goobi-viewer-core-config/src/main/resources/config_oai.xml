@@ -167,7 +167,7 @@
 
 
 	<ese>
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<hitsPerToken>100</hitsPerToken>
 
 		<!-- types: Mapping of docstruct types to pre-defined values for europeana:type  (@name: dostruct type; @type: ESE type) -->
@@ -210,7 +210,7 @@
 
 
 	<lido>
-		<enabled>true</enabled>
+		<enabled>false</enabled>
 		<hitsPerToken>10</hitsPerToken>
 		<setSpec>
 			<field>DC</field>
