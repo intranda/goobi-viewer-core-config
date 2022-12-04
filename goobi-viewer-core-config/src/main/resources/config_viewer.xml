@@ -34,7 +34,7 @@
 
     <!-- pdfFolder: contains pre-generated PDFs -->
     <pdfFolder>pdf</pdfFolder>
-    
+
     <!-- cmsMediaFolder: contains media files uploaded for CMS -->
     <cmsMediaFolder>cms_media</cmsMediaFolder>
 
@@ -108,7 +108,7 @@
 
         <!-- basex: URL to the baseX database that stores archival content -->
         <basex>https://basex.example.org/basex/</basex>
-        
+
         <!-- urnResolver: The default internal URN resolver can be replaced with an external URL (to be used for canonical URLs) -->
         <!-- <urnResolver>http://nbn-resolving.de/</urnResolver> -->
     </urls>
@@ -159,12 +159,13 @@
         </securityQuestions>
 
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
-             Possible attributes for providers are: type, enabled, name, endpoint (auth URL), clientId, clientSecret, image, timeout. -->
+             Possible attributes for providers are: type, enabled, name, endpoint (auth URL), parameterType, parameterName, image, timeout. -->
         <authenticationProviders>
             <provider type="local" enabled="true" name="Goobi viewer"/>
             <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
             <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
             <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+            <provider type="httpHeader" enabled="false" name="Shibboleth" parameterType="attribute" parameterName="shib-email" endpoint="https://viewer.example.org/api/v1/auth/header" />
         </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
@@ -1377,7 +1378,7 @@
 
         <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
         <sidebarRssFeed enabled="true" />
-        
+
         <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
              two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
         <copyrightIndicator enabled="true" style="widget">
@@ -1451,7 +1452,7 @@
                 </value>
             </license>
         </copyrightIndicator>
-        
+
     </sidebar>
 
 
