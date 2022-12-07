@@ -1777,10 +1777,12 @@
         <facet>
             <heatmap enabled="false" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
+            <selection color="blue"/>
         </facet>
         <search>
             <heatmap enabled="false" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
+            <selection color="blue"/>
         </search>
     </maps>
 
