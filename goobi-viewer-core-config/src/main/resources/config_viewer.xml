@@ -1948,6 +1948,19 @@
         <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
         <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
     </upload>
+    
+    
+    <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
+    <proxy enabled="false">
+        <!-- proxyUrl: Proxy URL -->
+        <proxyUrl></proxyUrl>
+        <!-- proxyUrl: Proxy port -->
+        <proxyPort></proxyPort>
+        <!-- whitelist: List of hosts not to be accessed via proxy -->
+        <whitelist>
+            <!-- <host></host> -->
+        </whitelist>
+    </proxy>
 
 
     <!-- Configuration for collecting usage statistics -->
