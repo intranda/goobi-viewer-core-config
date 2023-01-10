@@ -217,6 +217,14 @@
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
+    <!-- enable active mq -->
+    <activeMQ enabled="true">
+        <!-- path to initialisation file. Default configuration is used, if it is empty or does not exist -->
+        <configuration>/opt/digiverso/viewer/config/viewer_activemq.xml</configuration>
+        <!-- credentials -->
+        <user>goobi</user>
+        <password>goobi</password>
+    </activeMQ>
 
     <pdf>
         <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
