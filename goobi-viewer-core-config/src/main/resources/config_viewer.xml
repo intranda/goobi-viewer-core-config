@@ -1949,19 +1949,7 @@
         <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
     </upload>
     
-    
-    <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
-    <proxy enabled="false">
-        <!-- proxyUrl: Proxy URL -->
-        <proxyUrl></proxyUrl>
-        <!-- proxyUrl: Proxy port -->
-        <proxyPort></proxyPort>
-        <!-- whitelist: List of hosts not to be accessed via proxy -->
-        <whitelist>
-            <!-- <host></host> -->
-        </whitelist>
-    </proxy>
-
+   
 
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
@@ -1972,8 +1960,9 @@
     </statistics>
 
 
-    <!-- condigEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
-         condigEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
+
+    <!-- configEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
+         configEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
          will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
     <configEditor enabled="true" backupFiles="100">
         <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
@@ -1981,4 +1970,17 @@
         <directory>/opt/digiverso/indexer/</directory>
     </configEditor>
 
+
+
+    <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
+    <proxy enabled="false">
+        <!-- proxyUrl: Proxy URL -->
+        <proxyUrl></proxyUrl>
+        <!-- proxyUrl: Proxy port -->
+        <proxyPort></proxyPort>
+        <!-- whitelist: List of hosts not to be accessed via proxy -->
+        <whitelist>
+            <host>127.0.0.1</host>
+        </whitelist>
+    </proxy>
 </config>
