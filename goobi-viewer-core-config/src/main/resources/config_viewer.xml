@@ -1949,7 +1949,29 @@
         <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
     </upload>
     
-    
+   
+
+    <!-- Configuration for collecting usage statistics -->
+    <statistics enabled="false">
+        <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
+             their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
+             attribute can not be used for this purpose since it is applied to the session only after the first request -->
+        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
+    </statistics>
+
+
+
+    <!-- configEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
+         configEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
+         will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
+    <configEditor enabled="true" backupFiles="100">
+        <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
+        <directory>/opt/digiverso/viewer/config/</directory>
+        <directory>/opt/digiverso/indexer/</directory>
+    </configEditor>
+
+
+
     <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
     <proxy enabled="false">
         <!-- proxyUrl: Proxy URL -->
@@ -1961,24 +1983,4 @@
             <host>127.0.0.1</host>
         </whitelist>
     </proxy>
-
-
-    <!-- Configuration for collecting usage statistics -->
-    <statistics enabled="false">
-        <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
-             their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
-             attribute can not be used for this purpose since it is applied to the session only after the first request -->
-        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
-    </statistics>
-
-
-    <!-- condigEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
-         condigEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
-         will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
-    <configEditor enabled="true" backupFiles="100">
-        <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
-        <directory>/opt/digiverso/viewer/config/</directory>
-        <directory>/opt/digiverso/indexer/</directory>
-    </configEditor>
-
 </config>
