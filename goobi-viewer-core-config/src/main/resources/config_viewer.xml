@@ -217,6 +217,14 @@
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
+    <!-- enable active mq -->
+    <activeMQ enabled="true">
+        <!-- path to initialisation file. Default configuration is used, if it is empty or does not exist -->
+        <configuration>/opt/digiverso/viewer/config/config_activemq.xml</configuration>
+        <!-- credentials -->
+        <user>goobi</user>
+        <password>goobi</password>
+    </activeMQ>
 
     <pdf>
         <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
@@ -1777,10 +1785,12 @@
         <facet>
             <heatmap enabled="false" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
+            <selection color="blue"/>
         </facet>
         <search>
             <heatmap enabled="false" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
+            <selection color="blue"/>
         </search>
     </maps>
 
@@ -1946,7 +1956,8 @@
         <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
         <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
     </upload>
-
+    
+   
 
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
@@ -1957,8 +1968,9 @@
     </statistics>
 
 
-    <!-- condigEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
-         condigEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
+
+    <!-- configEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
+         configEditor/@backupFiles: Maximum number of backup files to keep for each file. Oldest files
          will be deleted once the maximum is reached. Value 0 means no limit. Default is 0. -->
     <configEditor enabled="true" backupFiles="100">
         <!-- directory: Absolute paths that will be scanned for files. Do not enter sensitive locations! -->
@@ -1966,4 +1978,17 @@
         <directory>/opt/digiverso/indexer/</directory>
     </configEditor>
 
+
+
+    <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
+    <proxy enabled="false">
+        <!-- proxyUrl: Proxy URL -->
+        <proxyUrl></proxyUrl>
+        <!-- proxyUrl: Proxy port -->
+        <proxyPort></proxyPort>
+        <!-- whitelist: List of hosts not to be accessed via proxy -->
+        <whitelist>
+            <host>127.0.0.1</host>
+        </whitelist>
+    </proxy>
 </config>
