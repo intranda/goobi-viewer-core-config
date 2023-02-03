@@ -224,6 +224,8 @@
         <!-- credentials -->
         <user>goobi</user>
         <password>goobi</password>
+        <!-- Time in days to keep completed MessageQueue tasks in database before deleting them -->
+        <deleteCompletedTasksAfterDays>90</deleteCompletedTasksAfterDays>
     </activeMQ>
 
     <pdf>
