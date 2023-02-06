@@ -1993,4 +1993,7 @@
             <host>127.0.0.1</host>
         </whitelist>
     </proxy>
+    
+    <!-- Enable activeMQ message queue -->
+    <activeMQ enabled="true" numberOfParallelMessages="2"/>
 </config>
