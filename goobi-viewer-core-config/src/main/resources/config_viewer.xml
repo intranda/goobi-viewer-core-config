@@ -493,6 +493,7 @@
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
             <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
+            <!-- <field sortOrder="alphabetical" groupToLength="1" alwaysApplyToUnfilteredHits="true" skipInWidget="true">MD_TITLE</field> -->
         </facets>
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
@@ -1958,8 +1959,8 @@
         <!-- rejectionReasonPropertyName: Goobi worklow process property name containing the reason for rejection. -->
         <rejectionReasonPropertyName>uploadRejectedInformation</rejectionReasonPropertyName>
     </upload>
-    
-   
+
+
 
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
@@ -1993,7 +1994,9 @@
             <host>127.0.0.1</host>
         </whitelist>
     </proxy>
-    
+
+
+
     <!-- Enable activeMQ message queue -->
-    <activeMQ enabled="true" numberOfParallelMessages="2"/>
+    <activeMQ enabled="true" numberOfParallelMessages="2" />
 </config>
