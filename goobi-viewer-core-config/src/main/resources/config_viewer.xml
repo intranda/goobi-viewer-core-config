@@ -484,9 +484,9 @@
 
         <!-- facets: Contains a list of fields that are available for faceting in a search result list -->
         <facets>
-            <field>YEAR</field>
-            <geoField predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</geoField>
-            <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
+            <field type="range">YEAR</field>
+            <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
+            <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
