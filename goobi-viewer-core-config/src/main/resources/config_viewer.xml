@@ -419,10 +419,6 @@
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
         <fulltextPercentageWarningThreshold>30</fulltextPercentageWarningThreshold>
 
-        <!-- useViewerLocaleAsRecordLanguage: If true, changing the locale will
-             also change the preferred language for record metadata. Default is false. -->
-        <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
-
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
