@@ -419,10 +419,6 @@
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
         <fulltextPercentageWarningThreshold>30</fulltextPercentageWarningThreshold>
 
-        <!-- useViewerLocaleAsRecordLanguage: If true, changing the locale will
-             also change the preferred language for record metadata. Default is false. -->
-        <useViewerLocaleAsRecordLanguage>false</useViewerLocaleAsRecordLanguage>
-
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
@@ -483,10 +479,18 @@
         </sorting>
 
         <!-- facets: Contains a list of fields that are available for faceting in a search result list -->
+        <!-- each facets.field element may have a 'type' attribute which determines how the data is interpreted and displayed -->
+        <!-- Allowed values for 'type' are -->
+        <!-- range: the values of this field are interpreted as dates within a timeline or some other number range. -->
+        <!-- 		These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
+        <!--  		'style' may habe a value of either 'slider', which is the default, or 'graph' -->
+        <!-- geo_	the field contains geographical coordinates which are displayed on a map -->
+        <!-- hierarchical:	The field contains hierarchical values, usually a type of digital collection -->
         <facets>
-            <field>YEAR</field>
-            <geoField predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</geoField>
-            <hierarchicalField initialElementNumber="4">DC</hierarchicalField>
+            <field type="range">YEAR</field>
+            <field type="range" style="graph">MDNUM_YEARPUBLISH</field>
+            <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
+            <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
