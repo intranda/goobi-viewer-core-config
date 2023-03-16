@@ -315,6 +315,9 @@
                 <scaleFactors>4</scaleFactors>
                 <size>1024</size>
             </tileSize>
+            <navigator>
+            	<enabled>true</enabled>
+            </navigator>
         </zoomImageView>
 
         <!-- Default settings for image view -->
