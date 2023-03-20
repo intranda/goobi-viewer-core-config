@@ -1791,7 +1791,7 @@
             <heatmap enabled="false" />
         </cms>
         <facet>
-            <heatmap enabled="false" />
+            <heatmap enabled="true" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
             <selection color="blue"/>
         </facet>
