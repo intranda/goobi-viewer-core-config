@@ -294,7 +294,7 @@
         <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
              the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
              to true to use tiled images if possible (only possible when type=openlayers) -->
-
+		<!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
         <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
@@ -315,6 +315,7 @@
                 <scaleFactors>4</scaleFactors>
                 <size>1024</size>
             </tileSize>
+            <navigator enabled="false"></navigator>
         </zoomImageView>
 
         <!-- Default settings for image view -->
@@ -498,6 +499,7 @@
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
             <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
             <!-- <field sortOrder="alphabetical" groupToLength="1" alwaysApplyToUnfilteredHits="true" skipInWidget="true">MD_TITLE</field> -->
+            <!-- <field multiValueOperator="OR">MD_LANGUAGE</field> -->
         </facets>
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
@@ -1790,7 +1792,7 @@
             <heatmap enabled="false" />
         </cms>
         <facet>
-            <heatmap enabled="false" />
+            <heatmap enabled="true" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
             <selection color="blue"/>
         </facet>
