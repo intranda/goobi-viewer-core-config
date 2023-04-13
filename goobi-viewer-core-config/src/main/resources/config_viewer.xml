@@ -86,8 +86,9 @@
         <!-- solr: URL to the Solr index core -->
         <solr>http://localhost:8983/solr/collection1</solr>
 
-        <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data -->
-        <dfg-viewer>https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
+        <!-- dfg-viewer: absolute path to DFG-Viewer for linking in bibliographic data.
+            @sourcefileField can contain an optional Solr index field containing a custom record file URL -->
+        <dfg-viewer sourcefileField="">https://dfg-viewer.de/show?set[mets]=</dfg-viewer>
 
         <!-- rest: REST service URL from which internal Goobi viewer resources are requested -->
         <rest>http://localhost:8080/viewer/api/v1/</rest>
@@ -315,7 +316,7 @@
                 <scaleFactors>4</scaleFactors>
                 <size>1024</size>
             </tileSize>
-            <navigator enabled="false"></navigator>
+            <navigator enabled="false" />
         </zoomImageView>
 
         <!-- Default settings for image view -->
@@ -499,6 +500,7 @@
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
             <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
             <!-- <field sortOrder="alphabetical" groupToLength="1" alwaysApplyToUnfilteredHits="true" skipInWidget="true">MD_TITLE</field> -->
+            <!-- <field multiValueOperator="OR">MD_LANGUAGE</field> -->
         </facets>
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
