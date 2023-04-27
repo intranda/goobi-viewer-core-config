@@ -1780,6 +1780,8 @@
             <marker icon="fa-spinner" markerColor="yellow" extraClasses="fa-2x fa-spin">maps__marker_5</marker>
             <marker icon="fa-coffee" markerColor="white" prefix="fa" iconColor="black" iconRotate="270">maps__marker_6</marker>
             <marker icon="fa-number" markerColor="black" number="42" svg="true">maps__marker_7</marker>
+            <marker type="divIcon" class="marker-circle marker-circle-blue">maps__marker_8</marker>
+            <marker type="divIcon" class="marker-circle marker-circle-red">maps__marker_9</marker>
         </markers>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
