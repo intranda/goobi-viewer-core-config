@@ -602,6 +602,8 @@
                 <field>DOCTYPE</field>
                 <field>ORDER</field>
             </excel>
+            <!-- ris/@enabled: If true, RIS text file export of search hits will be available in the search options. Default is false. -->
+            <ris enabled="false" />
         </export>
 
         <!-- useFacetsAsExpandQuery/@enabled: If true, currently active facets will be used to build the expand query to produce child hits,
