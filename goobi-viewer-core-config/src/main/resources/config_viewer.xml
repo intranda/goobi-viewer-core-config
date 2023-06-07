@@ -449,8 +449,8 @@
             <value>100</value>
         </hitsPerPage>
         
-        <!-- displayHitNumbers: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
-        <displayHitNumbers>false</displayHitNumbers>
+        <!-- displayHitNumbers/@enabled: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
+        <displayHitNumbers enabled="false" />
 
         <!-- fulltextFragmentLength: Approximate length of the full-text fragment displayed in search hits. Default is 200. -->
         <fulltextFragmentLength>120</fulltextFragmentLength>
