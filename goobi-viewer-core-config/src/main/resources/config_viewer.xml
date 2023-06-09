@@ -572,6 +572,8 @@
             <field type="translate">DOCSTRCT_SUB</field>
             <!-- field type="oneline": Fields in this list will have multiple values written into a single string, without line breaks. -->
             <field type="oneline">MD_ACCESSLOCATIONS</field>
+            <!-- field type="snippet": Values from fields in this list will be shortened to the amount of characters, that is configured in the <fulltextFragmentLength /> setting -->
+            <field type="snippet">MD_LONGINFORMATIONTEXT</field>
         </displayAdditionalMetadata>
 
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
