@@ -975,6 +975,9 @@
         <!-- searchHitMetadataList: defines metadata that is displayed in the search results. The syntax is the same as in mainMetadataList -->
         <searchHitMetadataList>
             <template name="_DEFAULT">
+                <!-- add the following attribute to separate the multiple entries with semikolon and whitespace instead of a new line:
+                     separator=";&#160;"
+                     -->
                 <metadata label="MD_CREATOR">
                     <param type="field" key="MD_CREATOR" />
                 </metadata>
