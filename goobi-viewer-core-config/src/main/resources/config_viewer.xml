@@ -575,6 +575,17 @@
             <!-- field type="snippet": Values from fields in this list will be shortened to the amount of characters, that is configured in the <fulltextFragmentLength /> setting -->
             <field type="snippet">MD_LONGINFORMATIONTEXT</field>
         </displayAdditionalMetadata>
+        
+        <metadata>
+            <!-- displayStructType: if false, the structtype is hidden -->
+            <displayStructType>true</displayStructType>
+
+            <!-- valueNumber: defines the maximum number of found values to display for each field type [since 2.0] -->
+            <valueNumber>3</valueNumber>
+
+            <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
+            <valueLength>4000</valueLength>
+        </metadata>
 
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
         <staticQuerySuffix>-BOOL_HIDE:true</staticQuerySuffix>
@@ -972,8 +983,8 @@
             </template>
         </metadataView>
 
-        <!-- searchHitMetadataList: defines metadata that is displayed in the search results. The syntax is the same as in mainMetadataList -->
-        <searchHitMetadataList>
+        <!-- metadataList[@type="search"]: defines metadata that is displayed in the search hit list. The syntax is the same as in metadataView -->
+        <metadataList type="searchHit">
             <template name="_DEFAULT">
                 <!-- add the following attribute to separate the multiple entries with semikolon and whitespace instead of a new line:
                      separator=";&#160;"
@@ -1009,20 +1020,11 @@
                     <param type="field" key="NUMVOLUMES" />
                 </metadata>
             </template>
-
-            <!-- displayStructType: if false, the structtype is hidden -->
-            <displayStructType>true</displayStructType>
-
-            <!-- valueNumber: defines the maximum number of found values to display for each field type [since 2.0] -->
-            <valueNumber>3</valueNumber>
-
-            <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
-            <valueLength>4000</valueLength>
-        </searchHitMetadataList>
+        </metadataList>
 
 
-        <!-- sideBarMetadataList: defines metadata that are displayed in the sidebar. -->
-        <sideBarMetadataList>
+        <!-- metadataList[@type="sidebar"]: defines metadata that are displayed in the sidebar. -->
+        <metadataList type="sideBar">
             <!-- _DEFAULT: metadata defined in the _DEFAULT template is displayed on all struct elements that have no explicit definition -->
             <template name="_DEFAULT">
                 <metadata label="MD_TITLE">
@@ -1070,7 +1072,8 @@
                     <param type="field" key="URN" />
                 </metadata>
             </template>
-        </sideBarMetadataList>
+        </metadataList>
+        
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
         <normdataList>
             <!-- This template is used when displaying authority information in the annotations overview -->
