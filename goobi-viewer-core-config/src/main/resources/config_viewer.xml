@@ -950,6 +950,74 @@
                     <param type="millisfield" key="DATECREATED" />
                 </metadata>
                 -->
+               <metadata label="MD_PROVENIENCE">
+                    <param type="field" key="MD_PROVENIENCE" />
+                </metadata>
+                <metadata label="MD_STATEMENTOFRESPONSIBILITY">
+                    <param type="field" key="MD_STATEMENTOFRESPONSIBILITY" />
+                </metadata>
+                <metadata label="MD_NODEID">
+                    <param type="field" key="MD_NODEID" />
+                </metadata>
+                <metadata label="MD_EADID">
+                    <param type="field" key="MD_EADID" />
+                </metadata>
+                <metadata label="MD_RECORDID">
+                    <param type="field" key="MD_RECORDID" />
+                </metadata>
+                <metadata label="MD_UNITID">
+                    <param type="field" key="MD_UNITID" />
+                </metadata>
+                <metadata label="MD_BIOGRAPHICALINFORMATION">
+                    <param type="field" key="MD_BIOGRAPHICALINFORMATION" />
+                </metadata>
+                <metadata label="MD_INVENTORYHISTORY">
+                    <param type="field" key="MD_INVENTORYHISTORY" />
+                </metadata>
+                <metadata label="MD_AQUISITIONINFORMATION">
+                    <param type="field" key="MD_AQUISITIONINFORMATION" />
+                </metadata>
+                <metadata label="MD_APPRAISALINFORMATION">
+                    <param type="field" key="MD_APPRAISALINFORMATION" />
+                </metadata>
+                <metadata label="MD_ADDITIONS">
+                    <param type="field" key="MD_ADDITIONS" />
+                </metadata>
+                <metadata label="MD_ARRANGEMENT">
+                    <param type="field" key="MD_ARRANGEMENT" />
+                </metadata>
+                <metadata label="MD_USERESTRICTION">
+                    <param type="field" key="MD_USERESTRICTION" />
+                </metadata>
+                <metadata label="MD_FONTTYPE">
+                    <param type="field" key="MD_FONTTYPE" />
+                </metadata>
+                <metadata label="MD_PHYSTECH">
+                    <param type="field" key="MD_PHYSTECH" />
+                </metadata>
+                <metadata label="MD_OTHERFINDAID">
+                    <param type="field" key="MD_OTHERFINDAID" />
+                </metadata>
+                <metadata label="MD_ORIGINALSLOCATION">
+                    <param type="field" key="MD_ORIGINALSLOCATION" />
+                </metadata>
+                <metadata label="MD_ALTERNATIVEFORMAVAILABLE">
+                    <param type="field" key="MD_ALTERNATIVEFORMAVAILABLE" />
+                </metadata>
+                <metadata label="MD_SEPARATEDMATERIAL">
+                    <param type="field" key="MD_SEPARATEDMATERIAL" />
+                </metadata>
+                <metadata label="MD_DIDNOTE">
+                    <param type="field" key="MD_DIDNOTE" />
+                </metadata>
+                <metadata label="MD_ODD">
+                    <param type="field" key="MD_ODD" />
+                </metadata>
+                <metadata label="MD_CONVENTIONDECLARATION">
+                    <param type="field" key="MD_CONVENTIONDECLARATION" />
+                </metadata>                
+                
+                
             </template>
             <template name="record">
                 <metadata label="PI">
