@@ -166,7 +166,7 @@
 	</oai_dc>
 
 
-	<ese>
+	<europeana>
 		<enabled>false</enabled>
 		<hitsPerToken>100</hitsPerToken>
 
@@ -198,7 +198,7 @@
 		<setSpec>
 			<field>DC</field>
 		</setSpec>
-	</ese>
+	</europeana>
 
 	<mets>
 		<enabled>true</enabled>
