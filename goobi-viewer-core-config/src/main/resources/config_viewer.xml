@@ -493,7 +493,7 @@
         <!-- hierarchical:	The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
-            <field type="range" style="graph">MDNUM_YEARPUBLISH</field>
+            <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
             <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
             <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
@@ -1015,9 +1015,7 @@
                 </metadata>
                 <metadata label="MD_CONVENTIONDECLARATION">
                     <param type="field" key="MD_CONVENTIONDECLARATION" />
-                </metadata>                
-                
-                
+                </metadata>
             </template>
             <template name="record">
                 <metadata label="PI">
