@@ -448,7 +448,7 @@
             <value>50</value>
             <value>100</value>
         </hitsPerPage>
-        
+
         <!-- displayHitNumbers/@enabled: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
         <displayHitNumbers enabled="false" />
 
@@ -493,7 +493,7 @@
         <!-- hierarchical:	The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
-            <field type="range" style="graph">MDNUM_YEARPUBLISH</field>
+            <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
             <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
             <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
@@ -572,6 +572,8 @@
             <field type="translate">DOCSTRCT_SUB</field>
             <!-- field type="oneline": Fields in this list will have multiple values written into a single string, without line breaks. -->
             <field type="oneline">MD_ACCESSLOCATIONS</field>
+            <!-- field type="snippet": Values from fields in this list will be shortened to the amount of characters, that is configured in the <fulltextFragmentLength /> setting -->
+            <field type="snippet">MD_LONGINFORMATIONTEXT</field>
         </displayAdditionalMetadata>
 
         <!-- staticQuerySuffix: Solr query suffix added to all search/list queries (e.g. for permanent filtering) -->
@@ -616,6 +618,17 @@
                 will be used for constructing the expand query. -->
             <!-- <facetQuery>(FACET_DC:"varia" OR FACET_DC:varia.*)</facetQuery> -->
         </useFacetsAsExpandQuery>
+
+        <metadata>
+            <!-- displayStructType: if false, the structtype is hidden -->
+            <displayStructType>true</displayStructType>
+
+            <!-- valueNumber: defines the maximum number of found values to display for each field type [since 2.0] -->
+            <valueNumber>3</valueNumber>
+
+            <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
+            <valueLength>4000</valueLength>
+        </metadata>
     </search>
 
 
@@ -937,6 +950,72 @@
                     <param type="millisfield" key="DATECREATED" />
                 </metadata>
                 -->
+               <metadata label="MD_PROVENIENCE">
+                    <param type="field" key="MD_PROVENIENCE" />
+                </metadata>
+                <metadata label="MD_STATEMENTOFRESPONSIBILITY">
+                    <param type="field" key="MD_STATEMENTOFRESPONSIBILITY" />
+                </metadata>
+                <metadata label="MD_NODEID">
+                    <param type="field" key="MD_NODEID" />
+                </metadata>
+                <metadata label="MD_EADID">
+                    <param type="field" key="MD_EADID" />
+                </metadata>
+                <metadata label="MD_RECORDID">
+                    <param type="field" key="MD_RECORDID" />
+                </metadata>
+                <metadata label="MD_UNITID">
+                    <param type="field" key="MD_UNITID" />
+                </metadata>
+                <metadata label="MD_BIOGRAPHICALINFORMATION">
+                    <param type="field" key="MD_BIOGRAPHICALINFORMATION" />
+                </metadata>
+                <metadata label="MD_INVENTORYHISTORY">
+                    <param type="field" key="MD_INVENTORYHISTORY" />
+                </metadata>
+                <metadata label="MD_AQUISITIONINFORMATION">
+                    <param type="field" key="MD_AQUISITIONINFORMATION" />
+                </metadata>
+                <metadata label="MD_APPRAISALINFORMATION">
+                    <param type="field" key="MD_APPRAISALINFORMATION" />
+                </metadata>
+                <metadata label="MD_ADDITIONS">
+                    <param type="field" key="MD_ADDITIONS" />
+                </metadata>
+                <metadata label="MD_ARRANGEMENT">
+                    <param type="field" key="MD_ARRANGEMENT" />
+                </metadata>
+                <metadata label="MD_USERESTRICTION">
+                    <param type="field" key="MD_USERESTRICTION" />
+                </metadata>
+                <metadata label="MD_FONTTYPE">
+                    <param type="field" key="MD_FONTTYPE" />
+                </metadata>
+                <metadata label="MD_PHYSTECH">
+                    <param type="field" key="MD_PHYSTECH" />
+                </metadata>
+                <metadata label="MD_OTHERFINDAID">
+                    <param type="field" key="MD_OTHERFINDAID" />
+                </metadata>
+                <metadata label="MD_ORIGINALSLOCATION">
+                    <param type="field" key="MD_ORIGINALSLOCATION" />
+                </metadata>
+                <metadata label="MD_ALTERNATIVEFORMAVAILABLE">
+                    <param type="field" key="MD_ALTERNATIVEFORMAVAILABLE" />
+                </metadata>
+                <metadata label="MD_SEPARATEDMATERIAL">
+                    <param type="field" key="MD_SEPARATEDMATERIAL" />
+                </metadata>
+                <metadata label="MD_DIDNOTE">
+                    <param type="field" key="MD_DIDNOTE" />
+                </metadata>
+                <metadata label="MD_ODD">
+                    <param type="field" key="MD_ODD" />
+                </metadata>
+                <metadata label="MD_CONVENTIONDECLARATION">
+                    <param type="field" key="MD_CONVENTIONDECLARATION" />
+                </metadata>
             </template>
             <template name="record">
                 <metadata label="PI">
@@ -970,9 +1049,12 @@
             </template>
         </metadataView>
 
-        <!-- searchHitMetadataList: defines metadata that is displayed in the search results. The syntax is the same as in mainMetadataList -->
-        <searchHitMetadataList>
+        <!-- metadataList[@type="search"]: defines metadata that is displayed in the search hit list. The syntax is the same as in metadataView -->
+        <metadataList type="searchHit">
             <template name="_DEFAULT">
+                <!-- add the following attribute to separate the multiple entries with semikolon and whitespace instead of a new line:
+                     separator=";&#160;"
+                     -->
                 <metadata label="MD_CREATOR">
                     <param type="field" key="MD_CREATOR" />
                 </metadata>
@@ -1004,20 +1086,11 @@
                     <param type="field" key="NUMVOLUMES" />
                 </metadata>
             </template>
-
-            <!-- displayStructType: if false, the structtype is hidden -->
-            <displayStructType>true</displayStructType>
-
-            <!-- valueNumber: defines the maximum number of found values to display for each field type [since 2.0] -->
-            <valueNumber>3</valueNumber>
-
-            <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
-            <valueLength>4000</valueLength>
-        </searchHitMetadataList>
+        </metadataList>
 
 
-        <!-- sideBarMetadataList: defines metadata that are displayed in the sidebar. -->
-        <sideBarMetadataList>
+        <!-- metadataList[@type="sidebar"]: defines metadata that are displayed in the sidebar. -->
+        <metadataList type="sideBar">
             <!-- _DEFAULT: metadata defined in the _DEFAULT template is displayed on all struct elements that have no explicit definition -->
             <template name="_DEFAULT">
                 <metadata label="MD_TITLE">
@@ -1065,7 +1138,8 @@
                     <param type="field" key="URN" />
                 </metadata>
             </template>
-        </sideBarMetadataList>
+        </metadataList>
+
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
         <normdataList>
             <!-- This template is used when displaying authority information in the annotations overview -->
