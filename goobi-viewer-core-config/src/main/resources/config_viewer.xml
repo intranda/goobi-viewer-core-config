@@ -1862,6 +1862,28 @@
             <marker type="divIcon" class="marker-circle marker-circle-blue">maps__marker_8</marker>
             <marker type="divIcon" class="marker-circle marker-circle-red">maps__marker_9</marker>
         </markers>
+        
+	  <metadata>
+		  <option label="cms__geomaps__popup_content__option__none" name=""/>
+        	<option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
+        		<title>
+        			<template name="_DEFAULT">
+	                	<metadata label="" value="{NORM_NAME}">
+	                    			<param type="field" key="NORM_NAME" altKey="LABEL" />
+						</metadata>
+					</template>
+				</title>
+        	</option>
+        	<option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
+        		<title>
+	        		<template name="_DEFAULT">
+	                	<metadata label="" value="{MD_VALUE}">
+	                    			<param type="field" key="MD_VALUE" altKey="LABEL" />
+						</metadata>
+					</template>
+        		</title>
+        	</option>
+        </metadata>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
         <coordinateFields>
@@ -1883,6 +1905,11 @@
             <marker icon="fa-circle" markerColor="red" svg="true" />
             <selection color="blue"/>
         </search>
+        <record>
+        	<template name="_DEFAULT">
+	        	<marker>default</marker>
+        	</template>
+        </record>
     </maps>
 
 
