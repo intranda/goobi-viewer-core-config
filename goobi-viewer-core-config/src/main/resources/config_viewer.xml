@@ -448,6 +448,13 @@
             <value>50</value>
             <value>100</value>
         </hitsPerPage>
+        
+        <childHits>
+        	<!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
+        	<initialLoadLimit>0</initialLoadLimit>
+        	<!-- How many (additional) child hits to load when clicking to open/expand child hits of a search hit -->
+        	<loadOnExpand>20</loadOnExpand>
+        </childHits>
 
         <!-- displayHitNumbers/@enabled: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
         <displayHitNumbers enabled="false" />
@@ -1864,7 +1871,7 @@
         </markers>
         
 	  <metadata>
-		  <option label="cms__geomaps__popup_content__option__none" name=""/>
+		    <option label="cms__geomaps__popup_content__option__none" name=""/>
         	<option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
         		<title>
         			<template name="_DEFAULT">
