@@ -956,6 +956,9 @@
                 <metadata label="DATECREATED">
                     <param type="millisfield" key="DATECREATED" />
                 </metadata>
+                <metadata label="MD_DATESTART">
+                    <param type="datefield" pattern="dd/MM/yyyy" key="MD_DATESTART" />
+                </metadata>
                 -->
                <metadata label="MD_PROVENIENCE">
                     <param type="field" key="MD_PROVENIENCE" />
