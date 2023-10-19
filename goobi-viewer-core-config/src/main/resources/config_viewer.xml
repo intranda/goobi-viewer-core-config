@@ -518,17 +518,19 @@
 
             <!-- advancedSearchFields: index fields to be used in advanced search -->
             <searchFields>
-                <field visible="true">MD_TITLE</field>
-                <field visible="true">MD_AUTHOR</field>
-                <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
-                <field visible="true" hierarchical="true">DC</field>
-                <field visible="true" range="true">YEAR</field>
-                <field>PI_TOPSTRUCT</field>
-                <field>DOCSTRCT_TOP</field>
-                <field>DOCSTRCT_SUB</field>
-                <field>MD_PUBLISHER</field>
-                <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
-                <field>BOOKMARKS</field>
+                <template name="_DEFAULT">
+                    <field visible="true">MD_TITLE</field>
+                    <field visible="true">MD_AUTHOR</field>
+                    <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
+                    <field visible="true" hierarchical="true">DC</field>
+                    <field visible="true" range="true">YEAR</field>
+                    <field>PI_TOPSTRUCT</field>
+                    <field>DOCSTRCT_TOP</field>
+                    <field>DOCSTRCT_SUB</field>
+                    <field>MD_PUBLISHER</field>
+                    <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
+                    <field>BOOKMARKS</field>
+                </template>
             </searchFields>
         </advanced>
 
