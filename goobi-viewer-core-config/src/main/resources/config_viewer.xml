@@ -649,6 +649,14 @@
             <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
             <valueLength>4000</valueLength>
         </metadata>
+
+        <resultGroups enabled="false">
+            <group name="lido_objects" query="SOURCEDOCFORMAT:LIDO" previewHitCount="12" />
+            <group name="monographs" query="+DOCSTRCT:monograph" previewHitCount="12" />
+            <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
+            <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
+        </resultGroups>
+
     </search>
 
 
