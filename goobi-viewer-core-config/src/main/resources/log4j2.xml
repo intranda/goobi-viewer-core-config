@@ -21,12 +21,20 @@
     <Console name="stdout">
       <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
       <ThresholdFilter level="${logLevel}" />
+      <!--
+      <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
+      <RegexFilter regex="org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+      -->
     </Console>
 
     <RollingFile name="viewer" fileName="${baseDir}/viewer.log" filePattern="${baseDir}/viewer.log.%d{yyyy-MM-dd}.gz">
       <PatternLayout pattern="%-5level %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %location%n        %msg%n" />
       <ThresholdFilter level="DEBUG" />
       <CronTriggeringPolicy schedule="0 0 0 * * ?" />
+      <!--
+      <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
+      <RegexFilter regex="org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+      -->
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
           <IfFileName glob="viewer.log.*.gz" />
@@ -72,8 +80,6 @@
     <Logger name="de.unigoettingen.sub.commons.contentlib" level="INFO" additivity="true">
       <AppenderRef ref="ics" />
     </Logger>
-
-    <Logger name="org.apache.catalina.connector.ClientAbortException: java.io.IOException:" level="FATAL" additivity="true"/>
 
     <Root level="ERROR">
       <AppenderRef ref="stdout" />

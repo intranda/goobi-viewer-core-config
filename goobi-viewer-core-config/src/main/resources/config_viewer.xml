@@ -421,6 +421,17 @@
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
         <fulltextPercentageWarningThreshold>30</fulltextPercentageWarningThreshold>
 
+       <!-- formats/date: Explicitly set the date format for the given language. You can use the format pattern from the Java SimpleDateFormat
+              The language must be a valid IDO 639-1 code. -->
+        <formats>
+            <date>
+                <de>dd.MM.yyyy</de>
+                <en>MM/dd/yyyy</en>
+                <es>dd/MM/yyyy</es>
+                <fr>dd/MM/yyyy</fr>
+            </date>
+        </formats>
+
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
@@ -448,6 +459,13 @@
             <value>50</value>
             <value>100</value>
         </hitsPerPage>
+
+        <childHits>
+        	<!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
+        	<initialLoadLimit>0</initialLoadLimit>
+        	<!-- How many (additional) child hits to load when clicking to open/expand child hits of a search hit -->
+        	<loadOnExpand>20</loadOnExpand>
+        </childHits>
 
         <!-- displayHitNumbers/@enabled: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
         <displayHitNumbers enabled="false" />
@@ -511,17 +529,19 @@
 
             <!-- advancedSearchFields: index fields to be used in advanced search -->
             <searchFields>
-                <field visible="true">MD_TITLE</field>
-                <field visible="true">MD_AUTHOR</field>
-                <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
-                <field visible="true" hierarchical="true">DC</field>
-                <field visible="true" range="true">YEAR</field>
-                <field>PI_TOPSTRUCT</field>
-                <field>DOCSTRCT_TOP</field>
-                <field>DOCSTRCT_SUB</field>
-                <field>MD_PUBLISHER</field>
-                <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
-                <field>BOOKMARKS</field>
+                <template name="_DEFAULT">
+                    <field visible="true">MD_TITLE</field>
+                    <field visible="true">MD_AUTHOR</field>
+                    <field visible="true" untokenizeForPhraseSearch="true">MD_SHELFMARK</field>
+                    <field visible="true" hierarchical="true">DC</field>
+                    <field visible="true" range="true">YEAR</field>
+                    <field>PI_TOPSTRUCT</field>
+                    <field>DOCSTRCT_TOP</field>
+                    <field>DOCSTRCT_SUB</field>
+                    <field>MD_PUBLISHER</field>
+                    <field displaySelectItemsThreshold="100">MD_PLACEPUBLISH</field>
+                    <field>BOOKMARKS</field>
+                </template>
             </searchFields>
         </advanced>
 
@@ -629,6 +649,14 @@
             <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
             <valueLength>4000</valueLength>
         </metadata>
+
+        <resultGroups enabled="false">
+            <group name="lido_objects" query="SOURCEDOCFORMAT:LIDO" previewHitCount="12" />
+            <group name="monographs" query="+DOCSTRCT:monograph" previewHitCount="12" />
+            <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
+            <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
+        </resultGroups>
+
     </search>
 
 
@@ -948,6 +976,9 @@
                 <!--
                 <metadata label="DATECREATED">
                     <param type="millisfield" key="DATECREATED" />
+                </metadata>
+                <metadata label="MD_DATESTART">
+                    <param type="datefield" pattern="dd/MM/yyyy" key="MD_DATESTART" />
                 </metadata>
                 -->
                <metadata label="MD_PROVENIENCE">
@@ -1404,7 +1435,7 @@
         </sidebarToc>
 
         <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
-        <sidebarWidgetUsage enabled="true" introductionText="MASTERVALUE_LICENSETEXT">
+        <sidebarWidgetUsage enabled="true">
             <page>
                 <downloadOptions enabled="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
@@ -1462,7 +1493,7 @@
         </sidebarWidgetUsage>
 
         <!-- sidebarWidgetDownloads/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
-        <sidebarWidgetDownloads enabled="true" introductionText="">
+        <sidebarWidgetDownloads enabled="true">
             <!-- hideFileRegex: If a regular expression is defined, files matching
                  it are hidden from the widget display. The download is still possible. -->
             <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
@@ -1863,6 +1894,28 @@
             <marker type="divIcon" class="marker-circle marker-circle-red">maps__marker_9</marker>
         </markers>
 
+	  <metadata>
+		    <option label="cms__geomaps__popup_content__option__none" name=""/>
+        	<option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
+        		<title>
+        			<template name="_DEFAULT">
+	                	<metadata label="" value="{NORM_NAME}">
+	                    			<param type="field" key="NORM_NAME" altKey="LABEL" />
+						</metadata>
+					</template>
+				</title>
+        	</option>
+        	<option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
+        		<title>
+	        		<template name="_DEFAULT">
+	                	<metadata label="" value="{MD_VALUE}">
+	                    			<param type="field" key="MD_VALUE" altKey="LABEL" />
+						</metadata>
+					</template>
+        		</title>
+        	</option>
+        </metadata>
+
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
         <coordinateFields>
             <field>MD_GEOJSON_POINT</field>
@@ -1883,6 +1936,11 @@
             <marker icon="fa-circle" markerColor="red" svg="true" />
             <selection color="blue"/>
         </search>
+        <record>
+        	<template name="_DEFAULT">
+	        	<marker>default</marker>
+        	</template>
+        </record>
     </maps>
 
 
