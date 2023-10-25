@@ -421,6 +421,17 @@
              falls below the configured value, a hint is displayed in page preview and image view for that record. Default is 30. -->
         <fulltextPercentageWarningThreshold>30</fulltextPercentageWarningThreshold>
 
+       <!-- formats/date: Explicitly set the date format for the given language. You can use the format pattern from the Java SimpleDateFormat
+              The language must be a valid IDO 639-1 code. -->
+        <formats>
+            <date>
+                <de>dd.MM.yyyy</de>
+                <en>MM/dd/yyyy</en>
+                <es>dd/MM/yyyy</es>
+                <fr>dd/MM/yyyy</fr>
+            </date>
+        </formats>
+
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
@@ -448,7 +459,7 @@
             <value>50</value>
             <value>100</value>
         </hitsPerPage>
-        
+
         <childHits>
         	<!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
         	<initialLoadLimit>0</initialLoadLimit>
@@ -638,6 +649,14 @@
             <!-- valueLength: defines the maximum length in characters for each value, longer values are truncated [since 2.0] -->
             <valueLength>4000</valueLength>
         </metadata>
+
+        <resultGroups enabled="false">
+            <group name="lido_objects" query="SOURCEDOCFORMAT:LIDO" previewHitCount="12" />
+            <group name="monographs" query="+DOCSTRCT:monograph" previewHitCount="12" />
+            <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
+            <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
+        </resultGroups>
+
     </search>
 
 
@@ -1874,7 +1893,7 @@
             <marker type="divIcon" class="marker-circle marker-circle-blue">maps__marker_8</marker>
             <marker type="divIcon" class="marker-circle marker-circle-red">maps__marker_9</marker>
         </markers>
-        
+
 	  <metadata>
 		    <option label="cms__geomaps__popup_content__option__none" name=""/>
         	<option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
