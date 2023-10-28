@@ -1404,8 +1404,7 @@
         <searchInItem enabled="true" />
 
         <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
-        <metadata enabled="true">
-        </metadata>
+        <metadata enabled="true" />
 
         <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
         <fulltext enabled="true" />
