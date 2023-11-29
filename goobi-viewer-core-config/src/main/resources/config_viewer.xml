@@ -1938,6 +1938,11 @@
         <record>
         	<template name="_DEFAULT">
 	        	<marker>default</marker>
+	        	<featureSets>
+		              <featureSet type="annotations">
+		                      <marker>default</marker>
+		              </featureSet>
+		     	</featureSets>
         	</template>
         </record>
     </maps>
