@@ -462,7 +462,7 @@
 
         <childHits>
         	<!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
-        	<initialLoadLimit>0</initialLoadLimit>
+        	<initialLoadLimit>5</initialLoadLimit>
         	<!-- How many (additional) child hits to load when clicking to open/expand child hits of a search hit -->
         	<loadOnExpand>20</loadOnExpand>
         </childHits>
