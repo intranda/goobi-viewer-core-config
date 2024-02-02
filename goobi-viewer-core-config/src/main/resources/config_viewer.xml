@@ -195,9 +195,11 @@
         <preventProxyCaching>false</preventProxyCaching>
 
         <solr>
-            <!-- compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
+            <!-- useHttp2: If false, the old HTTP1 client will be used for backwards compatibility with Solr 8. Default is true. -->
+            <useHttp2>true</useHttp2>
+            <!-- DEPRECATED compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
             <compressionEnabled>true</compressionEnabled>
-            <!-- backwardsCompatible: If true, an XML response parser instead of binary will be used to enable Solr 4 compatibility. Default is false. -->
+            <!-- DEPRECATED backwardsCompatible: If true, an XML response parser instead of binary will be used to enable Solr 4 compatibility. Default is false. -->
             <backwardsCompatible>false</backwardsCompatible>
         </solr>
     </performance>
