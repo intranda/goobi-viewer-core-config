@@ -545,7 +545,7 @@
             </searchFields>
         </advanced>
 
-        <!-- timeline/@enabled: If true, the time meatrix is displayed. Default is true. -->
+        <!-- timeline/@enabled: If true, the time matrix is displayed. Default is true. -->
         <timeline enabled="true">
             <!-- Possible values for startyear and endyear are whole years (also minus)
                  as well as the value MIN for startyear and the value MAX for endyear.
