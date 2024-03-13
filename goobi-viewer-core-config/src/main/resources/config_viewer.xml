@@ -2149,7 +2149,15 @@
         </whitelist>
     </proxy>
 
-
+	<developer>
+		<scripts>
+			<pullTheme>{config-folder-path}/script_theme-pull.sh
+				{theme-path}/../../../../</pullTheme>
+			<createDeveloperPackage>{config-folder-path}/script_create_package.sh
+				-d viewer -f {base-path} -w /var/www/viewer/ -s {solr-url}
+			</createDeveloperPackage>
+		</scripts>
+	</developer>
 
     <!-- Enable activeMQ message queue -->
     <activeMQ enabled="true" numberOfParallelMessages="2" />
