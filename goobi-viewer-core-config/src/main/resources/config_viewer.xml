@@ -297,7 +297,7 @@
         <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
              the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
              to true to use tiled images if possible (only possible when type=openlayers) -->
-		<!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
+        <!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
         <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
@@ -463,10 +463,10 @@
         </hitsPerPage>
 
         <childHits>
-        	<!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
-        	<initialLoadLimit>5</initialLoadLimit>
-        	<!-- How many (additional) child hits to load when clicking to open/expand child hits of a search hit -->
-        	<loadOnExpand>20</loadOnExpand>
+            <!-- Only expand child hits of a search hit if the number of child hits doesn't exceed this number -->
+            <initialLoadLimit>5</initialLoadLimit>
+            <!-- How many (additional) child hits to load when clicking to open/expand child hits of a search hit -->
+            <loadOnExpand>20</loadOnExpand>
         </childHits>
 
         <!-- displayHitNumbers/@enabled: If true, individual numbers of search hits within the current result set will be displayed. Default is false. -->
@@ -507,10 +507,10 @@
         <!-- each facets.field element may have a 'type' attribute which determines how the data is interpreted and displayed -->
         <!-- Allowed values for 'type' are -->
         <!-- range: the values of this field are interpreted as dates within a timeline or some other number range. -->
-        <!-- 		These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
-        <!--  		'style' may habe a value of either 'slider', which is the default, or 'graph' -->
-        <!-- geo_	the field contains geographical coordinates which are displayed on a map -->
-        <!-- hierarchical:	The field contains hierarchical values, usually a type of digital collection -->
+        <!--         These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
+        <!--          'style' may habe a value of either 'slider', which is the default, or 'graph' -->
+        <!-- geo_    the field contains geographical coordinates which are displayed on a map -->
+        <!-- hierarchical:    The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
             <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
@@ -520,6 +520,8 @@
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_CREATOR</field>
             <field initialElementNumber="3" sortOrder="alphabetical_asc">MD_PLACEPUBLISH</field>
+            <!-- <field initialElementNumber="3" sortOrder="alphabetical_asc" displayValueFilter="false">FULLTEXTAVAILABLE</field> -->
+            <!-- <field initialElementNumber="3" sortOrder="alphabetical_asc" displayValueFilter="false">BOOL_IMAGEAVAILABLE</field> -->
             <!-- <field labelField="MD_LABEL">MD_VALUE</field> -->
             <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
             <!-- <field sortOrder="alphabetical" groupToLength="1" alwaysApplyToUnfilteredHits="true" skipInWidget="true">MD_TITLE</field> -->
@@ -1895,26 +1897,26 @@
             <marker type="divIcon" class="marker-circle marker-circle-red">maps__marker_9</marker>
         </markers>
 
-	  <metadata>
-		    <option label="cms__geomaps__popup_content__option__none" name=""/>
-        	<option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
-        		<title>
-        			<template name="_DEFAULT">
-	                	<metadata label="" value="{NORM_NAME}">
-	                    			<param type="field" key="NORM_NAME" altKey="LABEL" />
-						</metadata>
-					</template>
-				</title>
-        	</option>
-        	<option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
-        		<title>
-	        		<template name="_DEFAULT">
-	                	<metadata label="" value="{MD_VALUE}">
-	                    			<param type="field" key="MD_VALUE" altKey="LABEL" />
-						</metadata>
-					</template>
-        		</title>
-        	</option>
+        <metadata>
+            <option label="cms__geomaps__popup_content__option__none" name=""/>
+            <option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
+                <title>
+                    <template name="_DEFAULT">
+                        <metadata label="" value="{NORM_NAME}">
+                                    <param type="field" key="NORM_NAME" altKey="LABEL" />
+                        </metadata>
+                    </template>
+                </title>
+            </option>
+            <option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
+                <title>
+                    <template name="_DEFAULT">
+                        <metadata label="" value="{MD_VALUE}">
+                                    <param type="field" key="MD_VALUE" altKey="LABEL" />
+                        </metadata>
+                    </template>
+                </title>
+            </option>
         </metadata>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
@@ -1938,14 +1940,14 @@
             <selection color="blue"/>
         </search>
         <record>
-        	<template name="_DEFAULT">
-	        	<marker>default</marker>
-	        	<featureSets>
-		              <featureSet type="annotations">
-		                      <marker>default</marker>
-		              </featureSet>
-		     	</featureSets>
-        	</template>
+            <template name="_DEFAULT">
+                <marker>default</marker>
+                <featureSets>
+                      <featureSet type="annotations">
+                              <marker>default</marker>
+                      </featureSet>
+                 </featureSets>
+            </template>
         </record>
     </maps>
 
@@ -2156,7 +2158,15 @@
         </whitelist>
     </proxy>
 
-
+	<developer>
+		<scripts>
+			<pullTheme>{config-folder-path}/script_theme-pull.sh
+				{theme-path}/../../../../</pullTheme>
+			<createDeveloperPackage>{config-folder-path}/script_create_package.sh
+				-d viewer -f {base-path} -w /var/www/viewer/ -s {solr-url}
+			</createDeveloperPackage>
+		</scripts>
+	</developer>
 
     <!-- Enable activeMQ message queue -->
     <activeMQ enabled="true" numberOfParallelMessages="2" />
