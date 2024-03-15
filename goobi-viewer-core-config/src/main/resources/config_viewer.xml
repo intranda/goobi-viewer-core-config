@@ -2140,9 +2140,9 @@
     <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
     <proxy enabled="false">
         <!-- proxyUrl: Proxy URL -->
-        <proxyUrl></proxyUrl>
+        <proxyUrl>http://proxy.example.org</proxyUrl>
         <!-- proxyUrl: Proxy port -->
-        <proxyPort></proxyPort>
+        <proxyPort>8080</proxyPort>
         <!-- whitelist: List of hosts not to be accessed via proxy -->
         <whitelist>
             <host>127.0.0.1</host>
