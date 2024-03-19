@@ -29,7 +29,7 @@
     <!-- mediaFolder: contains media files that are displayed in the Goobi viewer (images, audio, video) -->
     <mediaFolder>media</mediaFolder>
 
-    <!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <sidebar/sidebarWidgetDownloads> also) -->
+    <!-- sourceContentFolder: contains born-digital material that was uploaded in the Goobi viewer (see <sidebar/sidebarWidgetAdditionalFiles> also) -->
     <origContentFolder>source</origContentFolder>
 
     <!-- pdfFolder: contains pre-generated PDFs -->
@@ -1495,12 +1495,12 @@
             </citationRecommendation>
         </sidebarWidgetUsage>
 
-        <!-- sidebarWidgetDownloads/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
-        <sidebarWidgetDownloads enabled="true">
+        <!-- sidebarWidgetAdditionalFiles/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
+        <sidebarWidgetAdditionalFiles enabled="true">
             <!-- hideFileRegex: If a regular expression is defined, files matching
                  it are hidden from the widget display. The download is still possible. -->
             <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
-        </sidebarWidgetDownloads>
+        </sidebarWidgetAdditionalFiles>
 
 
         <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
@@ -2149,24 +2149,54 @@
     <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
     <proxy enabled="false">
         <!-- proxyUrl: Proxy URL -->
-        <proxyUrl></proxyUrl>
+        <proxyUrl>http://proxy.example.org</proxyUrl>
         <!-- proxyUrl: Proxy port -->
-        <proxyPort></proxyPort>
+        <proxyPort>8080</proxyPort>
         <!-- whitelist: List of hosts not to be accessed via proxy -->
         <whitelist>
             <host>127.0.0.1</host>
         </whitelist>
     </proxy>
 
-	<developer>
-		<scripts>
-			<pullTheme>{config-folder-path}/script_theme-pull.sh
-				{theme-path}/../../../../</pullTheme>
-			<createDeveloperPackage>{config-folder-path}/script_create_package.sh
-				-d viewer -f {base-path} -w /var/www/viewer/ -s {solr-url}
-			</createDeveloperPackage>
-		</scripts>
-	</developer>
+
+    <developer>
+        <scripts>
+            <pullTheme>{config-folder-path}/script_theme-pull.sh {theme-path}/../../../../</pullTheme>
+            <createDeveloperPackage>{config-folder-path}/script_create_package.sh -d viewer -f {base-path} -w /var/www/viewer/ -s {solr-url} </createDeveloperPackage>
+        </scripts>
+    </developer>
+
+
+    <!-- Settings for displaying additional resources from external URLs. The resources will be available in
+          "bornDigital" records, i.e. records that contain only pages with an 'application/...  Mimetype -->
+    <externalResource>
+        <!-- List of URL templates from which to download resources to the viewer server and make available to users
+             These templates may contain placeholders in the form '{<metadatafield>}' where '<metadatafield>' is the
+             name of a SOLR field which first value should be used instead of the placeholder.
+             Only URLs which are reachable and contain any content are listed -->
+        <urls>
+            <!-- Static URLs for testing purposes only -->
+            <!--
+            <template>http://d-nb.info/1308693176/34</template>
+            <template>http://d-nb.info/1063071186/34</template>
+            <template>http://d-nb.info/1308693931/34</template>
+            -->
+            <!-- URL template for a SOLR field named MD_FILEURL -->
+            <template>http://d-nb.info/{MD_FILEURL}/34</template>
+        </urls>
+        <!-- time after which a downloaded external resource is deleted
+             from the viewer server. This is always scheduled in the internal
+             message queue directly after the download is complete -->
+        <deleteAfter>
+            <!-- The number of time units to wait before deleting. Must be a positive integer.
+                 Per default the unit is days-->
+            <value>5</value>
+            <!-- The unit in which the deletion time value is given.
+                 Should be one of 'SECONDS', 'MINUTES', 'HOURS', 'DAYS', 'WEEKS', 'MONTHS', 'YEARS'.
+                 ('FOREVER' is also a valid unit, but untested) -->
+            <unit>minutes</unit>
+        </deleteAfter>
+    </externalResource>
 
     <!-- Enable activeMQ message queue -->
     <activeMQ enabled="true" numberOfParallelMessages="2" />
