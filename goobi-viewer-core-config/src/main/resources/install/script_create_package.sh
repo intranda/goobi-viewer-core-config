@@ -64,7 +64,8 @@ fi
 /usr/bin/mysqldump -u ${MYSQLUSER} -p${MYSQLPASS} ${VIEWERDBNAME} --ignore-table=viewer.crowdsourcing_fulltexts >> ${SQLDUMP}
 
 ## Create superuser goobi@intranda.com with password 'viewer'
-echo "INSERT INTO users (active,email,password_hash,score,superuser) SELECT 1,'goobi@intranda.com', '\$2a\$10\$Z5GTNKND9ZbuHt0ayDh0Remblc7pKUNlqbcoCxaNgKza05fLtkuYO',0,1 WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = 'goobi@intranda.com');" >> ${SQLDUMP}
+echo 'DELETE FROM users WHERE email = "goobi@intranda.com";' >> ${SQLDUMP}
+echo 'INSERT INTO users (active,email,password_hash,score,superuser) SELECT 1,"goobi@intranda.com", "$2a$10$Z5GTNKND9ZbuHt0ayDh0Remblc7pKUNlqbcoCxaNgKza05fLtkuYO",0,1 WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = "goobi@intranda.com");' >> ${SQLDUMP}
 
 # Extract information from config_viewer.xml
 # If the RESTURL is missing the script will stop here because xmlstarlet will exit with 1.
