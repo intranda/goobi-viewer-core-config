@@ -79,14 +79,6 @@
 	<!-- restApiUrl: Goobi viewer REST API for full-text/ALTO/TEI/CMDI and TOC retrieval -->
 	<restApiUrl>http://localhost:8080/viewer/api/v1/</restApiUrl>
 
-	<!-- fulltextUrl: URL for a single plain full-text page; contains placeholders
-		for PI and page number; can be used for REST or older ContentServlet URLs.
-		Allowed placeholders:
-		  {pi} (e.g 'PPN123456789'),
-		  {fileName} (e.g. '00000001.txt'),
-		  {page} (e.g. '1') -->
-	<fulltextUrl>http://localhost:8080/viewer/api/v1/records/{pi}/files/plaintext/{fileName}/</fulltextUrl>
-
 
 	<oai_dc>
 		<enabled>true</enabled>
