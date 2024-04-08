@@ -1,45 +1,52 @@
 #!/bin/bash
+
+###
 #
-#
-# This script attempts to call "git pull" on a path given as the first parameter
+# Do a git pull on the given directory.
 #
 # The script expects one parameter: the path to the git repository of the theme
 #
-# The script should return one of two return values:
+# Git pull is done quitetly. If an error occurs exit directly. If it is successfull
+# generate an XML output with git branch, git hash and git commit message. This is 
+# used on the developer page in the Goobi viewer backend.
 #
-# 0 - if the repository was successfully pulled or if no changes where detected. In the latter case, the script should write "Git repository is already up to date." to the output stream
-# 1 - if an error occured. In this case an error description should be passed to the error output stream
-#
+###
 
-# Check if the repository path parameter is provided
+
+## Check if the repository path parameter is provided
 if [ -z "$1" ]; then
-    echo "Error: Repository path not provided." >&2
+    echo "ERROR: Repository path not provided." >&2
     exit 1
 fi
 
-repository_path="$1"
+REPOSITORYPATH="$1"
 
-# Check if the repository path is non-empty and points to an existing directory
-if [ -z "$repository_path" ] || [ ! -d "$repository_path" ]; then
-    echo "Error: Invalid repository path or directory does not exist." >&2
+
+## Check if the repository path is non-empty and points to an existing directory
+if [ -z "${REPOSITORYPATH}" ] || [ ! -d "${REPOSITORYPATH}" ]; then
+    echo "ERROR: Invalid repository path or directory does not exist." >&2
     exit 1
 fi
 
-pull_output=$(git -C "$repository_path" pull);
 
-# Check if the output indicates that everything is up-to-date
-if [[ $pull_output == *"Already up to date."* ]]; then
-    # Return 1 to indicate no changes
-    echo "Git repository is already up to date."
-    exit 0
-elif [ $? -eq 0 ]; then
-    # Exit status 0 indicates success (changes were pulled)
-    echo "Git pull successful: Changes pulled"
-    exit 0
-else
-    # exit status 2 indicates an error (e.g., conflicts or network issues)
-    echo "Error: Git pull failed."
-    echo "$pull_output" >&2
-    exit 1
+## Pull quietly and exit directly with error message on error stream from git pull command if pull fails
+PULLOUTPUT=$(git -C "${REPOSITORYPATH}" pull -q);
+if [ $? -ne 0 ]; then
+  exit 1
 fi
+
+
+## If pulling had no errors, store more information in variables and generate an XML output
+GITBRANCH=$(git -C ${REPOSITORYPATH} branch --show-current)
+GITHASH=$(git -C ${REPOSITORYPATH} rev-parse --short=7 HEAD)
+GITCOMMITMESSAGE=$(git -C ${REPOSITORYPATH} log --no-walk --pretty=format:%s)
+
+sed -e "s|GITBRANCH|${GITBRANCH}|g" -e "s|GITHASH|${GITHASH}|g" -e "s|GITCOMMITMESSAGE|${GITCOMMITMESSAGE}|g" << EOF
+<?xml version="1.0" encoding="UTF-8" ?>
+<themepull>
+  <branch>GITBRANCH</branch>
+  <revision>GITHASH</revision>
+  <message>GITCOMMITMESSAGE</message>
+</themepull>
+EOF
 
