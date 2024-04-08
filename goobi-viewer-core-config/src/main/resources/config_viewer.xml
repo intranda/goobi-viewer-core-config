@@ -1175,70 +1175,7 @@
             </template>
         </metadataList>
         
-        <metadataList type="archive">
-            <template name="_DEFAULT">
-                <!-- Identity Statement Area -->
-                <metadata label="agencycode" type="1" />
-                <metadata label="eadid" type="1"  />
-                <metadata label="recordid" type="1" />
-                <metadata label="MD_SHELFMARK" type="1">
-                    <param key="MD_UNITID" type="field" />
-                </metadata>
-                <metadata label="Number" type="1">
-                    <param key="MD_UNITID_NUMBER" type="field" />
-                </metadata>
-                <metadata label="Shelfmark" type="1">
-                    <param key="MD_SHELFMARK" type="field" />
-                </metadata>
-                <metadata label="unittitle" type="1"  />
-                <metadata label="unitdate" type="1">
-                    <param key="MD_DATECREATED" type="field" />
-                </metadata>
-                <metadata label="unitdatestructured" type="1" />
-                <metadata label="physdesc" type="1">
-                    <param key="MD_PHYSICALDESCRIPTIONEXTENT" type="field" />
-                </metadata>
-                <metadata label="physdescstructured" type="1" />
-                <!-- Context Area -->
-                <metadata label="origination" type="2">
-                    <param key="MD_PROVENIENCE" type="field" />
-                </metadata>
-                <metadata label="role" type="2">
-                    <param key="MD_ODD_HEAD" type="field" />
-                </metadata>
-                <metadata label="person" type="2">
-                    <param key="MD_ODD_P" type="field" />
-                </metadata>
-                <metadata label="bioghist" type="2"  />
-                <metadata label="custodhist" type="2" />
-                <metadata label="acqinfo" type="2" />
-                <!-- Content and Structure Area -->
-                <metadata label="scopecontent" type="3" />
-                <metadata label="appraisal" type="3" />
-                <metadata label="accruals" type="3" />
-                <metadata label="arrangement" type="3" />
-                <!-- Condition of Access and Use Area -->
-                <metadata label="accessrestrict" type="4" />
-                <metadata label="userestrict" type="4" />
-                <metadata label="langmaterial" type="4" />
-                <metadata label="font" type="4" />
-                <metadata label="phystech" type="4" />
-                <metadata label="otherfindaid" type="4" />
-                <!-- Allied Materials Area -->
-                <metadata label="originalsloc" type="5" />
-                <metadata label="altformavail" type="5" />
-                <metadata label="separatedmaterial" type="5" />
-                <metadata label="bibliography" type="5" />
-                <!-- Note Area -->
-                <metadata label="didnote" type="6" />
-                <metadata label="oddnote" type="6">
-                    <param key="MD_ODD" type="field" />
-                </metadata>
-                <!-- Description Control Area -->
-                <metadata label="conventiondeclaration" type="7" />
-            </template>
-        </metadataList>
-        
+ 
         <metadataList type="archive">
             <template name="_DEFAULT">
                 <!-- Identity Statement Area -->
