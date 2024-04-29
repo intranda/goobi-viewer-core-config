@@ -1123,7 +1123,6 @@
             </template>
         </metadataList>
 
-
         <!-- metadataList[@type="sidebar"]: defines metadata that are displayed in the sidebar. -->
         <metadataList type="sideBar">
             <!-- _DEFAULT: metadata defined in the _DEFAULT template is displayed on all struct elements that have no explicit definition -->
@@ -1501,7 +1500,6 @@
                  it are hidden from the widget display. The download is still possible. -->
             <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
         </sidebarWidgetAdditionalFiles>
-
 
         <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
         <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
@@ -2115,7 +2113,6 @@
     </upload>
 
 
-
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
         <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
@@ -2123,7 +2120,6 @@
              attribute can not be used for this purpose since it is applied to the session only after the first request -->
         <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
     </statistics>
-
 
 
     <!-- configEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
@@ -2134,7 +2130,6 @@
         <directory>/opt/digiverso/viewer/config/</directory>
         <directory>/opt/digiverso/indexer/</directory>
     </configEditor>
-
 
 
     <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
@@ -2150,14 +2145,12 @@
     </proxy>
 
 
-
     <developer>
         <scripts>
             <pullTheme>{config-folder-path}/script_theme-pull.sh {theme-path}/../../../../</pullTheme>
             <createDeveloperPackage>{config-folder-path}/script_create_package.sh -d viewer -f {base-path} -s {solr-url} </createDeveloperPackage>
         </scripts>
     </developer>
-
 
 
     <!-- Settings for displaying additional resources from external URLs. The resources will be available in
@@ -2190,6 +2183,7 @@
             <unit>minutes</unit>
         </deleteAfter>
     </externalResource>
+
 
     <!-- Enable activeMQ message queue -->
     <activeMQ enabled="true" numberOfParallelMessages="2" />
