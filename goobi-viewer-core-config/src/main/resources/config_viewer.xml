@@ -1435,6 +1435,7 @@
 
         <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
         <sidebarWidgetUsage enabled="true">
+        	<pdfPageRange enabled="false"/>
             <page>
                 <downloadOptions enabled="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
