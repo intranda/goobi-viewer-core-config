@@ -512,6 +512,10 @@
             <field type="range">YEAR</field>
             <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
             <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
+            <!-- HINT: We always need a facet for DC, otherwise the facet query when opening collections will not 
+                       automatically search in subcollections, too. FACET_DC:foo only, FACET_DC:foo.* is missing.
+                       If you want to hide faceting for DC from the default options, specify it locally and add 
+                       the skipInWidget="true" attribute. -->
             <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
