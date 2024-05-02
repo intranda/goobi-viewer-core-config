@@ -1435,6 +1435,7 @@
 
         <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
         <sidebarWidgetUsage enabled="true">
+        	<pdfPageRange enabled="false"/>
             <page>
                 <downloadOptions enabled="true">
                 <!-- Each option contains a label and a format. The label is translated via the messages.
@@ -1493,10 +1494,10 @@
 
         <!-- sidebarWidgetAdditionalFiles/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
         <sidebarWidgetAdditionalFiles enabled="true">
-			<!-- Filters against which the filenames of additional files are tested. 
+			<!-- Filters against which the filenames of additional files are tested.
 			If the filter's 'action' attribute is 'show', only files are shown which filename matches the regular expression in the 'regex' attribute.
 			If the action is 'hide' filenames matching the expression are excluded. -->
-			<filter action="hide" regex="(EXAMPLE_.*|HIDDEN_.*)"/>
+			<filter action="hide" regex="(EXAMPLE_.*|HIDDEN_.*)" />
 			<!-- These filters utilize a variable system with '{a.B}' expressions. These expressions are replaced with a solr field value of the current record if possible
 			Within the '{...}' expression, the string after the dot is the name of a solr field which value the expression should represent.
 			The string before the dot denounces the document hierarchy level at which to look the for field. Here, 'struct' stands for fields in structures below the record level (article, chapter,...),
@@ -1513,7 +1514,6 @@
 						value="{record.DC}" />
 				</conditions>
 			</filter>
-		</sidebarWidgetAdditionalFiles>
         </sidebarWidgetAdditionalFiles>
 
         <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
@@ -1730,14 +1730,14 @@
         <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
              The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
         <iiif use-version="2.1.1">
-            
+
             <!-- Configuration to use external manifests instead of internally generated ones. Only used if 'enabled' is 'true' -->
             <externalManifests enabled="false">
             	<!-- name of a solr field which may contain urls to external manifests. If the field exists for a record and contains a url,
             	this url is always used in the viewer instead of the internal one. The internal manifest url also redirects to the external url -->
 				<solrField>MD_IIIF_MANIFEST</solrField>
 			</externalManifests>
-            
+
             <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
@@ -2167,18 +2167,19 @@
         </whitelist>
     </proxy>
 
-	<!-- settings for the developer backend page, allowing the download of instance-specific data for development purposes 
+    
+	<!-- settings for the developer backend page, allowing the download of instance-specific data for development purposes
 	and publishing the theme git repository to the viewer instance -->
     <developer>
-    	<!-- these scripts utilize a variable system using '{xyz}' expressions representing values from the viewer configuration file. The following variables are used: 
-    	<!-- {config-folder-path}: The path to the viewer configuration folder, usually '/opt/digiverso/viewer/config/'
-    	<!-- {theme-path}: The path given by the configuration in viewer/theme/rootPath
-    	<!-- {base-path}: The base path of the viewer installation, given by the 'viewer/viewerHome' config property. Usually this is '/opt/digiverso/viewer/'
-    	<!-- {solr-url}: The configured url to the solr, given in viewer/urls/solr. -->
+    	<!-- these scripts utilize a variable system using '{xyz}' expressions representing values from the viewer configuration file. The following variables are used:
+    	{config-folder-path}: The path to the viewer configuration folder, usually '/opt/digiverso/viewer/config/'
+    	{theme-path}: The path given by the configuration in viewer/theme/rootPath
+    	{base-path}: The base path of the viewer installation, given by the 'viewer/viewerHome' config property. Usually this is '/opt/digiverso/viewer/'
+    	{solr-url}: The configured url to the solr, given in viewer/urls/solr. -->
         <scripts>
         	<!-- bash script to call when the 'pull theme' action is performed on the developer page. The script's output is presented on the page after the operation -->
             <pullTheme>{config-folder-path}/script_theme-pull.sh {theme-path}/../../../../</pullTheme>
-            <!-- bash script to call when the 'download' action is performed on the developer page. 
+            <!-- bash script to call when the 'download' action is performed on the developer page.
             If the output of the script is a file, it is downloaded to the client and then deleted on the server -->
             <createDeveloperPackage>{config-folder-path}/script_create_package.sh -d viewer -f {base-path} -s {solr-url} </createDeveloperPackage>
         </scripts>
