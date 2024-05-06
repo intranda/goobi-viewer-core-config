@@ -256,13 +256,13 @@
 
 
     <epub>
-        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML). Default is true. -->
+        <!-- titleEpubEnabled: if true, a Epub download link for the entire record is displayed in the title bar (where enabled in the XHTML). Default is true. -->
         <titleEpubEnabled>true</titleEpubEnabled>
 
-        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC. Default is true. -->
+        <!-- tocEpubEnabled: if true, Epub download links for each structural element is displayed in the TOC. Default is true. -->
         <tocEpubEnabled>true</tocEpubEnabled>
 
-        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page. Default is true -->
+        <!-- metadataEpubEnabled: if true, an Epub download link for the entire record is displayed on the metadata page. Default is true -->
         <metadataEpubEnabled>true</metadataEpubEnabled>
 
          <!-- Folder for generated download files -->
