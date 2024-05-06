@@ -160,12 +160,13 @@
         </securityQuestions>
 
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
-             Possible attributes for providers are: type, enabled, name, endpoint (auth URL), parameterType, parameterName, image, timeout. -->
+             Possible attributes for providers are: type, enabled, name, label, endpoint (auth URL), tokenEndpoint (defaults to @endpoint/token), redirectionEndpoint (defaults to currentUrl/oauth), scope, parameterType, parameterName, image, timeout. -->
         <authenticationProviders>
             <provider type="local" enabled="true" name="Goobi viewer" />
             <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-            <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-            <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000" />
+            <provider type="openId" enabled="false" name="Facebook" label="CHANGEME" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+            <provider type="openId" enabled="false" name="OIDC" endpoint="https://idp.example.org/oauth20/authorize" tokenEndpoint="https://m2m.example.org/oauth20/token" redirectionEndpoint="https://viewer-admin.example.org/oauth/" scope="openid email" clientId="CHANGEME" clientSecret="CHANGEME" />
+            <provider type="userPassword" enabled="false" name="VuFind" label="CHANGEME" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000" />
             <provider type="httpHeader" enabled="false" name="Shibboleth" parameterType="attribute" parameterName="shib-email" endpoint="https://viewer.example.org/api/v1/auth/header" />
         </authenticationProviders>
 
