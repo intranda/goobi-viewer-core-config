@@ -1737,12 +1737,11 @@
              The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
         <iiif use-version="2.1.1">
 
-            <!-- Configuration to use external manifests instead of internally generated ones. Only used if 'enabled' is 'true' -->
-            <externalManifests enabled="false">
-                <!-- name of a solr field which may contain urls to external manifests. If the field exists for a record and contains a url,
-                this url is always used in the viewer instead of the internal one. The internal manifest url also redirects to the external url -->
-                <solrField>MD_IIIF_MANIFEST</solrField>
-            </externalManifests>
+            <!-- externalManifests: Configuration to use external manifests instead of internally generated ones.
+                 @enable: Enabled the functionallity. Possible values are `true` and `false`. Default is false
+                 @field: name of a solr field which may contain urls to external manifests. If the field exists for a record and contains a url,
+                         this url is always used in the viewer instead of the internal one. The internal manifest url also redirects to the external url -->
+            <externalManifests enabled="false" field="MD_IIIF_MANIFEST" />
 
             <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
