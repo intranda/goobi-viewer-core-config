@@ -230,8 +230,11 @@
 
 
     <pdf>
-        <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
-        <externalPdfGeneration>false</externalPdfGeneration>
+        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks. 
+        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page 
+        where the status of the request within the queue is displayed and where the actual download may be started. 
+        Default is false. -->
+        <generateInMessageQueue>false</generateInMessageQueue>
 
         <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false. -->
         <pdfApiDisabled>false</pdfApiDisabled>
