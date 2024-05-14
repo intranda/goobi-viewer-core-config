@@ -160,12 +160,13 @@
         </securityQuestions>
 
         <!-- List of authentication providers. Each <provider> element defines an authentication provider.
-             Possible attributes for providers are: type, enabled, name, endpoint (auth URL), parameterType, parameterName, image, timeout. -->
+             Possible attributes for providers are: type, enabled, name, label, endpoint (auth URL), tokenEndpoint (defaults to @endpoint/token), redirectionEndpoint (defaults to currentUrl/oauth), scope, parameterType, parameterName, image, timeout. -->
         <authenticationProviders>
-            <provider type="local" enabled="true" name="Goobi viewer"/>
+            <provider type="local" enabled="true" name="Goobi viewer" />
             <provider type="openId" enabled="true" name="Google" endpoint="https://accounts.google.com/o/oauth2/auth" clientId="CHANGEME" clientSecret="CHANGEME" image="google.png" />
-            <provider type="openId" label="CHANGEME" enabled="false" ame="Facebook" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
-            <provider type="userPassword" label="CHANGEME" enabled="false" name="VuFind" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000"/>
+            <provider type="openId" enabled="false" name="Facebook" label="CHANGEME" endpoint="https://www.facebook.com/dialog/oauth" clientId="" clientSecret="" image="facebook.png" />
+            <provider type="openId" enabled="false" name="OIDC" endpoint="https://idp.example.org/oauth20/authorize" tokenEndpoint="https://m2m.example.org/oauth20/token" redirectionEndpoint="https://viewer-admin.example.org/oauth/" scope="openid email" clientId="CHANGEME" clientSecret="CHANGEME" />
+            <provider type="userPassword" enabled="false" name="VuFind" label="CHANGEME" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000" />
             <provider type="httpHeader" enabled="false" name="Shibboleth" parameterType="attribute" parameterName="shib-email" endpoint="https://viewer.example.org/api/v1/auth/header" />
         </authenticationProviders>
 
@@ -220,20 +221,20 @@
         <provider name="Google" siteKey="CHANGEME" />
     </reCaptcha>
 
-    <!-- enable active mq -->
-    <activeMQ enabled="true">
-        <!-- path to initialisation file. Default configuration is used, if it is empty or does not exist -->
-        <configuration>/opt/digiverso/viewer/config/config_activemq.xml</configuration>
-        <!-- credentials -->
-        <user>goobi</user>
-        <password>goobi</password>
+
+    <!-- Enable activeMQ message queue -->
+    <activeMQ enabled="true" numberOfParallelMessages="2">
         <!-- Time in days to keep completed MessageQueue tasks in database before deleting them -->
         <deleteCompletedTasksAfterDays>90</deleteCompletedTasksAfterDays>
     </activeMQ>
 
+
     <pdf>
-        <!-- externalPdfGeneration: if true, PDFs are generated in an external intranda TaskManager. Default is false. -->
-        <externalPdfGeneration>false</externalPdfGeneration>
+        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks. 
+        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page 
+        where the status of the request within the queue is displayed and where the actual download may be started. 
+        Default is false. -->
+        <generateInMessageQueue>false</generateInMessageQueue>
 
         <!-- pdfApiDisabled: if true, the content servlet will reject PDF queries. Default is false. -->
         <pdfApiDisabled>false</pdfApiDisabled>
@@ -259,13 +260,13 @@
 
 
     <epub>
-        <!-- titlePdfEnabled: if true, PDF a download link for the entire record is displayed in the title bar (where enabled in the XHTML). Default is true. -->
+        <!-- titleEpubEnabled: if true, a Epub download link for the entire record is displayed in the title bar (where enabled in the XHTML). Default is true. -->
         <titleEpubEnabled>true</titleEpubEnabled>
 
-        <!-- tocPdfEnabled: if true, PDF download links for each structural element is displayed in the TOC. Default is true. -->
+        <!-- tocEpubEnabled: if true, Epub download links for each structural element is displayed in the TOC. Default is true. -->
         <tocEpubEnabled>true</tocEpubEnabled>
 
-        <!-- metadataPdfEnabled: if true, a PDF download link for the entire record is displayed on the metadata page. Default is true -->
+        <!-- metadataEpubEnabled: if true, an Epub download link for the entire record is displayed on the metadata page. Default is true -->
         <metadataEpubEnabled>true</metadataEpubEnabled>
 
          <!-- Folder for generated download files -->
@@ -284,8 +285,10 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageNavigation/@enabled: if true, an option to switch to a double page view is shown. Default is true. -->
-        <doublePageNavigation enabled="true" />
+        <!-- doublePageNavigation
+             @enabled: if true, an option to switch to a double page view is shown. Default is true.
+             @default: if true, the double page mode is enabled by default. Default is false. -->
+        <doublePageNavigation enabled="true" default="false" />
 
         <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
@@ -442,7 +445,7 @@
             <!-- rootPath: If the theme is located externally, the CMS template loading
                  mechanism needs the root path of the theme. The path must be defined down
                  to the /themes folder, just above the folder named like the theme. -->
-            <!-- <rootPath>/opt/digiverso/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/WebContent/resources/themes/</rootPath> -->
+            <!-- <rootPath>/opt/digiverso/viewer/themes/goobi-viewer-theme-mytheme/goobi-viewer-theme-mytheme/WebContent/resources/themes/</rootPath> -->
         </theme>
 
         <!-- name: Name of the Goobi viewer instance. This is shown in the OpenSearch description file and in the title of the web pages -->
@@ -515,6 +518,10 @@
             <field type="range">YEAR</field>
             <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
             <field type="geo" predicate="IsWithin" displayResultsOnMap="true">WKT_COORDS</field>
+            <!-- HINT: We always need a facet for DC, otherwise the facet query when opening collections will not
+                       automatically search in subcollections, too. FACET_DC:foo only, FACET_DC:foo.* is missing.
+                       If you want to hide faceting for DC from the default options, specify it locally and add
+                       the skipInWidget="true" attribute. -->
             <field type="hierarchical" initialElementNumber="4">DC</field>
             <field initialElementNumber="3">DOCSTRCT_TOP</field>
             <field initialElementNumber="3">DOCSTRCT_SUB</field>
@@ -969,12 +976,12 @@
                 </metadata>
                 <!--
                 <metadata label="label__citation_style_apa-6th-edition" value="" citationTemplate="apa-6th-edition">
-                    <param type="citeproc" dest="title" key="MD_TITLE"/>
-                    <param type="citeproc" dest="author" key="MD_AUTHOR"/>
-                    <param type="citeproc" dest="publisher" key="MD_PUBLISHER"/>
-                    <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH"/>
-                    <param type="citeproc" dest="issued" key="MD_YEARPUBLISH"/>
-                    <param type="citeproc" dest="isbn" key="MD_ISBN"/>
+                    <param type="citeproc" dest="title" key="MD_TITLE" />
+                    <param type="citeproc" dest="author" key="MD_AUTHOR" />
+                    <param type="citeproc" dest="publisher" key="MD_PUBLISHER" />
+                    <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH" />
+                    <param type="citeproc" dest="issued" key="MD_YEARPUBLISH" />
+                    <param type="citeproc" dest="isbn" key="MD_ISBN" />
                 </metadata>
                 -->
                 <!--
@@ -1054,32 +1061,32 @@
             </template>
             <template name="record">
                 <metadata label="PI">
-                    <param type="field" key="PI"/>
+                    <param type="field" key="PI" />
                 </metadata>
                 <metadata label="MD_TITLE">
-                    <param type="field" key="MD_TITLE"/>
+                    <param type="field" key="MD_TITLE" />
                 </metadata>
                 <metadata label="MD_RECORDDESCRIPTION">
-                    <param type="field" key="MD_RECORDDESCRIPTION"/>
+                    <param type="field" key="MD_RECORDDESCRIPTION" />
                 </metadata>
                 <metadata label="MD_LANGUAGE">
-                    <param type="translatedfield" key="MD_LANGUAGE"/>
+                    <param type="translatedfield" key="MD_LANGUAGE" />
                 </metadata>
                 <metadata label="MD_CREATOR" value="MASTERVALUE_SIMPLE_GROUP" group="true">
-                    <param type="field" key="MD_VALUE"/>
-                    <param type="field" key="NORM_WIKIPEDIAURL" value="LINK_WIKIPEDIA_FULL"/>
-                    <param type="normdatauri" key="NORM_URI"/>
-                    <param type="normdatasearch" key="NORM_IDENTIFIER"/>
+                    <param type="field" key="MD_VALUE" />
+                    <param type="field" key="NORM_WIKIPEDIAURL" value="LINK_WIKIPEDIA_FULL" />
+                    <param type="normdatauri" key="NORM_URI" />
+                    <param type="normdatasearch" key="NORM_IDENTIFIER" />
                 </metadata>
                 <metadata label="DC">
-                    <param type="translatedfield" key="DC"/>
+                    <param type="translatedfield" key="DC" />
                 </metadata>
                 <metadata label="MD_DATEOTHER">
-                    <param type="field" key="MD_DATECREATED"/>
+                    <param type="field" key="MD_DATECREATED" />
                 </metadata>
                 <metadata label="MD_LICENSE" value="MASTERVALUE_ACCESSLICENSE">
-                    <param type="field" key="MD_ACCESSLICENSE"/>
-                    <param type="translatedfield" key="MD_ACCESSLICENSE"/>
+                    <param type="field" key="MD_ACCESSLICENSE" />
+                    <param type="translatedfield" key="MD_ACCESSLICENSE" />
                 </metadata>
             </template>
         </metadataView>
@@ -1122,7 +1129,6 @@
                 </metadata>
             </template>
         </metadataList>
-
 
         <!-- metadataList[@type="sidebar"]: defines metadata that are displayed in the sidebar. -->
         <metadataList type="sideBar">
@@ -1557,7 +1563,7 @@
                     <option label="label__download_option_small_1024" format="jpg" boxSizeInPixel="1024" />
                     <option label="label__download_option_medium_2048" format="jpg" boxSizeInPixel="2048" />
                     <option label="label__download_option_large_4096" format="jpg" boxSizeInPixel="4096" />
-                    <option label="Master" format="MASTER" boxSizeInPixel="max"/>
+                    <option label="Master" format="MASTER" boxSizeInPixel="max" />
                 </downloadOptions>
             </page>
             <citationLinks enabled="true">
@@ -1571,8 +1577,7 @@
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}#?page={page}" />
                     <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}/" topstructValueFallback="true" />
                     <link type="URL" for="image"  label="URN" field="IMAGEURN" pattern="https://nbn-resolving.org/{value}" />
-                    <link type="URL" for="image"  label="URN" field="URN" pattern="https://nbn-resolving.org/{value}/fragment/page={page}"
-                        topstructValueFallback="true" />
+                    <link type="URL" for="image"  label="URN" field="URN" pattern="https://nbn-resolving.org/{value}/fragment/page={page}" topstructValueFallback="true" />
                     <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
                     <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
                     <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
@@ -1594,21 +1599,38 @@
                         <param type="citeproc" dest="title" key="MD_TITLE" />
                         <param type="citeproc" dest="author" key="MD_CREATOR" />
                         <param type="citeproc" dest="publisher" key="MD_PUBLISHER" />
-                        <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH"/>
+                        <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH" />
                         <param type="citeproc" dest="issued" key="MD_YEARPUBLISH" />
-                        <param type="citeproc" dest="isbn" key="MD_ISBN"/>
+                        <param type="citeproc" dest="isbn" key="MD_ISBN" />
                     </metadata>
                 </source>
             </citationRecommendation>
+            <pdfPageRange enabled="false" />
         </sidebarWidgetUsage>
 
         <!-- sidebarWidgetAdditionalFiles/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
         <sidebarWidgetAdditionalFiles enabled="true">
-            <!-- hideFileRegex: If a regular expression is defined, files matching
-                 it are hidden from the widget display. The download is still possible. -->
-            <hideFileRegex>(EXAMPLE_.*|HIDDEN_.*)</hideFileRegex>
+            <!-- Filters against which the filenames of additional files are tested.
+            If the filter's 'action' attribute is 'show', only files are shown which filename matches the regular expression in the 'regex' attribute.
+            If the action is 'hide' filenames matching the expression are excluded. -->
+            <filter action="hide" regex="(EXAMPLE_.*|HIDDEN_.*)" />
+            <!-- These filters utilize a variable system with '{a.B}' expressions. These expressions are replaced with a solr field value of the current record if possible
+            Within the '{...}' expression, the string after the dot is the name of a solr field which value the expression should represent.
+            The string before the dot denounces the document hierarchy level at which to look the for field. Here, 'struct' stands for fields in structures below the record level (article, chapter,...),
+            'record' stands for fields on the record level (book magazine issue,...) and 'anchor' for fields in structures above th record level (multivolume work, newspaper,...)
+            '{struct.MD_SHELFMARK}' thus means the value of the shelfmark field of the current structure element within a book. -->
+            <filter action="show" regex="{struct.MD_SHELFMARK}\..*">
+                <!-- filters which pose conditions under which the owning filter is applied.
+                    If any of these filters don't apply, the owning filter is not used
+                    These filters contain a 'value' attribute which is tested against the 'regex' attribute. In the example, the record digital collection
+                    must be 'archive.100uaghgw.020volksliedarchiv' or a subcollection thereof -->
+                <conditions>
+                    <filter action="show"
+                        regex="archive\.100uaghgw\.020volksliedarchiv.*"
+                        value="{record.DC}" />
+                </conditions>
+            </filter>
         </sidebarWidgetAdditionalFiles>
-
 
         <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
         <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
@@ -1824,6 +1846,13 @@
         <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
              The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
         <iiif use-version="2.1.1">
+
+            <!-- externalManifests: Configuration to use external manifests instead of internally generated ones.
+                 @enable: Enabled the functionallity. Possible values are `true` and `false`. Default is false
+                 @field: name of a solr field which may contain urls to external manifests. If the field exists for a record and contains a url,
+                         this url is always used in the viewer instead of the internal one. The internal manifest url also redirects to the external url -->
+            <externalManifests enabled="false" field="MD_IIIF_MANIFEST" />
+
             <!-- metadataFields: A list of all metadata fields which should be included within
                  the IIIF Presentation response for manifests and ranges representing structural elements -->
             <metadataFields>
@@ -1883,7 +1912,7 @@
                 </lido>
                 <!--
                 <metadata label="metadata_dl_opac" format="text/html">
-                    <param type="field" key="OPACURL"/>
+                    <param type="field" key="OPACURL" />
                 </metadata>
                 -->
             </seeAlso>
@@ -2005,7 +2034,7 @@
         </markers>
 
         <metadata>
-            <option label="cms__geomaps__popup_content__option__none" name=""/>
+            <option label="cms__geomaps__popup_content__option__none" name="" />
             <option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
                 <title>
                     <template name="_DEFAULT">
@@ -2039,12 +2068,12 @@
         <facet>
             <heatmap enabled="true" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
-            <selection color="blue"/>
+            <selection color="blue" />
         </facet>
         <search>
             <heatmap enabled="false" />
             <marker icon="fa-circle" markerColor="red" svg="true" />
-            <selection color="blue"/>
+            <selection color="blue" />
         </search>
         <record>
             <template name="_DEFAULT">
@@ -2172,15 +2201,13 @@
     </upload>
 
 
-
     <!-- Configuration for collecting usage statistics -->
     <statistics enabled="false">
         <!-- Web-Crawler requests should not be counted for statistics. Crawler requests are detected by matching
              their 'User-Agent' request header with the configured regex. The CrawlerSessionManagerValve session
              attribute can not be used for this purpose since it is applied to the session only after the first request -->
-        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*" />
+        <crawlerDetection regex=".*[bB]ot.*|.*Yahoo! Slurp.*|.*Feedfetcher-Google.*|.*Apache-HttpClient.*|.*[Ss]pider.*|.*[Cc]rawler.*|.*nagios.*|.*Yandex.*|.*monitoring-plugins.*|.*node-fetch.*|.*Munin.*|.*SearchHelper.*|.*Qwantify.*|.*feedparser.*|.*Prefetch Proxy.*|.*internal dummy connection.*|.*Go-http-client.*|.*facebookexternalhit.*|^.?$|.*Dataprovider.com.*|.*TYPO3.*|.*python.*|.*curl.*|.*LinkAnalyser.*|.*GuzzleHttp.*|.*Spawning-AI.*|.*Iframely.*|.*ApacheBench.*|.*deadlinkchecker.*|.*Fingerprinter.*|.*Riddler.*|.*Java-http.*" />
     </statistics>
-
 
 
     <!-- configEditor/@enabled: If true, the admin backend file editor will be enabled. Default is true.
@@ -2191,7 +2218,6 @@
         <directory>/opt/digiverso/viewer/config/</directory>
         <directory>/opt/digiverso/indexer/</directory>
     </configEditor>
-
 
 
     <!-- proxy/@enabled: If false, the proxy configuration will be ignored; default is false. -->
@@ -2207,10 +2233,20 @@
     </proxy>
 
 
+    <!-- settings for the developer backend page, allowing the download of instance-specific data for development purposes
+    and publishing the theme git repository to the viewer instance -->
     <developer>
+        <!-- these scripts utilize a variable system using '{xyz}' expressions representing values from the viewer configuration file. The following variables are used:
+        {config-folder-path}: The path to the viewer configuration folder, usually '/opt/digiverso/viewer/config/'
+        {theme-path}: The path given by the configuration in viewer/theme/rootPath
+        {base-path}: The base path of the viewer installation, given by the 'viewer/viewerHome' config property. Usually this is '/opt/digiverso/viewer/'
+        {solr-url}: The configured url to the solr, given in viewer/urls/solr. -->
         <scripts>
+            <!-- bash script to call when the 'pull theme' action is performed on the developer page. The script's output is presented on the page after the operation -->
             <pullTheme>{config-folder-path}/script_theme-pull.sh {theme-path}/../../../../</pullTheme>
-            <createDeveloperPackage>{config-folder-path}/script_create_package.sh -d viewer -f {base-path} -w /var/www/viewer/ -s {solr-url} </createDeveloperPackage>
+            <!-- bash script to call when the 'download' action is performed on the developer page.
+            If the output of the script is a file, it is downloaded to the client and then deleted on the server -->
+            <createDeveloperPackage>{config-folder-path}/script_create_package.sh -d viewer -f {base-path} -s {solr-url} </createDeveloperPackage>
         </scripts>
     </developer>
 
@@ -2245,7 +2281,4 @@
             <unit>minutes</unit>
         </deleteAfter>
     </externalResource>
-
-    <!-- Enable activeMQ message queue -->
-    <activeMQ enabled="true" numberOfParallelMessages="2" />
 </config>

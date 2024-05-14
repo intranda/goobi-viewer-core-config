@@ -20,7 +20,7 @@
                      Recommended values lie between 10 and 50
               - useScalrForJpeg: activates a different scaling method for jpeg-images which generally operates much slower, so it is recommended to set this option to "false"
     -->
-    <scaling quality="SPEED" maxStepSize="50" thumbnailQuality="QUALITY"></scaling>
+    <scaling quality="ULTRAQUALITY" maxStepSize="50" thumbnailQuality="QUALITY"></scaling>
 
 
     <!-- General rendering options. -->
