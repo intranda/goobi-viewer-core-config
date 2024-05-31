@@ -17,12 +17,29 @@ pipeline {
         sh 'git clean -fdx'
       }
     }
-    stage('build') {
+    stage('build develop') {
+      when {
+        not {
+          anyOf { branch 'master'; tag "v*" }
+        }
+      }
       steps {
               sh 'mvn -f goobi-viewer-core-config/pom.xml clean package'
               recordIssues enabledForFailure: true, aggregatingResults: true, tools: [java(), javaDoc()]
       }
     }
+    stage('build release') {
+      when {
+        anyOf {
+          tag "v*"
+          branch 'master'
+        }
+      }
+      steps {
+              sh 'mvn -f goobi-viewer-core-config/pom.xml -DfailOnSnapshot=true clean package'
+      }
+    }
+
     stage('deployment to maven repository') {
       when {
         anyOf {
