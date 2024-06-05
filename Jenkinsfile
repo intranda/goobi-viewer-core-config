@@ -2,7 +2,7 @@ pipeline {
 
   agent {
     docker {
-      image 'maven:3-jdk-11'
+      image 'maven:3-eclipse-temurin-17'
       args '-v $HOME/.m2:/var/maven/.m2:z -u 1000 -ti -e _JAVA_OPTIONS=-Duser.home=/var/maven -e MAVEN_CONFIG=/var/maven/.m2'
     }
   }
@@ -17,12 +17,29 @@ pipeline {
         sh 'git clean -fdx'
       }
     }
-    stage('build') {
+    stage('build develop') {
+      when {
+        not {
+          anyOf { branch 'master'; tag "v*" }
+        }
+      }
       steps {
-              sh 'mvn -f goobi-viewer-core-config/pom.xml clean install'
+              sh 'mvn -f goobi-viewer-core-config/pom.xml clean package'
               recordIssues enabledForFailure: true, aggregatingResults: true, tools: [java(), javaDoc()]
       }
     }
+    stage('build release') {
+      when {
+        anyOf {
+          tag "v*"
+          branch 'master'
+        }
+      }
+      steps {
+              sh 'mvn -f goobi-viewer-core-config/pom.xml -DfailOnSnapshot=true clean package'
+      }
+    }
+
     stage('deployment to maven repository') {
       when {
         anyOf {
