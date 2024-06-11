@@ -63,8 +63,8 @@
       - pagesize: default page size for pdf generation; possible values are 'A4', 'original' and 'A4Box'
       - imageDpi: Scale the image resolution to this value, while leaving the size intact. Effectively creates a blurring effect if set to lower than image DPI. Default is '0' which means no DPI change
       - convertToGrayscale: convert the PDF image to grayscale if set to true
-          - imageScale: Scale the total image by this factor, creating a smaller 1.0
-          - imageScaleToBox: Scales the image into the given box if the image is larger. This setting overrides the imageScale parameter.
+      - imageScale: Scale the total image by this factor, creating a smaller result. Default is 1.0
+      - imageScaleToBox: Scales the image into the given box if the image is larger. This setting overrides the imageScale parameter.
       - imageCompression: JPEG compression quality for the pdf image. Default is '0' which means default JPEG compression
 
     Example:
@@ -160,7 +160,7 @@
     Example:
       <watermark use="true" configFile="file:///home/goobi/config/watermarkconfig.xml" />
     -->
-    <watermark use="false"
+    <watermark use="true"
                scale="true"
                convertColorSpace="false"
                scaleToPercent="6"
