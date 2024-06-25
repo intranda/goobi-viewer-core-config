@@ -485,6 +485,7 @@
             <filter>filter_FULLTEXT</filter>
             <!-- <filter>filter_NORMDATATERMS</filter> -->
             <!-- <filter>filter_UGCTERMS</filter> -->
+            <!-- <filter>filter_SEARCHTERMS_ARCHIVE</filter> -->
             <!-- <filter>filter_CMS_TEXT_ALL</filter> -->
         </filters>
 
@@ -2146,7 +2147,7 @@
     </translations>
 
 
-    <archives enabled="false" type="solr">
+    <archives enabled="false" lazyLoadingThreshold="1000">
         <nodeTypes>
             <node name="collection" icon="fa fa-folder-open-o" />
             <node name="folder" icon="fa fa-folder-open-o" />
