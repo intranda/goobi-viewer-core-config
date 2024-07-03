@@ -230,9 +230,9 @@
 
 
     <pdf>
-        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks. 
-        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page 
-        where the status of the request within the queue is displayed and where the actual download may be started. 
+        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks.
+        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page
+        where the status of the request within the queue is displayed and where the actual download may be started.
         Default is false. -->
         <generateInMessageQueue>false</generateInMessageQueue>
 
@@ -513,7 +513,7 @@
         <!-- range: the values of this field are interpreted as dates within a timeline or some other number range. -->
         <!--         These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
         <!--          'style' may habe a value of either 'slider', which is the default, or 'graph' -->
-        <!-- geo_    the field contains geographical coordinates which are displayed on a map -->
+        <!-- geo:    the field contains geographical coordinates which are displayed on a map -->
         <!-- hierarchical:    The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
@@ -1181,8 +1181,7 @@
                 </metadata>
             </template>
         </metadataList>
-        
- 
+
         <metadataList type="archive">
             <template name="_DEFAULT">
                 <!-- Identity Statement Area -->
@@ -1519,7 +1518,8 @@
         <thumbs enabled="true" />
 
         <!-- searchInItem/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
-        <searchInItem enabled="true" />
+        <!-- searchInItem/@onlyIfFullTextAvailable: if true, the widget will only be displayed if current record has full-text. Default is false. -->
+        <searchInItem enabled="true" onlyIfFullTextAvailable="false" />
 
         <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
         <metadata enabled="true" />
