@@ -1185,7 +1185,6 @@
         <metadataList type="archive">
             <template name="_DEFAULT">
                 <!-- Identity Statement Area -->
-                <metadata label="agencycode" type="1" />
                 <metadata label="eadid" type="1">
                     <param key="MD_EADID" type="field" />
                 </metadata>
@@ -1207,11 +1206,9 @@
                 <metadata label="unitdate" type="1">
                     <param key="MD_DATECREATED" type="field" />
                 </metadata>
-                <!-- <metadata label="unitdatestructured" type="1" /> -->
                 <metadata label="physdesc" type="1">
                     <param key="MD_PHYSICALDESCRIPTIONEXTENT" type="field" />
                 </metadata>
-                <!-- <metadata label="physdescstructured" type="1" /> -->
                 <!-- Context Area -->
                 <metadata label="origination" type="2">
                     <param key="MD_PROVENIENCE" type="field" />
