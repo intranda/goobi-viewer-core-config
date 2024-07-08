@@ -222,17 +222,11 @@
     </reCaptcha>
 
 
-    <!-- Enable activeMQ message queue -->
-    <activeMQ enabled="true" numberOfParallelMessages="2">
-        <!-- Time in days to keep completed MessageQueue tasks in database before deleting them -->
-        <deleteCompletedTasksAfterDays>90</deleteCompletedTasksAfterDays>
-    </activeMQ>
-
 
     <pdf>
-        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks. 
-        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page 
-        where the status of the request within the queue is displayed and where the actual download may be started. 
+        <!-- generateInMessageQueue: if true, PDFs are generated in the queue of background tasks.
+        When requesting a PDF, the user must confirm the request in a dialog and is then redirected to a download page
+        where the status of the request within the queue is displayed and where the actual download may be started.
         Default is false. -->
         <generateInMessageQueue>false</generateInMessageQueue>
 
@@ -485,6 +479,7 @@
             <filter>filter_FULLTEXT</filter>
             <!-- <filter>filter_NORMDATATERMS</filter> -->
             <!-- <filter>filter_UGCTERMS</filter> -->
+            <!-- <filter>filter_SEARCHTERMS_ARCHIVE</filter> -->
             <!-- <filter>filter_CMS_TEXT_ALL</filter> -->
         </filters>
 
@@ -512,7 +507,7 @@
         <!-- range: the values of this field are interpreted as dates within a timeline or some other number range. -->
         <!--         These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
         <!--          'style' may habe a value of either 'slider', which is the default, or 'graph' -->
-        <!-- geo_    the field contains geographical coordinates which are displayed on a map -->
+        <!-- geo:    the field contains geographical coordinates which are displayed on a map -->
         <!-- hierarchical:    The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
@@ -975,7 +970,7 @@
                     <param type="field" key="MD_RISMSEAL" />
                 </metadata>
                 <!--
-                <metadata label="label__citation_style_apa-6th-edition" value="" citationTemplate="apa-6th-edition">
+                <metadata label="label__citation_style_apa-6th-edition" citationTemplate="apa-6th-edition">
                     <param type="citeproc" dest="title" key="MD_TITLE" />
                     <param type="citeproc" dest="author" key="MD_AUTHOR" />
                     <param type="citeproc" dest="publisher" key="MD_PUBLISHER" />
@@ -1177,6 +1172,109 @@
                 </metadata>
                 <metadata label="URN">
                     <param type="field" key="URN" />
+                </metadata>
+            </template>
+        </metadataList>
+
+        <metadataList type="archive">
+            <template name="_DEFAULT">
+                <!-- Identity Statement Area -->
+                <metadata label="eadid" type="1">
+                    <param key="MD_EADID" type="field" />
+                </metadata>
+                <metadata label="recordid" type="1">
+                    <param key="MD_RECORDID" type="field" />
+                </metadata>
+                <metadata label="MD_SHELFMARK" type="1">
+                    <param key="MD_UNITID" type="field" />
+                </metadata>
+                <metadata label="Number" type="1">
+                    <param key="MD_UNITID_NUMBER" type="field" />
+                </metadata>
+                <metadata label="Shelfmark" type="1">
+                    <param key="MD_SHELFMARK" type="field" />
+                </metadata>
+                <metadata label="unittitle" type="1">
+                    <param key="MD_TITLE" type="field" />
+                </metadata>
+                <metadata label="unitdate" type="1">
+                    <param key="MD_DATECREATED" type="field" />
+                </metadata>
+                <metadata label="physdesc" type="1">
+                    <param key="MD_PHYSICALDESCRIPTIONEXTENT" type="field" />
+                </metadata>
+                <!-- Context Area -->
+                <metadata label="origination" type="2">
+                    <param key="MD_PROVENIENCE" type="field" />
+                </metadata>
+                <metadata label="role" type="2">
+                    <param key="MD_ODD_HEAD" type="field" />
+                </metadata>
+                <metadata label="person" type="2">
+                    <param key="MD_ODD_P" type="field" />
+                </metadata>
+                <metadata label="bioghist" type="2">
+                    <param key="MD_BIOGRAPHICALINFORMATION" type="field" />
+                </metadata>
+                <metadata label="custodhist" type="2">
+                    <param key="MD_INVENTORYHISTORY" type="field" />
+                </metadata>
+                <metadata label="acqinfo" type="2">
+                    <param key="MD_AQUISITIONINFORMATION" type="field" />
+                </metadata>
+                <!-- Content and Structure Area -->
+                <metadata label="scopecontent" type="3">
+                    <param key="MD_SCOPECONTENT" type="field" />
+                </metadata>
+                <metadata label="appraisal" type="3">
+                    <param key="MD_APPRAISALINFORMATION" type="field" />
+                </metadata>
+                <metadata label="accruals" type="3">
+                    <param key="MD_ADDITIONS" type="field" />
+                </metadata>
+                <metadata label="arrangement" type="3">
+                    <param key="MD_ARRANGEMENT" type="field" />
+                </metadata>
+                <!-- Condition of Access and Use Area -->
+                <metadata label="accessrestrict" type="4">
+                    <param key="ACCESSCONDITION" type="field" />
+                </metadata>
+                <metadata label="userestrict" type="4">
+                    <param key="MD_USERESTRICTION" type="field" />
+                </metadata>
+                <metadata label="langmaterial" type="4">
+                    <param key="MD_LANGUAGE" type="field" />
+                </metadata>
+                <metadata label="font" type="4">
+                    <param key="MD_FONTTYPE" type="field" />
+                </metadata>
+                <metadata label="phystech" type="4">
+                    <param key="MD_PHYSTECH" type="field" />
+                </metadata>
+                <metadata label="otherfindaid" type="4">
+                    <param key="MD_OTHERFINDAID" type="field" />
+                </metadata>
+                <!-- Allied Materials Area -->
+                <metadata label="originalsloc" type="5">
+                    <param key="MD_ORIGINALSLOCATION" type="field" />
+                </metadata>
+                <metadata label="altformavail" type="5">
+                    <param key="MD_ALTERNATIVEFORMAVAILABLE" type="field" />
+                </metadata>
+                <metadata label="separatedmaterial" type="5">
+                    <param key="MD_SEPARATEDMATERIAL" type="field" />
+                </metadata>
+                <metadata label="bibliography" type="5" />
+                <!-- Note Area -->
+                <metadata label="didnote" type="6">
+                    <param key="MD_DIDNOTE" type="field" />
+                </metadata>
+                <metadata label="oddnote" type="6">
+                    <param key="MD_ODD" type="field" />
+                </metadata>
+                <!-- Description Control Area -->
+                <metadata label="conventiondeclaration" type="7">
+                    <param key="MD_CONVENTIONDECLARATION" type="field" />
                 </metadata>
             </template>
         </metadataList>
@@ -1411,7 +1509,8 @@
         <thumbs enabled="true" />
 
         <!-- searchInItem/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
-        <searchInItem enabled="true" />
+        <!-- searchInItem/@onlyIfFullTextAvailable: if true, the widget will only be displayed if current record has full-text. Default is false. -->
+        <searchInItem enabled="true" onlyIfFullTextAvailable="false" />
 
         <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
         <metadata enabled="true" />
@@ -2039,57 +2138,7 @@
     </translations>
 
 
-    <archives enabled="false">
-        <metadataList>
-            <!-- internal fields, not visible on the UI -->
-            <!-- <metadata xpath="./ead:eadheader[@countryencoding='iso3166-1'][@dateencoding='iso8601'][@langencoding='iso639-2b'][@repositoryencoding='iso15511'][@scriptencoding='iso15924']/ead:eadid/@mainagencycode" xpathType="attribute" label="mainagencycode" type="1"  visible="false" /> -->
-            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation/@normal" xpathType="attribute" label="normalcreationdate" type="1"  visible="false" /> -->
-            <!-- <metadata xpath="./ead:eadheader/ead:profiledesc/ead:creation" xpathType="element" label="creationdate" type="1"  visible="false" /> -->
-            <!-- <metadata xpath="./ead:eadheader/ead:filedesc/ead:titlestmt/ead:titleproper" xpathType="element" label="titlestmt" type="1"  visible="false" /> -->
-            <!-- Identity Statement Area -->
-            <metadata xpath="./ead:control/ead:maintenanceagency/ead:agencycode" xpathType="element" label="agencycode" type="1" />
-            <metadata xpath="./ead:eadheader/ead:eadid" xpathType="element" label="eadid" type="1"  />
-            <metadata xpath="./ead:control/ead:recordid" xpathType="element" label="recordid" type="1" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:unitid[not(@type)] | ./ead:did/ead:unitid[not(@type)])[1]" xpathType="element" label="MD_SHELFMARK" type="1" />
-            <metadata xpath="./ead:did/ead:unitid[@type='Vorl. Nr.']" xpathType="element" label="Number" type="1"  />
-            <metadata xpath="./ead:did/ead:unitid[@type='Altsignatur']" xpathType="element" label="Shelfmark" type="1" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:unittitle | ./ead:did/ead:unittitle)[1]" xpathType="element" label="unittitle" type="1"  />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:unitdate | ./ead:did/ead:unitdate)[1]" xpathType="element" label="unitdate" type="1" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:unitdatestructured | ./ead:did/ead:unitdatestructured)[1]" xpathType="element" label="unitdatestructured" type="1" />
-            <!-- <metadata xpath="(./ead:archdesc/@level | ./@level)[1]" xpathType="attribute" label="descriptionLevel" type="1"  visible="false"/> -->
-            <metadata xpath="(./ead:archdesc/ead:did/ead:physdesc | ./ead:did/ead:physdesc)[1]" xpathType="element" label="physdesc" type="1" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:physdescstructured | ./ead:did/ead:physdescstructured)[1]" xpathType="element" label="physdescstructured" type="1" />
-            <!-- Context Area -->
-            <metadata xpath="(./ead:archdesc/ead:did/ead:origination | ./ead:did/ead:origination)[1]" xpathType="element" label="origination" type="2" />
-            <metadata xpath="(./ead:archdesc/ead:odd/ead:head | ./ead:odd/ead:head)[1]" xpathType="element" label="role" type="2" />
-            <metadata xpath="(./ead:archdesc/ead:odd/ead:p | ./ead:odd/ead:p)[1]" xpathType="element" label="person" type="2" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:bioghist | ./ead:dsc/ead:bioghist)[1]" xpathType="element" label="bioghist" type="2"  />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:custodhist | ./ead:dsc/ead:custodhist)[1]" xpathType="element" label="custodhist" type="2" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:acqinfo | ./ead:dsc/ead:acqinfo)[1]" xpathType="element" label="acqinfo" type="2" />
-            <!-- Content and Structure Area -->
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:scopecontent | ./ead:dsc/ead:scopecontent)[1]" xpathType="element" label="scopecontent" type="3" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:appraisal | ./ead:dsc/ead:appraisal)[1]" xpathType="element" label="appraisal" type="3" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:accruals | ./ead:dsc/ead:accruals)[1]" xpathType="element" label="accruals" type="3" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:arrangement | ./ead:dsc/ead:arrangement)[1]" xpathType="element" label="arrangement" type="3" />
-            <!-- Condition of Access and Use Area -->
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:accessrestrict | ./ead:dsc/ead:accessrestrict)[1]" xpathType="element" label="accessrestrict" type="4" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:userestrict | ./ead:dsc/ead:userestrict)[1]" xpathType="element" label="userestrict" type="4" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='Language']/ead:language | ./ead:did/ead:langmaterial[@label='Language']/ead:language)[1]" xpathType="element" label="langmaterial" type="4" />
-            <metadata xpath="(./ead:archdesc/ead:did/ead:langmaterial[@label='font'] | ./ead:did/ead:langmaterial[@label='font'])[1]" xpathType="element" label="font" type="4" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:phystech | ./ead:dsc/ead:phystech)[1]" xpathType="element" label="phystech" type="4" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:otherfindaid | ./ead:dsc/ead:otherfindaid)[1]" xpathType="element" label="otherfindaid" type="4" />
-            <!-- Allied Materials Area -->
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:originalsloc | ./ead:dsc/ead:originalsloc)[1]" xpathType="element" label="originalsloc" type="5" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:altformavail | ./ead:dsc/ead:altformavail)[1]" xpathType="element" label="altformavail" type="5" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:relatedmaterial/ead:separatedmaterial | ./ead:dsc/ead:relatedmaterial/ead:separatedmaterial)[1]" xpathType="element" label="separatedmaterial" type="5" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:bibliography | ./ead:dsc/ead:bibliography)[1]" xpathType="element" label="bibliography" type="5" />
-            <!-- Note Area -->
-            <metadata xpath="(./ead:archdesc/ead:did/ead:didnote | ./ead:did/ead:didnote)[1]" xpathType="element" label="didnote" type="6" />
-            <metadata xpath="(./ead:archdesc/ead:dsc/ead:odd | ./ead:dsc/ead:odd)[1]" xpathType="element" label="oddnote" type="6"  />
-            <!-- Description Control Area -->
-            <metadata xpath="./ead:control/ead:conventiondeclaration" xpathType="element" label="conventiondeclaration" type="7" />
-        </metadataList>
-
+    <archives enabled="false" lazyLoadingThreshold="1000">
         <nodeTypes>
             <node name="collection" icon="fa fa-folder-open-o" />
             <node name="folder" icon="fa fa-folder-open-o" />
@@ -2174,6 +2223,15 @@
             <host>127.0.0.1</host>
         </whitelist>
     </proxy>
+
+
+
+    <!-- Enable activeMQ message queue -->
+    <activeMQ enabled="true" numberOfParallelMessages="2">
+        <!-- Time in days to keep completed MessageQueue tasks in database before deleting them -->
+        <deleteCompletedTasksAfterDays>90</deleteCompletedTasksAfterDays>
+    </activeMQ>
+
 
 
     <!-- settings for the developer backend page, allowing the download of instance-specific data for development purposes
