@@ -296,6 +296,12 @@
                 <docstruct>folder</docstruct>
             </template>
         </docstructNavigation>
+        
+        <!-- additional css styleclass for the '#viewObject' element in the browser.
+			This expression may contain variables of the form '{record.<solr-field>}',
+		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+		<viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
         <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
              the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
@@ -477,6 +483,12 @@
 
         <!-- fulltextFragmentLength: Approximate length of the full-text fragment displayed in search hits. Default is 200. -->
         <fulltextFragmentLength>120</fulltextFragmentLength>
+
+		<!-- each search hit may get an additional css styleclass in the browser determined by this expression.
+		The expression may contain variables of the form '{record.<solr-field>}',
+		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+		<hitStyleClass>docstructtype__{record.DOCSTRCT}</hitStyleClass>
 
         <!-- filters: Filter definitions for the regular search. Each definition will be rendered as a radio button. Syntax is "filter_" + Solr field name (so that individual labels can be added). -->
         <filters>
