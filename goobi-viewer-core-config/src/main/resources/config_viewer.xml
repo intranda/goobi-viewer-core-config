@@ -2500,7 +2500,14 @@
 		</group>
 	</translations>
 
-
+	<!-- EAD / Archive functionallity
+	@enabled: If true the /archives/ section is usable. Default is false.
+	@lazyLoadingThreshold: Total number of archive nodes up to which (exclusively) the entire tree is loaded right at the start. Above this value, only
+						   the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
+						   containing hits are also loaded. Default value ist 1000
+	nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
+	nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
+	-->
 	<archives enabled="false" lazyLoadingThreshold="1000">
 		<nodeTypes>
 			<node name="collection" icon="fa fa-folder-open-o" />
