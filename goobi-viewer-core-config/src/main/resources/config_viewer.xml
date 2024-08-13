@@ -290,7 +290,7 @@
                 <docstruct>folder</docstruct>
             </template>
         </docstructNavigation>
-        
+
         <!-- additional css styleclass for the '#viewObject' element in the browser.
 			This expression may contain variables of the form '{record.<solr-field>}',
 		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
@@ -440,7 +440,7 @@
         <!-- fallbackDefaultLanguage: Language that shall be used for locales in case FacesContext is unavailable. Default is 'en'. -->
         <fallbackDefaultLanguage>en</fallbackDefaultLanguage>
 
-        <!-- theme: The attribute @mainTheme defines the theme name and @discriminatorField defines the field in the solr index that contain the subtheme names if the functionallity is used  -->
+        <!-- theme: The attribute @mainTheme defines the theme name and @discriminatorField defines the field in the solr index that contain the subtheme names if the functionallity is used -->
         <theme mainTheme="reference" discriminatorField="">
             <!-- rootPath: If the theme is located externally, the CMS template loading
                  mechanism needs the root path of the theme. The path must be defined down
@@ -498,7 +498,7 @@
         <!-- sorting/@enabled: if true, the option to sort search results is shown. Default is true. -->
         <sorting enabled="true">
             <!-- field: Fields used for sorting. Fields must be configured as 'multiValued="false"' in the Solr schema. Multiple (escaped) semicolon-separated
-                fields can be used for  hierarchical sorting (e.g. <field>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</field>). -->
+                fields can be used for hierarchical sorting (e.g. <field>SORT_FIELD1\;SORT_FIELD2\;SORT_FIELD3</field>). -->
             <field>RANDOM</field>
             <field default="true">RELEVANCE</field>
             <field>SORT_CREATOR</field>
@@ -519,8 +519,8 @@
         <!-- range: the values of this field are interpreted as dates within a timeline or some other number range. -->
         <!--         These fields may also have a 'style' attribute which determines how the values are displayed in the viewer.-->
         <!--          'style' may habe a value of either 'slider', which is the default, or 'graph' -->
-        <!-- geo:    the field contains geographical coordinates which are displayed on a map -->
-        <!-- hierarchical:    The field contains hierarchical values, usually a type of digital collection -->
+        <!-- geo: the field contains geographical coordinates which are displayed on a map -->
+        <!-- hierarchical: The field contains hierarchical values, usually a type of digital collection -->
         <facets>
             <field type="range">YEAR</field>
             <!-- <field type="range" style="graph">MDNUM_YEARPUBLISH</field> -->
@@ -1449,7 +1449,7 @@
         <tocAnchorGroupElementsPerPage>50</tocAnchorGroupElementsPerPage>
 
         <!-- recordGroupIdentifierFields: Contains definitions of GROUPID_ fields used in the index.
-             This is needed so the fields can be added to the whitelist of fields to return.  -->
+             This is needed so the fields can be added to the whitelist of fields to return. -->
         <recordGroupIdentifierFields>
             <field>GROUPID_SERIES</field>
         </recordGroupIdentifierFields>
@@ -1547,7 +1547,7 @@
             <!-- useTreeView: if true, the sidebarToc is displayed as an interactive tree view. Default is true. -->
             <useTreeView>true</useTreeView>
 
-            <!-- initialCollapseLevel: level for initial collapse. Default is 2.  -->
+            <!-- initialCollapseLevel: level for initial collapse. Default is 2. -->
             <initialCollapseLevel>2</initialCollapseLevel>
 
             <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
@@ -1589,7 +1589,7 @@
             </citationLinks>
             <citationRecommendation enabled="true">
                 <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
-                     Alternate labels can be added using the schema 'label__citation_style_<style>'.  -->
+                     Alternate labels can be added using the schema 'label__citation_style_<style>'. -->
                 <styles>
                     <style>modern-language-association</style>
                     <style>apa</style>
@@ -1798,7 +1798,7 @@
     </cms>
 
 
-    <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false  -->
+    <!-- transkribus/@enabled: If true transkribus links are shown. Default ist false -->
     <transkribus enabled="false">
         <!-- Transkribus user name for this viewer instance -->
         <userName></userName>
@@ -1939,7 +1939,7 @@
             <!-- license: IIIF 2
                  Contains a string to provide as license in IIIF manifests. If it is a message key,
                  all translations are provided as license values.
-                 The <license /> setting is repeatable. The first instance also acts as fallback for <rights>  (IIIF 3 only)-->
+                 The <license /> setting is repeatable. The first instance also acts as fallback for <rights> (IIIF 3 only)-->
             <license>iiif_license</license>
 
             <!-- logo: IIIF 2
@@ -1993,7 +1993,7 @@
             <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
-        <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints  -->
+        <!-- Configure a secure token here that can be used to authenticate for secured REST-api endpoints -->
         <authorization>
             <token>test</token>
         </authorization>
@@ -2028,8 +2028,8 @@
             <marker useDefaultIcon="true" highlightIcon="marker-icon_red.png">default</marker>
             <marker icon="fa-info" markerColor="green" shape="circle" extraClasses="fa-2x">maps__marker_1</marker>
             <marker icon="fa-building" markerColor="orange-dark" shape="square">maps__marker_2</marker>
-            <marker icon="fa-user" markerColor="cyan"  shape="penta">maps__marker_3</marker>
-            <marker icon="fa-rocket" markerColor="pink"  shape="star">maps__marker_4</marker>
+            <marker icon="fa-user" markerColor="cyan" shape="penta">maps__marker_3</marker>
+            <marker icon="fa-rocket" markerColor="pink" shape="star">maps__marker_4</marker>
             <marker icon="fa-spinner" markerColor="yellow" extraClasses="fa-2x fa-spin">maps__marker_5</marker>
             <marker icon="fa-coffee" markerColor="white" prefix="fa" iconColor="black" iconRotate="270">maps__marker_6</marker>
             <marker icon="fa-number" markerColor="black" number="42" svg="true">maps__marker_7</marker>
@@ -2083,13 +2083,13 @@
             <template name="_DEFAULT">
                 <marker>default</marker>
                 <featureSets>
-                      <featureSet type="docStruct">
-					  		  <marker>default</marker>
-					  </featureSet>
-                      <featureSet type="annotations">
-                              <marker>default</marker>
+                    <featureSet type="docStruct">
+                        <marker>default</marker>
+                    </featureSet>
+                    <featureSet type="annotations">
+                        <marker>default</marker>
                       </featureSet>
-                 </featureSets>
+                </featureSets>
             </template>
         </record>
     </maps>
@@ -2103,7 +2103,7 @@
                                    CORE_STRINGS (lists the keys and their translations that match the given configuration)
          name: key for the name of the group
          introductionText: key for the description of the group -->
-        <group type="SOLR_FIELD_NAMES" name="translation__group_name_solr-fields"  description="translation__group_description_solr-fields">
+        <group type="SOLR_FIELD_NAMES" name="translation__group_name_solr-fields" description="translation__group_description_solr-fields">
 
             <!-- Each group of SOLR_FIELD_NAMES and SOLR_FIELD_VALUES can contain a list of <key /> entries that match the field name, or
                 if it is regex="true", it matches all field names based on the given regular expression -->
@@ -2120,16 +2120,16 @@
             <key regex="true">MD_(?!.*CODICOLOGICAL)(?!.*DATE_SEARCH)(?!.*NAME_SEARCH)(?!.*PLACE_SEARCH).*(?&lt;!_UNTOKENIZED)$</key>
             -->
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections"  description="translation__group_description_collections">
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_collections" description="translation__group_description_collections">
             <key>DC</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-top"  description="translation__group_description_docstruct-top">
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-top" description="translation__group_description_docstruct-top">
             <key>DOCSTRCT_TOP</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub"  description="translation__group_description_docstruct-sub">
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_docstruct-sub" description="translation__group_description_docstruct-sub">
             <key>DOCSTRCT_SUB</key>
         </group>
-        <group type="SOLR_FIELD_VALUES" name="translation__group_name_eventtype"  description="translation__group_description_eventtype">
+        <group type="SOLR_FIELD_VALUES" name="translation__group_name_eventtype" description="translation__group_description_eventtype">
             <key>EVENTTYPE</key>
         </group>
         <group type="CORE_STRINGS" name="translation__group_name_email" description="translation__group_description_email">
@@ -2274,7 +2274,7 @@
 
 
     <!-- Settings for displaying additional resources from external URLs. The resources will be available in
-          "bornDigital" records, i.e. records that contain only pages with an 'application/...  Mimetype -->
+          "bornDigital" records, i.e. records that contain only pages with an 'application/... Mimetype -->
     <externalResource>
         <!-- List of URL templates from which to download resources to the viewer server and make available to users
              These templates may contain placeholders in the form '{<metadatafield>}' where '<metadatafield>' is the
