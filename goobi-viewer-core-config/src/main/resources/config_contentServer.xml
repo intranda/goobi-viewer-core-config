@@ -20,7 +20,7 @@
                      Recommended values lie between 10 and 50
               - useScalrForJpeg: activates a different scaling method for jpeg-images which generally operates much slower, so it is recommended to set this option to "false"
     -->
-    <scaling quality="ULTRAQUALITY" maxStepSize="50" thumbnailQuality="QUALITY"></scaling>
+    <scaling quality="ULTRAQUALITY" maxStepSize="0" thumbnailQuality="QUALITY"></scaling>
 
 
     <!-- General rendering options. -->
@@ -32,7 +32,7 @@
             <settings scaleWithScalr="true" allowSubSampling="true"></settings>
         </type>
         <type format="default" colorType="default" compression="default" embeddedColorProfile="both" minSize="0" maxSize="0">
-            <settings allowRenderWithJAI="false" allowSubSampling="true" scaleWithScalr="false" mergeWithJAI="false" forceConvertToBuffered="false" forceConvertToRGB="false" forwardDirectlyIfPossible="false" preferredImageReader="com.github.jaiimageio"></settings>
+            <settings allowRenderWithJAI="false" allowSubSampling="true" scaleWithScalr="false" mergeWithJAI="false" forceConvertToBuffered="false" forceConvertToRGB="false" forwardDirectlyIfPossible="true" preferredImageReader="com.twelvemonkey" preferredImageWriter="com.twelvemonkeys"></settings>
         </type>
     </imageTypeSettings>
 
