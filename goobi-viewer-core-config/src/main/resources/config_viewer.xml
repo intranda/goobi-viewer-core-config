@@ -2172,6 +2172,8 @@
 			<node name="video" icon="fa fa-file-video-o" />
 			<node name="other" icon="fa fa-file-o" />
 		</nodeTypes>
+		<!-- If true, clickin on an archive entry to select it also displays all its child entries. Conversly, clicking on a selected entry to deselect it, hides the children -->
+		<expandOnSelect>false</expandOnSelect>
 	</archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
