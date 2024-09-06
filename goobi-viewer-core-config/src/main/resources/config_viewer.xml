@@ -292,10 +292,10 @@
         </docstructNavigation>
 
         <!-- additional css styleclass for the '#viewObject' element in the browser.
-			This expression may contain variables of the form '{record.<solr-field>}',
-		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
-		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
-		<viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
+            This expression may contain variables of the form '{record.<solr-field>}',
+         where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+         variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+        <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
         <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
              the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
@@ -478,11 +478,11 @@
         <!-- fulltextFragmentLength: Approximate length of the full-text fragment displayed in search hits. Default is 200. -->
         <fulltextFragmentLength>120</fulltextFragmentLength>
 
-		<!-- each search hit may get an additional css styleclass in the browser determined by this expression.
-		The expression may contain variables of the form '{record.<solr-field>}',
-		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
-		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
-		<hitStyleClass>docstructtype__{record.DOCSTRCT}</hitStyleClass>
+        <!-- each search hit may get an additional css styleclass in the browser determined by this expression.
+        The expression may contain variables of the form '{record.<solr-field>}',
+         where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+         variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+        <hitStyleClass>docstructtype__{record.DOCSTRCT}</hitStyleClass>
 
         <!-- filters: Filter definitions for the regular search. Each definition will be rendered as a radio button. Syntax is "filter_" + Solr field name (so that individual labels can be added). -->
         <filters>
@@ -2173,28 +2173,29 @@
         </group>
     </translations>
 
-	<!-- EAD / Archive functionallity
-	@enabled: If true the /archives/ section is usable. Default is false.
-	@lazyLoadingThreshold: Total number of archive nodes up to which (exclusively) the entire tree is loaded right at the start. Above this value, only
-						   the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
-						   containing hits are also loaded. Default value ist 1000
-	nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
-	nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
-	-->
-	<archives enabled="false" lazyLoadingThreshold="1000">
-		<nodeTypes>
-			<node name="collection" icon="fa fa-folder-open-o" />
-			<node name="folder" icon="fa fa-folder-open-o" />
-			<node name="class" icon="fa fa-folder-open-o" />
-			<node name="file" icon="fa fa-file-text-o" />
-			<node name="image" icon="fa fa-file-image-o" />
-			<node name="audio" icon="fa fa-file-audio-o" />
-			<node name="video" icon="fa fa-file-video-o" />
-			<node name="other" icon="fa fa-file-o" />
-		</nodeTypes>
-		<!-- If true, clickin on an archive entry to select it also displays all its child entries. Conversly, clicking on a selected entry to deselect it, hides the children -->
-		<expandOnSelect>false</expandOnSelect>
-	</archives>
+    <!-- EAD / Archive functionallity
+    @enabled: If true the /archives/ section is usable. Default is false.
+    @lazyLoadingThreshold: Total number of archive nodes up to which (exclusively) the entire tree is loaded right at the start. Above this value, only
+                           the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
+                           containing hits are also loaded. Default value ist 1000
+    nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
+    nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
+    nodeTypes/node/@default: If not icon was specified, this one is chosen.
+    -->
+    <archives enabled="false" lazyLoadingThreshold="1000">
+        <nodeTypes>
+            <node name="collection" icon="fa fa-folder-open-o" />
+            <node name="folder" icon="fa fa-folder-open-o" />
+            <node name="class" icon="fa fa-folder-open-o" default="true" />
+            <node name="file" icon="fa fa-file-text-o" />
+            <node name="image" icon="fa fa-file-image-o" />
+            <node name="audio" icon="fa fa-file-audio-o" />
+            <node name="video" icon="fa fa-file-video-o" />
+            <node name="other" icon="fa fa-file-o" />
+        </nodeTypes>
+        <!-- If true, clickin on an archive entry to select it also displays all its child entries. Conversly, clicking on a selected entry to deselect it, hides the children -->
+        <expandOnSelect>false</expandOnSelect>
+    </archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
     <campaigns>
