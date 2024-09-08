@@ -292,10 +292,10 @@
         </docstructNavigation>
 
         <!-- additional css styleclass for the '#viewObject' element in the browser.
-			This expression may contain variables of the form '{record.<solr-field>}',
-		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
-		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
-		<viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
+            This expression may contain variables of the form '{record.<solr-field>}',
+         where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+         variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+        <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
         <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
              the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
@@ -478,11 +478,11 @@
         <!-- fulltextFragmentLength: Approximate length of the full-text fragment displayed in search hits. Default is 200. -->
         <fulltextFragmentLength>120</fulltextFragmentLength>
 
-		<!-- each search hit may get an additional css styleclass in the browser determined by this expression.
-		The expression may contain variables of the form '{record.<solr-field>}',
-		 where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
-		 variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
-		<hitStyleClass>docstructtype__{record.DOCSTRCT}</hitStyleClass>
+        <!-- each search hit may get an additional css styleclass in the browser determined by this expression.
+        The expression may contain variables of the form '{record.<solr-field>}',
+         where '<solr-field>' is the name of any SOLR field. The css-class will the be the given expression with the
+         variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
+        <hitStyleClass>docstructtype__{record.DOCSTRCT}</hitStyleClass>
 
         <!-- filters: Filter definitions for the regular search. Each definition will be rendered as a radio button. Syntax is "filter_" + Solr field name (so that individual labels can be added). -->
         <filters>
@@ -1188,6 +1188,7 @@
             </template>
         </metadataList>
 
+        <!-- metadataList[@type="archive"]: defines metadata that is displayed for the nodes in the archive view. Indexed EAD data. -->
         <metadataList type="archive">
             <template name="_DEFAULT">
                 <!-- Identity Statement Area -->
@@ -1287,6 +1288,25 @@
                 <!-- Description Control Area -->
                 <metadata label="conventiondeclaration" type="7">
                     <param key="MD_CONVENTIONDECLARATION" type="field" />
+                </metadata>
+            </template>
+        </metadataList>
+
+        <!-- metadataList[@type="page"]: defines technical metadata from images that is displayed in an extra widget within the records view. Indexed MIX data. -->
+        <metadataList type="page">
+            <template name="_DEFAULT">
+                <metadata label="MD_TECH_FORMAT_NAME">
+                    <param key="MD_TECH_FORMAT_NAME" type="field" />
+                </metadata>
+                <metadata label="MD_TECH_BASIC_IMAGE_INFO" value="{1}{3}" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_TECH_IMAGE_COLOR_SPACE" type="field" prefix=",_SPACE_" />
+                </metadata>
+                <metadata label="MD_TECH_BYTE_ORDER">
+                    <param key="MD_TECH_BYTE_ORDER" type="field" />
+                </metadata>
+                <metadata label="MD_TECH_IMAGE_DATETIME_CREATED">
+                    <param key="MD_TECH_IMAGE_DATETIME_CREATED" type="datefield" pattern="yyyy-MM-dd'T'HH:mm:ss" />
                 </metadata>
             </template>
         </metadataList>
@@ -1578,7 +1598,7 @@
                     <link type="URL" for="record" label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}" />
                     <link type="URL" for="record" label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}" />
                     <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
-                    <link type="URL" for="record" label="risLinkTopstruct" action="download" pattern="{rest-api-url}records/{PI}/ris/"/>
+                    <link type="URL" for="record" label="RIS" action="download" pattern="{rest-api-url}records/{PI}/ris/"/>
                     <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}#?page={page}" />
                     <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}/" topstructValueFallback="true" />
                     <link type="URL" for="image"  label="URN" field="IMAGEURN" pattern="https://nbn-resolving.org/{value}" />
@@ -2153,26 +2173,29 @@
         </group>
     </translations>
 
-	<!-- EAD / Archive functionallity
-	@enabled: If true the /archives/ section is usable. Default is false.
-	@lazyLoadingThreshold: Total number of archive nodes up to which (exclusively) the entire tree is loaded right at the start. Above this value, only
-						   the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
-						   containing hits are also loaded. Default value ist 1000
-	nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
-	nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
-	-->
-	<archives enabled="false" lazyLoadingThreshold="1000">
-		<nodeTypes>
-			<node name="collection" icon="fa fa-folder-open-o" />
-			<node name="folder" icon="fa fa-folder-open-o" />
-			<node name="class" icon="fa fa-folder-open-o" />
-			<node name="file" icon="fa fa-file-text-o" />
-			<node name="image" icon="fa fa-file-image-o" />
-			<node name="audio" icon="fa fa-file-audio-o" />
-			<node name="video" icon="fa fa-file-video-o" />
-			<node name="other" icon="fa fa-file-o" />
-		</nodeTypes>
-	</archives>
+    <!-- EAD / Archive functionallity
+    @enabled: If true the /archives/ section is usable. Default is false.
+    @lazyLoadingThreshold: Total number of archive nodes up to which (exclusively) the entire tree is loaded right at the start. Above this value, only
+                           the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
+                           containing hits are also loaded. Default value ist 1000
+    nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
+    nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
+    nodeTypes/node/@default: If not icon was specified, this one is chosen.
+    -->
+    <archives enabled="false" lazyLoadingThreshold="1000">
+        <nodeTypes>
+            <node name="collection" icon="fa fa-folder-open-o" />
+            <node name="folder" icon="fa fa-folder-open-o" />
+            <node name="class" icon="fa fa-folder-open-o" default="true" />
+            <node name="file" icon="fa fa-file-text-o" />
+            <node name="image" icon="fa fa-file-image-o" />
+            <node name="audio" icon="fa fa-file-audio-o" />
+            <node name="video" icon="fa fa-file-video-o" />
+            <node name="other" icon="fa fa-file-o" />
+        </nodeTypes>
+        <!-- If true, clickin on an archive entry to select it also displays all its child entries. Conversly, clicking on a selected entry to deselect it, hides the children -->
+        <expandOnSelect>false</expandOnSelect>
+    </archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
     <campaigns>
