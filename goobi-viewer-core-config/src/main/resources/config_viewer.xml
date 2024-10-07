@@ -540,6 +540,7 @@
             <!-- <field translateLabels="false">MD_OTHERVALUE</field> -->
             <!-- <field sortOrder="alphabetical" groupToLength="1" alwaysApplyToUnfilteredHits="true" skipInWidget="true">MD_TITLE</field> -->
             <!-- <field multiValueOperator="OR">MD_LANGUAGE</field> -->
+            <!-- <field sortOrder="alphabetical_raw_asc">MD_PERSON</field> -->
         </facets>
 
         <!-- advanced/@enabled: If true, the advanced search is enabled. Default is true. -->
