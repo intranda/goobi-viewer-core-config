@@ -2104,8 +2104,9 @@
             <template name="_DEFAULT">
                 <marker>default</marker>
                 <featureSets>
-                    <featureSet type="docStruct">
+                    <featureSet type="docStructs">
                         <marker>default</marker>
+                        <labelConfig>MD_VALUE</labelConfig>
                     </featureSet>
                     <featureSet type="annotations">
                         <marker>default</marker>
