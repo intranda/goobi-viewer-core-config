@@ -2183,7 +2183,7 @@
     nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
     nodeTypes/node/@default: If not icon was specified, this one is chosen.
     -->
-    <archives enabled="false" lazyLoadingThreshold="1000">
+    <archives lazyLoadingThreshold="1000">
         <nodeTypes>
             <node name="collection" icon="fa fa-folder-open-o" />
             <node name="folder" icon="fa fa-folder-open-o" />
@@ -2194,7 +2194,8 @@
             <node name="video" icon="fa fa-file-video-o" />
             <node name="other" icon="fa fa-file-o" />
         </nodeTypes>
-        <!-- If true, clickin on an archive entry to select it also displays all its child entries. Conversly, clicking on a selected entry to deselect it, hides the children -->
+        <!-- If true, clicking on an archive entry to select it also displays all its child entries. Conversely, clicking on a selected entry to
+            de-select it, hides the children -->
         <expandOnSelect>false</expandOnSelect>
     </archives>
 
