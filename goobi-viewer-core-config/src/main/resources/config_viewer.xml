@@ -271,7 +271,7 @@
     <viewer>
         <!-- pageBrowse/@enabled: if true, page browsing through the record in different steps is allowed. Default is false. -->
         <pageBrowse enabled="false">
-            <pageBrowseStep>0</pageBrowseStep>
+            <pageBrowseStep>1</pageBrowseStep>
             <pageBrowseStep>5</pageBrowseStep>
             <pageBrowseStep>10</pageBrowseStep>
         </pageBrowse>
