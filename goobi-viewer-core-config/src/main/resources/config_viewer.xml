@@ -333,6 +333,10 @@
                 <scaleFactors>1;32</scaleFactors>
                 <size>512</size>
             </tileSize>
+            <thumbnailGallery enabled="false"></thumbnailGallery>
+			<pageNavigation>
+	            <sequence enabled="false" default="false"></sequence>
+		    </pageNavigation>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
