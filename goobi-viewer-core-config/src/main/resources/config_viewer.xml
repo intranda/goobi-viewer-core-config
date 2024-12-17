@@ -312,7 +312,7 @@
         </zoomImageView>
 
         <!-- Default settings for fullscreen mode -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <useFor>
                 <view>fullscreen</view>
             </useFor>
@@ -325,13 +325,11 @@
             </tileSize>
             <navigator enabled="false" />
             <thumbnailGallery enabled="false" />
-            <pageNavigation>
-                <sequence enabled="false" default="false" />
-            </pageNavigation>
+            <doublePageNavigation enabled="true"/>
         </zoomImageView>
 
         <!-- Default settings for image view -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <scale>600</scale>
             <scale>900</scale>
             <scale>1800</scale>
@@ -340,9 +338,7 @@
                 <size>512</size>
             </tileSize>
             <thumbnailGallery enabled="false" />
-            <pageNavigation>
-                <sequence enabled="false" default="false" />
-            </pageNavigation>
+            <doublePageNavigation enabled="true"/>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
