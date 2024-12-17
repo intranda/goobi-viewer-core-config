@@ -324,10 +324,10 @@
                 <size>1024</size>
             </tileSize>
             <navigator enabled="false" />
-            <thumbnailGallery enabled="false"></thumbnailGallery>
-			<pageNavigation>
-	            <sequence enabled="false" default="false"></sequence>
-		    </pageNavigation>
+            <thumbnailGallery enabled="false" />
+            <pageNavigation>
+                <sequence enabled="false" default="false" />
+            </pageNavigation>
         </zoomImageView>
 
         <!-- Default settings for image view -->
@@ -339,10 +339,10 @@
                 <scaleFactors>1;32</scaleFactors>
                 <size>512</size>
             </tileSize>
-            <thumbnailGallery enabled="false"></thumbnailGallery>
-			<pageNavigation>
-	            <sequence enabled="false" default="false"></sequence>
-		    </pageNavigation>
+            <thumbnailGallery enabled="false" />
+            <pageNavigation>
+                <sequence enabled="false" default="false" />
+            </pageNavigation>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
