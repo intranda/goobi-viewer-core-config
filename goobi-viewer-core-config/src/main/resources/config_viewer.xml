@@ -278,12 +278,7 @@
 
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
-
-        <!-- doublePageNavigation
-             @enabled: if true, an option to switch to a double page view is shown. Default is true.
-             @default: if true, the double page mode is enabled by default. Default is false. -->
-        <doublePageNavigation enabled="true" default="false" />
-
+        
         <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
             <template name="_DEFAULT">
@@ -326,7 +321,7 @@
             </tileSize>
             <navigator enabled="false" />
             <thumbnailGallery enabled="false" />
-            <doublePageNavigation enabled="true"/>
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- Default settings for image view -->
@@ -339,7 +334,7 @@
                 <size>512</size>
             </tileSize>
             <thumbnailGallery enabled="false" />
-            <doublePageNavigation enabled="true"/>
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
