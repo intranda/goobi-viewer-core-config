@@ -278,7 +278,7 @@
 
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
-        
+
         <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
             <template name="_DEFAULT">
@@ -292,14 +292,14 @@
          variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
-        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively. 
-        	Options for the "type" attribute are: "default" and "sequence". 
-        	The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
-        	"Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
-             to true to use tiled images if possible (only possible when type=openlayers) -->
-        <!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
-        <!-- doublePageNavigation: set attribute 'enabled' to true to allow changing to double page (side-by-side) image view -->
-        <!-- thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
+        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
+             Options for the "type" attribute are: "default" and "sequence".
+             The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
+             "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
+             to true to use tiled images if possible (only possible when type=openlayers)
+             The setting navigator@enabled allows adding a small navigator image to an image view when set to true
+             doublePageNavigation: set attribute 'enabled' to true to allow changing to double page (side-by-side) image view
+             thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
                 <mimeType>image/png</mimeType>
