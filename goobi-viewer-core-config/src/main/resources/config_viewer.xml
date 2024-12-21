@@ -271,18 +271,13 @@
     <viewer>
         <!-- pageBrowse/@enabled: if true, page browsing through the record in different steps is allowed. Default is false. -->
         <pageBrowse enabled="false">
-            <pageBrowseStep>0</pageBrowseStep>
+            <pageBrowseStep>1</pageBrowseStep>
             <pageBrowseStep>5</pageBrowseStep>
             <pageBrowseStep>10</pageBrowseStep>
         </pageBrowse>
 
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
-
-        <!-- doublePageNavigation
-             @enabled: if true, an option to switch to a double page view is shown. Default is true.
-             @default: if true, the double page mode is enabled by default. Default is false. -->
-        <doublePageNavigation enabled="true" default="false" />
 
         <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
@@ -297,11 +292,14 @@
          variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
-        <!-- zoomImageView and zoomFullscreenView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
-             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
-             to true to use tiled images if possible (only possible when type=openlayers) -->
-        <!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
-        <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
+        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
+             Options for the "type" attribute are: "default" and "sequence".
+             The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
+             "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
+             to true to use tiled images if possible (only possible when type=openlayers)
+             The setting navigator@enabled allows adding a small navigator image to an image view when set to true
+             doublePageNavigation: set attribute 'enabled' to true to allow changing to double page (side-by-side) image view
+             thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
                 <mimeType>image/png</mimeType>
@@ -310,7 +308,7 @@
         </zoomImageView>
 
         <!-- Default settings for fullscreen mode -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <useFor>
                 <view>fullscreen</view>
             </useFor>
@@ -322,10 +320,12 @@
                 <size>1024</size>
             </tileSize>
             <navigator enabled="false" />
+            <thumbnailGallery enabled="false" />
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- Default settings for image view -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <scale>600</scale>
             <scale>900</scale>
             <scale>1800</scale>
@@ -333,6 +333,8 @@
                 <scaleFactors>1;32</scaleFactors>
                 <size>512</size>
             </tileSize>
+            <thumbnailGallery enabled="false" />
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
