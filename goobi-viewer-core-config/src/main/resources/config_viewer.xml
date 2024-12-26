@@ -676,7 +676,6 @@
             <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
             <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
         </resultGroups>
-
     </search>
 
 
@@ -2198,7 +2197,7 @@
         </nodeTypes>
         <!-- If true, clicking on an archive entry to select it also displays all its child entries. Conversely, clicking on a selected entry to
             de-select it, hides the children -->
-        <expandOnSelect>false</expandOnSelect>
+        <expandOnSelect>true</expandOnSelect>
     </archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
