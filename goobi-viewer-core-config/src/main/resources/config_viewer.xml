@@ -729,12 +729,16 @@
              The "url" attibute adds a suffix for the url pattern of the given view (after
              "metadata"). If more than one view is configured, each entry must have a unique
              url value.
+             The optional location attribute specifies where the metadata view is rendered. Possible
+             values are "sidebar" and "objectview". The value "sidebar" is the default option and renderes
+             the link to the dedicated page in the sidebar. The value "objectview" renderes the metadata
+             below the image.
 
              Examples are:
              <metadataView index="1" label="label_metadata_codicological" url="_codicological" condition="MD_CODICOLOGICAL_UNIQUEIDENTIFIER">
              <metadataView index="2" label="label_metadata_special" url="_special" condition="MD_SPECIAL_FIELD:value">
         -->
-        <metadataView index="0">
+        <metadataView index="0" location="sidebar">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
                     defines a label-key that needs to be translated in the messages_XYZ.properties
