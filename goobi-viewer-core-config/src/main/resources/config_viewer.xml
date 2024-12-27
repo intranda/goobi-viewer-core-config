@@ -1066,6 +1066,16 @@
                 <metadata label="MD_CONVENTIONDECLARATION">
                     <param type="field" key="MD_CONVENTIONDECLARATION" />
                 </metadata>
+                <!--metadata label="wurde erschaffen von" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"wurde erschaffen von"</filterQuery>
+                </metadata>
+                <metadata label="hat erschaffen" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"hat erschaffen"</filterQuery>
+                </metadata-->
             </template>
             <template name="record">
                 <metadata label="PI">
