@@ -293,7 +293,7 @@
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
         <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
-             Options for the "type" attribute are: "default" and "sequence".
+             Options for the "type" attribute are: "default" and "sequence" (infinite scrolling). In "sequence" double page mode is not available and the navigator should be deactivated, since it is not helpful.
              The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
              "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
              to true to use tiled images if possible (only possible when type=openlayers)
