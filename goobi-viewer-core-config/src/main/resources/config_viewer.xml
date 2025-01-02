@@ -302,8 +302,9 @@
              to true to use tiled images if possible (only possible when type=openlayers) -->
         <!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
         <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
-        <!-- pageNavigation: Sequence mode (infinite scrolling) can be enabled for OpenSeadragon. Default is disabled sequence mode (default="false"). Setting enabled has no function yet -->
-        <!-- thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
+        <!-- pageNavigation: Sequence mode (infinite scrolling) can be enabled for OpenSeadragon (default="true"). Default is disabled sequence mode (default="false"). Setting sequence enabled="true" has no function yet -->
+        <!-- In sequence mode there is no double page view available. The navigator should be deactivated, since it is not helpful in sequence mode -->
+        <!-- thumbnailGallery: Shows a thumbnail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
                 <mimeType>image/png</mimeType>
