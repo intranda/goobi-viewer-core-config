@@ -279,11 +279,6 @@
         <!-- pageSelectDropdownDisplayMinPages: Minimum number of pages a record needs to possess in order for the drop-down to be displayed. Default is 3. -->
         <pageSelectDropdownDisplayMinPages>3</pageSelectDropdownDisplayMinPages>
 
-        <!-- doublePageNavigation
-             @enabled: if true, an option to switch to a double page view is shown. Default is true.
-             @default: if true, the double page mode is enabled by default. Default is false. -->
-        <doublePageNavigation enabled="true" default="false" />
-
         <!-- docstructNavigation/@enabled: if true, browsing to the next and previous docstruct for the configured docstruct types in fullscreen view is displayed. Default is false. -->
         <docstructNavigation enabled="false">
             <template name="_DEFAULT">
@@ -297,14 +292,14 @@
          variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
-        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively. Possibilities for
-             the "type" attribute are: classic and openlayers "Width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
-             to true to use tiled images if possible (only possible when type=openlayers) -->
-        <!-- The setting navigator@enabled allows adding a small navigator image to an image view when set to true -->
-        <!-- PNGs: Deliver the entire image directly. Very fast, but the full image size must be delivered. If that is too large, remove this setting -->
-        <!-- pageNavigation: Sequence mode (infinite scrolling) can be enabled for OpenSeadragon (default="true"). Default is disabled sequence mode (default="false"). Setting sequence enabled="true" has no function yet -->
-        <!-- In sequence mode there is no double page view available. The navigator should be deactivated, since it is not helpful in sequence mode -->
-        <!-- thumbnailGallery: Shows a thumbnail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
+        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
+             Options for the "type" attribute are: "default" and "sequence".
+             The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
+             "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
+             to true to use tiled images if possible (only possible when type=openlayers)
+             The setting navigator@enabled allows adding a small navigator image to an image view when set to true
+             doublePageNavigation: set attribute 'enabled' to true to allow changing to double page (side-by-side) image view
+             thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
         <zoomImageView tileImage="false" footerHeight="50">
             <useFor>
                 <mimeType>image/png</mimeType>
@@ -313,7 +308,7 @@
         </zoomImageView>
 
         <!-- Default settings for fullscreen mode -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <useFor>
                 <view>fullscreen</view>
             </useFor>
@@ -326,13 +321,11 @@
             </tileSize>
             <navigator enabled="false" />
             <thumbnailGallery enabled="false" />
-            <pageNavigation>
-                <sequence enabled="false" default="false" />
-            </pageNavigation>
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- Default settings for image view -->
-        <zoomImageView type="openSeadragon" tileImage="true" footerHeight="50">
+        <zoomImageView type="default" tileImage="true" footerHeight="50">
             <scale>600</scale>
             <scale>900</scale>
             <scale>1800</scale>
@@ -341,9 +334,7 @@
                 <size>512</size>
             </tileSize>
             <thumbnailGallery enabled="false" />
-            <pageNavigation>
-                <sequence enabled="false" default="false" />
-            </pageNavigation>
+            <doublePageNavigation enabled="true" default="false"/>
         </zoomImageView>
 
         <!-- limitImageHeight: If true, the image width is divided by the
@@ -685,7 +676,6 @@
             <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
             <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
         </resultGroups>
-
     </search>
 
 
@@ -739,12 +729,16 @@
              The "url" attibute adds a suffix for the url pattern of the given view (after
              "metadata"). If more than one view is configured, each entry must have a unique
              url value.
+             The optional location attribute specifies where the metadata view is rendered. Possible
+             values are "sidebar" and "objectview". The value "sidebar" is the default option and renderes
+             the link to the dedicated page in the sidebar. The value "objectview" renderes the metadata
+             below the image.
 
              Examples are:
              <metadataView index="1" label="label_metadata_codicological" url="_codicological" condition="MD_CODICOLOGICAL_UNIQUEIDENTIFIER">
              <metadataView index="2" label="label_metadata_special" url="_special" condition="MD_SPECIAL_FIELD:value">
         -->
-        <metadataView index="0">
+        <metadataView index="0" location="sidebar">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
                     defines a label-key that needs to be translated in the messages_XYZ.properties
@@ -1076,6 +1070,16 @@
                 <metadata label="MD_CONVENTIONDECLARATION">
                     <param type="field" key="MD_CONVENTIONDECLARATION" />
                 </metadata>
+                <!--metadata label="wurde erschaffen von" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"wurde erschaffen von"</filterQuery>
+                </metadata>
+                <metadata label="hat erschaffen" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"hat erschaffen"</filterQuery>
+                </metadata-->
             </template>
             <template name="record">
                 <metadata label="PI">
@@ -2207,7 +2211,7 @@
         </nodeTypes>
         <!-- If true, clicking on an archive entry to select it also displays all its child entries. Conversely, clicking on a selected entry to
             de-select it, hides the children -->
-        <expandOnSelect>false</expandOnSelect>
+        <expandOnSelect>true</expandOnSelect>
     </archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
