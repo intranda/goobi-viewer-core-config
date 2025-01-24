@@ -23,7 +23,8 @@
       <Filters>
         <ThresholdFilter level="${logLevel}" />
         <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex="org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex="^java.io.EOFException$" onMatch="DENY" onMismatch="ACCEPT"/>
       </Filters>
     </Console>
 
@@ -33,7 +34,8 @@
       <Filters>
         <ThresholdFilter level="DEBUG" />
         <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex="org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex="^java.io.EOFException$" onMatch="DENY" onMismatch="ACCEPT"/>
       </Filters>
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
