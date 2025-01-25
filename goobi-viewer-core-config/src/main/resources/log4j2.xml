@@ -25,9 +25,9 @@
         <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*java.io.EOFException.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex=".SocketEndpoint: An exception occurred.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*SocketEndpoint: An exception occurred.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*An I\/O error has occurred while writing a.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex=".Error while closing the output stream in order to commit.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*Error while closing the output stream in order to commit.*" onMatch="DENY" onMismatch="ACCEPT"/>
       </Filters>
     </Console>
 
@@ -39,9 +39,9 @@
         <RegexFilter regex=".*org.omnifaces.cdi.push.SocketEndpoint.onClose.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*org.apache.catalina.connector.ClientAbortException.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*java.io.EOFException.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex=".SocketEndpoint: An exception occurred.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*SocketEndpoint: An exception occurred.*" onMatch="DENY" onMismatch="ACCEPT"/>
         <RegexFilter regex=".*An I\/O error has occurred while writing a.*" onMatch="DENY" onMismatch="ACCEPT"/>
-        <RegexFilter regex=".Error while closing the output stream in order to commit.*" onMatch="DENY" onMismatch="ACCEPT"/>
+        <RegexFilter regex=".*Error while closing the output stream in order to commit.*" onMatch="DENY" onMismatch="ACCEPT"/>
       </Filters>
       <DefaultRolloverStrategy>
         <Delete basePath="${baseDir}">
