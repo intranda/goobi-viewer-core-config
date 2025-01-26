@@ -684,6 +684,11 @@
             <sorting>
                 <!-- <sortingList sortAfter="bibliotheken.100universitaetsbibliothek.200realkatalog"> -->
                     <!-- <collection>zeitschriften</collection> -->
+                    <!--
+                    <sortOrder collections="zeitschriften">alphanumerical_desc</sortOrder>
+                    <sortOrder collections="zeitungen\..*">alphanumerical_asc</sortOrder>
+                    <sortOrder collections="jahrbuecher">numerical_desc</sortOrder>
+                    -->
                 <!-- </sortingList-->
             </sorting>
 
