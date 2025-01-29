@@ -593,7 +593,7 @@
             <field type="ignore">PI_TOPSTRUCT</field>
             <field type="ignore">UGCTERMS</field>
             <field type="ignore">YEARMONTH</field>
-            <field type="ignore">YEARMONTHDAY</field>
+            <!-- Ignoring YEARMONTHDAY will prevent issue child hit listing in calendar search! <field type="ignore">YEARMONTHDAY</field> -->
             <field type="ignore">MD_DV_LINK</field>
             <field type="ignore">MD_DV_OWNERSITEURL</field>
             <!-- field type="translate": Fields in this list will be highlighted with their translated value rather than raw. -->
