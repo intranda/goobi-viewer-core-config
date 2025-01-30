@@ -1209,13 +1209,13 @@
                 <metadata label="recordid" type="1">
                     <param key="MD_RECORDID" type="field" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" type="1">
+                <metadata label="MD_UNITID" type="1">
                     <param key="MD_UNITID" type="field" />
                 </metadata>
                 <metadata label="Number" type="1">
                     <param key="MD_UNITID_NUMBER" type="field" />
                 </metadata>
-                <metadata label="Shelfmark" type="1">
+                <metadata label="MD_SHELFMARK" type="1">
                     <param key="MD_SHELFMARK" type="field" />
                 </metadata>
                 <metadata label="unittitle" type="1">
