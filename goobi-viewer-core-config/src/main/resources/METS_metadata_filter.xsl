@@ -7,6 +7,6 @@
         </xsl:copy>
     </xsl:template>
     
-    <!-- Template to skip elements with shareable="no" -->
-    <xsl:template match="*[@shareable='no']"/>
+    <!-- Template to skip elements with shareable="no" and to remove METS fileGrp PRESENTATION -->
+    <xsl:template match="*[@shareable='no']|*[@USE='PRESENTATION']|*[contains(@FILEID, 'PRESENTATION')]"/>    
 </xsl:stylesheet>
