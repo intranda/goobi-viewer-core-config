@@ -596,6 +596,8 @@
             <!-- Ignoring YEARMONTHDAY will prevent issue child hit listing in calendar search! <field type="ignore">YEARMONTHDAY</field> -->
             <field type="ignore">MD_DV_LINK</field>
             <field type="ignore">MD_DV_OWNERSITEURL</field>
+            <!-- field type="nohighlight": No highlighting will be applied to the value to avoid formatting issues, etc. -->
+            <field type="nohighlight">YEARMONTHDAY</field>
             <!-- field type="translate": Fields in this list will be highlighted with their translated value rather than raw. -->
             <field type="translate">DC</field>
             <field type="translate">DOCSTRCT</field>
