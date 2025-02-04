@@ -194,15 +194,6 @@
 
         <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
         <preventProxyCaching>false</preventProxyCaching>
-
-        <solr>
-            <!-- useHttp2: If false, the old HTTP1 client will be used for backwards compatibility with Solr 8. Default is true. -->
-            <useHttp2>true</useHttp2>
-            <!-- DEPRECATED compressionEnabled: if true, compression for the Solr HTTP client is enabled. Default is true. -->
-            <compressionEnabled>true</compressionEnabled>
-            <!-- DEPRECATED backwardsCompatible: If true, an XML response parser instead of binary will be used to enable Solr 4 compatibility. Default is false. -->
-            <backwardsCompatible>false</backwardsCompatible>
-        </solr>
     </performance>
 
 
@@ -293,7 +284,7 @@
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
         <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
-             Options for the "type" attribute are: "default" and "sequence".
+             Options for the "type" attribute are: "default" and "sequence" (infinite scrolling). In "sequence" double page mode is not available and the navigator should be deactivated, since it is not helpful.
              The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
              "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
              to true to use tiled images if possible (only possible when type=openlayers)
@@ -602,9 +593,11 @@
             <field type="ignore">PI_TOPSTRUCT</field>
             <field type="ignore">UGCTERMS</field>
             <field type="ignore">YEARMONTH</field>
-            <field type="ignore">YEARMONTHDAY</field>
+            <!-- Ignoring YEARMONTHDAY will prevent issue child hit listing in calendar search! <field type="ignore">YEARMONTHDAY</field> -->
             <field type="ignore">MD_DV_LINK</field>
             <field type="ignore">MD_DV_OWNERSITEURL</field>
+            <!-- field type="nohighlight": No highlighting will be applied to the value to avoid formatting issues, etc. -->
+            <field type="nohighlight">YEARMONTHDAY</field>
             <!-- field type="translate": Fields in this list will be highlighted with their translated value rather than raw. -->
             <field type="translate">DC</field>
             <field type="translate">DOCSTRCT</field>
@@ -676,7 +669,6 @@
             <group name="stories" query="+DOCSTRCT:cms_page +MD_CATEGORY:Stories" previewHitCount="12" />
             <group name="exhibitions" query="+DOCSTRCT:cms_page +MD_CATEGORY:Exhibitions" previewHitCount="12" />
         </resultGroups>
-
     </search>
 
 
@@ -694,6 +686,11 @@
             <sorting>
                 <!-- <sortingList sortAfter="bibliotheken.100universitaetsbibliothek.200realkatalog"> -->
                     <!-- <collection>zeitschriften</collection> -->
+                    <!--
+                    <sortOrder collections="zeitschriften">alphanumerical_desc</sortOrder>
+                    <sortOrder collections="zeitungen\..*">alphanumerical_asc</sortOrder>
+                    <sortOrder collections="jahrbuecher">numerical_desc</sortOrder>
+                    -->
                 <!-- </sortingList-->
             </sorting>
 
@@ -730,12 +727,16 @@
              The "url" attibute adds a suffix for the url pattern of the given view (after
              "metadata"). If more than one view is configured, each entry must have a unique
              url value.
+             The optional location attribute specifies where the metadata view is rendered. Possible
+             values are "sidebar" and "objectview". The value "sidebar" is the default option and renderes
+             the link to the dedicated page in the sidebar. The value "objectview" renderes the metadata
+             below the image.
 
              Examples are:
              <metadataView index="1" label="label_metadata_codicological" url="_codicological" condition="MD_CODICOLOGICAL_UNIQUEIDENTIFIER">
              <metadataView index="2" label="label_metadata_special" url="_special" condition="MD_SPECIAL_FIELD:value">
         -->
-        <metadataView index="0">
+        <metadataView index="0" location="sidebar">
             <template name="_DEFAULT">
                 <!-- <metadata> </metadata> defines a single metadata element label=""
                     defines a label-key that needs to be translated in the messages_XYZ.properties
@@ -1067,6 +1068,16 @@
                 <metadata label="MD_CONVENTIONDECLARATION">
                     <param type="field" key="MD_CONVENTIONDECLARATION" />
                 </metadata>
+                <!--metadata label="wurde erschaffen von" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"wurde erschaffen von"</filterQuery>
+                </metadata>
+                <metadata label="hat erschaffen" key="MD_RELATIONSHIP" value="MASTERVALUE_RELATIONSHIP" group="true">
+                    <param key="MD_VALUE" type="field" />
+                    <param key="MD_IDENTIFIER" type="field" />
+                    <filterQuery>MD_TYPE:"hat erschaffen"</filterQuery>
+                </metadata-->
             </template>
             <template name="record">
                 <metadata label="PI">
@@ -1200,13 +1211,13 @@
                 <metadata label="recordid" type="1">
                     <param key="MD_RECORDID" type="field" />
                 </metadata>
-                <metadata label="MD_SHELFMARK" type="1">
+                <metadata label="MD_UNITID" type="1">
                     <param key="MD_UNITID" type="field" />
                 </metadata>
                 <metadata label="Number" type="1">
                     <param key="MD_UNITID_NUMBER" type="field" />
                 </metadata>
-                <metadata label="Shelfmark" type="1">
+                <metadata label="MD_SHELFMARK" type="1">
                     <param key="MD_SHELFMARK" type="field" />
                 </metadata>
                 <metadata label="unittitle" type="1">
@@ -2198,7 +2209,7 @@
         </nodeTypes>
         <!-- If true, clicking on an archive entry to select it also displays all its child entries. Conversely, clicking on a selected entry to
             de-select it, hides the children -->
-        <expandOnSelect>false</expandOnSelect>
+        <expandOnSelect>true</expandOnSelect>
     </archives>
 
     <!-- Configuration for crowdsourcing campaigns -->
