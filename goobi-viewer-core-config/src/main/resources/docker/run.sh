@@ -28,8 +28,13 @@ case $CONFIGSOURCE in
       exit 1
     fi
     
+    if [ -z "$CONFIG_TARGET_FOLDER" ]
+    then
+      CONFIG_TARGET_FOLDER=/opt/digiverso/viewer/config
+    fi
+
     echo "Copying configuration from local folder"
-    [ -d "$CONFIG_FOLDER" ] && cp -av "$CONFIG_FOLDER"/* /opt/digiverso/viewer/config/ 
+    [ -d "$CONFIG_FOLDER" ] && cp -arnv "$CONFIG_FOLDER"/* "$CONFIG_TARGET_FOLDER"/
     ;;
 
   *)
