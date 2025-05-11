@@ -37,6 +37,11 @@
 
 		<!-- Defines times. Valid are Datestamps and UTCdatetime -->
 		<granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
+        
+        <!-- an extensible mechanism for communities to describe their repositories. For example, the description container could be used to include collection-level metadata in the
+            response to the Identify request. Implementation Guidelines are available to give directions with this respect. Each description container must be accompanied by the URL of an
+            XML schema describing the structure of the description container -->
+        <description>OAI-PMh interface.</description>
 	</identifyTags>
 
 
@@ -88,6 +93,9 @@
 				<metadata label="title" value="{0}">
 					<param type="field" key="MD_TITLE" />
 				</metadata>
+                <metadata label="title" value="{0}">
+                    <param type="field" key="MD_TITLE_LANG_EN" />
+                </metadata>
 				<metadata label="creator" value="{0}">
 					<param type="field" key="MD_CREATOR" />
 				</metadata>
@@ -104,6 +112,9 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="type" value="text" />
+                <metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
+                    <param type="field" key="MD_LANGUAGE" />
+                </metadata>
 				<metadata label="format" value="image/jpeg" />
 				<metadata label="format" value="application/pdf" />
 				<metadata label="identifier" value="#AUTO#" />
@@ -139,6 +150,9 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="type" value="text" />
+                <metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
+                    <param type="field" key="MD_LANGUAGE" />
+                </metadata>
 				<metadata label="format" value="image/jpeg" />
 				<metadata label="format" value="application/pdf" />
 				<metadata label="identifier" value="#AUTO#" />
@@ -269,7 +283,9 @@
     <sets>
             <!-- The following example adds a set for each digital collection -->
             <!-- <allValuesSet translate="true">DC</allValuesSet> -->
-
+            
+            <!-- setSpec="open_access" (required for DINI conformity) -->
+            <set setName="Open Access" setSpec="open_access" setQuery="+ACCESSCONDITION:OPENACCESS +(ISWORK:true ISANCHOR:true)" />
 
             <!-- ##### ATTENTION ##### -->
             <!--  Some fields like "DC" or "DOCSTRCT" are written into all solr docs of a given record. This means
