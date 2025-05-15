@@ -193,7 +193,7 @@
         <preventProxyCaching>false</preventProxyCaching>
         
         <!-- databaseConnectonAttempts: Number of times JPADAO will attempt to establish a connection before failing. -->
-        <databaseConnectonAttempts>5</databaseConnectonAttempts>
+        <databaseConnectionAttempts>5</databaseConnectionAttempts>
     </performance>
 
 
