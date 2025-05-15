@@ -107,9 +107,6 @@
         <!-- download: Base URLss to access download pages for PDF and ePub downloads -->
         <download>http://localhost:8080/viewer/download/</download>
 
-        <!-- basex: URL to the baseX database that stores archival content -->
-        <basex>https://basex.example.org/basex/</basex>
-
         <!-- urnResolver: The default internal URN resolver can be replaced with an external URL (to be used for canonical URLs) -->
         <!-- <urnResolver>http://nbn-resolving.de/</urnResolver> -->
     </urls>
