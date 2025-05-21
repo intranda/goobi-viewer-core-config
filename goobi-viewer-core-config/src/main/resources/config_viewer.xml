@@ -1968,13 +1968,13 @@
                  Contains a string to provide as attribution in IIIF manifests. If it is a message key,
                  all translations are provided as attribution values.
                  The <attribution /> setting is repeatable. The first instance also acts as fallback for <requiredStatement> (IIIF 3 only) -->
-            <attribution>iiif_requiredstatement_value</attribution>
+            <attribution>{MD_USEANDREPRODUCTIONLICENSE}</attribution>
 
             <!-- license: IIIF 2
                  Contains a string to provide as license in IIIF manifests. If it is a message key,
                  all translations are provided as license values.
                  The <license /> setting is repeatable. The first instance also acts as fallback for <rights> (IIIF 3 only)-->
-            <license>iiif_license</license>
+            <license></license>
 
             <!-- logo: IIIF 2
                  URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
@@ -1983,44 +1983,63 @@
                  resources/themes/<theme>/images/ folder and linked appropriately
                  If no logo is configured, the image footer will be used
                  The <logo /> setting is repeatable. -->
-            <logo>dfgviewer_intranda.jpg</logo>
+            <logo>https://goobi.io/wp-content/uploads/2016/08/logo_goobi_small_xxs.png</logo>
 
             <!-- requiredStatement: IIIF 3
                  Replacement for <attribution />. Default-label is "attribution". This field is not repeatable.
                  ref https://iiif.io/api/presentation/3.0/#requiredstatement -->
             <requiredStatement>
                 <!-- label+value: both contain message keys and are repeatable -->
-                <label>iiif_requiredstatement</label>
-                <value>iiif_requiredstatement_value</value>
+                <label>Use and reproduction license</label>
+                <value>{MD_USEANDREPRODUCTIONLICENSE}</value>
             </requiredStatement>
             <!-- rights: IIIF 3
                  Replacement for <license />. This setting is optional and not repeatable. It must contain a URI
                  representing the license of the record. As this is typically stored within the metadata you can
                  configure a Solr field here.
                  ref https://iiif.io/api/presentation/3.0/#rights -->
-            <rights>MD_SOLR-FIELD-WITH-RECORD-LICENSE</rights>
+            <rights></rights>
 
             <!-- provider: IIIF 3
                  Encapsulates data provider and rights holder information. This section is optional and repeatable.
                  ref https://iiif.io/api/presentation/3.0/#provider -->
             <provider>
                 <!-- url: required, non repeatable -->
-                <url>https://www.intranda.com</url>
+                <url>https://goobi.io</url>
                 <!-- label: required, if it is a message key, all translations are used.-->
-                <label>iiif_provider_label</label>
+                <label>Goobi community</label>
                 <!-- homepage: optional, repeatable -->
                 <homepage>
                     <!-- url: required, non-repeatable -->
-                    <url>https://goobi.io/viewer/</url>
+                    <url>https://goobi.io</url>
                     <!-- label: required, if it is a message key, all translations are used.-->
-                    <label>Goobi iiif_provider_homepage_label</label>
+                    <label>Goobi community</label>
                 </homepage>
                 <!-- logo: optional, non-repeatable.
                      URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
                      the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
                      that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
                      resources/themes/<theme>/images/ folder and linked appropriately -->
-                <logo>dfgviewer_intranda.jpg</logo>
+                <logo>https://goobi.io/wp-content/uploads/2016/08/logo_goobi_small_xxs.png</logo>
+            </provider>
+            <provider>
+                <!-- url: required, non repeatable -->
+                <url>https://www.intranda.com</url>
+                <!-- label: required, if it is a message key, all translations are used.-->
+                <label>intranda GmbH</label>
+                <!-- homepage: optional, repeatable -->
+                <homepage>
+                    <!-- url: required, non-repeatable -->
+                    <url>https://www.intranda.com</url>
+                    <!-- label: required, if it is a message key, all translations are used.-->
+                    <label>intranda GmbH</label>
+                </homepage>
+                <!-- logo: optional, non-repeatable.
+                     URL to an image which should be displayed as logo in IIIF manifests. if the url is a http(s) url,
+                     the url will be used as is. If it is an absolute file url, a contentServer url will be provided, displaying
+                     that file. If it is just a filename or relative filepath, it will be assumed to be a file in the
+                     resources/themes/<theme>/images/ folder and linked appropriately -->
+                <logo>https://www.intranda.com/wp-content/uploads/2014/07/intranda_logo_blue_2014.png</logo>
             </provider>
 
             <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false. -->
