@@ -781,7 +781,7 @@
                 <metadata label="MD_OTHEROWNERINSTITUTION">
                     <param type="field" key="MD_OTHEROWNERINSTITUTION" />
                 </metadata>
-                <metadata label="MD_SENDER" value="MASTERVALUE_WIKINORM" group="true">
+                <metadata label="MD_AUTHOR" value="MASTERVALUE_WIKINORM" group="true">
                     <param type="field" key="MD_VALUE" />
                     <param type="wikipersonfield" key="MD_VALUE" />
                     <param type="normdatauri" key="NORM_URI" />
@@ -791,17 +791,17 @@
                     <param type="wikipersonfield" key="MD_VALUE" />
                     <param type="normdatauri" key="NORM_URI" />
                 </metadata>
-                <metadata label="MD_RECIPIENT" value="MASTERVALUE_WIKINORM" group="true">
-                    <param type="field" key="MD_VALUE" />
-                    <param type="wikipersonfield" key="MD_VALUE" />
-                    <param type="normdatauri" key="NORM_URI" />
-                </metadata>
-                <metadata label="MD_AUTHOR" value="MASTERVALUE_WIKINORM" group="true">
-                    <param type="field" key="MD_VALUE" />
-                    <param type="wikipersonfield" key="MD_VALUE" />
-                    <param type="normdatauri" key="NORM_URI" />
-                </metadata>
                 <metadata label="MD_COMPOSER" value="MASTERVALUE_WIKINORM" group="true">
+                    <param type="field" key="MD_VALUE" />
+                    <param type="wikipersonfield" key="MD_VALUE" />
+                    <param type="normdatauri" key="NORM_URI" />
+                </metadata>
+                <metadata label="MD_CONTRIBUTOR" value="MASTERVALUE_WIKINORM" group="true">
+                    <param type="field" key="MD_VALUE" />
+                    <param type="wikipersonfield" key="MD_VALUE" />
+                    <param type="normdatauri" key="NORM_URI" />
+                </metadata>
+                <metadata label="MD_CREATOR" value="MASTERVALUE_WIKINORM" group="true">
                     <param type="field" key="MD_VALUE" />
                     <param type="wikipersonfield" key="MD_VALUE" />
                     <param type="normdatauri" key="NORM_URI" />
@@ -812,11 +812,6 @@
                     <param type="normdatauri" key="NORM_URI" />
                 </metadata>
                 <metadata label="MD_EDITOR" value="MASTERVALUE_WIKINORM" group="true">
-                    <param type="field" key="MD_VALUE" />
-                    <param type="wikipersonfield" key="MD_VALUE" />
-                    <param type="normdatauri" key="NORM_URI" />
-                </metadata>
-                <metadata label="MD_ERSTELLER" value="MASTERVALUE_WIKINORM" group="true">
                     <param type="field" key="MD_VALUE" />
                     <param type="wikipersonfield" key="MD_VALUE" />
                     <param type="normdatauri" key="NORM_URI" />
@@ -835,6 +830,16 @@
                     <param type="normdatauri" key="NORM_URI" />
                 </metadata>
                 <metadata label="MD_TRANSLATOR" value="MASTERVALUE_WIKINORM" group="true">
+                    <param type="field" key="MD_VALUE" />
+                    <param type="wikipersonfield" key="MD_VALUE" />
+                    <param type="normdatauri" key="NORM_URI" />
+                </metadata>
+                <metadata label="MD_SENDER" value="MASTERVALUE_WIKINORM" group="true">
+                    <param type="field" key="MD_VALUE" />
+                    <param type="wikipersonfield" key="MD_VALUE" />
+                    <param type="normdatauri" key="NORM_URI" />
+                </metadata>
+                <metadata label="MD_RECIPIENT" value="MASTERVALUE_WIKINORM" group="true">
                     <param type="field" key="MD_VALUE" />
                     <param type="wikipersonfield" key="MD_VALUE" />
                     <param type="normdatauri" key="NORM_URI" />
