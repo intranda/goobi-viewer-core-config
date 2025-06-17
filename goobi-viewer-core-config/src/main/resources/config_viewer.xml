@@ -1548,213 +1548,219 @@
 
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
-        <!-- ### RECORD VIEW SPECIFIC OPTIONS ### -->
-        <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
-        <page enabled="true" />
+    
+        <widgets>
+            <!-- ### RECORD VIEW SPECIFIC OPTIONS ### -->
+            <widget name="views">
+                <calendar enabled="true" />
+                <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
+                <fulltext enabled="true" />
+                <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
+                <metadata enabled="true" />
+                <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
+                <page enabled="true" />
+                <!-- thumbs/@enabled: if true, the link to the thumbnail page is displayed. Default is true. -->
+                <thumbs enabled="true" />
+                <!-- toc/@enabled: if true, the link to the TOC page is displayed. Please note, that this is not the sidebar toc component. Default is true. -->
+                <toc enabled="true" />
+            </widget>
+            
+            <!-- widget[@name="additional-files"]: Download widget within a records view for additional files from the source directory. -->
+            <widget name="additional-files" enabled="true">
+                <!-- Filters against which the filenames of additional files are tested.
+                If the filter's 'action' attribute is 'show', only files are shown which filename matches the regular expression in the 'regex' attribute.
+                If the action is 'hide' filenames matching the expression are excluded. -->
+                <filter action="hide" regex="(EXAMPLE_.*|HIDDEN_.*)" />
+                <!-- These filters utilize a variable system with '{a.B}' expressions. These expressions are replaced with a solr field value of the current record if possible
+                Within the '{...}' expression, the string after the dot is the name of a solr field which value the expression should represent.
+                The string before the dot denounces the document hierarchy level at which to look the for field. Here, 'struct' stands for fields in structures below the record level (article, chapter,...),
+                'record' stands for fields on the record level (book magazine issue,...) and 'anchor' for fields in structures above th record level (multivolume work, newspaper,...)
+                '{struct.MD_SHELFMARK}' thus means the value of the shelfmark field of the current structure element within a book. -->
+                <filter action="show" regex="{struct.MD_SHELFMARK}\..*">
+                    <!-- filters which pose conditions under which the owning filter is applied.
+                        If any of these filters don't apply, the owning filter is not used
+                        These filters contain a 'value' attribute which is tested against the 'regex' attribute. In the example, the record digital collection
+                        must be 'archive.100uaghgw.020volksliedarchiv' or a subcollection thereof -->
+                    <conditions>
+                        <filter action="show"
+                            regex="archive\.100uaghgw\.020volksliedarchiv.*"
+                            value="{record.DC}" />
+                    </conditions>
+                </filter>
+            </widget>
+            
+            <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
+            <widget name="browsing-terms" enabled="true" />
+            
+            <widget name="citation" enabled="false">
+                <citationLinks enabled="true">
+                    <!-- links: Citation link configurations. -->
+                    <links>
+                        <link type="URL" for="record" label="URN" field="URN" pattern="https://nbn-resolving.org/{value}" />
+                        <link type="URL" for="record" label="Handle" field="MD_PI_HANDLE" pattern="https://hdl.handle.net/{value}" />
+                        <link type="URL" for="record" label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}" />
+                        <link type="URL" for="record" label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}" />
+                        <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
+                        <link type="URL" for="record" label="RIS" action="download" pattern="{rest-api-url}records/{PI}/ris/"/>
+                        <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}#?page={page}" />
+                        <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}/" topstructValueFallback="true" />
+                        <link type="URL" for="image"  label="URN" field="IMAGEURN" pattern="https://nbn-resolving.org/{value}" />
+                        <link type="URL" for="image"  label="URN" field="URN" pattern="https://nbn-resolving.org/{value}/fragment/page={page}" topstructValueFallback="true" />
+                        <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
+                        <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
+                        <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
+                    </links>
+                </citationLinks>
+                <citationRecommendation enabled="true">
+                    <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
+                        Alternate labels can be added using the schema 'label__citation_style_<style>'. -->
+                    <styles>
+                        <style>modern-language-association</style>
+                        <style>apa</style>
+                        <style>chicago-author-date</style>
+                        <style>harvard-cite-them-right-no-et-al</style>
+                        <style>oscola</style>
+                    </styles>
+                    <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
+                    <source>
+                        <metadata label="MD_CITATION" value="MASTERVALUE_CITATION">
+                            <param type="citeproc" dest="title" key="MD_TITLE" />
+                            <param type="citeproc" dest="author" key="MD_CREATOR" />
+                            <param type="citeproc" dest="publisher" key="MD_PUBLISHER" />
+                            <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH" />
+                            <param type="citeproc" dest="issued" key="MD_YEARPUBLISH" />
+                            <param type="citeproc" dest="isbn" key="MD_ISBN" />
+                        </metadata>
+                    </source>
+                 </citationRecommendation>
+            </widget>
+            
+            <!--  widget[@name="copyright-info"]/@enabled: if enabled, additional copyright information is displayed on all pages of the record and in full-screen view. Default is false
+                two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
+            <widget name="copyright-info" enabled="true" style="widget">
+                <status field="ACCESSCONDITION">
+                    <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
+                    <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
+                    <!-- <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_STATUS_LOCKED" /> -->
+                </status>
+                <license field="MD_USEANDREPRODUCTIONLICENSE">
+                    <!-- Creative Commons: CC0 - https://creativecommons.org/publicdomain/zero/1.0/ -->
+                    <value content="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" description="COPYRIGHT_DESCRIPTION_LICENSE_CC010">
+                        <icon>cc.svg</icon>
+                        <icon>zero.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY - https://creativecommons.org/licenses/by/4.0/ -->
+                    <value content="Attribution 4.0 International (CC BY 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBY40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY-SA - https://creativecommons.org/licenses/by-sa/4.0/ -->
+                    <value content="Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYSA40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                        <icon>sa.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY-ND - https://creativecommons.org/licenses/by-nd/4.0/ -->
+                    <value content="Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYND40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                        <icon>nd.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY-NC - https://creativecommons.org/licenses/by-nc/4.0/ -->
+                    <value content="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNC40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                        <icon>nc.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY-NC-SA - https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+                    <value content="Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCSA40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                        <icon>nc.svg</icon>
+                        <icon>sa.svg</icon>
+                    </value>
+                    <!-- Creative Commons: CC BY-NC-ND - https://creativecommons.org/licenses/by-nc-nd/4.0/ -->
+                    <value content="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCND40">
+                        <icon>cc.svg</icon>
+                        <icon>by.svg</icon>
+                        <icon>nc.svg</icon>
+                        <icon>nd.svg</icon>
+                    </value>
+                    <!-- Creative Commons: Public Domain - https://creativecommons.org/publicdomain/mark/1.0/ -->
+                    <value content="Public Domain Mark 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_PUBLICDOMAINMARK10">
+                        <icon>pd.svg</icon>
+                    </value>
+                    <!-- RightsStatements: InC (In Copyright 1.0) - https://rightsstatements.org/vocab/InC/1.0/ -->
+                    <value content="In Copyright 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINC10">
+                        <icon>rs-inc.svg</icon>
+                    </value>
+                    <!-- RightsStatements: InC-OW-EU (Urheberrechtsschutz - Verwaistes Werk EU) - https://rightsstatements.org/vocab/InC-OW-EU/1.0/ -->
+                    <value content="Urheberrechtsschutz - Verwaistes Werk EU" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINCOWEU10">
+                        <icon>rs-inc.svg</icon>
+                    </value>
+                    <!-- Rights reserved - deutsche Urheberrecht -->
+                    <value content="Rights reserved" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVED">
+                        <icon>paragraphs.svg</icon>
+                    </value>
+                    <!-- Rights reserved - VG Wort -->
+                    <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
+                        <icon>paragraphs.svg</icon>
+                    </value>
+                </license>
+            </widget>
+            
+            <!-- widget[@name="downloads"] -->
+            <widget name="downloads" enabled="true">
+                <page>
+                    <downloadOptions enabled="true">
+                    <!-- Each option contains a label and a format. The label is translated via the messages.
+                        The format can take the values supported by the ContentServer, for example "pdf", "tif",
+                        "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
+                        the format of the master image. The attribute boxSizeInPixel specifies the size of a box
+                        in pixels into which the image is scaled while maintaining the aspect ratio. -->
+                        <option label="label__download_option_preview_150" format="jpg" boxSizeInPixel="150" />
+                        <option label="label__download_option_small_1024" format="jpg" boxSizeInPixel="1024" />
+                        <option label="label__download_option_medium_2048" format="jpg" boxSizeInPixel="2048" />
+                        <option label="label__download_option_large_4096" format="jpg" boxSizeInPixel="4096" />
+                        <option label="Master" format="MASTER" boxSizeInPixel="max" />
+                    </downloadOptions>
+                </page>
 
-        <!-- toc/@enabled: if true, the link to the TOC page is displayed. Please note, that this is not the sidebar toc component. Default is true. -->
-        <toc enabled="true" />
+                <pdfPageRange enabled="false" />
+            </widget>
+            
+            <!-- widget[@name="opac"]/@enabled: if true, an additional link to the catalogue is displayed in the views section. Default is false. -->
+            <widget name="opac" enabled="false" />
+            
+            <!-- widget[@name="rss]/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+            <widget name="rss" enabled="true" />
+            
+            <!-- widget[@name="search-in-current-item"]/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
+            <!-- widget[@name="search-in-current-item"]/@onlyIfFullTextAvailable: if true, the widget will only be displayed if current record has full-text. Default is false. -->
+            <widget name="search-in-current-item" enabled="true" onlyIfFullTextAvailable="false" />
+            
+            <!-- widget[@name="toc"]/@enabled: if true, the sidebar toc is displayed. Default is true. -->
+            <widget name="toc" enabled="true">
+                <!-- visibleInFullscreen: If true, the the sidebar TOC element is displayed in the full-screen sidebar accordion. Default is true. -->
+                <visibleInFullscreen>true</visibleInFullscreen>
 
-        <!-- thumbs/@enabled: if true, the link to the thumbnail page is displayed. Default is true. -->
-        <thumbs enabled="true" />
+                <!-- pageNumbersVisible: if true, page numbers in the sidebar toc are displayed. Default is false. -->
+                <pageNumbersVisible>false</pageNumbersVisible>
 
-        <!-- searchInItem/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
-        <!-- searchInItem/@onlyIfFullTextAvailable: if true, the widget will only be displayed if current record has full-text. Default is false. -->
-        <searchInItem enabled="true" onlyIfFullTextAvailable="false" />
+                <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown. Default is 60. -->
+                <lengthBeforeCut>60</lengthBeforeCut>
 
-        <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
-        <metadata enabled="true" />
+                <!-- useTreeView: if true, the sidebarToc is displayed as an interactive tree view. Default is true. -->
+                <useTreeView>true</useTreeView>
 
-        <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
-        <fulltext enabled="true" />
+                <!-- initialCollapseLevel: level for initial collapse. Default is 2. -->
+                <initialCollapseLevel>2</initialCollapseLevel>
 
-        <!-- opac/@enabled: if true, an additional link to the catalogue is displayed in the views section. Default is false. -->
-        <opac enabled="false" />
-
-        <!-- sidebarToc/@enabled: if true, the sidebar toc is displayed. Default is true. -->
-        <sidebarToc enabled="true">
-            <!-- visibleInFullscreen: If true, the the sidebar TOC element is displayed in the full-screen sidebar accordion. Default is true. -->
-            <visibleInFullscreen>true</visibleInFullscreen>
-
-            <!-- pageNumbersVisible: if true, page numbers in the sidebar toc are displayed. Default is false. -->
-            <pageNumbersVisible>false</pageNumbersVisible>
-
-            <!-- lengthBeforeCut: defines the number of characters until the string is cut and a "more" link is shown. Default is 60. -->
-            <lengthBeforeCut>60</lengthBeforeCut>
-
-            <!-- useTreeView: if true, the sidebarToc is displayed as an interactive tree view. Default is true. -->
-            <useTreeView>true</useTreeView>
-
-            <!-- initialCollapseLevel: level for initial collapse. Default is 2. -->
-            <initialCollapseLevel>2</initialCollapseLevel>
-
-            <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
-            <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
-        </sidebarToc>
-
-        <!-- sidebarWidgetUsage/@enabled: if true, the sidebar widget "cite and reuse" is displayed. Default is true. -->
-        <sidebarWidgetUsage enabled="true">
-            <page>
-                <downloadOptions enabled="true">
-                <!-- Each option contains a label and a format. The label is translated via the messages.
-                     The format can take the values supported by the ContentServer, for example "pdf", "tif",
-                     "jpg" or "png". If the static string "MASTER" is used, the format is dynamically set to
-                     the format of the master image. The attribute boxSizeInPixel specifies the size of a box
-                     in pixels into which the image is scaled while maintaining the aspect ratio. -->
-                    <option label="label__download_option_preview_150" format="jpg" boxSizeInPixel="150" />
-                    <option label="label__download_option_small_1024" format="jpg" boxSizeInPixel="1024" />
-                    <option label="label__download_option_medium_2048" format="jpg" boxSizeInPixel="2048" />
-                    <option label="label__download_option_large_4096" format="jpg" boxSizeInPixel="4096" />
-                    <option label="Master" format="MASTER" boxSizeInPixel="max" />
-                </downloadOptions>
-            </page>
-            <citationLinks enabled="true">
-                <!-- links: Citation link configurations. -->
-                <links>
-                    <link type="URL" for="record" label="URN" field="URN" pattern="https://nbn-resolving.org/{value}" />
-                    <link type="URL" for="record" label="Handle" field="MD_PI_HANDLE" pattern="https://hdl.handle.net/{value}" />
-                    <link type="URL" for="record" label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}" />
-                    <link type="URL" for="record" label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}" />
-                    <link type="URL" for="record" label="PURL" field="MD_PURL_IAI" />
-                    <link type="URL" for="record" label="RIS" action="download" pattern="{rest-api-url}records/{PI}/ris/"/>
-                    <link type="URL" for="image"  label="DOI" field="MD_PI_DOI" pattern="https://doi.org/{value}#?page={page}" />
-                    <link type="URL" for="image"  label="ARK" field="MD_PI_ARK" pattern="https://n2t.net/{value}/{page}/" topstructValueFallback="true" />
-                    <link type="URL" for="image"  label="URN" field="IMAGEURN" pattern="https://nbn-resolving.org/{value}" />
-                    <link type="URL" for="image"  label="URN" field="URN" pattern="https://nbn-resolving.org/{value}/fragment/page={page}" topstructValueFallback="true" />
-                    <link type="INTERNAL" for="record" label="LABEL_VIEWER_PURL" />
-                    <link type="INTERNAL" for="docstruct" label="LABEL_VIEWER_PURL" />
-                    <link type="INTERNAL" for="image" label="LABEL_VIEWER_PURL" />
-                </links>
-            </citationLinks>
-            <citationRecommendation enabled="true">
-                <!-- styles: Available citation styles. Please refer to citeproc documentation for available values.
-                     Alternate labels can be added using the schema 'label__citation_style_<style>'. -->
-                <styles>
-                    <style>modern-language-association</style>
-                    <style>apa</style>
-                    <style>chicago-author-date</style>
-                    <style>harvard-cite-them-right-no-et-al</style>
-                    <style>oscola</style>
-                </styles>
-                <!-- Metadata source mapping for citations. Please refer to the citeproc documentation for available "dest" values. -->
-                <source>
-                    <metadata label="MD_CITATION" value="MASTERVALUE_CITATION">
-                        <param type="citeproc" dest="title" key="MD_TITLE" />
-                        <param type="citeproc" dest="author" key="MD_CREATOR" />
-                        <param type="citeproc" dest="publisher" key="MD_PUBLISHER" />
-                        <param type="citeproc" dest="placepublish" key="MD_PLACEPUBLISH" />
-                        <param type="citeproc" dest="issued" key="MD_YEARPUBLISH" />
-                        <param type="citeproc" dest="isbn" key="MD_ISBN" />
-                    </metadata>
-                </source>
-            </citationRecommendation>
-            <pdfPageRange enabled="false" />
-        </sidebarWidgetUsage>
-
-        <!-- sidebarWidgetAdditionalFiles/@enabled: If true, the download widget within a records view for additional files from the source directory is displayed. Default is true. -->
-        <sidebarWidgetAdditionalFiles enabled="true">
-            <!-- Filters against which the filenames of additional files are tested.
-            If the filter's 'action' attribute is 'show', only files are shown which filename matches the regular expression in the 'regex' attribute.
-            If the action is 'hide' filenames matching the expression are excluded. -->
-            <filter action="hide" regex="(EXAMPLE_.*|HIDDEN_.*)" />
-            <!-- These filters utilize a variable system with '{a.B}' expressions. These expressions are replaced with a solr field value of the current record if possible
-            Within the '{...}' expression, the string after the dot is the name of a solr field which value the expression should represent.
-            The string before the dot denounces the document hierarchy level at which to look the for field. Here, 'struct' stands for fields in structures below the record level (article, chapter,...),
-            'record' stands for fields on the record level (book magazine issue,...) and 'anchor' for fields in structures above th record level (multivolume work, newspaper,...)
-            '{struct.MD_SHELFMARK}' thus means the value of the shelfmark field of the current structure element within a book. -->
-            <filter action="show" regex="{struct.MD_SHELFMARK}\..*">
-                <!-- filters which pose conditions under which the owning filter is applied.
-                    If any of these filters don't apply, the owning filter is not used
-                    These filters contain a 'value' attribute which is tested against the 'regex' attribute. In the example, the record digital collection
-                    must be 'archive.100uaghgw.020volksliedarchiv' or a subcollection thereof -->
-                <conditions>
-                    <filter action="show"
-                        regex="archive\.100uaghgw\.020volksliedarchiv.*"
-                        value="{record.DC}" />
-                </conditions>
-            </filter>
-        </sidebarWidgetAdditionalFiles>
-
-        <!-- ### GLOBAL SIDEBAR OPTIONS ### -->
-        <!-- sidebarBrowsingTerms/@enabled: If true, the sidebar term browsing widget it displayed. Default is true. -->
-        <sidebarBrowsingTerms enabled="true" />
-
-        <!-- sidebarRssFeed/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
-        <sidebarRssFeed enabled="true" />
-
-        <!-- copyrightIndicator: if enabled, additional copyright information is displayed on all pages of the record and in fullscreen view. Default is false
-             two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
-        <copyrightIndicator enabled="true" style="widget">
-            <status field="ACCESSCONDITION">
-                <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
-                <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
-                <!-- <value content="Blocked copyright" status="LOCKED" description="COPYRIGHT_DESCRIPTION_STATUS_LOCKED" /> -->
-            </status>
-            <license field="MD_USEANDREPRODUCTIONLICENSE">
-                <!-- Creative Commons: CC0 - https://creativecommons.org/publicdomain/zero/1.0/ -->
-                <value content="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" description="COPYRIGHT_DESCRIPTION_LICENSE_CC010">
-                    <icon>cc.svg</icon>
-                    <icon>zero.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY - https://creativecommons.org/licenses/by/4.0/ -->
-                <value content="Attribution 4.0 International (CC BY 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBY40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY-SA - https://creativecommons.org/licenses/by-sa/4.0/ -->
-                <value content="Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYSA40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                    <icon>sa.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY-ND - https://creativecommons.org/licenses/by-nd/4.0/ -->
-                <value content="Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYND40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                    <icon>nd.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY-NC - https://creativecommons.org/licenses/by-nc/4.0/ -->
-                <value content="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNC40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                    <icon>nc.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY-NC-SA - https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
-                <value content="Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCSA40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                    <icon>nc.svg</icon>
-                    <icon>sa.svg</icon>
-                </value>
-                <!-- Creative Commons: CC BY-NC-ND - https://creativecommons.org/licenses/by-nc-nd/4.0/ -->
-                <value content="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)" description="COPYRIGHT_DESCRIPTION_LICENSE_CCBYNCND40">
-                    <icon>cc.svg</icon>
-                    <icon>by.svg</icon>
-                    <icon>nc.svg</icon>
-                    <icon>nd.svg</icon>
-                </value>
-                <!-- Creative Commons: Public Domain - https://creativecommons.org/publicdomain/mark/1.0/ -->
-                <value content="Public Domain Mark 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_PUBLICDOMAINMARK10">
-                    <icon>pd.svg</icon>
-                </value>
-                <!-- RightsStatements: InC (In Copyright 1.0) - https://rightsstatements.org/vocab/InC/1.0/ -->
-                <value content="In Copyright 1.0" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINC10">
-                    <icon>rs-inc.svg</icon>
-                </value>
-                <!-- RightsStatements: InC-OW-EU (Urheberrechtsschutz - Verwaistes Werk EU) - https://rightsstatements.org/vocab/InC-OW-EU/1.0/ -->
-                <value content="Urheberrechtsschutz - Verwaistes Werk EU" description="COPYRIGHT_DESCRIPTION_LICENSE_RSINCOWEU10">
-                    <icon>rs-inc.svg</icon>
-                </value>
-                <!-- Rights reserved - deutsche Urheberrecht -->
-                <value content="Rights reserved" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVED">
-                    <icon>paragraphs.svg</icon>
-                </value>
-                <!-- Rights reserved - VG Wort -->
-                <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
-                    <icon>paragraphs.svg</icon>
-                </value>
-            </license>
-        </copyrightIndicator>
+                <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
+                <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
+            </widget>
+            
+        </widgets>
 
     </sidebar>
 
