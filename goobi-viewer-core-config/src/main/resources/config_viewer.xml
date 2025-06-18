@@ -1549,16 +1549,49 @@
     <!-- Show or hide sections in the sidebar globally -->
     <sidebar>
     
+        <!-- views: Widget display configurations for individual record views. -->
+        <views>
+            <view name="calendar">
+                <displayWidget name="views" />
+            </view>
+            <view name="fulltext">
+                <displayWidget name="views" />
+                <displayWidget name="copyright-info" />
+                <displayWidget name="search-in-current-item" />
+                <displayWidget name="downloads" />
+            </view>
+            <view name="object">
+                <displayWidget name="views" />
+                <displayWidget name="copyright-info" />
+                <displayWidget name="search-in-current-item" />
+                <displayWidget name="named-entities" />
+                <displayWidget name="metadata" />
+                <displayWidget name="downloads" />
+                <displayWidget name="citation" />
+                <displayWidget name="toc" />
+            </view>
+            <view name="named-entities">
+                <displayWidget name="views" />
+            </view>
+            <view name="thumbs">
+                <displayWidget name="views" />
+                <displayWidget name="copyright-info" />
+            </view>
+            <view name="toc">
+                <displayWidget name="views" />
+                <displayWidget name="copyright-info" />
+            </view>
+        </views>
+    
         <widgets>
-            <!-- ### RECORD VIEW SPECIFIC OPTIONS ### -->
             <widget name="views">
                 <calendar enabled="true" />
                 <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
                 <fulltext enabled="true" />
                 <!-- metadata/@enabled: if true, the link to the bibliographic data page is displayed. Default is true. -->
                 <metadata enabled="true" />
-                <!-- page/@enabled: if true, the link to the image view page is displayed. Default is true. -->
-                <page enabled="true" />
+                <!-- object/@enabled: if true, the link to the media view page is displayed. Default is true. -->
+                <object enabled="true" />
                 <!-- thumbs/@enabled: if true, the link to the thumbnail page is displayed. Default is true. -->
                 <thumbs enabled="true" />
                 <!-- toc/@enabled: if true, the link to the TOC page is displayed. Please note, that this is not the sidebar toc component. Default is true. -->
@@ -1588,6 +1621,9 @@
                     </conditions>
                 </filter>
             </widget>
+            
+            <!-- widget[@name="archives"]: Widget containing information about a record's linkage to an archive node. -->
+            <widget name="archives" enabled="true" />
             
             <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
             <widget name="browsing-terms" enabled="true" />
