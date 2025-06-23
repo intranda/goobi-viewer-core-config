@@ -1636,6 +1636,10 @@
         </views>
     
         <widgets>
+        
+            <!-- RECORD VIEW WIDGETS -->
+        
+            <!-- views: Widget display configurations for individual record views. -->
             <widget name="views">
                 <calendar enabled="true" />
                 <!-- fulltext/@enabled: if true, the link to the fulltext page is displayed. Default is true. -->
@@ -1644,6 +1648,8 @@
                 <metadata enabled="true" />
                 <!-- object/@enabled: if true, the link to the media view page is displayed. Default is true. -->
                 <object enabled="true" />
+                <!-- opac/@enabled: if true, the link to the OPAC will be displayed. Default is false. -->
+                <opac enabled="false" />
                 <!-- thumbs/@enabled: if true, the link to the thumbnail page is displayed. Default is true. -->
                 <thumbs enabled="true" />
                 <!-- toc/@enabled: if true, the link to the TOC page is displayed. Please note, that this is not the sidebar toc component. Default is true. -->
@@ -1651,7 +1657,7 @@
             </widget>
             
             <!-- widget[@name="additional-files"]: Download widget within a records view for additional files from the source directory. -->
-            <widget name="additional-files" enabled="true">
+            <widget name="additional-files">
                 <!-- Filters against which the filenames of additional files are tested.
                 If the filter's 'action' attribute is 'show', only files are shown which filename matches the regular expression in the 'regex' attribute.
                 If the action is 'hide' filenames matching the expression are excluded. -->
@@ -1675,12 +1681,9 @@
             </widget>
             
             <!-- widget[@name="archives"]: Widget containing information about a record's linkage to an archive node. -->
-            <widget name="archives" enabled="true" />
+            <widget name="archives" />
             
-            <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
-            <widget name="browsing-terms" enabled="true" />
-            
-            <widget name="citation" enabled="false">
+            <widget name="citation">
                 <citationLinks enabled="true">
                     <!-- links: Citation link configurations. -->
                     <links>
@@ -1723,9 +1726,9 @@
                  </citationRecommendation>
             </widget>
             
-            <!--  widget[@name="copyright-info"]/@enabled: if enabled, additional copyright information is displayed on all pages of the record and in full-screen view. Default is false
-                two possible styles: trafficlight or widget. Style widget displays the information as a sidebar widget. Trafficlight displays the information near the record title -->
-            <widget name="copyright-info" enabled="true" style="widget">
+            <!--  widget[@name="copyright-info"]/@style: two possible styles: trafficlight or widget. Style widget displays the information
+                as a sidebar widget. Trafficlight displays the information near the record title -->
+            <widget name="copyright-info" style="widget">
                 <status field="ACCESSCONDITION">
                     <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
                     <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
@@ -1798,7 +1801,7 @@
             </widget>
             
             <!-- widget[@name="downloads"] -->
-            <widget name="downloads" enabled="true">
+            <widget name="downloads">
                 <page>
                     <downloadOptions enabled="true">
                     <!-- Each option contains a label and a format. The label is translated via the messages.
@@ -1817,18 +1820,11 @@
                 <pdfPageRange enabled="false" />
             </widget>
             
-            <!-- widget[@name="opac"]/@enabled: if true, an additional link to the catalogue is displayed in the views section. Default is false. -->
-            <widget name="opac" enabled="false" />
-            
-            <!-- widget[@name="rss]/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
-            <widget name="rss" enabled="true" />
-            
-            <!-- widget[@name="search-in-current-item"]/@enabled: if true, the widget for searching in the current record is displayed. Default is true. -->
             <!-- widget[@name="search-in-current-item"]/@onlyIfFullTextAvailable: if true, the widget will only be displayed if current record has full-text. Default is false. -->
-            <widget name="search-in-current-item" enabled="true" onlyIfFullTextAvailable="false" />
+            <widget name="search-in-current-item" onlyIfFullTextAvailable="false" />
             
-            <!-- widget[@name="toc"]/@enabled: if true, the sidebar toc is displayed. Default is true. -->
-            <widget name="toc" enabled="true">
+            <!-- widget[@name="toc"] -->
+            <widget name="toc">
                 <!-- visibleInFullscreen: If true, the the sidebar TOC element is displayed in the full-screen sidebar accordion. Default is true. -->
                 <visibleInFullscreen>true</visibleInFullscreen>
 
@@ -1847,6 +1843,14 @@
                 <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
                 <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
             </widget>
+            
+            <!-- OTHER WIDGETS -->
+            
+            <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
+            <widget name="browsing-terms" enabled="true" />
+            
+            <!-- widget[@name="rss]/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+            <widget name="rss" enabled="true" />
             
         </widgets>
 
