@@ -1615,7 +1615,7 @@
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
                 <displayWidget name="downloads" />
-                <displayWidget name="citations" collapsible="true|false"/>
+                <displayWidget name="citations">
                 <displayWidget name="related-groups" />
                 <displayWidget name="toc" />
                 <displayWidget name="version-history" />
