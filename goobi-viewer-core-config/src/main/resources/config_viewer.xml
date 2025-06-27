@@ -1854,7 +1854,7 @@
             <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
             <widget name="browsing-terms" enabled="true" />
             
-            <!-- widget[@name="rss]/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
+            <!-- widget[@name="rss"]/@enabled: If true, the sidebar RSS widget it displayed. Default is true. -->
             <widget name="rss" enabled="true" />
             
         </widgets>
