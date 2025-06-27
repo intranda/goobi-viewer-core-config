@@ -1550,12 +1550,13 @@
     <sidebar>
     
         <!-- views: Widget display configurations for individual record views. -->
-        <views>
+               <views>
             <view name="calendar">
                 <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
+                <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="search-in-current-item" />
+                <displayWidget name="archives" />
                 <displayWidget name="named-entities" />
                 <displayWidget name="metadata" />
                 <displayWidget name="geomap" />
@@ -1570,7 +1571,7 @@
             </view>
             <view name="fulltext">
                 <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
+                <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="geomap" />
@@ -1581,7 +1582,7 @@
             </view>
             <view name="metadata">
                 <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
+                <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="named-entities" />
@@ -1602,30 +1603,32 @@
                 <displayWidget name="version-history" />
             </view>
             <view name="object">
-                <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="views" /> 
+                <displayWidget name="copyright" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="named-entities" />
                 <displayWidget name="metadata" />
                 <displayWidget name="geomap" />
+                <displayWidget name="archives" />
+                <displayWidget name="statistics-usage" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
                 <displayWidget name="downloads" />
-                <displayWidget name="citation" />
+                <displayWidget name="citations">
                 <displayWidget name="related-groups" />
                 <displayWidget name="toc" />
                 <displayWidget name="version-history" />
             </view>
             <view name="thumbs">
                 <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
+                <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="version-history" />
             </view>
             <view name="toc">
                 <displayWidget name="views" />
-                <displayWidget name="copyright-info" />
+                <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
@@ -1726,9 +1729,9 @@
                  </citationRecommendation>
             </widget>
             
-            <!--  widget[@name="copyright-info"]/@style: two possible styles: trafficlight or widget. Style widget displays the information
+            <!--  widget[@name="copyright"]/@style: two possible styles: trafficlight or widget. Style widget displays the information
                 as a sidebar widget. Trafficlight displays the information near the record title -->
-            <widget name="copyright-info" style="widget">
+            <widget name="copyright" style="widget">
                 <status field="ACCESSCONDITION">
                     <value content="OPENACCESS" status="OPEN" description="COPYRIGHT_DESCRIPTION_STATUS_OPEN" />
                     <value content="born_digital_download_disabled" status="PARTIAL" description="COPYRIGHT_DESCRIPTION_STATUS_BORNDIGITAL" />
