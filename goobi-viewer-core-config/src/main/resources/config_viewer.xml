@@ -1550,7 +1550,7 @@
     <sidebar>
     
         <!-- views: Widget display configurations for individual record views. -->
-               <views>
+        <views>
             <view name="calendar">
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
@@ -1581,17 +1581,18 @@
                 <displayWidget name="version-history" />
             </view>
             <view name="metadata">
-                <displayWidget name="views" />
+                <displayWidget name="views" collapsible="false" collapsedByDefault="false" />
                 <displayWidget name="copyright" />
                 <displayWidget name="search-hit-navigation" />
                 <displayWidget name="search-in-current-item" />
+                <displayWidget name="statistics-usage" />
                 <displayWidget name="named-entities" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
-                <displayWidget name="downloads" />
-                <displayWidget name="formats-links" />
-                <displayWidget name="citation" />
+                <displayWidget name="downloads" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="formats-links" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="citation" collapsible="false" collapsedByDefault="false" /> 
                 <displayWidget name="version-history" />
             </view>
             <view name="named-entities">
@@ -1603,19 +1604,20 @@
                 <displayWidget name="version-history" />
             </view>
             <view name="object">
-                <displayWidget name="views" /> 
+                <displayWidget name="views" collapsible="false" collapsedByDefault="false" /> 
                 <displayWidget name="copyright" />
                 <displayWidget name="search-result-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="named-entities" />
-                <displayWidget name="metadata" />
+                <displayWidget name="metadata" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="metadata-tech" collapsible="false" collapsedByDefault="false" />
                 <displayWidget name="geomap" />
                 <displayWidget name="archives" />
                 <displayWidget name="statistics-usage" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
-                <displayWidget name="downloads" />
-                <displayWidget name="citations">
+                <displayWidget name="downloads" collapsible="true" collapsedByDefault="true" />
+                <displayWidget name="citation" collapsible="true" collapsedByDefault="true" />
                 <displayWidget name="related-groups" />
                 <displayWidget name="toc" />
                 <displayWidget name="version-history" />
