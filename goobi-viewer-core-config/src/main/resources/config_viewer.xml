@@ -1328,21 +1328,6 @@
                 </metadata>
             </template>
         </metadataList>
-        
-        <metadataList type="geomaps_location">
-        	<template name="_DEFAULT">
-              <metadata label="" value="{NORM_NAME}">
-                          <param type="field" key="NORM_NAME" altKey="LABEL" />
-              </metadata>
-          </template>
-        </metadataList>
-        <metadataList type="geomaps_metadata">
-        	<template name="_DEFAULT">
-                <metadata label="" value="{MD_VALUE}">
-                            <param type="field" key="MD_VALUE" altKey="LABEL" />
-                </metadata>
-            </template>
-        </metadataList>
 
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
         <normdataList>
@@ -1817,6 +1802,10 @@
                     <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
                         <icon>paragraphs.svg</icon>
                     </value>
+                    <!-- Rights reserved - VG Wort NEW -->
+                    <value content="Rights reserved - Rights managed by VG Wort (§ 52 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT52">
+                        <icon>paragraphs.svg</icon>
+                    </value>
                 </license>
             </widget>
             
@@ -2216,23 +2205,24 @@
         <metadata>
             <option label="cms__geomaps__popup_content__option__none" name="" />
             <option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
-                <marker metadataList="geomaps_location"/>
+                <title>
+                    <template name="_DEFAULT">
+                        <metadata label="" value="{NORM_NAME}">
+                                    <param type="field" key="NORM_NAME" altKey="LABEL" />
+                        </metadata>
+                    </template>
+                </title>
             </option>
             <option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
-            	<marker metadataList="geomaps_metadata"/>
+                <title>
+                    <template name="_DEFAULT">
+                        <metadata label="" value="{MD_VALUE}">
+                                    <param type="field" key="MD_VALUE" altKey="LABEL" />
+                        </metadata>
+                    </template>
+                </title>
             </option>
         </metadata>
-        
-        <filters>
-        	<filter>
-				<name>Metadatatypes</name>
-				<field label="Type">METADATA_TYPE</field>
-			</filter>
-			<filter>
-				<name>Doctypes</name>
-				<field label="Type">DOCSTRCT</field>
-			</filter>
-        </filters>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
         <coordinateFields>
@@ -2259,7 +2249,8 @@
                 <marker>default</marker>
                 <featureSets>
                     <featureSet type="docStructs">
-                        <marker metadataList="geomaps_metadata">default</marker>
+                        <marker>default</marker>
+                        <labelConfig>MD_VALUE</labelConfig>
                     </featureSet>
                     <featureSet type="annotations">
                         <marker>default</marker>
