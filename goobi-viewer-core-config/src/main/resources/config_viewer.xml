@@ -1565,6 +1565,7 @@
     <sidebar>
     
         <!-- views: Widget display configurations for individual record views. -->
+		<!--  Not every widget is available in every view, some functions are linked to certain views, based on the widget type. This needs to be reviewed manually on request. -->
         <views>
             <view name="calendar">
                 <displayWidget name="views" />
