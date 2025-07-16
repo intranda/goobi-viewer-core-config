@@ -1328,6 +1328,21 @@
                 </metadata>
             </template>
         </metadataList>
+        
+        <metadataList type="geomaps_location">
+        	<template name="_DEFAULT">
+              <metadata label="" value="{NORM_NAME}">
+                          <param type="field" key="NORM_NAME" altKey="LABEL" />
+              </metadata>
+          </template>
+        </metadataList>
+        <metadataList type="geomaps_metadata">
+        	<template name="_DEFAULT">
+                <metadata label="" value="{MD_VALUE}">
+                            <param type="field" key="MD_VALUE" altKey="LABEL" />
+                </metadata>
+            </template>
+        </metadataList>
 
         <!-- normdataList: List of NORM_ fields to display in the norm data pop-up box -->
         <normdataList>
@@ -1550,6 +1565,7 @@
     <sidebar>
     
         <!-- views: Widget display configurations for individual record views. -->
+		<!--  Not every widget is available in every view, some functions are linked to certain views, based on the widget type. This needs to be reviewed manually on request. -->
         <views>
             <view name="calendar">
                 <displayWidget name="views" />
@@ -1613,7 +1629,7 @@
                 <displayWidget name="metadata-tech" collapsible="false" collapsedByDefault="false" />
                 <displayWidget name="geomap" />
                 <displayWidget name="archives" />
-                <displayWidget name="statistics-usage" />
+                <displayWidget name="statistics-usage" collapsible="false" collapsedByDefault="false" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
                 <displayWidget name="downloads" collapsible="true" collapsedByDefault="true" />
@@ -1800,6 +1816,10 @@
                     </value>
                     <!-- Rights reserved - VG Wort -->
                     <value content="Rights reserved - Rights managed by VG Wort (§ 51 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT">
+                        <icon>paragraphs.svg</icon>
+                    </value>
+                    <!-- Rights reserved - VG Wort NEW -->
+                    <value content="Rights reserved - Rights managed by VG Wort (§ 52 VGG)" description="COPYRIGHT_DESCRIPTION_LICENSE_RIGHTSRESERVEDVGWORT52">
                         <icon>paragraphs.svg</icon>
                     </value>
                 </license>
@@ -2201,24 +2221,23 @@
         <metadata>
             <option label="cms__geomaps__popup_content__option__none" name="" />
             <option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
-                <title>
-                    <template name="_DEFAULT">
-                        <metadata label="" value="{NORM_NAME}">
-                                    <param type="field" key="NORM_NAME" altKey="LABEL" />
-                        </metadata>
-                    </template>
-                </title>
+                <marker metadataList="geomaps_location"/>
             </option>
             <option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
-                <title>
-                    <template name="_DEFAULT">
-                        <metadata label="" value="{MD_VALUE}">
-                                    <param type="field" key="MD_VALUE" altKey="LABEL" />
-                        </metadata>
-                    </template>
-                </title>
+            	<marker metadataList="geomaps_metadata"/>
             </option>
         </metadata>
+        
+        <filters>
+        	<filter>
+				<name>Metadatatypes</name>
+				<field label="Type">METADATA_TYPE</field>
+			</filter>
+			<filter>
+				<name>Doctypes</name>
+				<field label="Type">DOCSTRCT</field>
+			</filter>
+        </filters>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
         <coordinateFields>
@@ -2245,8 +2264,7 @@
                 <marker>default</marker>
                 <featureSets>
                     <featureSet type="docStructs">
-                        <marker>default</marker>
-                        <labelConfig>MD_VALUE</labelConfig>
+                        <marker metadataList="geomaps_metadata">default</marker>
                     </featureSet>
                     <featureSet type="annotations">
                         <marker>default</marker>
