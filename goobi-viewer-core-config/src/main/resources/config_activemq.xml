@@ -16,6 +16,7 @@
                         <redeliveryPolicyEntries>
                             <redeliveryPolicy queue="viewer" maximumRedeliveries="5" initialRedeliveryDelay="10000" backOffMultiplier="1.5" useExponentialBackOff="true"/>
                             <redeliveryPolicy queue="pdf" maximumRedeliveries="5" initialRedeliveryDelay="10000" backOffMultiplier="1.5" useExponentialBackOff="true"/>
+                            <redeliveryPolicy queue="frontend" maximumRedeliveries="5" initialRedeliveryDelay="10000" backOffMultiplier="1.5" useExponentialBackOff="true"/>
                         </redeliveryPolicyEntries>
                         <defaultEntry>
                             <!-- the fallback policy for all other destinations -->
@@ -38,6 +39,7 @@
                             <authorizationEntry queue=">" read="admins" write="admins" admin="admins" />
                             <authorizationEntry queue="viewer" read="consumers" write="publishers" admin="publishers" />
                             <authorizationEntry queue="pdf" read="consumers" write="publishers" admin="publishers" />
+                            <authorizationEntry queue="frontend" read="consumers" write="publishers" admin="publishers" />
                         </authorizationEntries>
                     </authorizationMap>
                 </map>
