@@ -10,7 +10,7 @@
 		<repositoryName>OAI Frontend</repositoryName>
 
 		<!-- URL of the repository.
-		     @useInRequestElement: Use value configured in
+			 @useInRequestElement: Use value configured in
 			baseURL for the <request> element in the OAI dataset. Otherwise the URL will
 			be extracted from the servlet request. Default is false. -->
 		<!-- MAKE SURE THIS URL IS NOT 'localhost' WHEN IN PRODUCTION! -->
@@ -37,11 +37,11 @@
 
 		<!-- Defines times. Valid are Datestamps and UTCdatetime -->
 		<granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
-        
-        <!-- an extensible mechanism for communities to describe their repositories. For example, the description container could be used to include collection-level metadata in the
-            response to the Identify request. Implementation Guidelines are available to give directions with this respect. Each description container must be accompanied by the URL of an
-            XML schema describing the structure of the description container -->
-        <description>OAI-PMh interface.</description>
+
+		<!-- an extensible mechanism for communities to describe their repositories. For example, the description container could be used to include collection-level metadata in the
+			response to the Identify request. Implementation Guidelines are available to give directions with this respect. Each description container must be accompanied by the URL of an
+			XML schema describing the structure of the description container -->
+		<description>OAI-PMh interface.</description>
 	</identifyTags>
 
 
@@ -75,7 +75,7 @@
 	<piResolverUrl>http://localhost:8080/viewer/piresolver?id=</piResolverUrl>
 
 	<!-- documentResolverUrl: URL to the METS/LIDO resolver.
-	     This URL is called locally and can be 'localhost' as long as the viewer is on the same machine -->
+		 This URL is called locally and can be 'localhost' as long as the viewer is on the same machine -->
 	<documentResolverUrl>http://localhost:8080/viewer/sourcefile?id=</documentResolverUrl>
 
 	<!-- harvestUrl: URL for havesting overview page and crowdsourcing updates -->
@@ -93,9 +93,9 @@
 				<metadata label="title" value="{0}">
 					<param type="field" key="MD_TITLE" />
 				</metadata>
-                <metadata label="title" value="{0}">
-                    <param type="field" key="MD_TITLE_LANG_EN" />
-                </metadata>
+				<metadata label="title" value="{0}">
+					<param type="field" key="MD_TITLE_LANG_EN" />
+				</metadata>
 				<metadata label="creator" value="{0}">
 					<param type="field" key="MD_CREATOR" />
 				</metadata>
@@ -112,9 +112,9 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="type" value="text" />
-                <metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
-                    <param type="field" key="MD_LANGUAGE" />
-                </metadata>
+				<metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
+					<param type="field" key="MD_LANGUAGE" />
+				</metadata>
 				<metadata label="format" value="image/jpeg" />
 				<metadata label="format" value="application/pdf" />
 				<metadata label="identifier" value="#AUTO#" />
@@ -150,9 +150,9 @@
 					<param type="translatedfield" key="DOCSTRCT" />
 				</metadata>
 				<metadata label="type" value="text" />
-                <metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
-                    <param type="field" key="MD_LANGUAGE" />
-                </metadata>
+				<metadata label="language" value="{0}" dontUseTopstructValue="false" defaultValue="und">
+					<param type="field" key="MD_LANGUAGE" />
+				</metadata>
 				<metadata label="format" value="image/jpeg" />
 				<metadata label="format" value="application/pdf" />
 				<metadata label="identifier" value="#AUTO#" />
@@ -167,7 +167,7 @@
 		</setSpec>
 
 		<accessConditions>
-		    <mapping accessCondition="Public Domain Mark 1.0">info:eu-repo/semantics/openAccess</mapping>
+			<mapping accessCondition="Public Domain Mark 1.0">info:eu-repo/semantics/openAccess</mapping>
 		</accessConditions>
 	</oai_dc>
 
@@ -280,27 +280,27 @@
 	</cmdi>
 
 
-    <sets>
-            <!-- The following example adds a set for each digital collection -->
-            <!-- <allValuesSet translate="true">DC</allValuesSet> -->
-            
-            <!-- setSpec="open_access" (required for DINI conformity) -->
-            <set setName="Open Access" setSpec="open_access" setQuery="+ACCESSCONDITION:OPENACCESS +(ISWORK:true ISANCHOR:true)" />
+	<sets>
+			<!-- The following example adds a set for each digital collection -->
+			<!-- <allValuesSet translate="true">DC</allValuesSet> -->
 
-            <!-- ##### ATTENTION ##### -->
-            <!--  Some fields like "DC" or "DOCSTRCT" are written into all solr docs of a given record. This means
-                  filtering only for them is not enough. If you want to list only records and anchor records
-                  you have to add this, too:  +(ISWORK:true ISANCHOR:true) -->
+			<!-- setSpec="open_access" (required for DINI conformity) -->
+			<set setName="Open Access" setSpec="open_access" setQuery="+ACCESSCONDITION:OPENACCESS +(ISWORK:true ISANCHOR:true)" />
 
-            <!-- The folling example adds a set for all records from the digital collection "foo" -->
-            <!-- <set setName="Digital collection foo" setSpec="foo" setQuery="+DC:foo +(ISWORK:true ISANCHOR:true)" /> -->
+			<!-- ##### ATTENTION ##### -->
+			<!--  Some fields like "DC" or "DOCSTRCT" are written into all solr docs of a given record. This means
+				  filtering only for them is not enough. If you want to list only records and anchor records
+				  you have to add this, too:  +(ISWORK:true ISANCHOR:true) -->
 
-            <!-- The following example adds a set with all monographs -->
-            <set setName="Monographs" setSpec="monographs" setQuery="+DOCSTRCT:monograph +(ISWORK:true ISANCHOR:true)" />
+			<!-- The folling example adds a set for all records from the digital collection "foo" -->
+			<!-- <set setName="Digital collection foo" setSpec="foo" setQuery="+DC:foo +(ISWORK:true ISANCHOR:true)" /> -->
+
+			<!-- The following example adds a set with all monographs -->
+			<set setName="Monographs" setSpec="monographs" setQuery="+DOCSTRCT:monograph +(ISWORK:true ISANCHOR:true)" />
 
 
-            <!-- The following example lists only one record with a given persistent identifier -->
-            <!-- <set setName="Single identifier" setSpec="id" setQuery="PI:AC1234567" /> -->
+			<!-- The following example lists only one record with a given persistent identifier -->
+			<!-- <set setName="Single identifier" setSpec="id" setQuery="PI:AC1234567" /> -->
 	</sets>
 
 
