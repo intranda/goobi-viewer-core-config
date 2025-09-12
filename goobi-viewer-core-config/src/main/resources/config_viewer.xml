@@ -1330,16 +1330,16 @@
         </metadataList>
         
         <metadataList type="geomaps_location">
-        	<template name="_DEFAULT">
-              <metadata label="" value="{NORM_NAME}">
-                          <param type="field" key="NORM_NAME" altKey="LABEL" />
-              </metadata>
-          </template>
+            <template name="_DEFAULT">
+                <metadata label="" value="{NORM_NAME}">
+                    <param type="field" key="NORM_NAME" altKey="LABEL" />
+                </metadata>
+            </template>
         </metadataList>
         <metadataList type="geomaps_metadata">
-        	<template name="_DEFAULT">
+            <template name="_DEFAULT">
                 <metadata label="" value="{MD_VALUE}">
-                            <param type="field" key="MD_VALUE" altKey="LABEL" />
+                    <param type="field" key="MD_VALUE" altKey="LABEL" />
                 </metadata>
             </template>
         </metadataList>
@@ -1565,7 +1565,7 @@
     <sidebar>
     
         <!-- views: Widget display configurations for individual record views. -->
-		<!--  Not every widget is available in every view, some functions are linked to certain views, based on the widget type. This needs to be reviewed manually on request. -->
+        <!--  Not every widget is available in every view, some functions are linked to certain views, based on the widget type. This needs to be reviewed manually on request. -->
         <views>
             <view name="calendar">
                 <displayWidget name="views" />
@@ -1657,9 +1657,7 @@
         </views>
     
         <widgets>
-        
             <!-- RECORD VIEW WIDGETS -->
-        
             <!-- views: Widget display configurations for individual record views. -->
             <widget name="views">
                 <calendar enabled="true" />
@@ -1870,7 +1868,6 @@
             </widget>
             
             <!-- OTHER WIDGETS -->
-            
             <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
             <widget name="browsing-terms" enabled="true" />
             
@@ -1878,7 +1875,6 @@
             <widget name="rss" enabled="true" />
             
         </widgets>
-
     </sidebar>
 
 
@@ -2221,22 +2217,22 @@
         <metadata>
             <option label="cms__geomaps__popup_content__option__none" name="" />
             <option label="cms__geomaps__popup_content__option__place" name="NORM_NAME">
-                <marker metadataList="geomaps_location"/>
+                <marker metadataList="geomaps_location" />
             </option>
             <option label="cms__geomaps__popup_content__option__metadata" name="MD_VALUE">
-            	<marker metadataList="geomaps_metadata"/>
+                <marker metadataList="geomaps_metadata" />
             </option>
         </metadata>
         
         <filters>
-        	<filter>
-				<name>Metadatatypes</name>
-				<field label="Type">METADATA_TYPE</field>
-			</filter>
-			<filter>
-				<name>Doctypes</name>
-				<field label="Type">DOCSTRCT</field>
-			</filter>
+            <filter>
+                <name>Metadatatypes</name>
+                <field label="Type">METADATA_TYPE</field>
+            </filter>
+            <filter>
+                <name>Doctypes</name>
+                <field label="Type">DOCSTRCT</field>
+            </filter>
         </filters>
 
         <!-- List of fields in the Solr index, that contain GeoJSON information -->
