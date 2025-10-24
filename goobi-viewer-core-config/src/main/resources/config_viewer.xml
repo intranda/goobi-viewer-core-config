@@ -1997,13 +1997,15 @@
 
     <!-- Web API configuration -->
     <webapi>
-        <!-- fields: Custom JSON fields. Each <field> element must contain the
-             attributes 'jsonField' (name of the field for JSON datasets) and 'solrField'
-             (source index field name). An optional attribute 'multivalue' can be set
-             to 'true' to return a list with all found values in JSON. -->
-        <fields>
-            <field jsonField="persons" solrField="MD_CREATOR" multivalue="true" />
-        </fields>
+        <json>
+            <!-- template: Template containing a custom JSON field configuration. Attribute @query contains a Solr filter query. 
+             Each <field> element must contain the  attributes 'jsonField'  (name of the field for JSON datasets) and 'solrField'
+             (source index field name). An optional attribute 'multivalue' can be set to 'true' to return a list with all found values in JSON. -->
+            <template name="_DEFAULT" query="">
+                <field jsonField="persons" solrField="MD_CREATOR" multivalue="true" />
+                <field jsonField="title" solrField="MD_TITLE" />
+            </template>
+        </json>
 
         <!-- iiif: configuration of the IIIF presentation API. Supported values for the use-version attribute are "2.1.1" and "3.0"
              The version has an impact on the links the Goobi viewer provides in the "Cite and reuse" widget. -->
