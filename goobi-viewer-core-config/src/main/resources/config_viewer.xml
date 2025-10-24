@@ -2334,19 +2334,19 @@
                            the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
                            containing hits are also loaded. Default value ist 1000
     nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
-    nodeTypes/node/@icon: This is used to specify a CSS class, used to display an icon for this element in the tree. Typically font-awesome.
+    nodeTypes/node/@icon: Name of the icon (without file extension) that is rendered via the util:icon component.
     nodeTypes/node/@default: If not icon was specified, this one is chosen.
     -->
     <archives lazyLoadingThreshold="1000">
         <nodeTypes>
-            <node name="collection" icon="fa fa-folder-open-o" />
-            <node name="folder" icon="fa fa-folder-open-o" />
-            <node name="class" icon="fa fa-folder-open-o" default="true" />
-            <node name="file" icon="fa fa-file-text-o" />
-            <node name="image" icon="fa fa-file-image-o" />
-            <node name="audio" icon="fa fa-file-audio-o" />
-            <node name="video" icon="fa fa-file-video-o" />
-            <node name="other" icon="fa fa-file-o" />
+            <node name="collection" icon="folders" />
+            <node name="folder" icon="folder" />
+            <node name="class" icon="folder-open" default="true" />
+            <node name="file" icon="file" />
+            <node name="image" icon="photo" />
+            <node name="audio" icon="music" />
+            <node name="video" icon="video" />
+            <node name="other" icon="file" />
         </nodeTypes>
         <!-- If true, clicking on an archive entry to select it also displays all its child entries. Conversely, clicking on a selected entry to
             de-select it, hides the children -->
