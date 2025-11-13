@@ -2242,6 +2242,16 @@
             <field>MD_GEOJSON_POINT</field>
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
+        
+        <!-- settings for behaviour of marker clusters both in plain maps and heatmaps -->
+        <cluster>
+        	<!-- Increase from 1 to increase the distance away from the center that spiderfied markers are placed. -->
+        	<distanceMultiplier>1.0</distanceMultiplier>
+        	<!-- The maximum radius that a cluster will cover from the central marker (in pixels) -->
+        	<radius>80</radius>
+        	<!-- If set to any number, at this zoom level and below, markers will not be clustered. -->
+        	<disableAtZoom></disableAtZoom>
+        </cluster>
 
         <!-- Individual settings for map types -->
         <cms>
