@@ -307,7 +307,7 @@
             <scale>1800</scale>
             <scale>3600</scale>
             <tileSize>
-                <scaleFactors>4</scaleFactors>
+                <scaleFactors>1;32</scaleFactors>
                 <size>1024</size>
             </tileSize>
             <navigator enabled="false" />
