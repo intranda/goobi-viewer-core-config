@@ -413,6 +413,7 @@
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
             <newspaper>calendar</newspaper>
+            <IhsWork>mei</IhsWork>
         </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
