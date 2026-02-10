@@ -307,7 +307,7 @@
             <scale>1800</scale>
             <scale>3600</scale>
             <tileSize>
-                <scaleFactors>4</scaleFactors>
+                <scaleFactors>1;32</scaleFactors>
                 <size>1024</size>
             </tileSize>
             <navigator enabled="false" />
@@ -413,6 +413,7 @@
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
             <newspaper>calendar</newspaper>
+            <IhsWork>mei</IhsWork>
         </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
@@ -1570,7 +1571,7 @@
             <view name="calendar">
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="archives" />
                 <displayWidget name="named-entities" />
@@ -1588,7 +1589,7 @@
             <view name="fulltext">
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
@@ -1599,7 +1600,7 @@
             <view name="metadata">
                 <displayWidget name="views" collapsible="false" collapsedByDefault="false" />
                 <displayWidget name="copyright" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="search-in-current-item" />
                 <displayWidget name="statistics-usage" />
                 <displayWidget name="named-entities" />
@@ -1613,7 +1614,7 @@
             </view>
             <view name="named-entities">
                 <displayWidget name="views" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
@@ -1641,17 +1642,36 @@
             <view name="thumbs">
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="version-history" />
             </view>
             <view name="toc">
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
-                <displayWidget name="search-hit-navigation" />
+                <displayWidget name="search-result-navigation" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
                 <displayWidget name="formats-links" />
+                <displayWidget name="version-history" />
+            </view>
+            <view name="mei">
+                <displayWidget name="views" collapsible="false" collapsedByDefault="false" /> 
+                <displayWidget name="copyright" />
+                <displayWidget name="search-result-navigation" />
+                <displayWidget name="search-in-current-item" />
+                <displayWidget name="named-entities" />
+                <displayWidget name="metadata" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="metadata-tech" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="geomap" />
+                <displayWidget name="archives" />
+                <displayWidget name="statistics-usage" collapsible="false" collapsedByDefault="false" />
+                <displayWidget name="annotations" />
+                <displayWidget name="record-notes" />
+                <displayWidget name="downloads" collapsible="true" collapsedByDefault="true" />
+                <displayWidget name="citation" collapsible="true" collapsedByDefault="true" />
+                <displayWidget name="related-groups" />
+                <displayWidget name="toc" />
                 <displayWidget name="version-history" />
             </view>
         </views>
@@ -2242,6 +2262,16 @@
             <field>MD_GEOJSON_POINT</field>
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
+        
+        <!-- settings for behaviour of marker clusters both in plain maps and heatmaps -->
+        <cluster>
+        	<!-- Increase from 1 to increase the distance away from the center that spiderfied markers are placed. -->
+        	<distanceMultiplier>1.0</distanceMultiplier>
+        	<!-- The maximum radius that a cluster will cover from the central marker (in pixels) -->
+        	<radius>80</radius>
+        	<!-- If set to any number, at this zoom level and below, markers will not be clustered. -->
+        	<disableAtZoom></disableAtZoom>
+        </cluster>
 
         <!-- Individual settings for map types -->
         <cms>
