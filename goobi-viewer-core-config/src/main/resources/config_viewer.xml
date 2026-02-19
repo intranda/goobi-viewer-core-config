@@ -1498,6 +1498,9 @@
                 </metadata>
             </template>
         </labelConfig>
+        
+        <!-- Set the layout of the listing of child records in the TOC of an anchor record. Possible values are 'list' and 'grid' -->
+        <tocAnchorLayout>list</tocAnchorLayout>
 
         <!-- tocAnchorGroupElementsPerPage: Number of elements displayed per page in anchor/group TOCs. Values below 1 disable pagination. Default is 50. -->
         <tocAnchorGroupElementsPerPage>50</tocAnchorGroupElementsPerPage>
