@@ -1652,6 +1652,7 @@
                 <displayWidget name="views" />
                 <displayWidget name="copyright" />
                 <displayWidget name="search-result-navigation" />
+                <displayWidget name="search-in-current-item" />
                 <displayWidget name="geomap" />
                 <displayWidget name="annotations" />
                 <displayWidget name="record-notes" />
