@@ -287,48 +287,6 @@
 		The configurations are tested from top to bottom and the last element should have no condition block so it is always used as fallback -->
 		<!-- If "tileImage" is true, the image view is composed of individual tiles for smoother loading, otherwise it is composed of a image pyramid  -->
 		<!-- "footerheight" sets the pixel height of the image footer shown below the image if a footer is configured. A footerheight of 0 removes any footer -->
-		<zoomImageView tileImage="true" footerHeight="50">
-			<!-- Conditions determining if the configuration is to be used for a given 
-				view -->
-			<condition>
-				<!-- The pageType of the view -->
-				<view>fullscreen</view>
-				<!-- mimetype of the page document -->
-				<mimeType>image/tiff</mimeType>
-				<!-- DocStructType of the record -->
-				<docType>monograph</docType>
-				<!-- A DC collection the record must belong to -->
-				<collection>myCollection</collection>
-				<!-- A number range within which the record page number be be. The range 
-					is always given by its first and last number, separated by comma and enclosed 
-					within brackets. A round bracket means that the adjacent number is excluded, 
-					a square bracket means the number is included -->
-				<pageCount>[0,100)</pageCount>
-			</condition>
-			<!-- if "tileImage" is false, deliver the image scaled to the given width. 
-				If more than one <scale> element exists, higher values are loaded when zooming 
-				into the image -->
-			<scale>800</scale>
-			<scale>2000</scale>
-			<!-- IIIF tile sizes to suggest to the image view. -->
-			<tileSize>
-				<!-- shrink the original image resolutions by the given factors. These 
-					are only suggestions for the image view. Actual resolutions may vary -->
-				<scaleFactors>1;32</scaleFactors>
-				<!-- Pixel size of a single tile in the image view -->
-				<size>1024</size>
-			</tileSize>
-			<!-- if enabled, show a navigator within the zoomed image showing the 
-				currently shown area within the image -->
-			<navigator enabled="false" />
-			<!-- if enabled, show a gallery of all images of the record next to the 
-				current image for easy navigation -->
-			<thumbnailGallery enabled="false" />
-			<!-- Allow viewing the preceding or succeeding image along with the current 
-				image like two pages of an open book. If default=true, this view is loaded 
-				initially when entering the image view -->
-			<doublePageNavigation enabled="true" default="false" />
-		</zoomImageView>
 
 		<!-- Settings for png images: Deliver entire, untiled image -->
 		<zoomImageView tileImage="false" footerHeight="50">
