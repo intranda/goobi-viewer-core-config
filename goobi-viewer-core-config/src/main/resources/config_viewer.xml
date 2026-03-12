@@ -285,6 +285,7 @@
 
 		<!-- Settings for viewing images in a record. More than one <zoomImageView> configurations may exist. The configuration to use for a specific view is specified in the <condition> element.
 		The configurations are tested from top to bottom and the last element should have no condition block so it is always used as fallback -->
+		<!-- "type" may have one of the values "default" to display a single image in the view, and "sequence" to display all images in  a vertically scrollable single view  -->
 		<!-- If "tileImage" is true, the image view is composed of individual tiles for smoother loading, otherwise it is composed of a image pyramid  -->
 		<!-- "footerheight" sets the pixel height of the image footer shown below the image if a footer is configured. A footerheight of 0 removes any footer -->
 
