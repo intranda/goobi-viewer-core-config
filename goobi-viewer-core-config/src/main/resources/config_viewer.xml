@@ -2293,7 +2293,7 @@
             <template name="_DEFAULT">
                 <marker>default</marker>
                 <featureSets>
-                    <featureSet type="docStructs">
+                    <featureSet type="docStruct">
                         <marker metadataList="geomaps_metadata">default</marker>
                     </featureSet>
                     <featureSet type="annotations">
