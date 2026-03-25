@@ -239,6 +239,10 @@
         <!-- downloadFolder: Folder for generated download files -->
         <downloadFolder>/opt/digiverso/viewer/download_pdf</downloadFolder>
 
+        <!-- expireAfter: Time after which generated PDF files are deleted from the download folder.
+             Default is 14 DAYS. The @unit attribute accepts SECONDS, MINUTES, HOURS, DAYS, WEEKS, MONTHS, YEARS. -->
+        <!-- <expireAfter unit="DAYS">14</expireAfter> -->
+
         <!-- docHierarchyPdfEnabled: if true, an icon to generate a PDF out of the Table of Contents is displayed. Default is false. -->
         <docHierarchyPdfEnabled>true</docHierarchyPdfEnabled>
     </pdf>
@@ -1976,6 +1980,9 @@
     <cms>
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
+
+        <!-- mediaDisplayHeight: defines the maximum height in pixels for cms media items. Default is 100000 (effectively unlimited, height is determined by width). -->
+        <!-- <mediaDisplayHeight>400</mediaDisplayHeight> -->
     </cms>
 
 
@@ -2191,7 +2198,7 @@
                 <logo>https://www.intranda.com/wp-content/uploads/2014/07/intranda_logo_blue_2014.png</logo>
             </provider>
 
-            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false. -->
+            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is true. -->
             <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
@@ -2220,7 +2227,7 @@
             <token></token>
             <user></user>
             <styleId></styleId>
-            <!-- Display an input field to search for places within a map -->
+            <!-- Display an input field to search for places within a map. Default is true. -->
             <addressSearch enabled="false" />
         </mapbox>
 
@@ -2266,6 +2273,15 @@
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
         
+        <!-- view: Default map view settings (initial zoom level and center coordinates). -->
+        <view>
+            <zoom>5</zoom>
+            <center>
+                <lng>11.073397</lng>
+                <lat>49.451993</lat>
+            </center>
+        </view>
+
         <!-- settings for behaviour of marker clusters both in plain maps and heatmaps -->
         <cluster>
         	<!-- Increase from 1 to increase the distance away from the center that spiderfied markers are placed. -->
@@ -2369,7 +2385,7 @@
                            the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
                            containing hits are also loaded. Default value ist 1000
     nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
-    nodeTypes/node/@icon: Name of the icon (without file extension) that is rendered via the util:icon component.
+    nodeTypes/node/@icon: Name of the Tabler Icon (see https://tabler.io/icons) rendered via the util:icon component.
     nodeTypes/node/@default: If not icon was specified, this one is chosen.
     -->
     <archives lazyLoadingThreshold="1000">
