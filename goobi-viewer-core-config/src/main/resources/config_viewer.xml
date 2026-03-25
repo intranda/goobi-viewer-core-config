@@ -291,17 +291,17 @@
 
 		<!-- Settings for png images: Deliver entire, untiled image -->
 		<zoomImageView tileImage="false" footerHeight="50">
-			<useFor>
+			<condition>
 				<mimeType>image/png</mimeType>
-			</useFor>
+			</condition>
 			<scale>max</scale>
 		</zoomImageView>
 
         <!-- Default settings for fullscreen mode -->
         <zoomImageView type="default" tileImage="true" footerHeight="50">
-            <useFor>
+            <condition>
                 <view>fullscreen</view>
-            </useFor>
+            </condition>
             <scale>900</scale>
             <scale>1800</scale>
             <scale>3600</scale>
