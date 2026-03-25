@@ -411,7 +411,7 @@
             <!-- <_DEFAULT>metadata</_DEFAULT> -->
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
-            <newspaper>calendar</newspaper>
+            <newspaper>toc</newspaper>
         </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
