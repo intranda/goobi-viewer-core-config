@@ -1408,11 +1408,6 @@
             </template>
         </normdataList>
 
-        <!-- calendarDocstructTypes: the list of structure elements allowed to be shown in calendar view -->
-        <calendarDocstructTypes>
-            <docStruct>newspaper</docStruct>
-        </calendarDocstructTypes>
-
         <!-- browsingMenu/@enabled: if true, the browsing section is displayed. Default is true. -->
         <browsingMenu enabled="true">
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page. Default is 70 -->
