@@ -165,6 +165,10 @@
             <provider type="openId" enabled="false" name="OIDC" endpoint="https://idp.example.org/oauth20/authorize" tokenEndpoint="https://m2m.example.org/oauth20/token" redirectionEndpoint="https://viewer-admin.example.org/oauth/" scope="openid email" clientId="CHANGEME" clientSecret="CHANGEME" />
             <provider type="userPassword" enabled="false" name="VuFind" label="CHANGEME" endpoint="https://vuFind.example/Api/User/Auth" image="vufind.png" timeout="7000" />
             <provider type="httpHeader" enabled="false" name="Shibboleth" parameterType="attribute" parameterName="shib-email" endpoint="https://viewer.example.org/api/v1/auth/header" />
+            <!-- Whitelist of hosts allowed for redirect after HTTP header login. If empty, only the application's own URL is allowed. -->
+            <redirectWhitelist>
+                <!-- <host>sso.example.org</host> -->
+            </redirectWhitelist>
         </authenticationProviders>
 
         <!-- SMTP configuration. 'smtpSenderName' (defaults to the value of 'smtpSenderAddress'),
@@ -239,6 +243,10 @@
         <!-- downloadFolder: Folder for generated download files -->
         <downloadFolder>/opt/digiverso/viewer/download_pdf</downloadFolder>
 
+        <!-- expireAfter: Time after which generated PDF files are deleted from the download folder.
+             Default is 14 DAYS. The @unit attribute accepts SECONDS, MINUTES, HOURS, DAYS, WEEKS, MONTHS, YEARS. -->
+        <!-- <expireAfter unit="DAYS">14</expireAfter> -->
+
         <!-- docHierarchyPdfEnabled: if true, an icon to generate a PDF out of the Table of Contents is displayed. Default is false. -->
         <docHierarchyPdfEnabled>true</docHierarchyPdfEnabled>
     </pdf>
@@ -283,26 +291,25 @@
          variables replaced by the solr field values if they exist, cast to lower case and all non-word characters replaced by '_' -->
         <viewStyleClass>docstructtype__{record.DOCSTRCT}</viewStyleClass>
 
-        <!-- zoomImageView: define the different viewer options for the standard view and fullscreen view, respecively.
-             Options for the "type" attribute are: "default" and "sequence" (infinite scrolling). In "sequence" double page mode is not available and the navigator should be deactivated, since it is not helpful.
-             The latter allows scolling through all images within a record without page reload. But image region selection and double page navigation are disabled
-             "width" and "height" attributes define the size of the image display, in pixel set the attribute "tileImage"
-             to true to use tiled images if possible (only possible when type=openlayers)
-             The setting navigator@enabled allows adding a small navigator image to an image view when set to true
-             doublePageNavigation: set attribute 'enabled' to true to allow changing to double page (side-by-side) image view
-             thumbnailGallery: Shows a thumbail preview sidebar near to the image to jump to pages. Works with enabled and disabled sequence mode -->
-        <zoomImageView tileImage="false" footerHeight="50">
-            <useFor>
-                <mimeType>image/png</mimeType>
-            </useFor>
-            <scale>max</scale>
-        </zoomImageView>
+		<!-- Settings for viewing images in a record. More than one <zoomImageView> configurations may exist. The configuration to use for a specific view is specified in the <condition> element.
+		The configurations are tested from top to bottom and the last element should have no condition block so it is always used as fallback -->
+		<!-- "type" may have one of the values "default" to display a single image in the view, and "sequence" to display all images in  a vertically scrollable single view  -->
+		<!-- If "tileImage" is true, the image view is composed of individual tiles for smoother loading, otherwise it is composed of a image pyramid  -->
+		<!-- "footerheight" sets the pixel height of the image footer shown below the image if a footer is configured. A footerheight of 0 removes any footer -->
+
+		<!-- Settings for png images: Deliver entire, untiled image -->
+		<zoomImageView tileImage="false" footerHeight="50">
+			<condition>
+				<mimeType>image/png</mimeType>
+			</condition>
+			<scale>max</scale>
+		</zoomImageView>
 
         <!-- Default settings for fullscreen mode -->
         <zoomImageView type="default" tileImage="true" footerHeight="50">
-            <useFor>
+            <condition>
                 <view>fullscreen</view>
-            </useFor>
+            </condition>
             <scale>900</scale>
             <scale>1800</scale>
             <scale>3600</scale>
@@ -412,8 +419,7 @@
             <!-- <_DEFAULT>metadata</_DEFAULT> -->
             <MultiVolumeWork>toc</MultiVolumeWork>
             <Periodical>toc</Periodical>
-            <newspaper>calendar</newspaper>
-            <IhsWork>mei</IhsWork>
+            <newspaper>toc</newspaper>
         </recordTargetPageTypes>
 
         <!-- fulltextPercentageWarningThreshold: If a record's percentage of pages having full-Text/ALTO documents
@@ -1410,11 +1416,6 @@
             </template>
         </normdataList>
 
-        <!-- calendarDocstructTypes: the list of structure elements allowed to be shown in calendar view -->
-        <calendarDocstructTypes>
-            <docStruct>newspaper</docStruct>
-        </calendarDocstructTypes>
-
         <!-- browsingMenu/@enabled: if true, the browsing section is displayed. Default is true. -->
         <browsingMenu enabled="true">
             <!-- hitsPerPage: defines the maximum number of hits that are displayed per page. Default is 70 -->
@@ -1509,6 +1510,7 @@
              This is needed so the fields can be added to the whitelist of fields to return. -->
         <recordGroupIdentifierFields>
             <field>GROUPID_SERIES</field>
+            <field>GROUPID_NEWSPAPER</field>
         </recordGroupIdentifierFields>
 
         <!-- ancestorIdentifierFields: Contains definitions of Solr fields that contain hierarchical parent document identifiers (such as PI_PARENT containing anchor identifiers. -->
@@ -1977,6 +1979,9 @@
     <cms>
         <!-- mediaDisplayWidth: defines the width in pixels that is used for cms media items for example in the tile grids or collection representant -->
         <mediaDisplayWidth>400</mediaDisplayWidth>
+
+        <!-- mediaDisplayHeight: defines the maximum height in pixels for cms media items. Default is 100000 (effectively unlimited, height is determined by width). -->
+        <!-- <mediaDisplayHeight>400</mediaDisplayHeight> -->
     </cms>
 
 
@@ -2192,7 +2197,7 @@
                 <logo>https://www.intranda.com/wp-content/uploads/2014/07/intranda_logo_blue_2014.png</logo>
             </provider>
 
-            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is false. -->
+            <!-- discloseContentLocation: Show source file location of image requests in Content-Location HTTP header. Default is true. -->
             <discloseContentLocation>false</discloseContentLocation>
         </iiif>
 
@@ -2221,7 +2226,7 @@
             <token></token>
             <user></user>
             <styleId></styleId>
-            <!-- Display an input field to search for places within a map -->
+            <!-- Display an input field to search for places within a map. Default is true. -->
             <addressSearch enabled="false" />
         </mapbox>
 
@@ -2267,6 +2272,15 @@
             <field>NORM_COORDS_GEOJSON</field>
         </coordinateFields>
         
+        <!-- view: Default map view settings (initial zoom level and center coordinates). -->
+        <view>
+            <zoom>5</zoom>
+            <center>
+                <lng>11.073397</lng>
+                <lat>49.451993</lat>
+            </center>
+        </view>
+
         <!-- settings for behaviour of marker clusters both in plain maps and heatmaps -->
         <cluster>
         	<!-- Increase from 1 to increase the distance away from the center that spiderfied markers are placed. -->
@@ -2295,7 +2309,7 @@
             <template name="_DEFAULT">
                 <marker>default</marker>
                 <featureSets>
-                    <featureSet type="docStructs">
+                    <featureSet type="docStruct">
                         <marker metadataList="geomaps_metadata">default</marker>
                     </featureSet>
                     <featureSet type="annotations">
@@ -2370,7 +2384,7 @@
                            the sub-elements of the active node are loaded. When expanding, the next ones are loaded etc . During a search, the sub-trees
                            containing hits are also loaded. Default value ist 1000
     nodeTypes/node/@name: Value of the c level="" attribute of the EAD structure
-    nodeTypes/node/@icon: Name of the icon (without file extension) that is rendered via the util:icon component.
+    nodeTypes/node/@icon: Name of the Tabler Icon (see https://tabler.io/icons) rendered via the util:icon component.
     nodeTypes/node/@default: If not icon was specified, this one is chosen.
     -->
     <archives lazyLoadingThreshold="1000">
