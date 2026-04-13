@@ -81,6 +81,9 @@
       <AppenderRef ref="ics" />
     </Logger>
 
+    <!-- Suppress JSF1094: flash cookie decode warning after server restart (harmless, no session persistence) -->
+    <Logger name="com.sun.faces.context.flash" level="ERROR" additivity="true" />
+
     <Root level="ERROR">
       <AppenderRef ref="stdout" />
     </Root>
