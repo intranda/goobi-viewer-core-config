@@ -195,9 +195,16 @@
 
         <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
         <preventProxyCaching>false</preventProxyCaching>
-        
+
         <!-- databaseConnectonAttempts: Number of times JPADAO will attempt to establish a connection before failing. -->
         <databaseConnectionAttempts>5</databaseConnectionAttempts>
+
+        <!-- prewarmSourceImageCache: Pre-decode the source image of the currently selected page on a background thread while
+             HTML is rendering, so the OpenSeadragon tile burst that follows finds the master image
+             already decoded and resident in the ContentServer's source image cache. Effective only
+             when the ContentServer's <sourceImageCache useCache="true"/> is set in
+             config_contentServer.xml; otherwise this is a silent no-op. Default: enabled. -->
+        <prewarmSourceImageCache enabled="true" />
     </performance>
 
 
