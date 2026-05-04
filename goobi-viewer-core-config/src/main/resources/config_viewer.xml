@@ -1530,6 +1530,14 @@
             <field>PI_PARENT</field>
         </ancestorIdentifierFields>
 
+        <!-- calendarDocStructTypes: DOCSTRCT names for which the calendar TOC view applies. For an anchor/group record whose docstruct matches one of these types AND that has volumes spanning more than
+            one calendar year, the calendar branch in viewToc.xhtml replaces the issue-list TOC and the (potentially heavy) issue-list build is skipped. Records whose docstruct is not listed always get
+            the regular TOC build, even if they have multi-year date metadata. Leave empty to preserve legacy behavior (defer for any multi-year anchor/group). -->
+        <calendarDocStructTypes>
+            <docstruct>Newspaper</docstruct>
+            <docstruct>Periodical</docstruct>
+        </calendarDocStructTypes>
+
         <!-- useTreeView: if true, the toc is displayed as an interactive tree view. Default is false. -->
         <useTreeView showDocStructs="_ALL">false</useTreeView>
 
