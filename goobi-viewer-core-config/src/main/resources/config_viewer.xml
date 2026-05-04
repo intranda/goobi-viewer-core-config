@@ -205,6 +205,15 @@
              when the ContentServer's <sourceImageCache useCache="true"/> is set in
              config_contentServer.xml; otherwise this is a silent no-op. Default: enabled. -->
         <prewarmSourceImageCache enabled="true" />
+
+        <!-- maxAggregateAltoSize: hard byte cap on the aggregate response size of /api/v1/records/{pi}/alto.
+             Requests whose summed page-file size exceeds this fail with HTTP 400 and a hint to use
+             /alto.zip instead. Prevents OOMs on multi-thousand-page works. Default: 50 MB. -->
+        <maxAggregateAltoSize>50000000</maxAggregateAltoSize>
+
+        <!-- maxAggregateFulltextSize: same as maxAggregateAltoSize but for /api/v1/records/{pi}/plaintext.
+             Default: 50 MB. -->
+        <maxAggregateFulltextSize>50000000</maxAggregateFulltextSize>
     </performance>
 
 
