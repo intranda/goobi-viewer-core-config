@@ -195,9 +195,25 @@
 
         <!-- preventProxyCaching: If true, all HTTP responses will contain attributes preventing proxies etc. from caching contents. Default is false. -->
         <preventProxyCaching>false</preventProxyCaching>
-        
+
         <!-- databaseConnectonAttempts: Number of times JPADAO will attempt to establish a connection before failing. -->
         <databaseConnectionAttempts>5</databaseConnectionAttempts>
+
+        <!-- prewarmSourceImageCache: Pre-decode the source image of the currently selected page on a background thread while
+             HTML is rendering, so the OpenSeadragon tile burst that follows finds the master image
+             already decoded and resident in the ContentServer's source image cache. Effective only
+             when the ContentServer's <sourceImageCache useCache="true"/> is set in
+             config_contentServer.xml; otherwise this is a silent no-op. Default: enabled. -->
+        <prewarmSourceImageCache enabled="true" />
+
+        <!-- maxAggregateAltoSize: hard byte cap on the aggregate response size of /api/v1/records/{pi}/alto.
+             Requests whose summed page-file size exceeds this fail with HTTP 400 and a hint to use
+             /alto.zip instead. Prevents OOMs on multi-thousand-page works. Default: 50 MB. -->
+        <maxAggregateAltoSize>50000000</maxAggregateAltoSize>
+
+        <!-- maxAggregateFulltextSize: same as maxAggregateAltoSize but for /api/v1/records/{pi}/plaintext.
+             Default: 50 MB. -->
+        <maxAggregateFulltextSize>50000000</maxAggregateFulltextSize>
     </performance>
 
 
@@ -1661,7 +1677,7 @@
                 <displayWidget name="record-notes" />
                 <displayWidget name="downloads" collapsible="true" collapsedByDefault="true" />
                 <displayWidget name="citation" collapsible="true" collapsedByDefault="true" />
-                <displayWidget name="related-groups" />
+                <displayWidget name="related-groups" showDetails="true" />
                 <displayWidget name="toc" />
                 <displayWidget name="version-history" />
             </view>
@@ -1913,7 +1929,21 @@
                 <!-- collapseLengthThreshold: max length of level before it gets collapsed -->
                 <collapseLengthThreshold lowestLevelToTest="2">0</collapseLengthThreshold>
             </widget>
-            
+
+            <!-- widget[@name="related-groups"]: configuration for the related-groups widget and section (controls which sibling volumes / group members are fetched when showDetails="true"). -->
+            <widget name="related-groups">
+                <!-- maxResults: maximum number of related records shown in the content section (under the record). Default is 3. -->
+                <maxResults>3</maxResults>
+                <!-- sortField: solr field used for sorting the related records. Default is SORT_YEARPUBLISH (newest publication year first). -->
+                <sortField>SORT_YEARPUBLISH</sortField>
+                <!-- sortOrder: sort order (asc or desc). Default is desc. -->
+                <sortOrder>desc</sortOrder>
+                <!-- titleField: solr field used as the card title. Default is MD_TITLE. -->
+                <titleField>MD_TITLE</titleField>
+                <!-- subtitleField: solr field used as the card subtitle (e.g. author or subtitle). Default is MD_CREATOR. -->
+                <subtitleField>MD_CREATOR</subtitleField>
+            </widget>
+
             <!-- OTHER WIDGETS -->
             <!-- widget[@name="browsing-terms"]: Term browsing widget. -->
             <widget name="browsing-terms" enabled="true" />
@@ -2229,6 +2259,15 @@
 
         <!-- If @enabled is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls referencing the @CORSBinding annotation -->
         <cors enabled="false">*</cors>
+
+        <!-- If @enabled is 'true', requests to multipart upload endpoints annotated with @CSRFGuarded are rejected with HTTP 403
+             unless their Origin (or Referer as fallback) matches <urls><base> or one of the <additionalAllowedOrigin> entries.
+             Bearer-token authenticated requests are always bypassed. Default is false. -->
+        <!--
+        <csrf enabled="false">
+            <additionalAllowedOrigin>https://cdn.example.com</additionalAllowedOrigin>
+        </csrf>
+        -->
     </webapi>
 
 
