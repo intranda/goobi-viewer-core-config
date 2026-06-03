@@ -1551,7 +1551,7 @@
             the regular TOC build, even if they have multi-year date metadata. Leave empty to preserve legacy behavior (defer for any multi-year anchor/group). -->
         <calendarDocStructTypes>
             <docstruct>Newspaper</docstruct>
-            <docstruct>newspaper</docstruct>
+            <docstruct>Periodical</docstruct>
         </calendarDocStructTypes>
 
         <!-- useTreeView: if true, the toc is displayed as an interactive tree view. Default is false. -->
