@@ -1551,7 +1551,7 @@
             the regular TOC build, even if they have multi-year date metadata. Leave empty to preserve legacy behavior (defer for any multi-year anchor/group). -->
         <calendarDocStructTypes>
             <docstruct>Newspaper</docstruct>
-            <docstruct>newspaper</docstruct>
+            <docstruct>Periodical</docstruct>
         </calendarDocStructTypes>
 
         <!-- useTreeView: if true, the toc is displayed as an interactive tree view. Default is false. -->
@@ -2259,6 +2259,15 @@
 
         <!-- If @enabled is 'true' add a Access-Control-Allow-Origin Header with this value to all REST-api calls referencing the @CORSBinding annotation -->
         <cors enabled="false">*</cors>
+
+        <!-- If @enabled is 'true', requests to multipart upload endpoints annotated with @CSRFGuarded are rejected with HTTP 403
+             unless their Origin (or Referer as fallback) matches <urls><base> or one of the <additionalAllowedOrigin> entries.
+             Bearer-token authenticated requests are always bypassed. Default is false. -->
+        <!--
+        <csrf enabled="false">
+            <additionalAllowedOrigin>https://cdn.example.com</additionalAllowedOrigin>
+        </csrf>
+        -->
     </webapi>
 
 
